@@ -4,7 +4,7 @@ Function -- array_chunk
 <?php if (function_exists('array_chunk')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once ('PHP/Compat.php');
+require_once 'PHP/Compat.php';
 PHP_Compat::loadFunction('array_chunk');
 
 $input_array = array(2 => 'a', 3 => 'b', 4 => 'c', 5 => 'd', 6 => 'e');

@@ -4,7 +4,7 @@ Function -- http_build_query
 <?php if (function_exists('http_build_query')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once ('PHP/Compat.php');
+require_once 'PHP/Compat.php';
 PHP_Compat::loadFunction('http_build_query');
 
 // Simple

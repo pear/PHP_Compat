@@ -4,7 +4,7 @@ Function -- html_entity_decode
 <?php if (function_exists('html_entity_decode')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once ('PHP/Compat.php');
+require_once 'PHP/Compat.php';
 PHP_Compat::loadFunction('html_entity_decode');
 
 $values = array (2, 'car');

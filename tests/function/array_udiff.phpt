@@ -4,7 +4,7 @@ Function -- array_udiff
 <?php if (function_exists('array_udiff')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once ('PHP/Compat.php');
+require_once 'PHP/Compat.php';
 PHP_Compat::loadFunction('array_udiff');
 
 class cr {

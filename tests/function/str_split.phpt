@@ -4,7 +4,7 @@ Function -- str_split
 <?php if (function_exists('str_split')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once ('PHP/Compat.php');
+require_once 'PHP/Compat.php';
 PHP_Compat::loadFunction('str_split');
 
 $str = "Hello Friend";

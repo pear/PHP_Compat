@@ -4,7 +4,7 @@ Function -- array_diff_assoc
 <?php if (function_exists('array_diff_assoc')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once ('PHP/Compat.php');
+require_once 'PHP/Compat.php';
 PHP_Compat::loadFunction('array_diff_assoc');
 
 $array1 = array("a" => "green", "b" => "brown", "c" => "blue", "red");

@@ -4,7 +4,7 @@ Function -- file_get_contents
 <?php if (function_exists('file_get_contents')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once ('PHP/Compat.php');
+require_once 'PHP/Compat.php';
 PHP_Compat::loadFunction('file_get_contents');
 
 $tmpfname = tempnam('/tmp', 'php');

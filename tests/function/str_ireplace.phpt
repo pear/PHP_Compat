@@ -4,7 +4,7 @@ Function -- str_ireplace
 <?php if (function_exists('str_ireplace')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once ('PHP/Compat.php');
+require_once 'PHP/Compat.php';
 PHP_Compat::loadFunction('str_ireplace');
 
 //

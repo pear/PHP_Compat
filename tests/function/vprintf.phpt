@@ -4,7 +4,7 @@ Function -- vprintf
 <?php if (function_exists('vprintf')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once ('PHP/Compat.php');
+require_once 'PHP/Compat.php';
 PHP_Compat::loadFunction('vprintf');
 
 $values = array (2, 'car');

@@ -4,7 +4,7 @@ Function -- fprintf
 <?php if (function_exists('fprintf')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once ('PHP/Compat.php');
+require_once 'PHP/Compat.php';
 PHP_Compat::loadFunction('fprintf');
 
 $tmpfname = tempnam('/tmp', 'php');

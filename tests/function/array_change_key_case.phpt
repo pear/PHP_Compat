@@ -4,7 +4,7 @@ Function -- array_change_key_case
 <?php if (function_exists('array_change_key_case')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once ('PHP/Compat.php');
+require_once 'PHP/Compat.php';
 PHP_Compat::loadFunction('array_change_key_case');
 
 // The array

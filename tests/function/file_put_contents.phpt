@@ -4,7 +4,7 @@ Function -- file_put_contents
 <?php if (function_exists('file_put_contents')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once ('PHP/Compat.php');
+require_once 'PHP/Compat.php';
 PHP_Compat::loadFunction('file_put_contents');
 
 // Create a temp file

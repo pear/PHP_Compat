@@ -4,7 +4,7 @@ Function -- array_combine
 <?php if (function_exists('array_combine')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once ('PHP/Compat.php');
+require_once 'PHP/Compat.php';
 PHP_Compat::loadFunction('array_combine');
 
 $a = array('green', 'red', 'yellow');

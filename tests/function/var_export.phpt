@@ -4,7 +4,7 @@ Function -- var_export
 <?php if (function_exists('var_export')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once ('PHP/Compat.php');
+require_once 'PHP/Compat.php';
 PHP_Compat::loadFunction('var_export');
 
 // Simple
