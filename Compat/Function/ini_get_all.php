@@ -30,7 +30,7 @@
  * @require     PHP 4.0.1 (trigger_error)
  */
 if (!function_exists('ini_get_all')) {
-    function ini_get_all($extension = true)
+    function ini_get_all($extension = null)
     {
         // Sanity check
         if (!is_scalar($extension)) {
@@ -49,7 +49,7 @@ if (!function_exists('ini_get_all')) {
         $inifile = trim(strip_tags($value));
 
         // Parse
-        if ($extension !== true) {
+        if ($extension !== null) {
             $ini_all = parse_ini_file($inifile, true);
 
             // Lowercase extension keys
