@@ -29,15 +29,20 @@
  * @since       PHP 5.0.2
  */
 if (!defined('PHP_EOL')) {
-    if (strtoupper(substr(PHP_OS, 0, 3) == 'WIN')) {
+    switch (strtoupper(substr(PHP_OS, 0, 3))) {
         // Windows
-        define('PHP_EOL', "\r\n");
-    } elseif (strtoupper(substr(PHP_OS, 0, 6) == 'DARWIN')) {
+        case 'WIN':
+            define('PHP_EOL', "\r\n");
+            break;
+
         // Mac
-        define('PHP_EOL', "\r");
-    } else {
+        case 'DAR':
+            define('PHP_EOL', "\r");
+            break;
+
         // Unix
-        define('PHP_EOL', "\n");
+        default:
+            define('PHP_EOL', "\n");
     }
 }
 
