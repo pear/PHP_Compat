@@ -33,9 +33,9 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     1.0
  */
-if (!function_exists('http_build_query2'))
+if (!function_exists('http_build_query'))
 {
-    function http_build_query2 ($formdata, $numeric_prefix = null)
+    function http_build_query ($formdata, $numeric_prefix = null)
     {
         // If $formdata is an object, convert it to an array
         if (is_object($formdata)) {
