@@ -1,29 +1,24 @@
 --TEST--
 Method -- PHP_Compat::loadFunction
---SKIPIF--
-<?php if (function_exists('str_split') || function_exists('scandir')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once ('PHP/Compat.php');
 
 // Singular
-$test1 = array ();
-$test1[] = PHP_Compat::loadFunction('invalid');
-$test1[] = PHP_Compat::loadFunction('str_split');
+echo (PHP_Compat::loadFunction('invalid') === false) ? 'false' : 'true', "\n";
 
-// With an array
-$components = array('invalid', 'also-invalid', 'more-invalid', 'scandir');
-$test2 = PHP_Compat::loadFunction($components);
+// Multiple
+$comp = array('an-invalid', 'also-invalid', 'more-invalid');
+$results = PHP_Compat::loadFunction($comp);
 
-$results = array_merge($test1, $test2);
-foreach ($results as $result) {
-	echo ($result === true) ? 'true' : 'false', "\n";
+foreach ($results as $comp => $result) {
+    echo $comp . ': ';
+	echo ($result === false) ? 'false' : 'true', "\n";
 }
+
 ?>
 --EXPECT--
 false
-true
-false
-false
-false
-true
+an-invalid: false
+also-invalid: false
+more-invalid: false
