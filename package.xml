@@ -178,7 +178,7 @@ Added more components:
 
     <release>
         <version>1.3.0</version>
-        <date>2004-xx-xx</date>
+        <date>2004-11-22</date>
         <license>PHP License</license>
         <state>stable</state>
         <notes>
@@ -186,6 +186,7 @@ Added more components:
 Added more components:
 * array_diff_key 
 * array_diff_ukey
+* array_diff_uassoc
 * array_intersect_assoc
 * array_intersect_key
 * array_intersect_uassoc
@@ -198,13 +199,16 @@ Added more components:
 * UPLOAD_ERR (File upload constants)
 * T (Tokenizer constants)
 
-Added loadVersion ...
+Added loadVersion method
+- Allows automatic loading of all components, or loading all
+components until a given version of PHP is reached.
 ]]>
         </notes>
         <filelist>
             <dir name="/" baseinstalldir="PHP" role="php">     
                 <file>Compat.php</file>
                 <dir name="Compat">
+                    <file>Components.php</file>
                     <dir name="Constant">
                         <file>E_STRICT.php</file>
                         <file>PATH_SEPARATOR.php</file>
@@ -220,6 +224,7 @@ Added loadVersion ...
                         <file>array_combine.php</file>
                         <file>array_diff_assoc.php</file>
                         <file>array_diff_key.php</file>
+                        <file>array_diff_uassoc.php</file>
                         <file>array_diff_ukey.php</file>
                         <file>array_intersect_assoc.php</file> 
                         <file>array_intersect_key.php</file>
@@ -276,11 +281,13 @@ Added loadVersion ...
                 <dir name="tests" role="test">
                     <file>loadconstant.phpt</file>
                     <file>loadfunction.phpt</file>
+                    <file>loadversion.phpt</file>
                     <dir name="function">
                         <file>array_change_key_case.phpt</file>
                         <file>array_chunk.phpt</file>
                         <file>array_combine.phpt</file>
                         <file>array_diff_assoc.phpt</file>
+                        <file>array_diff_uassoc.phpt</file>
                         <file>array_diff_key.phpt</file>
                         <file>array_diff_ukey.phpt</file>
                         <file>array_intersect_assoc.phpt</file> 
