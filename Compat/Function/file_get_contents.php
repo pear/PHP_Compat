@@ -36,24 +36,25 @@ if (!function_exists('file_get_contents'))
 {
     function file_get_contents ($filename, $incpath = false, $resource_context = null)
     {
-        $file = fopen($filename, 'rb', $incpath);
-
-        if ($file) {
-            clearstatcache();
-            if ($fsize = filesize($filename)) {
-                $data = fread($file, $fsize);
-            }
-            
-            else {
-                while (!feof($file)) {
-                    $data .= fread($file, 8192);
-                }
-            }
-
-            fclose($file);
+        if ($fh = @fopen($filename, 'rb', $incpath) === false) {
+            trigger_error('file_get_contents() failed to open stream: No such file or directory', E_USER_WARNING);
+            return false;
         }
 
-        return $data;
+        clearstatcache();
+        if ($fsize = filesize($filename)) {
+            $data = fread($fh, $fsize);
+        }
+        
+        else {
+            while (!feof($fh)) {
+                $data .= fread($fh, 8192);
+            }
+        }
+
+        fclose($fh);
+
+        return $data;    
     }
 }
 
