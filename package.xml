@@ -97,7 +97,7 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
 
 	<release>
 		<version>1.1.0</version>
-		<date>2004-14-02</date>
+		<date>2004-06-26</date>
 		<license>PHP License</license>
 		<state>stable</state>
 		<notes>Added more components:
