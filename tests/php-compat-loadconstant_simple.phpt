@@ -1,5 +1,7 @@
 --TEST--
 Method -- PHP_Compat::loadConstant -- load invalid and valid function
+--SKIPIF--
+<?php if (defined('E_STRICT')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once ('PHP/Compat.php');

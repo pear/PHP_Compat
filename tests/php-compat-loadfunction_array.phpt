@@ -1,5 +1,7 @@
 --TEST--
 Method -- PHP_Compat::loadFunction -- load an array of functions
+--SKIPIF--
+<?php if (function_exists('str_split')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once ('PHP/Compat.php');
