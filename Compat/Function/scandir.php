@@ -14,14 +14,14 @@ if (!function_exists('scandir'))
     {
         if (!is_dir($directory)) {
             return false;
-		}
+        }
 
         $files = array ();
 
         $fh = opendir($directory);
         while (false !== ($filename = readdir($fh))) {
             $files[] = $filename;
-		}
+        }
 
         closedir($fh);
         sort($files);

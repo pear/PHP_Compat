@@ -14,11 +14,11 @@ if (!function_exists('is_a'))
     {
         if (get_class($object) == strtolower($class)) {
             return true;
-		}
+        }
 
         else {
             return is_subclass_of($object, $class);
-		}
+        }
     }
 }
 

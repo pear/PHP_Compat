@@ -12,13 +12,13 @@
 if (!function_exists('array_combine'))
 {
     function array_combine($keys, $values)
-	{
+    {
         if (count($keys) !== count($values) ||
-			count($keys) === 0 ||
-			count($values) === 0) {
+            count($keys) === 0 ||
+            count($values) === 0) {
 
             return false;
-		}
+        }
 
         $keys    = array_values($keys);
         $values  = array_values($values);
@@ -27,7 +27,7 @@ if (!function_exists('array_combine'))
 
         for ($i = 0, $cnt = count($values); $i < $cnt; $i++) {
             $rv[$keys[$i]] = $values[$i];
-		}
+        }
 
         return $rv;
     }

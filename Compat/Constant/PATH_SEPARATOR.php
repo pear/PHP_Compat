@@ -10,11 +10,11 @@
  * @version       1.0
  */
 if (!defined('PATH_SEPARATOR')) {
-	$path_separator = strtoupper(substr(PHP_OS, 0, 3) == 'WIN') ?
+    $path_separator = strtoupper(substr(PHP_OS, 0, 3) == 'WIN') ?
         ';' :
-		':';
+        ':';
 
-	define('PATH_SEPARATOR', $path_separator);
+    define('PATH_SEPARATOR', $path_separator);
 }
 
 ?>

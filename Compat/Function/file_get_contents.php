@@ -17,12 +17,12 @@ if (!function_exists('file_get_contents'))
         if ($file) {
             if ($fsize = filesize($filename)) {
                 $data = fread($file, $fsize);
-			}
-			
-			else {
+            }
+            
+            else {
                 while (!feof($file)) {
                     $data .= fread($file, 8192);
-				}
+                }
             }
 
             fclose($file);

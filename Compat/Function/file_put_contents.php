@@ -16,11 +16,11 @@ if (!function_exists('file_put_contents'))
 
         if (($file = fopen($filename, 'w+')) === false) {
             return false;
-		}
+        }
 
         if (($bytes = fwrite($file, $content) === false) {
             return false;
-		}
+        }
 
         fclose($file);
 
