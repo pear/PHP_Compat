@@ -30,11 +30,11 @@
  * @version     1.0
  * @added       PHP5
  * @requires    PHP3
- * @todo        add $count as 4th param, can't set an optional referenced variable in php4 :(
+ * @internal    count not by returned by reference, not possible in php4
  */
 if (!function_exists('str_ireplace'))
 {
-    function str_ireplace ($search, $replace, $subject)
+    function str_ireplace ($search, $replace, $subject, $count = null)
     {
         if (is_string($search) && is_array($replace)) {
             trigger_error('Array to string conversion', E_USER_NOTICE);
