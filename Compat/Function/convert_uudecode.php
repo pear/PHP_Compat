@@ -31,9 +31,62 @@
  */
 if (!function_exists('convert_uudecode'))
 {
-    function convert_uudecode()
+    function convert_uudecode($data)
     {
+        // Sanity check
+        if ($data == '') {
+            return false;
+        }
 
+        // Split into number of lines
+        $lines = preg_split("/\r?\n/", trim($data));
+        $decode = '';
+
+        // Loop through each line of the encoded data
+        for ($i = 0, $ii = count($lines); $i < $ii; $i++)
+        {
+            $pos = 1;
+            $d   = 0;
+            $len = (int) (((ord(substr($str[$i], 0, 1)) - 32) - ' ') & 077);
+
+            // Process 3 chars at a time
+            while (($d + 3 <= $len) && ($pos + 4 <= strlen($str[$i]))) {
+                $c0 = (ord(substr($lines[$i], $pos, 1)) ^ 0x20);
+                $c1 = (ord(substr($lines[$i], $pos + 1, 1)) ^ 0x20);
+                $c2 = (ord(substr($lines[$i], $pos + 2, 1)) ^ 0x20);
+                $c3 = (ord(substr($lines[$i], $pos + 3, 1)) ^ 0x20);
+
+                $decode .= chr(((($c0 - ' ') & 077) << 2) | ((($c1 - ' ') & 077) >> 4));
+                $decode .= chr(((($c1 - ' ') & 077) << 4) | ((($c2 - ' ') & 077) >> 2));
+                $decode .= chr(((($c2 - ' ') & 077) << 6) |  (($c3 - ' ') & 077));
+
+                $pos += 4;
+                $d += 3;
+            }
+
+            // Process a left over of two
+            if (($d + 2 <= $len) && ($pos + 3 <= strlen($str[$i]))) {
+                $c0 = (ord(substr($lines[$i], $pos, 1)) ^ 0x20);
+                $c1 = (ord(substr($lines[$i], $pos + 1, 1)) ^ 0x20);
+                $c2 = (ord(substr($lines[$i], $pos + 2, 1)) ^ 0x20);
+
+                $decode .= chr(((($c0 - ' ') & 077) << 2) | ((($c1 - ' ') & 077) >> 4));
+                $decode .= chr(((($c1 - ' ') & 077) << 4) | ((($c2 - ' ') & 077) >> 2));
+
+                $pos += 3;
+                $d += 2;
+            }
+        
+            // Process a left over of one
+            if (($d + 1 <= $len) && ($pos + 2 <= strlen($str[$i]))) {
+                $c0 = (ord(substr($lines[$i], $pos, 1)) ^ 0x20);
+                $c1 = (ord(substr($lines[$i], $pos + 1, 1)) ^ 0x20);
+
+                $decode .= chr(((($c0 - ' ') & 077) << 2) | ((($c1 - ' ') & 077) >> 4));
+            }
+        }
+
+        return $decode;
     }
 }
 
