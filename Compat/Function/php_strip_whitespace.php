@@ -33,7 +33,17 @@ if (!function_exists('php_strip_whitespace'))
 {
     function php_strip_whitespace($file)
     {
-        return implode('', file($file));
+        // Load file
+        $file = implode('', file($file));
+
+        // Remove whitespace
+        // FIXME
+
+        // Remove comments
+        $file = preg_replace('#//[^\n]+#s', '', $file);
+        $file = preg_replace('#/\*.*\*/+#su', '', $file);
+
+        return $file;
     }
 }
 
