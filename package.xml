@@ -140,6 +140,7 @@ Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND</notes>
 					<file>php-compat-loadfunction_01_simple.phpt</file>
 					<file>php-compat-loadfunction_02_array.phpt</file>
 					<file>scandir_01_simple.phpt</file>
+					<file>scandir_02_sort.phpt</file>
 					<file>str-split_01_simple.phpt</file>
 					<file>str-split_02_chunksize.phpt</file>
 					<file>str-split_03_lessremainder.phpt</file>
