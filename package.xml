@@ -199,9 +199,21 @@ Added more components:
 * UPLOAD_ERR (File upload constants)
 * T (Tokenizer constants)
 
-Added loadVersion method
-- Allows automatic loading of all components, or loading all
-components until a given version of PHP is reached.
+Added loadVersion():
+* Allows automatic loading of all components
+* or, loading all components until a given version of PHP is reached.
+]]>
+        </notes>
+    </release>
+
+    <release>
+        <version>1.3.1</version>
+        <date>2004-11-23</date>
+        <license>PHP License</license>
+        <state>stable</state>
+        <notes>
+<![CDATA[
+Fixed problems with loadVersion
 ]]>
         </notes>
         <filelist>
@@ -354,4 +366,5 @@ components until a given version of PHP is reached.
             </dir>
         </filelist>
     </release>
+
 </package>
