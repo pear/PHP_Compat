@@ -8,7 +8,11 @@ require_once 'PHP/Compat.php';
 PHP_Compat::loadFunction('str_shuffle');
 
 $string = str_shuffle('ab');
-if ($string == 'ab' || $string == 'ba') {
+if ($string == 'ab' ||
+    $string == 'ba' ||
+    $string == 'aa' ||
+    $string == 'bb') {
+
     echo "true";
 }
 ?>
