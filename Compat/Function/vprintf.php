@@ -35,7 +35,7 @@
  */
 if (!function_exists('vprintf'))
 {
-    function vprintf($string, $array)
+    function vprintf ($string, $array)
     {
         if (!is_array($array)) {
             $array = array($array);
@@ -52,8 +52,7 @@ if (!function_exists('vprintf'))
             }
         }
 
-        $call = 'printf(\'' . $string . '\', ' . implode(',', $args) . ');';
-		eval($call);
+		call_user_func_array('printf', $args);
     }
 }
 ?>
