@@ -12,7 +12,8 @@
 // | obtain it through the world-wide-web, please send a note to          |
 // | license@php.net so we can mail you a copy immediately.               |
 // +----------------------------------------------------------------------+
-// | Authors: Aidan Lister <aidan@php.net>                                |
+// | Authors: Michael Wallner <mike@php.net>                              |
+// |          Aidan Lister <aidan@php.net>                                |
 // +----------------------------------------------------------------------+
 //
 // $Id$
@@ -24,6 +25,7 @@
  * @category    PHP
  * @package     PHP_Compat
  * @link        http://php.net/convert_uudecode
+ * @author      Michael Wallner <mike@php.net>
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 5
@@ -31,62 +33,50 @@
  */
 if (!function_exists('convert_uudecode'))
 {
-    function convert_uudecode($data)
+    function convert_uudecode($string)
     {
         // Sanity check
-        if ($data == '') {
+        if (!is_scalar($string)) {
+            trigger_error('convert_uuencode() expects parameter 1 to be string, ' . gettype($string) . ' given', E_USER_WARNING);
             return false;
         }
 
-        // Split into number of lines
-        $lines = preg_split("/\r?\n/", trim($data));
-        $decode = '';
+        if (false) {
+            trigger_error('convert_uuencode() The given parameter is not a valid uuencoded string', E_USER_WARNING);
+            return false;
+        }
 
-        // Loop through each line of the encoded data
-        for ($i = 0, $ii = count($lines); $i < $ii; $i++)
-        {
-            $pos = 1;
-            $d   = 0;
-            $len = (int) (((ord(substr($str[$i], 0, 1)) - 32) - ' ') & 077);
+        if ($string == '') {
+            return false;
+        }
 
-            // Process 3 chars at a time
-            while (($d + 3 <= $len) && ($pos + 4 <= strlen($str[$i]))) {
-                $c0 = (ord(substr($lines[$i], $pos, 1)) ^ 0x20);
-                $c1 = (ord(substr($lines[$i], $pos + 1, 1)) ^ 0x20);
-                $c2 = (ord(substr($lines[$i], $pos + 2, 1)) ^ 0x20);
-                $c3 = (ord(substr($lines[$i], $pos + 3, 1)) ^ 0x20);
-
-                $decode .= chr(((($c0 - ' ') & 077) << 2) | ((($c1 - ' ') & 077) >> 4));
-                $decode .= chr(((($c1 - ' ') & 077) << 4) | ((($c2 - ' ') & 077) >> 2));
-                $decode .= chr(((($c2 - ' ') & 077) << 6) |  (($c3 - ' ') & 077));
-
-                $pos += 4;
-                $d += 3;
+        $decoded = '';
+        foreach (explode("\n", $string) as $line) {
+            
+            $c = count($bytes = unpack('c*', substr(trim($line), 1)));
+            
+            while ($c % 4) {
+                $bytes[++$c] = 0;
             }
 
-            // Process a left over of two
-            if (($d + 2 <= $len) && ($pos + 3 <= strlen($str[$i]))) {
-                $c0 = (ord(substr($lines[$i], $pos, 1)) ^ 0x20);
-                $c1 = (ord(substr($lines[$i], $pos + 1, 1)) ^ 0x20);
-                $c2 = (ord(substr($lines[$i], $pos + 2, 1)) ^ 0x20);
-
-                $decode .= chr(((($c0 - ' ') & 077) << 2) | ((($c1 - ' ') & 077) >> 4));
-                $decode .= chr(((($c1 - ' ') & 077) << 4) | ((($c2 - ' ') & 077) >> 2));
-
-                $pos += 3;
-                $d += 2;
-            }
-        
-            // Process a left over of one
-            if (($d + 1 <= $len) && ($pos + 2 <= strlen($str[$i]))) {
-                $c0 = (ord(substr($lines[$i], $pos, 1)) ^ 0x20);
-                $c1 = (ord(substr($lines[$i], $pos + 1, 1)) ^ 0x20);
-
-                $decode .= chr(((($c0 - ' ') & 077) << 2) | ((($c1 - ' ') & 077) >> 4));
+            foreach (array_chunk($bytes, 4) as $b) {
+                $b0 = $b[0] == 0x60 ? 0 : $b[0] - 0x20;
+                $b1 = $b[1] == 0x60 ? 0 : $b[1] - 0x20;
+                $b2 = $b[2] == 0x60 ? 0 : $b[2] - 0x20;
+                $b3 = $b[3] == 0x60 ? 0 : $b[3] - 0x20;
+                
+                $b0 <<= 2;
+                $b0 |= ($b1 >> 4) & 0x03;
+                $b1 <<= 4;
+                $b1 |= ($b2 >> 2) & 0x0F;
+                $b2 <<= 6;
+                $b2 |= $b3 & 0x3F;
+                
+                $decoded .= pack('c*', $b0, $b1, $b2);
             }
         }
 
-        return $decode;
+        return $decoded;
     }
 }
 
