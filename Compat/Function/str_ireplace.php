@@ -30,25 +30,23 @@
  * @version     1.0
  * @added       PHP5
  * @requires	PHP3
- * @todo        Test
- * @todo        Add php replacement errors
  */
-if (!function_exists('str_ireplace'))
+if (!function_exists('str_ireplace2'))
 {
-	function stri_replace($find,$replace,$string)
+	function str_ireplace2 ($search, $replace, $subject, $count = null)
 	{
-		if (!is_array($find)) {
-			$find = array($find);
+		if (!is_array($search)) {
+			$search = array ($search);
 		}
 
 		if (!is_array($replace))
 		{
-			if (!is_array($find)) {
-				$replace = array($replace);
+			if (!is_array($search)) {
+				$replace = array ($replace);
 			}
 			else
 			{
-				$c = count($find);
+				$c = count($search);
 				$rString = $replace;
 				unset($replace);
 
@@ -58,20 +56,21 @@ if (!function_exists('str_ireplace'))
 			}
 		}
 
-		foreach($find as $fKey => $fItem)
+		foreach ($search as $find_key => $find_item)
 		{
-			$between = explode(strtolower($fItem), strtolower($string));
+			$between = explode(strtolower($find_item), strtolower($subject));
 			$pos = 0;
 
-			foreach($between as $bKey => $bItem)
+			foreach ($between as $between_key => $between_item)
 			{
-				$between[$bKey] = substr($string, $pos, strlen($bItem));
-				$pos += strlen($bItem) + strlen($fItem);
+				$between[$between_key] = substr($subject, $pos, strlen($between_item));
+				$pos += strlen($between_item) + strlen($find_item);
 			}
-			$string = implode($replace[$fKey], $between);
+
+			$subject = implode($replace[$find_key], $between);
 		}
 
-		return($string);
+		return $subject;
 	}
 }
 
