@@ -35,8 +35,14 @@ if (!function_exists('convert_uuencode'))
 {
     function convert_uuencode($string)
     {
+        // Sanity check
+        if (!is_scalar($string)) {
+            trigger_error('convert_uuencode() expects parameter 1 to be string, ' . gettype($string) . ' given', E_USER_WARNING);
+            return false;
+        }
+
         $u = 0;
-        $encoded = null;
+        $encoded = '';
         
         while ($c = count($bytes = unpack('c*', substr($string, $u, 45)))) {
             $u += 45;
