@@ -24,9 +24,8 @@
  *
  * PHP 4.3.0-RC2
  * 
- * http://au2.php.net/ref.dir
+ * http://php.net/ref.dir
  *
- * @author        Ross Smith <pearspam@netebb.com>
  * @author        Aidan Lister <aidan@php.net>
  * @version       1.0
  */
