@@ -32,8 +32,6 @@ if (!defined('FILE_APPEND')) {
 /**
  * Replace file_put_contents()
  *
- * Added in PHP 5
- *
  * @category    PHP
  * @package     PHP_Compat
  * @link        http://php.net/function.file_put_contents
