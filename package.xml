@@ -184,12 +184,21 @@ Added more components:
         <notes>
 <![CDATA[
 Added more components:
-* array_diff_key.php 
-* array_diff_ukey.php 
-* array_intersect_assoc.php 
-* array_intersect_key.php 
-* array_intersect_uassoc.php 
-* array_intersect_ukey.php 
+* array_diff_key 
+* array_diff_ukey
+* array_intersect_assoc
+* array_intersect_key
+* array_intersect_uassoc
+* array_intersect_ukey
+* floatval
+* ini_get_all
+* md5_file
+* clone
+* PHP_EOL
+* UPLOAD_ERR (File upload constants)
+* T (Tokenizer constants)
+
+Added loadVersion ...
 ]]>
         </notes>
         <filelist>
@@ -201,6 +210,9 @@ Added more components:
                         <file>PATH_SEPARATOR.php</file>
                         <file>STD.php</file>
                         <file>FILE.php</file>
+                        <file>PHP_EOL.php</file>
+                        <file>UPLOAD_ERR.php</file>
+                        <file>T.php</file>
                     </dir>
                     <dir name="Function">
                         <file>array_change_key_case.php</file>
@@ -223,17 +235,21 @@ Added more components:
                         <file>array_uintersect_uassoc.php</file>
                         <file>array_walk_recursive.php</file>
                         <file>call_user_func_array.php</file>
+                        <file>clone.php</file>
                         <file>constant.php</file>
                         <file>convert_uuencode.php</file>
                         <file>convert_uudecode.php</file>
                         <file>file_get_contents.php</file>
                         <file>file_put_contents.php</file>
+                        <file>floatval.php</file>
                         <file>fprintf.php</file>
                         <file>get_include_path.php</file>
                         <file>html_entity_decode.php</file>
                         <file>http_build_query.php</file>
                         <file>image_type_to_mime_type.php</file>
+                        <file>ini_get_all.php</file>
                         <file>is_a.php</file>
+                        <file>md5_file.php</file>
                         <file>ob_clean.php</file>
                         <file>ob_flush.php</file>
                         <file>ob_get_clean.php</file>
@@ -281,17 +297,21 @@ Added more components:
                         <file>array_uintersect_uassoc.phpt</file>
                         <file>array_walk_recursive.phpt</file>
                         <file>call_user_func_array.phpt</file>
+                        <file>clone.phpt</file>
                         <file>constant.phpt</file>
                         <file>convert_uuencode.phpt</file>
                         <file>convert_uudecode.phpt</file>
                         <file>file_get_contents.phpt</file>
                         <file>file_put_contents.phpt</file>
+                        <file>floatval.phpt</file>
                         <file>fprintf.phpt</file>
                         <file>get_include_path.phpt</file>
                         <file>html_entity_decode.phpt</file>
                         <file>http_build_query.phpt</file>
                         <file>image_type_to_mime_type.phpt</file>
+                        <file>ini_get_all.phpt</file>
                         <file>is_a.phpt</file>
+                        <file>md5_file.phpt</file>
                         <file>ob_clean.phpt</file>
                         <file>ob_flush.phpt</file>
                         <file>ob_get_clean.phpt</file>
@@ -319,6 +339,9 @@ Added more components:
                         <file>file.phpt</file>
                         <file>path_separator.phpt</file>
                         <file>std.phpt</file>
+                        <file>php_eol.phpt</file>
+                        <file>upload_err.phpt</file>
+                        <file>t.phpt</file>
                     </dir>
                 </dir>
             </dir>
