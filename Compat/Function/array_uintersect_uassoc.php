@@ -71,15 +71,17 @@ if (!function_exists('array_uintersect_uassoc'))
         // Traverse values of the first array
         $intersect = array ();
         foreach ($args[0] as $key => $value) {
-            // Check all arrays
+            // Check against each array
             for ($i = 1; $i < $count; $i++) {
-                if (!array_key_exists($key, $args[$i])) {
-                    continue;
-                }
-                $result = call_user_func($key_compare_func, $value, $args[$i][$key]);
-                if ($result === 0) {
-                    $intersect[$key] = $value;
-                    continue;
+                // Traverse each element in current array
+                foreach ($args[$i] as $ckey => $cvalue) {
+                    // Compare key and value
+                    if (call_user_func($key_compare_func, $key, $ckey) === 0 && 
+                        call_user_func($data_compare_func, $value, $cvalue) === 0) {
+
+                        $intersect[$key] = $value;
+                        continue;
+                    }
                 }
             }
         }
