@@ -121,7 +121,12 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
 		<state>stable</state>
 		<notes>Added more components:
 * str_word_count
-* str_rot13</notes>
+* str_rot13
+* convert_uuencode
+* convert_uudecode
+* array_uintersect_assoc
+* array_uintersect_uassoc
+* array_walk_recursive</notes>
 		<filelist>
 			<dir name="/" baseinstalldir="PHP" role="php">	 
 				<file>Compat.php</file>
@@ -141,24 +146,29 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
 						<file>array_search.php</file>
 						<file>array_udiff.php</file>
 						<file>array_udiff_assoc.php</file>
+                        <file>array_uintersect_assoc.php</file>
+                        <file>array_uintersect_uassoc.php</file>
+                        <file>array_walk_recursive.php</file>
 						<file>call_user_func_array.php</file>
 						<file>constant.php</file>
+						<file>convert_uuencode.php</file>
+						<file>convert_uudecode.php</file>
 						<file>file_get_contents.php</file>
 						<file>file_put_contents.php</file>
 						<file>fprintf.php</file>
-						<file>http_build_query.php</file>
 						<file>html_entity_decode.php</file>
-						<file>is_a.php</file>
+						<file>http_build_query.php</file>
 						<file>image_type_to_mime_type.php</file>
+						<file>is_a.php</file>
 						<file>ob_clean.php</file>
 						<file>ob_flush.php</file>
 						<file>ob_get_clean.php</file>
 						<file>ob_get_flush.php</file>
 						<file>scandir.php</file>
 						<file>str_ireplace.php</file>
+						<file>str_rot13.php</file>
 						<file>str_split.php</file>
 						<file>str_word_count.php</file>
-						<file>str_rot13.php</file>
 						<file>stripos.php</file>
 						<file>strpbrk.php</file>
 						<file>strripos.php</file>
@@ -178,10 +188,15 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
 						<file>array_diff_assoc.phpt</file>
 						<file>array_key_exists.phpt</file>
 						<file>array_search.phpt</file>
-						<file>array_udif_assoc.phpt</file>
 						<file>array_udiff.phpt</file>
+						<file>array_udiff_assoc.phpt</file>
+                        <file>array_uintersect_assoc.phpt</file>
+                        <file>array_uintersect_uassoc.phpt</file>
+                        <file>array_walk_recursive.phpt</file>
 						<file>call_user_func_array.phpt</file>
 						<file>constant.phpt</file>
+						<file>convert_uuencode.phpt</file>
+						<file>convert_uudecode.phpt</file>
 						<file>file_get_contents.phpt</file>
 						<file>file_put_contents.phpt</file>
 						<file>fprintf.phpt</file>
@@ -195,9 +210,9 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
 						<file>ob_get_flush.phpt</file>
 						<file>scandir.phpt</file>
 						<file>str_ireplace.phpt</file>
-						<file>str_split.phpt</file>
-						<file>str_word_count.phpt</file>
 						<file>str_rot13.phpt</file>
+                        <file>str_split.phpt</file>
+						<file>str_word_count.phpt</file>
 						<file>stripos.phpt</file>
 						<file>strripos.phpt</file>
 						<file>var_export.phpt</file>
