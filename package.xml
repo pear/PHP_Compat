@@ -1,6 +1,6 @@
 <package version="1.0">
 	<name>PHP_Compat</name>
-	<summary>PHP_Compat provides missing functionality in the form of Constants and Functions for older versions of PHP.</summary>
+	<summary>Provides missing functionality for older versions of PHP.</summary>
 
 	<description>
 		PHP_Compat provides missing functionality in the form of Constants and Functions for older versions of PHP.
