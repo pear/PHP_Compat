@@ -27,7 +27,7 @@
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/wrappers
+ * @link        http://php.net/features.commandline
  * @author      Aidan Lister <aidan@php.net>
  * @author      Michael Wallner <mike@php.net>
  * @version     1.0
