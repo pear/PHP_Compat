@@ -1,5 +1,7 @@
 --TEST--
-PHP_Compat str_split() -- with a chunk size specified
+Function -- str_split -- with a chunk size specified
+--SKIPIF--
+<?php if (function_exists('str_split')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once ('PHP/Compat.php');

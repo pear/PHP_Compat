@@ -1,5 +1,7 @@
 --TEST--
-PHP_Compat array_chunk() -- simple
+Function -- array_chunk -- simple
+--SKIPIF--
+<?php if (function_exists('array_chunk')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once ('PHP/Compat.php');

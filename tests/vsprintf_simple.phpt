@@ -1,5 +1,7 @@
 --TEST--
-PHP_Compat vsprintf() -- simple
+Function -- vsprintf -- simple
+--SKIPIF--
+<?php if (function_exists('vsprintf')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once ('PHP/Compat.php');

@@ -1,5 +1,5 @@
 --TEST--
-PHP_Compat::loadConstant() -- load an array of constants
+Method -- PHP_Compat::loadConstant -- load an array of constants
 --FILE--
 <?php
 require_once ('PHP/Compat.php');

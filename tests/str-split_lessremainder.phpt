@@ -1,5 +1,7 @@
 --TEST--
-PHP_Compat str_split() -- string that has a remainder less than the chunk size
+Function -- str_split -- string that has a remainder less than the chunk size
+--SKIPIF--
+<?php if (function_exists('str_split')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once ('PHP/Compat.php');

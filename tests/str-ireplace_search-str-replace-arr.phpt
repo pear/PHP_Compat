@@ -1,5 +1,7 @@
 --TEST--
-PHP_Compat str_ireplace() -- Search as string, replace as array
+Function -- str_ireplace -- Search as string, replace as array
+--SKIPIF--
+<?php if (function_exists('str_ireplace')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once ('PHP/Compat.php');

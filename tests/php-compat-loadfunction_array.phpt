@@ -1,5 +1,5 @@
 --TEST--
-PHP_Compat::loadFunction() -- load an array of functions
+Method -- PHP_Compat::loadFunction -- load an array of functions
 --FILE--
 <?php
 require_once ('PHP/Compat.php');

@@ -1,5 +1,7 @@
 --TEST--
-PHP_Compat array_diff_assoc() -- simple
+Function -- array_diff_assoc -- simple
+--SKIPIF--
+<?php if (function_exists('array_diff_assoc')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once ('PHP/Compat.php');

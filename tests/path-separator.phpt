@@ -1,5 +1,7 @@
 --TEST--
-PHP_Compat PATH_SEPARATOR
+Constant -- PATH_SEPARATOR
+--SKIPIF--
+<?php if (defined('PATH_SEPARATOR')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once ('PHP/Compat.php');

@@ -1,5 +1,7 @@
 --TEST--
-PHP_Compat http_build_query() -- with an object
+Function -- http_build_query -- with an object
+--SKIPIF--
+<?php if (function_exists('http_build_query')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once ('PHP/Compat.php');

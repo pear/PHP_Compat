@@ -1,5 +1,7 @@
 --TEST--
-PHP_Compat file_get_contents() -- simple
+Function -- file_get_contents -- simple
+--SKIPIF--
+<?php if (function_exists('file_get_contents')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once ('PHP/Compat.php');

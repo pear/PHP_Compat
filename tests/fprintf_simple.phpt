@@ -1,5 +1,7 @@
 --TEST--
-PHP_Compat fprintf() -- simple
+Function -- fprintf -- simple
+--SKIPIF--
+<?php if (function_exists('fprintf')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once ('PHP/Compat.php');

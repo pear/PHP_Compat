@@ -1,5 +1,7 @@
 --TEST--
-PHP_Compat array_combine() -- simple usage
+Function -- array_combine -- simple usage
+--SKIPIF--
+<?php if (function_exists('array_combine')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once ('PHP/Compat.php');

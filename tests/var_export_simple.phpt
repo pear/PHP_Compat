@@ -1,5 +1,7 @@
 --TEST--
-PHP_Compat var_export() -- simple
+Function -- var_export -- simple
+--SKIPIF--
+<?php if (function_exists('var_export')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once ('PHP/Compat.php');

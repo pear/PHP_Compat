@@ -1,5 +1,7 @@
 --TEST--
-PHP_Compat stripos() -- with an offset
+Function -- stripos -- with an offset
+--SKIPIF--
+<?php if (function_exists('stripos')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once ('PHP/Compat.php');

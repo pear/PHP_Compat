@@ -1,5 +1,7 @@
 --TEST--
-PHP_Compat stripos() -- simple
+Function -- stripos -- simple
+--SKIPIF--
+<?php if (function_exists('stripos')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once ('PHP/Compat.php');

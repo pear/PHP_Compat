@@ -1,5 +1,5 @@
 --TEST--
-PHP_Compat::loadConstant() -- load invalid and valid function
+Method -- PHP_Compat::loadConstant -- load invalid and valid function
 --FILE--
 <?php
 require_once ('PHP/Compat.php');

@@ -1,5 +1,7 @@
 --TEST--
-PHP_Compat str_ireplace() -- With the subject as an array
+Function -- str_ireplace -- With the subject as an array
+--SKIPIF--
+<?php if (function_exists('str_ireplace')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once ('PHP/Compat.php');

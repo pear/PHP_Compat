@@ -1,5 +1,7 @@
 --TEST--
-PHP_Compat E_STRICT
+Constant -- E_STRICT
+--SKIPIF--
+<?php if (defined('E_STRICT')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once ('PHP/Compat.php');

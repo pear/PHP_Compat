@@ -1,5 +1,7 @@
 --TEST--
-PHP_Compat array_udiff() -- simple usage
+Function -- array_udiff -- simple usage
+--SKIPIF--
+<?php if (function_exists('array_udiff')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once ('PHP/Compat.php');

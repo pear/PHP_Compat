@@ -1,5 +1,7 @@
 --TEST--
-PHP_Compat array_change_key_case() -- simple
+Function -- array_change_key_case -- simple
+--SKIPIF--
+<?php if (function_exists('array_change_key_case')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once ('PHP/Compat.php');

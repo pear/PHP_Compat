@@ -1,5 +1,7 @@
 --TEST--
-PHP_Compat file_put_contents() -- simple
+Function -- file_put_contents -- with an array
+--SKIPIF--
+<?php if (function_exists('file_put_contents')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once ('PHP/Compat.php');

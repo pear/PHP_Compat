@@ -1,5 +1,7 @@
 --TEST--
-PHP_Compat strripos() -- simple
+Function -- strripos -- simple
+--SKIPIF--
+<?php if (function_exists('strripos')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once ('PHP/Compat.php');

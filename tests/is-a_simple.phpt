@@ -1,5 +1,7 @@
 --TEST--
-PHP_Compat is_a() -- simple
+Function -- is_a -- simple
+--SKIPIF--
+<?php if (function_exists('is_a')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once ('PHP/Compat.php');

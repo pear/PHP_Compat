@@ -1,5 +1,7 @@
 --TEST--
-PHP_Compat scandir() -- simple
+Function -- scandir -- simple
+--SKIPIF--
+<?php if (function_exists('scandir')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once ('PHP/Compat.php');
