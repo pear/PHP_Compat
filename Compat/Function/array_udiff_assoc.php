@@ -37,7 +37,7 @@ if (!function_exists('array_udiff_assoc'))
     {
         $args = func_get_args();
         if (count($args) < 3) {
-            trigger_error('Wrong parameter count for array_udiff()', E_USER_WARNING);
+            trigger_error('Wrong parameter count for array_udiff_assoc()', E_USER_WARNING);
             return;
         }
 
@@ -48,7 +48,7 @@ if (!function_exists('array_udiff_assoc'))
             if (is_array($compare_func)) {
                 $compare_func = $compare_func[0].'::'.$compare_func[1];
             }
-            trigger_error('array_udiff() Not a valid callback ' . $compare_func, E_USER_WARNING);
+            trigger_error('array_udiff_assoc() Not a valid callback ' . $compare_func, E_USER_WARNING);
             return;
         }
 
@@ -57,7 +57,7 @@ if (!function_exists('array_udiff_assoc'))
         for ($i = 0; $i < $count; $i++)
         {
             if (!is_array($args[$i])) {
-                trigger_error('array_udiff() Argument #' . ($i + 1) . ' is not an array', E_USER_WARNING);
+                trigger_error('array_udiff_assoc() Argument #' . ($i + 1) . ' is not an array', E_USER_WARNING);
                 return;
             }
         }
