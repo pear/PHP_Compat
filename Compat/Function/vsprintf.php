@@ -29,13 +29,14 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     1.0
  * @added       PHP 4.1.0
- * @requires    PHP 3
+ * @requires    PHP 4.0.4
  */
 if (!function_exists('vsprintf'))
 {
-    function vsprintf ()
+    function vsprintf ($string, $args)
     {
-
+		array_unshift($args, $string);
+		return call_user_func_array('sprintf', $args);
     }
 }
 ?>
