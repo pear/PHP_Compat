@@ -13,7 +13,8 @@
 // | obtain it through the world-wide-web, please send a note to          |
 // | license@php.net so we can mail you a copy immediately.               |
 // +----------------------------------------------------------------------+
-// | Authors: Aidan Lister <aidan@php.net>                                |
+// | Authors: Stephan Schmidt <schst@php.net>                             |
+// |          Aidan Lister <aidan@php.net>                                |
 // +----------------------------------------------------------------------+
 //
 // $Id$
@@ -23,17 +24,34 @@
 /**
  * Replace vprintf()
  *
- * Added in PHP 5
+ * Added in PHP 4.1
  *
  * @category    PHP
  * @package     PHP_Compat
  * @link        http://php.net/function.vprintf
+ * @author      Stephan Schmidt <schst@php.net>
  * @author      Aidan Lister <aidan@php.net>
  * @version     1.0
  */
 if (!function_exists('vprintf'))
 {
-	// TODO
+    function vprintf($string, $array)
+    {
+        if (!is_array($array)) {
+            $array = array($array);
+        }
+        
+        $args = array();
+        foreach ($array as $a) {
+            if (is_numeric($a)) {
+                array_push($args, $a);
+            } else {
+                @settype($a, 'string');
+                array_push($args, '\''.$a.'\'');
+            }
+        }
+        $call = 'return sprintf( \''.$string.'\', '.implode(',', $args).');';
+        return eval($call);
+    }
 }
-
 ?>
