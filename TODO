@@ -1,16 +1,9 @@
 Functions
 ---------
-* array_uintersect_assoc
 * array_uintersect_uassoc
-* array_uintersect
-* array_udiff_uassoc
 
 Tests
 ---------
-* array_udiff_uassoc (waiting for bug #29865 to be fixed)
-* get_include_path
-* set_include_path
-* restore_include_path
 
 Methods
 -------
