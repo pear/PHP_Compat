@@ -157,6 +157,10 @@ Added more components:
 * array_udiff_uassoc
 * str_shuffle
 * substr_compare
+* get_include_path
+* set_include_path
+* restore_include_path
+* php_strip_whitespace
 
 Added loadVersion:
 * Automatically loads functions to a specific version of PHP
@@ -193,6 +197,7 @@ Added loadVersion:
                         <file>file_get_contents.php</file>
                         <file>file_put_contents.php</file>
                         <file>fprintf.php</file>
+                        <file>get_include_path.php</file>
                         <file>html_entity_decode.php</file>
                         <file>http_build_query.php</file>
                         <file>image_type_to_mime_type.php</file>
@@ -201,7 +206,10 @@ Added loadVersion:
                         <file>ob_flush.php</file>
                         <file>ob_get_clean.php</file>
                         <file>ob_get_flush.php</file>
+                        <file>php_strip_whitespace.php</file>
+                        <file>restore_include_path.php</file>
                         <file>scandir.php</file>
+                        <file>set_include_path.php</file>
                         <file>str_ireplace.php</file>
                         <file>str_rot13.php</file>
                         <file>str_split.php</file>
@@ -241,6 +249,7 @@ Added loadVersion:
                         <file>file_get_contents.phpt</file>
                         <file>file_put_contents.phpt</file>
                         <file>fprintf.phpt</file>
+                        <file>get_include_path.phpt</file>
                         <file>html_entity_decode.phpt</file>
                         <file>http_build_query.phpt</file>
                         <file>image_type_to_mime_type.phpt</file>
@@ -249,7 +258,10 @@ Added loadVersion:
                         <file>ob_flush.phpt</file>
                         <file>ob_get_clean.phpt</file>
                         <file>ob_get_flush.phpt</file>
+                        <file>php_strip_whitespace.phpt</file>
+                        <file>restore_include_path.phpt</file>
                         <file>scandir.phpt</file>
+                        <file>set_include_path.phpt</file>
                         <file>str_ireplace.phpt</file>
                         <file>str_rot13.phpt</file>
                         <file>str_split.phpt</file>
