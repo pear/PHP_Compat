@@ -94,8 +94,8 @@
                         <file>STDIN.php</file>
                         <file>STDOUT.php</file>
                         <file>STDERR.php</file>
-						<file>FILE_USE_INCLUDE_PATH</file>
-						<file>FILE_APPEND</file>
+						<file>FILE_USE_INCLUDE_PATH.php</file>
+						<file>FILE_APPEND.php</file>
                     </dir>
                     <dir name="Function">
                         <file>array_combine.php</file>
