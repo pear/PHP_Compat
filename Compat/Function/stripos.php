@@ -13,8 +13,7 @@
 // | obtain it through the world-wide-web, please send a note to          |
 // | license@php.net so we can mail you a copy immediately.               |
 // +----------------------------------------------------------------------+
-// | Authors: Stephan Schmidt <schst@php.net>                             |
-// |          Aidan Lister <aidan@php.net>                                |
+// | Authors: Aidan Lister <aidan@php.net>                                |
 // +----------------------------------------------------------------------+
 //
 // $Id$
@@ -27,7 +26,6 @@
  * @category    PHP
  * @package     PHP_Compat
  * @link        http://php.net/function.stripos
- * @author      Stephan Schmidt <schst@php.net>
  * @author      Aidan Lister <aidan@php.net>
  * @version     1.0
  * @added       PHP 5
@@ -52,7 +50,21 @@ if (!function_exists('stripos'))
             return false;
         }
 
-        return strpos(strtolower($haystack), strtolower($needle), $offset);
+        // Manipulate the string if there is an offset
+        $fix = 0;
+        if (!is_null($offset))
+        {
+            if ($offset > 0)
+            {
+                $haystack = substr($haystack, $offset, strlen($haystack) - $offset);
+                $fix = $offset;
+            }
+        }
+
+        $segments = explode (strtolower($needle), strtolower($haystack), 2);
+        $position = strlen($segments[0]) + $fix;
+
+        return $position;
     }
 }
 
