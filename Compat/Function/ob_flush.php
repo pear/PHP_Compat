@@ -36,12 +36,11 @@ if (!function_exists('ob_flush'))
 {
     function ob_flush ()
     {
-        // If ob_end_flush fails, do not execute ob_start.
         if (@ob_end_flush()) {
             return ob_start();
         }
 
-        trigger_error("ob_flush() Failed to flush buffer. No buffer to flush", E_USER_NOTICE);
+        trigger_error("ob_flush() Failed to flush buffer. No buffer to flush.", E_USER_NOTICE);
 
         return false;
     }

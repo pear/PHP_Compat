@@ -38,7 +38,6 @@ if (!function_exists('ob_get_clean'))
     {
         $contents = ob_get_contents();
 
-        // If ob_get_contents failed, do not execute ob_end_clean.
         if ($contents !== false) {
             ob_end_clean();
         }

@@ -36,12 +36,11 @@ if (!function_exists('ob_clean'))
 {
     function ob_clean ()
     {
-        // If ob_end_clean fails, do not execute ob_start.
         if (@ob_end_clean()) {
             return ob_start();
         }
 
-        trigger_error("ob_clean() Failed to delete buffer. No buffer to delete", E_USER_NOTICE);
+        trigger_error("ob_clean() failed to delete buffer. No buffer to delete.", E_USER_NOTICE);
 
         return false;
     }
