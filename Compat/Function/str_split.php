@@ -26,16 +26,25 @@
  *
  * http://php.net/function.str_split
  *
- * @author        Paul Gregg <phpcode@pgregg.com>
  * @author        Aidan Lister <aidan@php.net>
  * @version       1.0
  */
-if (!function_exists('str_split'))
+if (!function_exists('str_split2'))
 {
-    function str_split ($string, $chunksize = 1)
+	function str_split2($string, $split_length = 1)
     {
-        preg_match_all('/(' . str_repeat('.', $chunksize) . ')/Uims', $string, $matches);
-        return $matches[1];
+		if (!is_numeric($split_length)) {
+			trigger_error('str_split() expects parameter 2 to be long, string given', E_USER_WARNING);
+			return false;
+		}
+
+        if ($split_length < 1) {
+			trigger_error('str_split() The the length of each segment must be greater then zero', E_USER_WARNING);
+			return false;
+		}
+
+        preg_match_all('/.{1,' . $split_length . '}/s', $string, $matches);
+        return $matches[0];
     }
 }
 
