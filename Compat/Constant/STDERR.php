@@ -24,7 +24,7 @@
  *
  * PHP 4.3.0
  * 
- * http://php.net/wrappers.php
+ * http://php.net/wrappers
  *
  * @author        Aidan Lister <aidan@php.net>
  * @version       1.0
