@@ -39,58 +39,33 @@ if (!function_exists('array_chunk'))
             return null;
         }
 		
-        if (!is_int($size)) {
+        if (!is_numeric($size)) {
             trigger_error('array_chunk() expects parameter 2 to be long, ' . gettype($size) . ' given', E_USER_WARNING);
             return null;
         }
 		
-		$chunks = array ();
+        $size = (int)$size;
+        if ($size <= 0)
+        {
+            trigger_error('array_chunk() Size parameter expected to be greater than 0', E_USER_WARNING);
+            return null;
+        }
 
-		// The input is smaller than the chunksize
-		if (count($input) <= $size)
-		{
-			if ($preserve_keys !== false)
-			{
-				foreach ($input as $key => $value)
-				{
-					$chunks[0][$key] = $value;
-				}
-			}
-			else
-			{
-				foreach ($input as $value)
-				{
-					$chunks[0][] = $value;
-				}
-			}
-		}
-	
-		// The input is larger than the chunksize
-		else
-		{
-			$j = $i = 0;
+        $chunks = array();
+        $i = 0;
 
-			if ($preserve_keys !== false)
-			{
-				foreach ($input as $key => $value)
-				{
-					$chunks[$j][$key] = $value;
-					if (++$i == $size) {
-						$j++;
-					}
-				}
-			}
-			else
-			{
-				foreach ($input as $key => $value)
-				{
-					$chunks[$j][] = $value;
-					if (++$i == $size) {
-						$j++;
-					}
-				}
-			}
-		}
+        if ($preserve_keys !== false)
+        {
+            foreach ($input as $key => $value) {
+                $chunks[(int)($i++ / $size)][$key] = $value;
+            }
+        }
+        else
+        {
+            foreach ($input as $value) {
+                $chunks[(int)($i++ / $size)][] = $value;
+            }
+        }
 
         return $chunks;
     }
