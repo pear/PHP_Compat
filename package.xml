@@ -188,6 +188,7 @@ Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND</notes>
 					<file>str-split_lessremainder.phpt</file>
 					<file>str-split_simple.phpt</file>
 					<file>stripos_simple.phpt</file>
+					<file>stripos_offset.phpt</file>
 					<file>strripos_offset.phpt</file>
 					<file>strripos_simple.phpt</file>
 					<file>var_export_simple.phpt</file>
