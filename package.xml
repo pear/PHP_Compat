@@ -12,6 +12,8 @@
         * STDIN
         * STDOUT
         * STDERR
+		* FILE_APPEND
+		* FILE_USE_INCLUDE_PATH
 
         Functions:
         * file_get_contents
@@ -110,34 +112,34 @@
                     </dir>
                 </dir>
                 <dir name="tests" role="test">
-                    <file>01_loadfunction_01_simple.phpt</file>
-                    <file>01_loadfunction_02_array.phpt</file>
-                    <file>02_loadconstant_01_simple.phpt</file>
-                    <file>02_loadconstant_02_array.phpt</file>
-                    <file>10_array-combine_01_simple.phpt</file>
-                    <file>11_array-udiff_01_simple.phpt</file>
-                    <file>12_array-udiff-assoc_01_simple.phpt</file>
-                    <file>13_http-build-query_01_simple.phpt</file>
-                    <file>13_http-build-query_02_complexarray.phpt</file>
-                    <file>13_http-build-query_03_numindex.phpt</file>
-                    <file>13_http-build-query_04_object.phpt</file>
-                    <file>14_str-split_01_simple.phpt</file>
-                    <file>14_str-split_02_chunksize.phpt</file>
-                    <file>14_str-split_03_lessremainder.phpt</file>
-                    <file>14_str-split_04_bigchunk.phpt</file>
-                    <file>15_file-put-contents_01_simple.phpt</file>
-                    <file>15_file-put-contents_02_array.phpt</file>
-                    <file>15_file-put-contents_03_append.phpt</file>
-                    <file>16_file-get-contents_01_simple.phpt</file>
-                    <file>17_is-a_01_simple.phpt</file>
-                    <file>18_scandir_01_simple.phpt</file>
-                    <file>50_PATH_SEPARATOR.phpt</file>
-                    <file>50_E_STRICT.phpt</file>
-                    <file>50_STDOUT.phpt</file>
-                    <file>50_STDERR.phpt</file>
-                    <file>50_STDIN.phpt</file>
-					<file>50_FILE_APPEND.phpt</file>
-					<file>50_FILE_USE_INCLUDE_PATH.phpt</file>
+                    <file>array-combine_01_simple.phpt</file>
+                    <file>array-udiff_01_simple.phpt</file>
+                    <file>array-udiff-assoc_01_simple.phpt</file>
+                    <file>file-get-contents_01_simple.phpt</file>
+                    <file>file-put-contents_01_simple.phpt</file>
+                    <file>file-put-contents_02_array.phpt</file>
+                    <file>file-put-contents_03_append.phpt</file>
+                    <file>http-build-query_01_simple.phpt</file>
+                    <file>http-build-query_02_complexarray.phpt</file>
+                    <file>http-build-query_03_numindex.phpt</file>
+                    <file>http-build-query_04_object.phpt</file>
+                    <file>is-a_01_simple.phpt</file>
+                    <file>php-compat-loadconstant_01_simple.phpt</file>
+                    <file>php-compat-loadconstant_02_array.phpt</file>
+                    <file>php-compat-loadfunction_01_simple.phpt</file>
+                    <file>php-compat-loadfunction_02_array.phpt</file>
+                    <file>scandir_01_simple.phpt</file>
+                    <file>str-split_01_simple.phpt</file>
+                    <file>str-split_02_chunksize.phpt</file>
+                    <file>str-split_03_lessremainder.phpt</file>
+                    <file>str-split_04_bigchunk.phpt</file>
+                    <file>E_STRICT.phpt</file>
+					<file>FILE_APPEND.phpt</file>
+					<file>FILE_USE_INCLUDE_PATH.phpt</file>
+					<file>PATH_SEPARATOR.phpt</file>
+					<file>STDERR.phpt</file>
+					<file>STDIN.phpt</file>
+					<file>STDOUT.phpt</file>
                 </dir>
             </dir>
         </filelist>
