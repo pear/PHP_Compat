@@ -33,10 +33,11 @@
  * @since       PHP 4.1.0
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('version_compare'))
+if (!function_exists('version_compare2'))
 {
-    function version_compare ($version1, $version2, $operator = '')
+    function version_compare2 ($version1, $version2, $operator = '')
     {
+        // Check input
         if (!is_scalar($version1)) {
             trigger_error('version_compare() expects parameter 1 to be string, ' . gettype($version1) . ' given', E_USER_WARNING);
             return null;
@@ -52,14 +53,12 @@ if (!function_exists('version_compare'))
             return null;
         }
 
+        // Standardise versions
         $v1 = explode('.',
             str_replace('..', '.',
                 preg_replace('/([^0-9\.]+)/', '.$1.',
                     str_replace(array('-', '_', '+'), '.',
                         trim($version1)))));
-
-        while (empty($v1[0]) && array_shift($v1)) {
-        }
 
         $v2 = explode('.',
             str_replace('..', '.',
@@ -67,9 +66,11 @@ if (!function_exists('version_compare'))
                     str_replace(array('-', '_', '+'), '.',
                         trim($version2)))));
 
-        while (empty($v2[0]) && array_shift($v2)) {
-        }
+        // Replace empty entries at the start of the array
+        while (empty($v1[0]) && array_shift($v1)) {}
+        while (empty($v2[0]) && array_shift($v2)) {}
 
+        // Describe our release states
         $versions = array(
             'dev'   => 0,
             'alpha' => 1,
@@ -79,38 +80,44 @@ if (!function_exists('version_compare'))
             'RC'    => 3,
             'pl'    => 4);
 
+        // Loop through each segment in the version string
         $compare = 0;
-        for ($i = 0; $i < min(count($v1), count($v2)); $i++) {
+        for ($i = 0, $x = min(count($v1), count($v2)); $i < $x; $i++)
+        {
             if ($v1[$i] == $v2[$i]) {
                 continue;
             }
             if (is_numeric($v1[$i]) && is_numeric($v2[$i])) {
                 $compare = ($v1[$i] < $v2[$i]) ? -1 : 1;
-
-            } elseif (is_numeric($v1[$i])) {
+            }
+            elseif (is_numeric($v1[$i])) {
                 $compare = 1;
-
-            } elseif (is_numeric($v2[$i])) {
+            }    
+            elseif (is_numeric($v2[$i])) {
                 $compare = -1;
-
-            } elseif (isset($versions[$v1[$i]])
-                      && isset($versions[$v2[$i]]))  {
+            }
+            elseif (isset($versions[$v1[$i]]) && isset($versions[$v2[$i]])) {
                 $compare = ($versions[$v1[$i]] < $versions[$v2[$i]]) ? -1 : 1;
-
-            } else {
+            }
+            else {
                 $compare = strcmp($v2[$i], $v1[$i]);
             }
+
             break;
         }
-
+    
+        // If previous loop didn't find anything, compare the "extra" segments
         if ($compare == 0) {
-            if (count($v2) > count($v1)) {
+            if (count($v2) > count($v1))
+            {
                 if (isset($versions[$v2[$i]])) {
                     $compare = ($versions[$v2[$i]] < 4) ? 1 : -1;
                 } else {
                     $compare = -1;
                 }
-            } elseif (count($v2) < count($v1)) {
+            } 
+            elseif (count($v2) < count($v1))
+            {
                 if (isset($versions[$v1[$i]])) {
                     $compare = ($versions[$v1[$i]] < 4) ? -1 : 1;
                 } else {
@@ -119,8 +126,9 @@ if (!function_exists('version_compare'))
             }
         }
 
+        // Compare the versions
         switch ($operator)
-		{
+        {
             case '>':
             case 'gt':
                 return ($compare > 0) ? 1 : 0;
