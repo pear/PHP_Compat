@@ -33,14 +33,14 @@
  */
 if (!function_exists('scandir'))
 {
-    function scandir ($directory, $sorting_order = 0)
+    function scandir($directory, $sorting_order = 0)
     {
         if (!is_string($directory)) {
             trigger_error('scandir() expects parameter 1 to be string, ' . gettype($directory) . ' given', E_USER_WARNING);
             return null;
         }
 
-        if (!is_int($sorting_order)) {
+        if (!is_int($sorting_order) && !is_bool($sorting_order)) {
             trigger_error('scandir() expects parameter 2 to be long, ' . gettype($sorting_order) . ' given', E_USER_WARNING);
             return null;
         }
