@@ -40,28 +40,27 @@ if (!function_exists('str_word_count'))
             return false;
         }
 
-		$word_string = preg_replace('/[0-9]+/', '', $string);
-		$word_array  = preg_split('/[^A-Za-z0-9_\']+/', $word_string, -1, PREG_SPLIT_NO_EMPTY);
+        $word_string = preg_replace('/[0-9]+/', '', $string);
+        $word_array  = preg_split('/[^A-Za-z0-9_\']+/', $word_string, -1, PREG_SPLIT_NO_EMPTY);
 
-		switch ($format):
-			case null:
-				return count($word_array);
-				break;
-			
-			case 1:
-				return $word_array;
-				break;
+        switch ($format) {
+            case null:
+                return count($word_array);
+                break;
+            
+            case 1:
+                return $word_array;
+                break;
 
-			case 2:
-				$lastmatch = 0;
-				$word_assoc = array();
-				foreach ($word_array as $word) {
-					$word_assoc[$lastmatch = strpos($string, $word, $lastmatch)] = $word;
-				}
-				return $word_assoc;
-				break;
-
-		endswitch;
+            case 2:
+                $lastmatch = 0;
+                $word_assoc = array();
+                foreach ($word_array as $word) {
+                    $word_assoc[$lastmatch = strpos($string, $word, $lastmatch)] = $word;
+                }
+                return $word_assoc;
+                break;
+        }
     }
 }
 
