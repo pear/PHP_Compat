@@ -172,9 +172,6 @@ Added more components:
 * set_include_path
 * restore_include_path
 * php_strip_whitespace
-
-Added loadVersion:
-* Automatically loads functions to a specific version of PHP
 ]]>
         </notes>
         <filelist>
@@ -197,7 +194,7 @@ Added loadVersion:
                         <file>array_udiff.php</file>
                         <file>array_udiff_assoc.php</file>
                         <file>array_udiff_uassoc.php</file>
-                        <file>array_intersect_assoc.php</file>
+                        <file>array_uintersect_assoc.php</file>
                         <file>array_uintersect_assoc.php</file>
                         <file>array_uintersect_uassoc.php</file>
                         <file>array_walk_recursive.php</file>
@@ -279,7 +276,7 @@ Added loadVersion:
                         <file>str_shuffle.phpt</file>
                         <file>str_word_count.phpt</file>
                         <file>stripos.phpt</file>
-                        <file>strpbrk.php</file>
+                        <file>strpbrk.phpt</file>
                         <file>strripos.phpt</file>
                         <file>substr_compare.phpt</file>
                         <file>var_export.phpt</file>
