@@ -52,11 +52,12 @@ class PHP_Compat
         }
 
         else {
-            $file = sprintf('PHP/Compat/Function/%s.php',
-                                $function);
+            if (!function_exists($function)) {
+                $file = sprintf('PHP/Compat/Function/%s.php', $function);
 
-            if ((@include_once $file) !== false) {
-                return true;
+                if ((@include_once $file) !== false) {
+                    return true;
+                }
             }
 
             return false;
@@ -79,11 +80,12 @@ class PHP_Compat
         }
 
         else {
-            $file = sprintf('PHP/Compat/Constant/%s.php',
-                                $constant);
-
-            if ((@include_once $file) !== false) {
-                return true;
+            if (!defined($constant)) {
+                $file = sprintf('PHP/Compat/Constant/%s.php', $constant);
+                
+                if ((@include_once $file) !== false) {
+                    return true;
+                }
             }
 
             return false;
