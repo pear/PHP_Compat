@@ -30,6 +30,7 @@ Functions:
 * stripos
 * strripos
 * var_export
+* version_compare
 * vprintf
 * vsprintf</description>
 
@@ -129,7 +130,8 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
 		<license>PHP License</license>
 		<state>stable</state>
 		<notes>Added more components:
-		* html_entity_decode</notes>
+* html_entity_decode
+* version_compare</notes>
 		<filelist>
 			<dir name="/" baseinstalldir="PHP" role="php">	 
 				<file>Compat.php</file>
@@ -159,6 +161,7 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
 						<file>stripos.php</file>
 						<file>strripos.php</file>
 						<file>var_export.php</file>
+						<file>version_compare.php</file>
 						<file>vprintf.php</file>
 						<file>vsprintf.php</file>
 					</dir>
@@ -185,6 +188,7 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
 						<file>stripos.phpt</file>
 						<file>strripos.phpt</file>
 						<file>var_export.phpt</file>
+						<file>version_compare.phpt</file>
 						<file>vprintf.phpt</file>
 						<file>vsprintf.phpt</file>
 					</dir>
