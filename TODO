@@ -6,7 +6,8 @@ array_intersect_assoc
 array_intersect_key
 array_intersect_uassoc
 array_intersect_ukey
-
+md5_file
+PHP_EOL
 
 Tests
 ---------
@@ -16,7 +17,8 @@ array_intersect_assoc
 array_intersect_key
 array_intersect_uassoc
 array_intersect_ukey
-
+md5_file
+PHP_EOL
 
 Methods
 -------
