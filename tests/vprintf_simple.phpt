@@ -11,4 +11,4 @@ $format = "There are %d monkeys in the %s";
 vprintf($format, $values);
 ?>
 --EXPECT--
-There are 2 monkeys in car
+There are 2 monkeys in the car
