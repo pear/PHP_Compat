@@ -44,7 +44,7 @@ if (!function_exists('strripos'))
         }
 
         if (!is_scalar($needle)) {
-            trigger_error('strripos() expects parameter 2 to be scalar, ' . gettype($haystack) . ' given', E_USER_WARNING);
+            trigger_error('strripos() expects parameter 2 to be scalar, ' . gettype($needle) . ' given', E_USER_WARNING);
             return false;
         }
 
