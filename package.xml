@@ -112,6 +112,15 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
 * ob_flush
 * ob_get_clean
 * ob_get_flush</notes>
+	</release>
+
+	<release>
+		<version>1.2.0</version>
+		<date>2004-07-01</date>
+		<license>PHP License</license>
+		<state>stable</state>
+		<notes>Added more components:
+* str_word_count</notes>
 		<filelist>
 			<dir name="/" baseinstalldir="PHP" role="php">	 
 				<file>Compat.php</file>
@@ -147,6 +156,7 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
 						<file>scandir.php</file>
 						<file>str_ireplace.php</file>
 						<file>str_split.php</file>
+						<file>str_word_count.php</file>
 						<file>stripos.php</file>
 						<file>strripos.php</file>
 						<file>var_export.php</file>
@@ -183,6 +193,7 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
 						<file>scandir.phpt</file>
 						<file>str_ireplace.phpt</file>
 						<file>str_split.phpt</file>
+						<file>str_word_count.phpt</file>
 						<file>stripos.phpt</file>
 						<file>strripos.phpt</file>
 						<file>var_export.phpt</file>
