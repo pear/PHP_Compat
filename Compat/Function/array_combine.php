@@ -32,7 +32,7 @@
  */
 if (!function_exists('array_combine'))
 {
-    function array_combine(&$keys, &$values)
+    function array_combine($keys, $values)
     {
         if (count($keys) !== count($values) ||
             count($keys) === 0 ||
