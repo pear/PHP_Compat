@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <package version="1.0">
     <name>PHP_Compat</name>
-    <summary>Provides missing functionality for older versions of PHP.</summary>
+    <summary>Provides missing functionality for older versions of PHP</summary>
 
     <description>
         PHP_Compat provides missing functionality in the form of
-        Constants and Functions and Enviroment settings for older versions of PHP.
+        Constants and Functions for older versions of PHP.
     </description>
 
     <maintainers>
