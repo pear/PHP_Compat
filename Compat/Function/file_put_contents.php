@@ -30,7 +30,7 @@
  * @link        http://php.net/function.file_put_contents
  * @author      Aidan Lister <aidan@php.net>
  * @version     1.0
- * @internal	$flags = FILE_USE_INCLUDE_PATH is not supported, nor is $resource_context
+ * @internal	$resource_context is not supported
  */
 if (!function_exists('file_put_contents'))
 {
@@ -55,8 +55,13 @@ if (!function_exists('file_put_contents'))
 					$mode = 'a' :
 					$mode = 'w';
 
+		// Check if we're using the include path
+		$use_inc_path = ($flags & FILE_USE_INCLUDE_PATH) ?
+					true :
+					false;
+
 		// Open the file for writing
-        if (($fh = @fopen($filename, $mode)) === false) {
+        if (($fh = @fopen($filename, $mode, $use_inc_path)) === false) {
             trigger_error('file_put_contents() failed to open stream: Permission denied', E_USER_WARNING);
 			return false;
         }
