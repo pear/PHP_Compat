@@ -164,50 +164,36 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
 					</dir>
 				</dir>
 				<dir name="tests" role="test">
-					<file>array-change-key-case_simple.phpt</file>
-					<file>array-chunk_simple.phpt</file>
-					<file>array-combine_simple.phpt</file>
-					<file>array-diff-assoc_simple.phpt</file>
-					<file>array-udiff-assoc_simple.phpt</file>
-					<file>array-udiff_simple.phpt</file>
-					<file>e-strict.phpt</file>
-					<file>file-get-contents_simple.phpt</file>
-					<file>file-put-contents_append.phpt</file>
-					<file>file-put-contents_array.phpt</file>
-					<file>file-put-contents_simple.phpt</file>
-					<file>file.phpt</file>
-					<file>fprintf_simple.phpt</file>
-					<file>http-build-query_complexarray.phpt</file>
-					<file>http-build-query_numindex.phpt</file>
-					<file>http-build-query_object.phpt</file>
-					<file>http-build-query_simple.phpt</file>
-					<file>html-entity-decode_simple.phpt</file>
-					<file>is-a_simple.phpt</file>
-					<file>path-separator.phpt</file>
-					<file>php-compat-loadconstant_array.phpt</file>
-					<file>php-compat-loadconstant_simple.phpt</file>
-					<file>php-compat-loadfunction_array.phpt</file>
-					<file>php-compat-loadfunction_simple.phpt</file>
-					<file>scandir_simple.phpt</file>
-					<file>scandir_sort.phpt</file>
-					<file>std.phpt</file>
-					<file>str-ireplace_allarray.phpt</file>
-					<file>str-ireplace_search-arr-replace-arr.phpt</file>
-					<file>str-ireplace_search-arr-replace-str.phpt</file>
-					<file>str-ireplace_search-str-replace-arr.phpt</file>
-					<file>str-ireplace_simple.phpt</file>
-					<file>str-ireplace_subjectarray.phpt</file>
-					<file>str-split_bigchunk.phpt</file>
-					<file>str-split_chunksize.phpt</file>
-					<file>str-split_lessremainder.phpt</file>
-					<file>str-split_simple.phpt</file>
-					<file>stripos_simple.phpt</file>
-					<file>stripos_offset.phpt</file>
-					<file>strripos_offset.phpt</file>
-					<file>strripos_simple.phpt</file>
-					<file>var_export_simple.phpt</file>
-					<file>vprintf_simple.phpt</file>
-					<file>vsprintf_simple.phpt</file>
+					<file>loadconstant.phpt</file>
+					<file>loadfunction.phpt</file>
+					<dir name="function">
+						<file>array_change_key_case.phpt</file>
+						<file>array_chunk.phpt</file>
+						<file>array_combine.phpt</file>
+						<file>array_diff_assoc.phpt</file>
+						<file>array_udif_assoc.phpt</file>
+						<file>array_udiff.phpt</file>
+						<file>file_get_contents.phpt</file>
+						<file>file_put_contents.phpt</file>
+						<file>fprintf.phpt</file>
+						<file>html_entity_decode.phpt</file>
+						<file>http_build_query.phpt</file>
+						<file>is_a.phpt</file>
+						<file>scandir.phpt</file>
+						<file>str_ireplace.phpt</file>
+						<file>str_split.phpt</file>
+						<file>stripos.phpt</file>
+						<file>strripos.phpt</file>
+						<file>var_export.phpt</file>
+						<file>vprintf.phpt</file>
+						<file>vsprintf.phpt</file>
+					</dir>
+					<dir name="constant">
+						<file>e_strict.phpt</file>
+						<file>file.phpt</file>
+						<file>path_separator.phpt</file>
+						<file>std.phpt</file>
+					</dir>
 				</dir>
 			</dir>
 		</filelist>
