@@ -4,8 +4,7 @@
     <summary>Provides missing functionality for older versions of PHP</summary>
 
     <description>
-        PHP_Compat provides missing functionality in the form of
-        Constants and Functions for older versions of PHP.
+     PHP_Compat provides missing functionality for older versions of PHP.
     </description>
 
     <maintainers>
@@ -216,12 +215,28 @@ Added loadVersion():
 Fixed problems with loadVersion
 ]]>
         </notes>
+    </release>
+
+    <release>
+        <version>1.4.0</version>
+        <date>2004-xx-xx</date>
+        <license>PHP License</license>
+        <state>stable</state>
+        <notes>
+<![CDATA[
+Added more components:
+* DIRECTORY_SEPARATOR
+
+Improved loadVersion method
+]]>
+        </notes>
         <filelist>
             <dir name="/" baseinstalldir="PHP" role="php">     
                 <file>Compat.php</file>
                 <dir name="Compat">
                     <file>Components.php</file>
                     <dir name="Constant">
+                        <file>DIRECTORY_SEPARATOR.php</file>
                         <file>E_STRICT.php</file>
                         <file>PATH_SEPARATOR.php</file>
                         <file>STD.php</file>
@@ -294,6 +309,16 @@ Fixed problems with loadVersion
                     <file>loadconstant.phpt</file>
                     <file>loadfunction.phpt</file>
                     <file>loadversion.phpt</file>
+                    <dir name="constant">
+                        <file>directory_separator.php</file>
+                        <file>e_strict.phpt</file>
+                        <file>file.phpt</file>
+                        <file>path_separator.phpt</file>
+                        <file>std.phpt</file>
+                        <file>php_eol.phpt</file>
+                        <file>upload_err.phpt</file>
+                        <file>t.phpt</file>
+                    </dir>
                     <dir name="function">
                         <file>array_change_key_case.phpt</file>
                         <file>array_chunk.phpt</file>
@@ -352,15 +377,6 @@ Fixed problems with loadVersion
                         <file>version_compare.phpt</file>
                         <file>vprintf.phpt</file>
                         <file>vsprintf.phpt</file>
-                    </dir>
-                    <dir name="constant">
-                        <file>e_strict.phpt</file>
-                        <file>file.phpt</file>
-                        <file>path_separator.phpt</file>
-                        <file>std.phpt</file>
-                        <file>php_eol.phpt</file>
-                        <file>upload_err.phpt</file>
-                        <file>t.phpt</file>
                     </dir>
                 </dir>
             </dir>
