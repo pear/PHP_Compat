@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <package version="1.0">
-	<name>PHP_Compat</name>
-	<summary>Provides missing functionality for older versions of PHP.</summary>
+    <name>PHP_Compat</name>
+    <summary>Provides missing functionality for older versions of PHP.</summary>
 
-	<description>PHP_Compat provides missing functionality in the form of Constants and Functions and Enviroment settings for older versions of PHP.</description>
+    <description>PHP_Compat provides missing functionality in the form of Constants and Functions and Enviroment settings for older versions of PHP.</description>
 
-	<maintainers>
-		<maintainer>
-			<user>aidan</user>
-			<name>Aidan Lister</name>
-			<email>aidan@php.net</email>
-			<role>lead</role>
-		</maintainer>
-		<maintainer>
-			<user>schst</user>
-			<name>Stephan Schmidt</name>
-			<email>schst@php.net</email>
-			<role>developer</role>
-		</maintainer>
-	</maintainers>
+    <maintainers>
+        <maintainer>
+            <user>aidan</user>
+            <name>Aidan Lister</name>
+            <email>aidan@php.net</email>
+            <role>lead</role>
+        </maintainer>
+        <maintainer>
+            <user>schst</user>
+            <name>Stephan Schmidt</name>
+            <email>schst@php.net</email>
+            <role>developer</role>
+        </maintainer>
+    </maintainers>
 
-	<release>
-		<version>0.1</version>
-		<date>2004-05-19</date>
-		<license>PHP License</license>
-		<state>beta</state>
-		<notes>This package is in beta while any bugs are ironed out.</notes>
-	</release>
+    <release>
+        <version>0.1</version>
+        <date>2004-05-19</date>
+        <license>PHP License</license>
+        <state>beta</state>
+        <notes>This package is in beta while any bugs are ironed out.</notes>
+    </release>
 
-	<release>
-		<version>0.2</version>
-		<date>2004-05-27</date>
-		<license>PHP License</license>
-		<state>beta</state>
-		<notes>Added more components:
+    <release>
+        <version>0.2</version>
+        <date>2004-05-27</date>
+        <license>PHP License</license>
+        <state>beta</state>
+        <notes>Added more components:
 * str_split
 * STDIN
 * STDOUT
@@ -43,14 +43,14 @@ Made a number of bugfixes.
 Added replica PHP error messages.
 
 Still in beta until any last bugs are found and removed.</notes>
-	</release>
+    </release>
 
-	<release>
-		<version>1.0.0RC1</version>
-		<date>2004-05-28</date>
-		<license>PHP License</license>
-		<state>beta</state>
-		<notes>Added more components:
+    <release>
+        <version>1.0.0RC1</version>
+        <date>2004-05-28</date>
+        <license>PHP License</license>
+        <state>beta</state>
+        <notes>Added more components:
 * http_build_query
 * array_udiff
 * array_udiff_assoc
@@ -60,14 +60,14 @@ Still in beta until any last bugs are found and removed.</notes>
 Heavily modified file_put_contents for greater support
 A couple of bug fixes
 Added complete unit testing!</notes>
-	</release>
+    </release>
 
-	<release>
-		<version>1.0.0RC2</version>
-		<date>2004-05-30</date>
-		<license>PHP License</license>
-		<state>beta</state>
-		<notes>Added more components:
+    <release>
+        <version>1.0.0RC2</version>
+        <date>2004-05-30</date>
+        <license>PHP License</license>
+        <state>beta</state>
+        <notes>Added more components:
 * fprintf
 * stripos
 * strripos
@@ -77,14 +77,14 @@ Added complete unit testing!</notes>
 
 Removed the seperate files for STDIN/STDOUT/STDERR
 Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND</notes>
-	</release>
+    </release>
 
-	<release>
-		<version>1.0.0</version>
-		<date>2004-06-02</date>
-		<license>PHP License</license>
-		<state>stable</state>
-		<notes>Added more components:
+    <release>
+        <version>1.0.0</version>
+        <date>2004-06-02</date>
+        <license>PHP License</license>
+        <state>stable</state>
+        <notes>Added more components:
 * array_change_key_case
 * array_chunk
 * array_diff_assoc
@@ -93,14 +93,14 @@ Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND</notes>
 * var_export
 
 Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour).</notes>
-	</release>
+    </release>
 
-	<release>
-		<version>1.1.0</version>
-		<date>2004-06-26</date>
-		<license>PHP License</license>
-		<state>stable</state>
-		<notes>Added more components:
+    <release>
+        <version>1.1.0</version>
+        <date>2004-06-26</date>
+        <license>PHP License</license>
+        <state>stable</state>
+        <notes>Added more components:
 * html_entity_decode
 * version_compare
 * image_type_to_mime_type
@@ -112,122 +112,124 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
 * ob_flush
 * ob_get_clean
 * ob_get_flush</notes>
-	</release>
+    </release>
 
-	<release>
-		<version>1.2.0</version>
-		<date>2004-07-01</date>
-		<license>PHP License</license>
-		<state>stable</state>
-		<notes>Added more components:
+    <release>
+        <version>1.2.0</version>
+        <date>2004-07-01</date>
+        <license>PHP License</license>
+        <state>stable</state>
+        <notes>Added more components:
 * str_word_count
 * str_rot13
 * convert_uuencode
 * convert_uudecode
 * array_uintersect_assoc
 * array_uintersect_uassoc
-* array_walk_recursive</notes>
-		<filelist>
-			<dir name="/" baseinstalldir="PHP" role="php">	 
-				<file>Compat.php</file>
-				<dir name="Compat">
-					<dir name="Constant">
-						<file>E_STRICT.php</file>
-						<file>PATH_SEPARATOR.php</file>
-						<file>STD.php</file>
-						<file>FILE.php</file>
-					</dir>
-					<dir name="Function">
-						<file>array_change_key_case.php</file>
-						<file>array_chunk.php</file>
-						<file>array_combine.php</file>
-						<file>array_diff_assoc.php</file>
-						<file>array_key_exists.php</file>
-						<file>array_search.php</file>
-						<file>array_udiff.php</file>
-						<file>array_udiff_assoc.php</file>
+* array_walk_recursive
+* strpbrk</notes>
+        <filelist>
+            <dir name="/" baseinstalldir="PHP" role="php">     
+                <file>Compat.php</file>
+                <dir name="Compat">
+                    <dir name="Constant">
+                        <file>E_STRICT.php</file>
+                        <file>PATH_SEPARATOR.php</file>
+                        <file>STD.php</file>
+                        <file>FILE.php</file>
+                    </dir>
+                    <dir name="Function">
+                        <file>array_change_key_case.php</file>
+                        <file>array_chunk.php</file>
+                        <file>array_combine.php</file>
+                        <file>array_diff_assoc.php</file>
+                        <file>array_key_exists.php</file>
+                        <file>array_search.php</file>
+                        <file>array_udiff.php</file>
+                        <file>array_udiff_assoc.php</file>
                         <file>array_uintersect_assoc.php</file>
                         <file>array_uintersect_uassoc.php</file>
                         <file>array_walk_recursive.php</file>
-						<file>call_user_func_array.php</file>
-						<file>constant.php</file>
-						<file>convert_uuencode.php</file>
-						<file>convert_uudecode.php</file>
-						<file>file_get_contents.php</file>
-						<file>file_put_contents.php</file>
-						<file>fprintf.php</file>
-						<file>html_entity_decode.php</file>
-						<file>http_build_query.php</file>
-						<file>image_type_to_mime_type.php</file>
-						<file>is_a.php</file>
-						<file>ob_clean.php</file>
-						<file>ob_flush.php</file>
-						<file>ob_get_clean.php</file>
-						<file>ob_get_flush.php</file>
-						<file>scandir.php</file>
-						<file>str_ireplace.php</file>
-						<file>str_rot13.php</file>
-						<file>str_split.php</file>
-						<file>str_word_count.php</file>
-						<file>stripos.php</file>
-						<file>strpbrk.php</file>
-						<file>strripos.php</file>
-						<file>var_export.php</file>
-						<file>version_compare.php</file>
-						<file>vprintf.php</file>
-						<file>vsprintf.php</file>
-					</dir>
-				</dir>
-				<dir name="tests" role="test">
-					<file>loadconstant.phpt</file>
-					<file>loadfunction.phpt</file>
-					<dir name="function">
-						<file>array_change_key_case.phpt</file>
-						<file>array_chunk.phpt</file>
-						<file>array_combine.phpt</file>
-						<file>array_diff_assoc.phpt</file>
-						<file>array_key_exists.phpt</file>
-						<file>array_search.phpt</file>
-						<file>array_udiff.phpt</file>
-						<file>array_udiff_assoc.phpt</file>
+                        <file>call_user_func_array.php</file>
+                        <file>constant.php</file>
+                        <file>convert_uuencode.php</file>
+                        <file>convert_uudecode.php</file>
+                        <file>file_get_contents.php</file>
+                        <file>file_put_contents.php</file>
+                        <file>fprintf.php</file>
+                        <file>html_entity_decode.php</file>
+                        <file>http_build_query.php</file>
+                        <file>image_type_to_mime_type.php</file>
+                        <file>is_a.php</file>
+                        <file>ob_clean.php</file>
+                        <file>ob_flush.php</file>
+                        <file>ob_get_clean.php</file>
+                        <file>ob_get_flush.php</file>
+                        <file>scandir.php</file>
+                        <file>str_ireplace.php</file>
+                        <file>str_rot13.php</file>
+                        <file>str_split.php</file>
+                        <file>str_word_count.php</file>
+                        <file>stripos.php</file>
+                        <file>strpbrk.php</file>
+                        <file>strripos.php</file>
+                        <file>var_export.php</file>
+                        <file>version_compare.php</file>
+                        <file>vprintf.php</file>
+                        <file>vsprintf.php</file>
+                    </dir>
+                </dir>
+                <dir name="tests" role="test">
+                    <file>loadconstant.phpt</file>
+                    <file>loadfunction.phpt</file>
+                    <dir name="function">
+                        <file>array_change_key_case.phpt</file>
+                        <file>array_chunk.phpt</file>
+                        <file>array_combine.phpt</file>
+                        <file>array_diff_assoc.phpt</file>
+                        <file>array_key_exists.phpt</file>
+                        <file>array_search.phpt</file>
+                        <file>array_udiff.phpt</file>
+                        <file>array_udiff_assoc.phpt</file>
                         <file>array_uintersect_assoc.phpt</file>
                         <file>array_uintersect_uassoc.phpt</file>
                         <file>array_walk_recursive.phpt</file>
-						<file>call_user_func_array.phpt</file>
-						<file>constant.phpt</file>
-						<file>convert_uuencode.phpt</file>
-						<file>convert_uudecode.phpt</file>
-						<file>file_get_contents.phpt</file>
-						<file>file_put_contents.phpt</file>
-						<file>fprintf.phpt</file>
-						<file>html_entity_decode.phpt</file>
-						<file>http_build_query.phpt</file>
-						<file>image_type_to_mime_type.phpt</file>
-						<file>is_a.phpt</file>
-						<file>ob_clean.phpt</file>
-						<file>ob_flush.phpt</file>
-						<file>ob_get_clean.phpt</file>
-						<file>ob_get_flush.phpt</file>
-						<file>scandir.phpt</file>
-						<file>str_ireplace.phpt</file>
-						<file>str_rot13.phpt</file>
+                        <file>call_user_func_array.phpt</file>
+                        <file>constant.phpt</file>
+                        <file>convert_uuencode.phpt</file>
+                        <file>convert_uudecode.phpt</file>
+                        <file>file_get_contents.phpt</file>
+                        <file>file_put_contents.phpt</file>
+                        <file>fprintf.phpt</file>
+                        <file>html_entity_decode.phpt</file>
+                        <file>http_build_query.phpt</file>
+                        <file>image_type_to_mime_type.phpt</file>
+                        <file>is_a.phpt</file>
+                        <file>ob_clean.phpt</file>
+                        <file>ob_flush.phpt</file>
+                        <file>ob_get_clean.phpt</file>
+                        <file>ob_get_flush.phpt</file>
+                        <file>scandir.phpt</file>
+                        <file>str_ireplace.phpt</file>
+                        <file>str_rot13.phpt</file>
                         <file>str_split.phpt</file>
-						<file>str_word_count.phpt</file>
-						<file>stripos.phpt</file>
-						<file>strripos.phpt</file>
-						<file>var_export.phpt</file>
-						<file>version_compare.phpt</file>
-						<file>vprintf.phpt</file>
-						<file>vsprintf.phpt</file>
-					</dir>
-					<dir name="constant">
-						<file>e_strict.phpt</file>
-						<file>file.phpt</file>
-						<file>path_separator.phpt</file>
-						<file>std.phpt</file>
-					</dir>
-				</dir>
-			</dir>
-		</filelist>
-	</release>
+                        <file>str_word_count.phpt</file>
+                        <file>stripos.phpt</file>
+                        <file>strpbrk.php</file>
+                        <file>strripos.phpt</file>
+                        <file>var_export.phpt</file>
+                        <file>version_compare.phpt</file>
+                        <file>vprintf.phpt</file>
+                        <file>vsprintf.phpt</file>
+                    </dir>
+                    <dir name="constant">
+                        <file>e_strict.phpt</file>
+                        <file>file.phpt</file>
+                        <file>path_separator.phpt</file>
+                        <file>std.phpt</file>
+                    </dir>
+                </dir>
+            </dir>
+        </filelist>
+    </release>
 </package>
