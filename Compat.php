@@ -40,14 +40,16 @@ class PHP_Compat
      * Load a function, or array of functions
      *
      * @param   string|array    $function The function or functions to load.
-     * @return  bool            true if loaded, false if not
+     * @return  bool|array      true if loaded, false if not
      */
     function loadFunction ($function)
     {
         if (is_array($function)) {
+            $res = array ();
             foreach ($function as $singlefunc) {
-                PHP_Compat::loadFunction($singlefunc);
+                $res[] = PHP_Compat::loadFunction($singlefunc);
             }
+            return $res;
         }
 
         else {
@@ -68,14 +70,16 @@ class PHP_Compat
      * Load a constant, or array of constants
      *
      * @param   string|array    $constant The constant or constants to load.
-     * @return  bool            true if loaded, false if not
+     * @return  bool|array      true if loaded, false if not
      */
     function loadConstant ($constant)
     {
         if (is_array($constant)) {
+            $res = array ();
             foreach ($constant as $singleconst) {
-                PHP_Compat::loadConstant($singleconst);
+                $res[] = PHP_Compat::loadConstant($singleconst);
             }
+            return $res;
         }
 
         else {
