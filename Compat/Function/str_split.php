@@ -29,9 +29,9 @@
  * @author        Aidan Lister <aidan@php.net>
  * @version       1.0
  */
-if (!function_exists('str_split2'))
+if (!function_exists('str_split'))
 {
-	function str_split2($string, $split_length = 1)
+	function str_split ($string, $split_length = 1)
     {
 		if (!is_numeric($split_length)) {
 			trigger_error('str_split() expects parameter 2 to be long, string given', E_USER_WARNING);
