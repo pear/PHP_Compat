@@ -156,6 +156,7 @@ Added more components:
 * array_uintersect
 * array_udiff_uassoc
 * str_shuffle
+* substr_compare
 
 Added loadVersion:
 * Automatically loads functions to a specific version of PHP
@@ -209,6 +210,7 @@ Added loadVersion:
                         <file>stripos.php</file>
                         <file>strpbrk.php</file>
                         <file>strripos.php</file>
+                        <file>substr_compare.php</file>
                         <file>var_export.php</file>
                         <file>version_compare.php</file>
                         <file>vprintf.php</file>
@@ -256,6 +258,7 @@ Added loadVersion:
                         <file>stripos.phpt</file>
                         <file>strpbrk.php</file>
                         <file>strripos.phpt</file>
+                        <file>substr_compare.phpt</file>
                         <file>var_export.phpt</file>
                         <file>version_compare.phpt</file>
                         <file>vprintf.phpt</file>

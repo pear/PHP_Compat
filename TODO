@@ -5,7 +5,6 @@ Functions
 * array_uintersect_uassoc
 * array_uintersect
 * array_udiff_uassoc
-* substr_compare
 * php_strip_whitespace
 * php_check_syntax
 * str_shuffle - remove use of shuffle
@@ -17,7 +16,6 @@ Tests
 * array_uintersect_uassoc
 * array_uintersect
 * array_udiff_uassoc
-* substr_compare
 * php_strip_whitespace
 * php_check_syntax
 
