@@ -119,7 +119,7 @@ Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND</notes>
 * vsprintf
 * var_export
 
-Fixed behaviour of stripos/strripos. Searches for whole needle.</notes>
+Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour).</notes>
 		<filelist>
 			<dir name="/" baseinstalldir="PHP" role="php">	 
 				<file>Compat.php</file>
