@@ -39,7 +39,7 @@ if (!function_exists('file_put_contents'))
             return false;
         }
 
-        if (($bytes = fwrite($file, $content) === false) {
+        if (($bytes = fwrite($file, $content)) === false) {
             return false;
         }
 
