@@ -8,7 +8,10 @@ Functions
 
 Tests
 ---------
-* array_udiff_uassoc
+* array_udiff_uassoc (waiting for bug #29865 to be fixed)
+* get_include_path
+* set_include_path
+* restore_include_path
 
 Methods
 -------
