@@ -1,5 +1,4 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------+
 // | PHP Version 4                                                        |
 // +----------------------------------------------------------------------+
@@ -17,7 +16,6 @@
 // +----------------------------------------------------------------------+
 //
 // $Id$
-//
 
 
 /**
@@ -34,18 +32,18 @@
  */
 if (!function_exists('array_chunk'))
 {
-    function array_chunk ($input, $size, $preserve_keys = false)
+    function array_chunk($input, $size, $preserve_keys = false)
     {
         if (!is_array($input)) {
             trigger_error('array_chunk() expects parameter 1 to be array, ' . gettype($input) . ' given', E_USER_WARNING);
             return null;
         }
-        
+
         if (!is_numeric($size)) {
             trigger_error('array_chunk() expects parameter 2 to be long, ' . gettype($size) . ' given', E_USER_WARNING);
             return null;
         }
-        
+
         $size = (int)$size;
         if ($size <= 0)
         {

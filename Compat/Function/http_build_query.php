@@ -1,5 +1,4 @@
 <?PHP
-/* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------+
 // | PHP Version 4                                                        |
 // +----------------------------------------------------------------------+
@@ -18,7 +17,6 @@
 // +----------------------------------------------------------------------+
 //
 // $Id$
-//
 
 
 /**
@@ -35,13 +33,13 @@
  */
 if (!function_exists('http_build_query'))
 {
-    function http_build_query ($formdata, $numeric_prefix = null)
+    function http_build_query($formdata, $numeric_prefix = null)
     {
         // If $formdata is an object, convert it to an array
         if (is_object($formdata)) {
             $formdata = get_object_vars($formdata);
         }
-    
+
         // Check we have an array to work with
         if (!is_array($formdata)) {
             trigger_error('http_build_query() Parameter 1 expected to be Array or Object. Incorrect value given.', E_USER_WARNING);
@@ -52,7 +50,7 @@ if (!function_exists('http_build_query'))
         if (empty($formdata)) {
             return null;
         }
-        
+
         // Start building the query
         $tmp = array ();
         foreach ($formdata as $key => $val)
@@ -60,7 +58,7 @@ if (!function_exists('http_build_query'))
             if (is_integer($key) && $numeric_prefix != null) {
                 $key = $numeric_prefix . $key;
             }
-    
+
             if (is_scalar($val)) {
                 array_push($tmp, urlencode($key).'='.urlencode($val));
                 continue;

@@ -1,5 +1,4 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------+
 // | PHP Version 4                                                        |
 // +----------------------------------------------------------------------+
@@ -18,7 +17,6 @@
 // +----------------------------------------------------------------------+
 //
 // $Id$
-//
 
 
 /**
@@ -35,7 +33,7 @@
  */
 if (!function_exists('strripos'))
 {
-    function strripos ($haystack, $needle, $offset = null)
+    function strripos($haystack, $needle, $offset = null)
     {
         if (!is_scalar($haystack)) {
             trigger_error('strripos() expects parameter 1 to be scalar, ' . gettype($haystack) . ' given', E_USER_WARNING);
@@ -73,11 +71,12 @@ if (!function_exists('strripos'))
         }
 
         $segments = explode(strtolower($needle), strtolower($haystack));
-        
+
         $last_seg = count($segments) - 1;
         $position = strlen($haystack) + $fix - strlen($segments[$last_seg]) - strlen($needle);
 
         return $position;
     }
 }
+
 ?>

@@ -1,5 +1,4 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------+
 // | PHP Version 4                                                        |
 // +----------------------------------------------------------------------+
@@ -17,7 +16,6 @@
 // +----------------------------------------------------------------------+
 //
 // $Id$
-//
 
 
 /**
@@ -39,9 +37,10 @@ if (!function_exists('vprintf'))
             trigger_error('vprintf() Too few arguments', E_USER_WARNING);
             return null;
         }
-        
+
         array_unshift($args, $format);
         return call_user_func_array('printf', $args);
     }
 }
+
 ?>

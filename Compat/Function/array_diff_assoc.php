@@ -1,5 +1,4 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------+
 // | PHP Version 4                                                        |
 // +----------------------------------------------------------------------+
@@ -17,7 +16,6 @@
 // +----------------------------------------------------------------------+
 //
 // $Id$
-//
 
 
 /**
@@ -33,7 +31,7 @@
  */
 if (!function_exists('array_diff_assoc'))
 {
-    function array_diff_assoc ()
+    function array_diff_assoc()
     {
         // Check we have enough arguments
         $args = func_get_args();
@@ -42,7 +40,7 @@ if (!function_exists('array_diff_assoc'))
             trigger_error('Wrong parameter count for array_diff_assoc()', E_USER_WARNING);
             return null;
         }
-    
+
         // Check arrays
         for ($i = 0; $i < $count; $i++)
         {
@@ -51,7 +49,7 @@ if (!function_exists('array_diff_assoc'))
                 return null;
             }
         }
-    
+
         // Get the comparison array
         $array_comp = array_shift($args);
         --$count;

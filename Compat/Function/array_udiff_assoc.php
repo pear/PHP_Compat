@@ -1,5 +1,4 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------+
 // | PHP Version 4                                                        |
 // +----------------------------------------------------------------------+
@@ -18,7 +17,6 @@
 // +----------------------------------------------------------------------+
 //
 // $Id$
-//
 
 
 /**
@@ -35,14 +33,14 @@
  */
 if (!function_exists('array_udiff_assoc'))
 {
-    function array_udiff_assoc ()
+    function array_udiff_assoc()
     {
         $args = func_get_args();
         if (count($args) < 3) {
             trigger_error('Wrong parameter count for array_udiff()', E_USER_WARNING);
             return null;
         }
-    
+
         // Get compare function
         $compare_func = array_pop($args);
         if (!is_callable($compare_func))
@@ -53,7 +51,7 @@ if (!function_exists('array_udiff_assoc'))
             trigger_error('array_udiff() Not a valid callback ' . $compare_func, E_USER_WARNING);
             return null;
         }
-    
+
         // Check arrays
         $count = count($args);
         for ($i = 0; $i < $count; $i++)
@@ -63,7 +61,7 @@ if (!function_exists('array_udiff_assoc'))
                 return null;
             }
         }
-    
+
         $diff = array ();
         // Traverse values of the first array
         foreach ($args[0] as $key => $value)

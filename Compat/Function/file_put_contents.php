@@ -1,5 +1,4 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------+
 // | PHP Version 4                                                        |
 // +----------------------------------------------------------------------+
@@ -17,7 +16,6 @@
 // +----------------------------------------------------------------------+
 //
 // $Id$
-//
 
 
 if (!defined('FILE_USE_INCLUDE_PATH')) {
@@ -43,7 +41,7 @@ if (!defined('FILE_APPEND')) {
  */
 if (!function_exists('file_put_contents'))
 {
-    function file_put_contents ($filename, $content, $flags = null, $resource_context = null)
+    function file_put_contents($filename, $content, $flags = null, $resource_context = null)
     {
         // If $content is an array, convert it to a string
         if (is_array($content)) {
@@ -54,8 +52,8 @@ if (!function_exists('file_put_contents'))
         if (!is_string($content)) {
             trigger_error('file_put_contents() The 2nd parameter should be either a string or an array', E_USER_WARNING);
             return false;
-        }        
-        
+        }
+
         // Get the length of date to write
         $length = strlen($content);
 

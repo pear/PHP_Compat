@@ -1,5 +1,4 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------+
 // | PHP Version 4                                                        |
 // +----------------------------------------------------------------------+
@@ -17,7 +16,6 @@
 // +----------------------------------------------------------------------+
 //
 // $Id$
-//
 
 
 /**
@@ -33,7 +31,7 @@
  */
 if (!function_exists('array_key_exists'))
 {
-    function array_key_exists ($key, $search)
+    function array_key_exists($key, $search)
     {
         if (!is_scalar($key)) {
             trigger_error('array_key_exists() The first argument should be either a string or an integer', E_USER_WARNING);
@@ -43,7 +41,7 @@ if (!function_exists('array_key_exists'))
         if (is_object($search)) {
             $search = get_object_vars($search);
         }
-    
+
         if (!is_array($search)) {
             trigger_error('array_key_exists() The second argument should be either an array or an object', E_USER_WARNING);
             return false;

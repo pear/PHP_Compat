@@ -1,5 +1,4 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------+
 // | PHP Version 4                                                        |
 // +----------------------------------------------------------------------+
@@ -17,7 +16,6 @@
 // +----------------------------------------------------------------------+
 //
 // $Id$
-//
 
 
 /**
@@ -33,10 +31,10 @@
  */
 if (!function_exists('call_user_func_array'))
 {
-    function call_user_func_array ($function, $param_arr)
+    function call_user_func_array($function, $param_arr)
     {
         $param_arr = (array) $param_arr;
-    
+
         // Sanity check
         if (!is_callable($function))
         {

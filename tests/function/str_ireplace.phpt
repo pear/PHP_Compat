@@ -34,7 +34,7 @@ $subject = array('The dog jumped over the {object}');
 print_r(str_ireplace($search, $replace, $subject));
 
 
-// 
+//
 // Test 2: Search as string, replace as array
 //
 

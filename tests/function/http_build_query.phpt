@@ -12,7 +12,7 @@ $data = array('foo'=>'bar',
              'baz'=>'boom',
              'cow'=>'milk',
              'php'=>'hypertext processor');
-            
+
 echo http_build_query($data), "\n";
 
 
@@ -20,7 +20,7 @@ echo http_build_query($data), "\n";
 class myClass {
     var $foo;
     var $baz;
- 
+
     function myClass()
     {
         $this->foo = 'bar';
@@ -33,7 +33,7 @@ echo http_build_query($data), "\n";
 
 
 // With numerically indexed elements
-$data = array('foo', 'bar', 'baz', 'boom', 'cow' => 'milk', 'php' =>'hypertext processor');   
+$data = array('foo', 'bar', 'baz', 'boom', 'cow' => 'milk', 'php' =>'hypertext processor');
 echo http_build_query($data), "\n";
 echo http_build_query($data, 'myvar_'), "\n";
 
@@ -49,7 +49,7 @@ $data = array('user'=>array('name'=>'Bob Smith',
                                'sally'=>array('age'=>8,
                                                'sex'=>'F')),
              'CEO');
-                                              
+
 echo http_build_query($data, 'flags_');
 ?>
 --EXPECT--

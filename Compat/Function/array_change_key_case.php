@@ -1,5 +1,4 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------+
 // | PHP Version 4                                                        |
 // +----------------------------------------------------------------------+
@@ -18,7 +17,6 @@
 // +----------------------------------------------------------------------+
 //
 // $Id$
-//
 
 
 if (!defined('CASE_LOWER')) {
@@ -44,13 +42,13 @@ if (!defined('CASE_UPPER')) {
  */
 if (!function_exists('array_change_key_case'))
 {
-    function array_change_key_case ($input, $case = CASE_LOWER)
+    function array_change_key_case($input, $case = CASE_LOWER)
     {
         if (!is_array($input)) {
             trigger_error('array_change_key_case(): The argument should be an array', E_USER_WARNING);
             return false;
         }
-        
+
         $output   = array ();
         $keys     = array_keys($input);
         $casefunc = ($case == CASE_LOWER) ? 'strtolower' : 'strtoupper';

@@ -1,5 +1,4 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------+
 // | PHP Version 4                                                        |
 // +----------------------------------------------------------------------+
@@ -17,7 +16,6 @@
 // +----------------------------------------------------------------------+
 //
 // $Id$
-//
 
 
 /**
@@ -33,7 +31,7 @@
  */
 if (!function_exists('str_split'))
 {
-    function str_split ($string, $split_length = 1)
+    function str_split($string, $split_length = 1)
     {
         if (!is_numeric($split_length)) {
             trigger_error('str_split() expects parameter 2 to be long, ' . gettype($split_length) . ' given', E_USER_WARNING);

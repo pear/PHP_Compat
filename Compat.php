@@ -1,5 +1,4 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------+
 // | PHP Version 4                                                        |
 // +----------------------------------------------------------------------+
@@ -17,7 +16,6 @@
 // +----------------------------------------------------------------------+
 //
 // $Id$
-//
 
 
 /**
@@ -84,7 +82,7 @@ class PHP_Compat
 
         else {
             $file = sprintf('PHP/Compat/Constant/%s.php', $constant);
-            
+
             if ((@include_once $file) !== false) {
                 return true;
             }
@@ -148,7 +146,7 @@ class PHP_Compat
 
         return $results;
     }
-    
+
 }
 
 ?>

@@ -1,5 +1,4 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------+
 // | PHP Version 4                                                        |
 // +----------------------------------------------------------------------+
@@ -17,7 +16,6 @@
 // +----------------------------------------------------------------------+
 //
 // $Id$
-//
 
 
 /**
@@ -33,7 +31,7 @@
  */
 if (!function_exists('stripos'))
 {
-    function stripos ($haystack, $needle, $offset = null)
+    function stripos($haystack, $needle, $offset = null)
     {
         if (!is_scalar($haystack)) {
             trigger_error('stripos() expects parameter 1 to be string, ' . gettype($haystack) . ' given', E_USER_WARNING);
@@ -62,7 +60,7 @@ if (!function_exists('stripos'))
         }
 
         $segments = explode(strtolower($needle), strtolower($haystack), 2);
-        
+
         // Check there was a match
         if (count($segments) == 1) {
             return false;

@@ -1,5 +1,4 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------+
 // | PHP Version 4                                                        |
 // +----------------------------------------------------------------------+
@@ -18,7 +17,6 @@
 // +----------------------------------------------------------------------+
 //
 // $Id$
-//
 
 
 if (!defined('ENT_NOQUOTES')) {
@@ -49,13 +47,13 @@ if (!defined('ENT_QUOTES')) {
  */
 if (!function_exists('html_entity_decode'))
 {
-    function html_entity_decode ($string, $quote_style = ENT_COMPAT, $charset = null)
+    function html_entity_decode($string, $quote_style = ENT_COMPAT, $charset = null)
     {
         if (!is_int($quote_style)) {
             trigger_error('html_entity_decode() expects parameter 2 to be long, ' . gettype($quote_style) . ' given', E_USER_WARNING);
             return null;
         }
-        
+
         $trans_tbl = get_html_translation_table(HTML_ENTITIES);
         $trans_tbl = array_flip($trans_tbl);
 
@@ -63,7 +61,7 @@ if (!function_exists('html_entity_decode'))
         $trans_tbl['&#039;'] = '\'';
 
         // Not translating double quotes
-        if ($quote_style & ENT_NOQUOTES) { 
+        if ($quote_style & ENT_NOQUOTES) {
             // Remove double quote from translation table
             unset($trans_tbl['&quot;']);
         }

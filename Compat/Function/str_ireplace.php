@@ -1,5 +1,4 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------+
 // | PHP Version 4                                                        |
 // +----------------------------------------------------------------------+
@@ -17,7 +16,6 @@
 // +----------------------------------------------------------------------+
 //
 // $Id$
-//
 
 
 /**
@@ -29,12 +27,13 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 5
- * @internal    count not by returned by reference - not possible in php4
  * @require     PHP 4.0.1 (trigger_error)
+ * @note        count not by returned by reference, to enable
+ *              change '$count = null' to '&$count'
  */
 if (!function_exists('str_ireplace'))
 {
-    function str_ireplace ($search, $replace, $subject, $count = null)
+    function str_ireplace($search, $replace, $subject, $count = null)
     {
         if (is_string($search) && is_array($replace)) {
             trigger_error('Array to string conversion', E_USER_NOTICE);
@@ -45,7 +44,7 @@ if (!function_exists('str_ireplace'))
         if (!is_array($search)) {
             $search = array ($search);
         }
-    
+
         // If replace isn't an array, make it one, and pad it to the length of search
         if (!is_array($replace))
         {
@@ -98,7 +97,7 @@ if (!function_exists('str_ireplace'))
                     // Increase the position relative to the initial string
                     $pos += strlen($segment_value) + strlen($search_value);
                 }
-                
+
                 // Put our original string back together
                 $subject_value = implode($replace[$search_key], $segments);
             }

@@ -1,5 +1,4 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------+
 // | PHP Version 4                                                        |
 // +----------------------------------------------------------------------+
@@ -17,7 +16,6 @@
 // +----------------------------------------------------------------------+
 //
 // $Id$
-//
 
 
 /**
@@ -33,7 +31,7 @@
  */
 if (!function_exists('str_word_count'))
 {
-    function str_word_count ($string, $format = null)
+    function str_word_count($string, $format = null)
     {
         if ($format != 1 && $format != 2 && $format !== null) {
             trigger_error("str_word_count() The specified format parameter, '$format' is invalid", E_USER_WARNING);
@@ -47,7 +45,7 @@ if (!function_exists('str_word_count'))
             case null:
                 return count($word_array);
                 break;
-            
+
             case 1:
                 return $word_array;
                 break;

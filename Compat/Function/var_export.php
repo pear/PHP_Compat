@@ -1,5 +1,4 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------+
 // | PHP Version 4                                                        |
 // +----------------------------------------------------------------------+
@@ -17,7 +16,6 @@
 // +----------------------------------------------------------------------+
 //
 // $Id$
-//
 
 
 /**
@@ -33,7 +31,7 @@
  */
 if (!function_exists('var_export'))
 {
-    function var_export ($array, $return = false)
+    function var_export($array, $return = false)
     {
         // Common output variables
         $indent         = '  ';
@@ -100,4 +98,5 @@ if (!function_exists('var_export'))
         }
     }
 }
+
 ?>

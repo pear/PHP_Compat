@@ -13,7 +13,7 @@ class cr {
     {
         $this->priv_member = $val;
     }
-  
+
     function comp_func_cr($a, $b)
     {
         if ($a->priv_member === $b->priv_member) return 0;

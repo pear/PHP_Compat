@@ -1,5 +1,4 @@
 <?php
-/* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------+
 // | PHP Version 4                                                        |
 // +----------------------------------------------------------------------+
@@ -17,7 +16,6 @@
 // +----------------------------------------------------------------------+
 //
 // $Id$
-//
 
 
 /**
@@ -33,7 +31,7 @@
  */
 if (!function_exists('strpbrk'))
 {
-    function strpbrk ($haystack, $char_list)
+    function strpbrk($haystack, $char_list)
     {
         if (!is_scalar($haystack)) {
             trigger_error('strpbrk() expects parameter 1 to be string, ' . gettype($haystack) . ' given', E_USER_WARNING);
@@ -45,8 +43,8 @@ if (!function_exists('strpbrk'))
             return false;
         }
 
-        $haystack  = (string)$haystack;
-        $char_list = (string)$char_list;
+        $haystack  = (string) $haystack;
+        $char_list = (string) $char_list;
 
         $len = strlen($haystack);
         for ($i = 0; $i < $len; $i++) {
@@ -56,7 +54,9 @@ if (!function_exists('strpbrk'))
             }
             return substr($haystack, $i);
         }
+
         return false;
     }
 }
+
 ?>

@@ -19,7 +19,7 @@ echo var_export($a, true);
 array (
   0 => 1,
   1 => 2,
-  2 => 
+  2 =>
   array (
     0 => 'a',
     1 => 'b',
@@ -29,7 +29,7 @@ array (
 array (
   0 => 1,
   1 => 2,
-  2 => 
+  2 =>
   array (
     0 => 'a',
     1 => 'b',
