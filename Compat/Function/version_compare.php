@@ -33,9 +33,9 @@
  * @since       PHP 4.1.0
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('version_compare'))
-{
-    function version_compare ($version1, $version2, $operator = '')
+if (!function_exists('version_compare')) {
+
+    function version_compare ($version1, $version2, $operator = '<')
     {
         // Check input
         if (!is_scalar($version1)) {
@@ -92,7 +92,7 @@ if (!function_exists('version_compare'))
             }
             elseif (is_numeric($v1[$i])) {
                 $compare = 1;
-            }    
+            }
             elseif (is_numeric($v2[$i])) {
                 $compare = -1;
             }
@@ -105,7 +105,7 @@ if (!function_exists('version_compare'))
 
             break;
         }
-    
+
         // If previous loop didn't find anything, compare the "extra" segments
         if ($compare == 0) {
             if (count($v2) > count($v1))
@@ -115,7 +115,7 @@ if (!function_exists('version_compare'))
                 } else {
                     $compare = -1;
                 }
-            } 
+            }
             elseif (count($v2) < count($v1))
             {
                 if (isset($versions[$v1[$i]])) {
@@ -127,36 +127,42 @@ if (!function_exists('version_compare'))
         }
 
         // Compare the versions
-        switch ($operator)
-        {
-            case '>':
-            case 'gt':
-                return ($compare > 0) ? 1 : 0;
-                break;
-            case '>=':
-            case 'ge':
-                return ($compare >= 0) ? 1 : 0;
-                break;
-            case '<':
-            case 'lt':
-                return ($compare < 0) ? 1 : 0;
-                break;
-            case '<=':
-            case 'le':
-                return ($compare <= 0) ? 1 : 0;
-                break;
-            case '==':
-            case 'eq':
-                return ($compare == 0) ? 1 : 0;
-                break;
-            case '<>':
-            case '!=':
-            case 'ne':
-                return ($compare != 0) ? 1 : 0;
-                break;
-            default:
-                return null;
+        if (func_num_args() > 2)
+		{
+            switch ($operator)
+            {
+                case '>':
+                case 'gt':
+                    return (bool) ($compare > 0);
+                    break;
+                case '>=':
+                case 'ge':
+                    return (bool) ($compare >= 0);
+                    break;
+                case '<=':
+                case 'le':
+                    return (bool) ($compare <= 0);
+                    break;
+                case '==':
+                case 'eq':
+                    return (bool) ($compare == 0);
+                    break;
+                case '<>':
+                case '!=':
+                case 'ne':
+                    return (bool) ($compare != 0);
+                    break;
+                case '':
+                case '<':
+                case 'lt':
+                    return (bool) ($compare < 0);
+                    break;
+                default:
+                    return null;
+            }
         }
+
+        return $compare;
     }
 }
 
