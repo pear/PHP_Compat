@@ -20,6 +20,14 @@
 //
 
 
+if (!defined('FILE_APPEND')) {
+    define('FILE_APPEND', 8);
+}
+
+if (!defined('FILE_USE_INCLUDE_PATH')) {
+    define('FILE_USE_INCLUDE_PATH', 1);
+}
+
 /**
  * Replace file_put_contents()
  *
