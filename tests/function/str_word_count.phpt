@@ -11,6 +11,9 @@ $str = "Hello friend, you're \r\nsdf\tlooking    3865\t9879 good to\"day, yes \"
 var_dump(str_word_count($str));
 print_r(str_word_count($str, 1));
 print_r(str_word_count($str, 2));
+
+$str = 'hello I am repeated repeated';
+print_r(str_word_count($str, 2));
 ?>
 --EXPECT--
 int(12)
@@ -43,4 +46,12 @@ Array
     [66] => sir
     [71] => you
     [75] => am
+)
+Array
+(
+    [0] => hello
+    [6] => I
+    [8] => am
+    [11] => repeated
+    [18] => repeated
 )
