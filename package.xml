@@ -13,17 +13,23 @@ Constants:
 
 Functions:
 * array_change_key_case
+* array_chunk
 * array_combine
+* array_diff_assoc
+* array_udiff
+* array_udiff_assoc
 * file_get_contents
 * file_put_contents
+* fprintf
 * http_build_query
 * is_a
 * scandir
+* str_ireplace
 * str_split
-* fprintf
 * stripos
 * strripos
-* str_ireplace</description>
+* vprintf
+* vsprintf</description>
 
 	<maintainers>
 		<maintainer>
@@ -100,12 +106,16 @@ Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND</notes>
 	</release>
 
 	<release>
-		<version>1.0.0</version>
+		<version>1.0.0RC3</version>
 		<date>2004-06-02</date>
 		<license>PHP License</license>
-		<state>stable</state>
+		<state>beta</state>
 		<notes>Added more components:
-* array_change_key_case</notes>
+* array_change_key_case
+* array_chunk
+* array_diff_assoc
+* vprintf
+* vsprintf</notes>
 		<filelist>
 			<dir name="/" baseinstalldir="PHP" role="php">	 
 				<file>Compat.php</file>
@@ -118,24 +128,30 @@ Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND</notes>
 					</dir>
 					<dir name="Function">
 						<file>array_change_key_case.php</file>
+						<file>array_chunk.php</file>
 						<file>array_combine.php</file>
-						<file>file_get_contents.php</file>
-						<file>file_put_contents.php</file>
-						<file>is_a.php</file>
-						<file>scandir.php</file>
-						<file>str_split.php</file>
-						<file>http_build_query.php</file>
+						<file>array_diff_assoc.php</file>
 						<file>array_udiff.php</file>
 						<file>array_udiff_assoc.php</file>
+						<file>file_get_contents.php</file>
+						<file>file_put_contents.php</file>
 						<file>fprintf.php</file>
+						<file>http_build_query.php</file>
+						<file>is_a.php</file>
+						<file>scandir.php</file>
+						<file>str_ireplace.php</file>
+						<file>str_split.php</file>
 						<file>stripos.php</file>
 						<file>strripos.php</file>
-						<file>str_ireplace.php</file>
+						<file>vprintf.php</file>
+						<file>vsprintf.php</file>
 					</dir>
 				</dir>
 				<dir name="tests" role="test">
 					<file>array-change-key-case_01_simple.phpt</file>
+					<file>array-chunk_01_simple.phpt</file>
 					<file>array-combine_01_simple.phpt</file>
+					<file>array-diff-assoc_01_simple.phpt</file>
 					<file>array-udiff_01_simple.phpt</file>
 					<file>array-udiff-assoc_01_simple.phpt</file>
 					<file>file-get-contents_01_simple.phpt</file>
@@ -167,6 +183,8 @@ Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND</notes>
 					<file>str-ireplace_04_search-arr-replace-str.phpt</file>
 					<file>str-ireplace_05_search-str-replace-arr.phpt</file>
 					<file>str-ireplace_06_allarray.phpt</file>
+					<file>vprintf_01_simple.phpt</file>
+					<file>vsprintf_01_simple.phpt</file>
 					<file>E_STRICT.phpt</file>
 					<file>FILE.phpt</file>
 					<file>PATH_SEPARATOR.phpt</file>
