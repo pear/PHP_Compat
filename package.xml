@@ -160,6 +160,7 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
 						<file>str_word_count.php</file>
 						<file>str_rot13.php</file>
 						<file>stripos.php</file>
+						<file>strpbrk.php</file>
 						<file>strripos.php</file>
 						<file>var_export.php</file>
 						<file>version_compare.php</file>
