@@ -41,7 +41,7 @@ if (!function_exists('str_word_count'))
         }
 
 		$word_string = preg_replace('/[0-9]+/', '', $string);
-		$word_array  = preg_split('/[^A-Za-z0-9_\']+/', $wordstr, -1, PREG_SPLIT_NO_EMPTY);
+		$word_array  = preg_split('/[^A-Za-z0-9_\']+/', $word_string, -1, PREG_SPLIT_NO_EMPTY);
 
 		switch ($format):
 			case null:
@@ -54,10 +54,11 @@ if (!function_exists('str_word_count'))
 
 			case 2:
 				$lastmatch = 0;
+				$word_assoc = array();
 				foreach ($word_array as $word) {
-					$array[$lastmatch = strpos($string, $word, $lastmatch)] = $word;
+					$word_assoc[$lastmatch = strpos($string, $word, $lastmatch)] = $word;
 				}
-				return $array;
+				return $word_assoc;
 				break;
 
 		endswitch;
