@@ -20,6 +20,7 @@
 // $Id$
 //
 
+
 /**
  * Replace stripos()
  *
@@ -34,27 +35,25 @@
  */
 if (!function_exists('stripos'))
 {
-   /**
-    * Find position of first occurrence of a case-insensitive string
-    *
-    * @param    string           haystack
-    * @param    string           needle
-    * @param    integer          offset
-    * @return   integer|boolean  position or false
-    */
-	function stripos($haystack, $needle, $offset = null) {
-
+    function stripos($haystack, $needle, $offset = null)
+    {
         if (!is_scalar($haystack)) {
-            trigger_error('stripos() expects parameter 1 to be string, '.gettype($haystack).' given', E_USER_WARNING);
-            return null;
+            trigger_error('stripos() expects parameter 1 to be string, ' . gettype($haystack) . ' given', E_USER_WARNING);
+            return false;
         }
 
         if (!is_scalar($needle)) {
-            trigger_error('stripos(): needle is not a string or an integer.', E_USER_WARNING);
-            return null;
+            trigger_error('stripos() needle is not a string or an integer.', E_USER_WARNING);
+            return false;
+        }
+
+        if (!is_null($offset) && !is_numeric($offset)) {
+            trigger_error('stripos() expects parameter 3 to be long, ' . gettype($offset) . ' given', E_USER_WARNING);
+            return false;
         }
 
         return strpos(strtolower($haystack), strtolower($needle), $offset);
     }
 }
+
 ?>
