@@ -41,6 +41,7 @@ class PHP_Compat
      */
     function loadFunction($function)
     {
+        // Recursiveness
         if (is_array($function)) {
             $res = array();
             foreach ($function as $singlefunc) {
@@ -50,6 +51,7 @@ class PHP_Compat
             return $res;
         }
 
+        // Load function
         if (!function_exists($function)) {
             $file = sprintf('PHP/Compat/Function/%s.php', $function);
             if ((@include_once $file) !== false) {
@@ -69,6 +71,7 @@ class PHP_Compat
      */
     function loadConstant($constant)
     {
+        // Recursiveness
         if (is_array($constant)) {
             $res = array();
             foreach ($constant as $singleconst) {
@@ -78,6 +81,7 @@ class PHP_Compat
             return $res;
         }
 
+        // Load constant
         $file = sprintf('PHP/Compat/Constant/%s.php', $constant);
         if ((@include_once $file) !== false) {
             return true;
@@ -95,19 +99,28 @@ class PHP_Compat
      */
     function loadVersion($version = null)
     {
-        require_once 'Compat/Components.php';
+        // Include list of components
+        require 'PHP/Compat/Components.php';
+
+        // Include version_compare to work with older versions
         PHP_Compat::loadFunction('version_compare');
+
+        // Init
         $phpversion = phpversion();
-
+        $methods = array('function' => 'loadFunction',
+            'constant' => 'loadConstant');
         $res = array();
-        foreach ($components as $type => $slice) {
-            $loadfunc = 'load' . $type;
-            foreach ($slice as $component => $compversion) {
-                $vc = version_compare($version, $compversion);
-                $vp = version_compare($phpversion, $compversion);
 
-                if ($version === null || ($vc === 0 && $vp === -1)) {
-                    $res[$component] = PHP_Compat::$loadfunc($component);
+        // Iterate each component
+        foreach ($components as $type => $slice) {
+            foreach ($slice as $component => $compversion) {
+                if (($version === null &&
+                        1 === version_compare($compversion, $phpversion)) ||    // C > PHP
+                    (0 === version_compare($compversion, $version) ||           // C = S
+                        1 === version_compare($compversion, $phpversion))) {    // C > PHP
+                    
+                    $res[$type][$component] =
+                        call_user_func(array('PHP_Compat', $methods[$type]), $component);
                 }
             }
         }
