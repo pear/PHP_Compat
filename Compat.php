@@ -4,7 +4,7 @@
 // +----------------------------------------------------------------------+
 // | Copyright (c) 1997-2004 The PHP Group                                |
 // +----------------------------------------------------------------------+
-// | This source file is subject to version 2 of the PHP license,         |
+// | This source file is subject to version 3 of the PHP license,         |
 // | that is bundled with this package in the file LICENSE, and is        |
 // | available at through the world-wide-web at                           |
 // | http://au.php.net/license/3_0.txt.                                   |
@@ -40,11 +40,11 @@ class PHP_Compat
      * @param string|array $function The function[s] to load.
      * @return void
      */
-	function addFunction ($function)
+	function loadFunction ($function)
 	{
 		if (is_array($function)) {
 			foreach ($function as $singlefunc) {
-				PHP_Compat::addFunction($singlefunc);
+				PHP_Compat::loadFunction($singlefunc);
 			}
 		}
 
@@ -67,11 +67,11 @@ class PHP_Compat
      * @param string|array $constant The constant[s] to load.
      * @return void
      */
-	function addConstant ($constant)
+	function loadConstant ($constant)
 	{
 		if (is_array($constant)) {
 			foreach ($constant as $singleconst) {
-				PHP_Compat::addFunction($singleconst);
+				PHP_Compat::loadConstant($singleconst);
 			}
 		}
 
