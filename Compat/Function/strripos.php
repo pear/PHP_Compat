@@ -34,9 +34,9 @@
  * @requires    PHP 3
  * @todo		Ensure it searches for the entire needle, not just the first char
  */
-if (!function_exists('strripos2'))
+if (!function_exists('strripos'))
 {
-    function strripos2 ($haystack, $needle, $offset = null)
+    function strripos ($haystack, $needle, $offset = null)
     {
         if (!is_scalar($haystack)) {
             trigger_error('strripos() expects parameter 1 to be scalar, ' . gettype($haystack) . ' given', E_USER_WARNING);
