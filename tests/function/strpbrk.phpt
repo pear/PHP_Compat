@@ -10,7 +10,7 @@ PHP_Compat::loadFunction('strpbrk');
 $haystack = 'To be or not to be';
 $char_list  = 'jhdn';
 
-var_dump(stripos($haystack, $char_list));
+var_dump(strpbrk($haystack, $char_list));
 ?>
 --EXPECT--
 string(9) "not to be"
