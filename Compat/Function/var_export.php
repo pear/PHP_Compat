@@ -31,44 +31,60 @@
  * @added       PHP 4.2.0
  * @requires    PHP 3
  */
-if (!function_exists('var_export'))
+if (!function_exists('var_export2'))
 {
-    function var_export ()
+    function var_export2 ($array, $return = false)
     {
-		$args = func_get_args();
-		$indent = (isset($args[2])) ? $args[2] : '';
+		// Common output variables
+		$indent         = '  ';
+		$doublearrow    = ' => ';
+		$lineend        = ",\n";
+		$stringdelim	= '\'';
+		$newline		= "\n";
 
-		if (is_array($args[0]))
+		// Start the string
+		$out = "array (\n";
+
+		// Loop through each value in array
+		foreach ($array as $key => $value)
 		{
-			$output = 'array ('."\n";
-
-			foreach ($args[0] as $k => $v)
-			{
-				if (is_numeric($k))
-					$output .= $indent.'  '.$k.' => ';
-				else
-					$output .= $indent.'  \''.str_replace('\'', '\\\'', str_replace('\\', '\\\\', $k)).'\' => ';
-
-				if (is_array($v))
-					$output .= var_export($v, true, $indent.'  ');
-				else
-				{
-					if (gettype($v) != 'string' && !empty($v))
-						$output .= $v.','."\n";
-					else
-						$output .= '\''.str_replace('\'', '\\\'', str_replace('\\', '\\\\', $v)).'\','."\n";
-				}
+			// If the key is a string, delimit it
+			if (is_string($key)) {
+				$key = $stringdelim . addslashes($key) . $stringdelim;
 			}
 
-			$output .= ($indent != '') ? $indent.'),'."\n" : ')';
-		}
-		else
-			$output = $args[0];
+			// If the value is a string, delimit it
+			if (is_string($value)) {
+				$value = $stringdelim . addslashes($value) . $stringdelim;
+			}
 
-		if ($args[1] == true)
-			return $output;
-		else
-			echo $output;
+			// We have an array, so do some recursion
+			elseif (is_array($value))
+			{
+				// Do some basic recursion while increasing the indent
+				$recur_array = explode($newline, var_export($value, true));
+				$recur_newarr = array ();
+				foreach ($recur_array as $recur_line) {
+					$recur_newarr[] = $indent . $recur_line;
+				}
+				$recur_array = implode($newline, $recur_newarr);
+				$value = $newline . $recur_array;
+			}
+
+			// Piece together the line
+			$out .= $indent . $key . $doublearrow . $value . $lineend;
+		}
+
+		// End our string
+		$out .= ")";
+
+		// Decide method of output
+		if ($return === true) {
+			return $out;
+		} else {
+			echo $out;
+			return null;
+		}
     }
 }
 ?>
