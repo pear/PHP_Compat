@@ -23,11 +23,11 @@
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/php_strip_whitespace
+ * @link        http://php.net/function.php_strip_whitespace
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 5
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.1 (trigger_error), Tokenizer extension
  */
 if (!function_exists('php_strip_whitespace'))
 {
