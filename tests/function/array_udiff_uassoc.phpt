@@ -9,17 +9,17 @@ PHP_Compat::loadFunction('array_udiff_uassoc');
 
 class cr
 {
-    var $priv_member;
+    var $val;
 
     function cr($val)
     {
-        $this->priv_member = $val;
+        $this->val = $val;
     }
 
     function comp_func_cr($a, $b)
     {
-        if ($a->priv_member === $b->priv_member) return 0;
-        return ($a->priv_member > $b->priv_member) ? 1 : -1;
+        if ($a->val === $b->val) return 0;
+        return ($a->val > $b->val) ? 1 : -1;
     }
    
     function comp_func_key($a, $b)
@@ -33,7 +33,24 @@ $a = array('0.1' => new cr(9), '0.5' => new cr(12), 0 => new cr(23), 1 => new cr
 $b = array('0.2' => new cr(9), '0.5' => new cr(22), 0 => new cr(3), 1 => new cr(4), 2 => new cr(-15));
 
 $result = array_udiff_uassoc($a, $b, array('cr', 'comp_func_cr'), array('cr', 'comp_func_key'));
-echo serialize($result);
+print_r($result);
 ?>
 --EXPECT--
-FIXME
+Array
+(
+    [0.1] => cr Object
+        (
+            [val] => 9
+        )
+
+    [0.5] => cr Object
+        (
+            [val] => 12
+        )
+
+    [0] => cr Object
+        (
+            [val] => 23
+        )
+
+)

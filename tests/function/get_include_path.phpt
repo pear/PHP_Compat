@@ -7,5 +7,9 @@ Function -- get_include_path
 require_once 'PHP/Compat.php';
 PHP_Compat::loadFunction('get_include_path');
 
+if (get_include_path() == ini_get('include_path')) {
+    echo 'true';
+}
 ?>
 --EXPECT--
+true

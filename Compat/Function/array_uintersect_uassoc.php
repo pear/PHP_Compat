@@ -29,36 +29,43 @@
  * @since       PHP 5
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('array_uintersect_uassoc'))
+if (!function_exists('array_uintersect_uassoc2'))
 {
-    function array_uintersect_uassoc()
+    function array_uintersect_uassoc2()
     {
         $args = func_get_args();
-        if (count($args) < 3) {
-            trigger_error('wrong parameter count for array_uintersect_uassoc()', E_USER_WARNING);
+        if (count($args) < 4) {
+            trigger_error('Wrong parameter count for array_uintersect_uassoc()', E_USER_WARNING);
             return;
         }
 
-        // Get compare function
-        $compare_func = array_pop($args);
-        if (!is_callable($compare_func)) {
-            if (is_array($compare_func)) {
-                $compare_func = $compare_func[0] . '::' . $compare_func[1];
+        // Get key_compare_func
+        $key_compare_func = array_pop($args);
+        if (!is_callable($key_compare_func)) {
+            if (is_array($key_compare_func)) {
+                $key_compare_func = $key_compare_func[0] . '::' . $key_compare_func[1];
             }
-            trigger_error('array_uintersect_uassoc() Not a valid callback ' . $compare_func, E_USER_WARNING);
+            trigger_error('array_uintersect_uassoc() Not a valid callback ' . $key_compare_func, E_USER_WARNING);
+            return;
+        }
+
+        // Get data_compare_func
+        $data_compare_func = array_pop($args);
+        if (!is_callable($data_compare_func)) {
+            if (is_array($data_compare_func)) {
+                $data_compare_func = $data_compare_func[0] . '::' . $data_compare_func[1];
+            }
+            trigger_error('array_uintersect_uassoc() Not a valid callback ' . $data_compare_func, E_USER_WARNING);
             return;
         }
 
         // Check arrays
         $array_count = count($args);
-
         for ($i = 0; $i !== $array_count; $i++) {
-
             if (!is_array($args[$i])) {
                 trigger_error('array_uintersect_uassoc() Argument #' . ($i + 1) . ' is not an array', E_USER_WARNING);
                 return;
             }
-            
         }
 
         // Compare entries
@@ -66,7 +73,7 @@ if (!function_exists('array_uintersect_uassoc'))
         foreach ($args[0] as $key => $item) {
             for ($i = 1; $i !== $array_count; $i++) {
                 if (array_key_exists($key, $args[$i])) {
-                     $compare = call_user_func($compare_func, $item, $args[$i][$key]);
+                     $compare = call_user_func($key_compare_func, $item, $args[$i][$key]);
                      if ($compare === 0) {
                          $output[$key] = $item;
                      }
