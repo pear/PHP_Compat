@@ -40,25 +40,25 @@ class PHP_Compat
      * @param string|array $function The function[s] to load.
      * @return void
      */
-	function loadFunction ($function)
-	{
-		if (is_array($function)) {
-			foreach ($function as $singlefunc) {
-				PHP_Compat::loadFunction($singlefunc);
-			}
-		}
+    function loadFunction ($function)
+    {
+        if (is_array($function)) {
+            foreach ($function as $singlefunc) {
+                PHP_Compat::loadFunction($singlefunc);
+            }
+        }
 
-		else {
-			$file = sprintf('PHP/Compat/Function/%s.php',
-								$function);
+        else {
+            $file = sprintf('PHP/Compat/Function/%s.php',
+                                $function);
 
-			if (@include_once $file !== false) {
-				return true;
-			}
+            if (@include_once $file !== false) {
+                return true;
+            }
 
-			return false;
-		}
-	}
+            return false;
+        }
+    }
 
 
     /**
@@ -67,25 +67,25 @@ class PHP_Compat
      * @param string|array $constant The constant[s] to load.
      * @return void
      */
-	function loadConstant ($constant)
-	{
-		if (is_array($constant)) {
-			foreach ($constant as $singleconst) {
-				PHP_Compat::loadConstant($singleconst);
-			}
-		}
+    function loadConstant ($constant)
+    {
+        if (is_array($constant)) {
+            foreach ($constant as $singleconst) {
+                PHP_Compat::loadConstant($singleconst);
+            }
+        }
 
-		else {
-			$file = sprintf('PHP/Compat/Constant/%s.php',
-								$constant);
+        else {
+            $file = sprintf('PHP/Compat/Constant/%s.php',
+                                $constant);
 
-			if (@include_once $file !== false) {
-				return true;
-			}
+            if (@include_once $file !== false) {
+                return true;
+            }
 
-			return false;
-		}
-	}
+            return false;
+        }
+    }
 
 }
 
