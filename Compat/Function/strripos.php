@@ -13,8 +13,8 @@
 // | obtain it through the world-wide-web, please send a note to          |
 // | license@php.net so we can mail you a copy immediately.               |
 // +----------------------------------------------------------------------+
-// | Authors: Stephan Schmidt <schst@php.net>                             |
-// |          Aidan Lister <aidan@php.net>                                |
+// | Authors: Aidan Lister <aidan@php.net>                                |
+// |          Stephan Schmidt <schst@php.net>                             |
 // +----------------------------------------------------------------------+
 //
 // $Id$
@@ -27,12 +27,12 @@
  * @category    PHP
  * @package     PHP_Compat
  * @link        http://php.net/function.strripos
- * @author      Stephan Schmidt <schst@php.net>
  * @author      Aidan Lister <aidan@php.net>
+ * @author      Stephan Schmidt <schst@php.net>
  * @version     1.0
  * @added       PHP 5
  * @requires    PHP 3
- * @todo		Ensure it searches for the entire needle, not just the first char
+ * @internal    Only searches for first char in needle, not whole string
  */
 if (!function_exists('strripos'))
 {
@@ -53,25 +53,25 @@ if (!function_exists('strripos'))
             return false;
         }
 
-		// Manipulate the string if there is an offset
-		$fix = 0;
-		if (!is_null($offset)) {
-			if ($offset > 0) {
-				$haystack = substr($haystack, $offset, strlen($haystack) - $offset);
-				$fix = $offset;
-			}
-			else {
-				if (abs($offset) > strlen($haystack)) {
-					return false;
-				}
+        // Manipulate the string if there is an offset
+        $fix = 0;
+        if (!is_null($offset)) {
+            if ($offset > 0) {
+                $haystack = substr($haystack, $offset, strlen($haystack) - $offset);
+                $fix = $offset;
+            }
+            else {
+                if (abs($offset) > strlen($haystack)) {
+                    return false;
+                }
 
-				$haystack = substr($haystack, 0, strlen($haystack) + $offset);
-				echo $haystack;
-			}
-		}
+                $haystack = substr($haystack, 0, strlen($haystack) + $offset);
+                echo $haystack;
+            }
+        }
 
-		$pos = strrpos(strtolower($haystack), strtolower($needle));
-		return ($pos === false) ? false : $pos + $fix;
+        $pos = strrpos(strtolower($haystack), strtolower($needle));
+        return ($pos === false) ? false : $pos + $fix;
     }
 }
 ?>
