@@ -14,6 +14,17 @@ echo "\n";
 
 // With return
 echo var_export($a, true);
+
+// More complex
+$a = array(
+    null => null,
+    'O\'neil',
+    'He said "bar" ...' => 'He said "bar" ...',
+    'Yes \ No'          =>'Yes \ No O\'neil',
+    'foo'               => null,
+    );
+var_export($a);
+
 ?>
 --EXPECT--
 array (
@@ -35,4 +46,11 @@ array (
     1 => 'b',
     2 => 'c',
   ),
+)
+array (
+  '' => NULL,
+  0 => 'O\'neil',
+  'He said "bar" ...' => 'He said "bar" ...',
+  'Yes \\ No' => 'Yes \\ No O\'neil',
+  'foo' => NULL,
 )
