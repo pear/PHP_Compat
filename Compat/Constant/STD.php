@@ -30,7 +30,14 @@
  * @version     $Revision$
  * @since       PHP 4.3.0
  */
-if (!defined('STDIN'))   { define('STDIN',        fopen('php://stdin',  'r')); }
-if (!defined('STDOUT'))  { define('STDOUT',       fopen('php://stdout', 'w')); }
-if (!defined('STDERR'))  { define('STDERR',       fopen('php://stderr', 'w')); }
+if (!defined('STDIN')) {
+	define('STDIN', fopen('php://stdin', 'r'));
+}
+if (!defined('STDOUT')) {
+	define('STDOUT', fopen('php://stdout', 'w'));
+}
+if (!defined('STDERR')) {
+	define('STDERR', fopen('php://stderr', 'w'));
+}
+
 ?>
