@@ -28,6 +28,7 @@ Functions:
 * str_split
 * stripos
 * strripos
+* var_export
 * vprintf
 * vsprintf</description>
 
@@ -106,16 +107,17 @@ Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND</notes>
 	</release>
 
 	<release>
-		<version>1.0.0RC3</version>
+		<version>1.0.0</version>
 		<date>2004-06-02</date>
 		<license>PHP License</license>
-		<state>beta</state>
+		<state>stable</state>
 		<notes>Added more components:
 * array_change_key_case
 * array_chunk
 * array_diff_assoc
 * vprintf
-* vsprintf</notes>
+* vsprintf
+* var_export</notes>
 		<filelist>
 			<dir name="/" baseinstalldir="PHP" role="php">	 
 				<file>Compat.php</file>
@@ -143,52 +145,54 @@ Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND</notes>
 						<file>str_split.php</file>
 						<file>stripos.php</file>
 						<file>strripos.php</file>
+						<file>var_export.php</file>
 						<file>vprintf.php</file>
 						<file>vsprintf.php</file>
 					</dir>
 				</dir>
 				<dir name="tests" role="test">
-					<file>array-change-key-case_01_simple.phpt</file>
-					<file>array-chunk_01_simple.phpt</file>
-					<file>array-combine_01_simple.phpt</file>
-					<file>array-diff-assoc_01_simple.phpt</file>
-					<file>array-udiff_01_simple.phpt</file>
-					<file>array-udiff-assoc_01_simple.phpt</file>
-					<file>file-get-contents_01_simple.phpt</file>
-					<file>file-put-contents_01_simple.phpt</file>
-					<file>file-put-contents_02_array.phpt</file>
-					<file>file-put-contents_03_append.phpt</file>
-					<file>http-build-query_01_simple.phpt</file>
-					<file>http-build-query_02_complexarray.phpt</file>
-					<file>http-build-query_03_numindex.phpt</file>
-					<file>http-build-query_04_object.phpt</file>
-					<file>is-a_01_simple.phpt</file>
-					<file>php-compat-loadconstant_01_simple.phpt</file>
-					<file>php-compat-loadconstant_02_array.phpt</file>
-					<file>php-compat-loadfunction_01_simple.phpt</file>
-					<file>php-compat-loadfunction_02_array.phpt</file>
-					<file>scandir_01_simple.phpt</file>
-					<file>scandir_02_sort.phpt</file>
-					<file>str-split_01_simple.phpt</file>
-					<file>str-split_02_chunksize.phpt</file>
-					<file>str-split_03_lessremainder.phpt</file>
-					<file>str-split_04_bigchunk.phpt</file>
-					<file>fprintf_01_simple.phpt</file>
-					<file>stripos_01_simple.phpt</file>
-					<file>strripos_01_simple.phpt</file>
-					<file>strripos_02_offset.phpt</file>
-					<file>str-ireplace_01_simple.phpt</file>
-					<file>str-ireplace_02_subjectarray.phpt</file>
-					<file>str-ireplace_03_search-arr-replace-arr.phpt</file>
-					<file>str-ireplace_04_search-arr-replace-str.phpt</file>
-					<file>str-ireplace_05_search-str-replace-arr.phpt</file>
-					<file>str-ireplace_06_allarray.phpt</file>
-					<file>vprintf_01_simple.phpt</file>
-					<file>vsprintf_01_simple.phpt</file>
 					<file>E_STRICT.phpt</file>
 					<file>FILE.phpt</file>
 					<file>PATH_SEPARATOR.phpt</file>
 					<file>STD.phpt</file>
+					<file>array-change-key-case_simple.phpt</file>
+					<file>array-chunk_simple.phpt</file>
+					<file>array-combine_simple.phpt</file>
+					<file>array-diff-assoc_simple.phpt</file>
+					<file>array-udiff-assoc_simple.phpt</file>
+					<file>array-udiff_simple.phpt</file>
+					<file>file-get-contents_simple.phpt</file>
+					<file>file-put-contents_append.phpt</file>
+					<file>file-put-contents_array.phpt</file>
+					<file>file-put-contents_simple.phpt</file>
+					<file>fprintf_simple.phpt</file>
+					<file>http-build-query_complexarray.phpt</file>
+					<file>http-build-query_numindex.phpt</file>
+					<file>http-build-query_object.phpt</file>
+					<file>http-build-query_simple.phpt</file>
+					<file>is-a_simple.phpt</file>
+					<file>php-compat-loadconstant_array.phpt</file>
+					<file>php-compat-loadconstant_simple.phpt</file>
+					<file>php-compat-loadfunction_array.phpt</file>
+					<file>php-compat-loadfunction_simple.phpt</file>
+					<file>scandir_simple.phpt</file>
+					<file>scandir_sort.phpt</file>
+					<file>str-ireplace_allarray.phpt</file>
+					<file>str-ireplace_search-arr-replace-arr.phpt</file>
+					<file>str-ireplace_search-arr-replace-str.phpt</file>
+					<file>str-ireplace_search-str-replace-arr.phpt</file>
+					<file>str-ireplace_simple.phpt</file>
+					<file>str-ireplace_subjectarray.phpt</file>
+					<file>str-split_bigchunk.phpt</file>
+					<file>str-split_chunksize.phpt</file>
+					<file>str-split_lessremainder.phpt</file>
+					<file>str-split_simple.phpt</file>
+					<file>stripos_simple.phpt</file>
+					<file>strripos_offset.phpt</file>
+					<file>strripos_simple.phpt</file>
+					<file>var_export_simple.phpt</file>
+					<file>vprintf_simple.phpt</file>
+					<file>vsprintf_simple.phpt</file>
 				</dir>
 			</dir>
 		</filelist>
