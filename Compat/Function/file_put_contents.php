@@ -41,6 +41,7 @@ if (!defined('FILE_APPEND')) {
  * @version     $Revision$
  * @internal    $resource_context is not supported
  * @since       PHP 5
+ * @require     PHP 4.0.1 (trigger_error)
  */
 if (!function_exists('file_put_contents'))
 {

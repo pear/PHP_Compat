@@ -31,6 +31,7 @@
  * @version     $Revision$
  * @link        http://php.net/function.array-udiff-assoc
  * @since       PHP 5
+ * @require     PHP 4.0.1 (trigger_error)
  */
 if (!function_exists('array_udiff_assoc'))
 {

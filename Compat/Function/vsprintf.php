@@ -29,13 +29,13 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 4.1.0
+ * @require     PHP 4.0.4 (call_user_func_array)
  */
 if (!function_exists('vsprintf'))
 {
     function vsprintf ($format, $args)
     {
-        if (count($args) < 2)
-        {
+        if (count($args) < 2) {
             trigger_error('vsprintf() Too few arguments', E_USER_WARNING);
             return null;
         }

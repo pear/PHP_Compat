@@ -29,17 +29,17 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 4.1.0
+ * @require     PHP 4.0.4 (call_user_func_array)
  */
 if (!function_exists('vprintf'))
 {
     function vprintf ($format, $args)
     {
-        if (count($args) < 2)
-        {
+        if (count($args) < 2) {
             trigger_error('vprintf() Too few arguments', E_USER_WARNING);
             return null;
         }
-		
+        
         array_unshift($args, $format);
         return call_user_func_array('printf', $args);
     }

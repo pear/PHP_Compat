@@ -30,6 +30,7 @@
  * @author      Thiemo Mättig <thiemo.maettig@gmx.de>
  * @version     $Revision$
  * @since       PHP 4.2.0
+ * @require     PHP 4.0.1 (trigger_error)
  */
 if (!function_exists('array_chunk'))
 {
@@ -39,12 +40,12 @@ if (!function_exists('array_chunk'))
             trigger_error('array_chunk() expects parameter 1 to be array, ' . gettype($input) . ' given', E_USER_WARNING);
             return null;
         }
-		
+        
         if (!is_numeric($size)) {
             trigger_error('array_chunk() expects parameter 2 to be long, ' . gettype($size) . ' given', E_USER_WARNING);
             return null;
         }
-		
+        
         $size = (int)$size;
         if ($size <= 0)
         {

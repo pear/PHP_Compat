@@ -29,6 +29,7 @@ if (!defined('CASE_UPPER')) {
     define('CASE_UPPER', 1);
 }
 
+
 /**
  * Replace array_change_key_case()
  *
@@ -39,6 +40,7 @@ if (!defined('CASE_UPPER')) {
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 4.2.0
+ * @require     PHP 4.0.1 (trigger_error)
  */
 if (!function_exists('array_change_key_case'))
 {

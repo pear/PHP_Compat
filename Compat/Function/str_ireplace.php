@@ -30,6 +30,7 @@
  * @version     $Revision$
  * @since       PHP 5
  * @internal    count not by returned by reference - not possible in php4
+ * @require     PHP 4.0.1 (trigger_error)
  */
 if (!function_exists('str_ireplace'))
 {

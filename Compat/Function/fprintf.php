@@ -29,6 +29,7 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 5
+ * @require     PHP 4.0.1 (trigger_error)
  */
 if (!function_exists('fprintf'))
 {
@@ -43,10 +44,10 @@ if (!function_exists('fprintf'))
         $resource_handle = array_shift($args);
         $format = array_shift($args);
 
-		if (!is_resource($resource_handle)) {
-			trigger_error ('fprintf(): supplied argument is not a valid stream resource', E_USER_WARNING);
-			return false;
-		}
+        if (!is_resource($resource_handle)) {
+            trigger_error ('fprintf(): supplied argument is not a valid stream resource', E_USER_WARNING);
+            return false;
+        }
 
         return fwrite($resource_handle, vsprintf($format, $args));
    }

@@ -31,6 +31,7 @@
  * @author      Stephan Schmidt <schst@php.net>
  * @version     $Revision$
  * @since       PHP 5
+ * @require     PHP 4.0.1 (trigger_error)
  */
 if (!function_exists('strripos'))
 {
@@ -54,17 +55,17 @@ if (!function_exists('strripos'))
         // Manipulate the string if there is an offset
         $fix = 0;
         if (!is_null($offset))
-		{
-			// If the offset is larger than the haystack, return
-			if (abs($offset) >= strlen($haystack)) {
-				return false;
-			}
+        {
+            // If the offset is larger than the haystack, return
+            if (abs($offset) >= strlen($haystack)) {
+                return false;
+            }
 
-			// Check whether offset is negative or positive
+            // Check whether offset is negative or positive
             if ($offset > 0) {
                 $haystack = substr($haystack, $offset, strlen($haystack) - $offset);
-				// We need to add this to the position of the needle
-				$fix = $offset;
+                // We need to add this to the position of the needle
+                $fix = $offset;
             }
             else {
                 $haystack = substr($haystack, 0, strlen($haystack) + $offset);
@@ -72,11 +73,11 @@ if (!function_exists('strripos'))
         }
 
         $segments = explode(strtolower($needle), strtolower($haystack));
-		
-		$last_seg = count($segments) - 1;
-		$position = strlen($haystack) + $fix - strlen($segments[$last_seg]) - strlen($needle);
+        
+        $last_seg = count($segments) - 1;
+        $position = strlen($haystack) + $fix - strlen($segments[$last_seg]) - strlen($needle);
 
-		return $position;
+        return $position;
     }
 }
 ?>

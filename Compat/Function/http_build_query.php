@@ -31,6 +31,7 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 5
+ * @require     PHP 4.0.1 (trigger_error)
  */
 if (!function_exists('http_build_query'))
 {
