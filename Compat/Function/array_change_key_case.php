@@ -14,10 +14,20 @@
 // | license@php.net so we can mail you a copy immediately.               |
 // +----------------------------------------------------------------------+
 // | Authors: Stephan Schmidt <schst@php.net>                             |
+// |          Aidan Lister <aidan@php.net>                                |
 // +----------------------------------------------------------------------+
 //
 // $Id$
 //
+
+
+if(!defined('CASE_LOWER')) {
+    define('CASE_LOWER', 0);
+}
+
+if(!defined('CASE_UPPER')) {
+    define('CASE_UPPER', 1);
+}
 
 /**
  * Replace array_change_key_case()
@@ -28,31 +38,26 @@
  * @package     PHP_Compat
  * @link        http://php.net/function.array_change_key_case
  * @author      Stephan Schmidt <schst@php.net>
+ * @author      Aidan Lister <aidan@php.net>
  * @version     1.0
  */
- 
-if( !defined('CASE_LOWER') ) {
-    define('CASE_LOWER', 0);
-}
-if( !defined('CASE_UPPER') ) {
-    define('CASE_UPPER', 1);
-}
-
 if (!function_exists('array_change_key_case'))
 {
-    function array_change_key_case($input, $case = CASE_LOWER)
+    function array_change_key_case ($input, $case = CASE_LOWER)
     {
         if (!is_array($input)) {
             trigger_error('array_change_key_case(): The argument should be an array', E_USER_WARNING);
             return false;
         }
         
-        $output = array();
+        $output = array ();
         $keys   = array_keys($input);
+        $casefunc = ($case == CASE_LOWER) ? 'strtolower' : 'strtoupper';
+
         foreach ($keys as $key) {
-            $newKey = $case == CASE_UPPER ? strtoupper($key) : strtolower($key);
-            $output[$newKey] = &$input[$key];
+            $output[$casefunc($key)] = $input[$key];
         }
+
         return $output;
     }
 }
