@@ -59,14 +59,11 @@ if (!function_exists('html_entity_decode'))
         $trans_tbl = get_html_translation_table(HTML_ENTITIES);
         $trans_tbl = array_flip($trans_tbl);
 
-        // Translating single quotes
-        if ($quote_style & 1) {
-            // Add single quote to translation table;
-            $trans_tbl['&apos;'] = '\'';
-        }
+        // Add single quote to translation table;
+        $trans_tbl['&#039;'] = '\'';
 
         // Not translating double quotes
-        if (!($quote_style & 2)) { 
+        if ($quote_style & ENT_NOQUOTES) { 
             // Remove double quote from translation table
             unset($trans_tbl['&quot;']);
         }
