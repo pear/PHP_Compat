@@ -35,56 +35,69 @@ if (!function_exists('var_export'))
 {
     function var_export ($array, $return = false)
     {
-		// Common output variables
-		$indent         = '  ';
-		$doublearrow    = ' => ';
-		$lineend        = ",\n";
-		$stringdelim	= '\'';
-		$newline		= "\n";
+        // Common output variables
+        $indent         = '  ';
+        $doublearrow    = ' => ';
+        $lineend        = ",\n";
+        $stringdelim    = '\'';
+        $newline        = "\n";
 
-		// Start the string
-		$out = "array (\n";
+        // Check the export isn't a simple string / int
+        if (is_string($array)) {
+            $out = $stringdelim . $array . $stringdelim;
+        }
+        elseif (is_int($array)) {
+            $out = (string)$array;
+        }
 
-		// Loop through each value in array
-		foreach ($array as $key => $value)
-		{
-			// If the key is a string, delimit it
-			if (is_string($key)) {
-				$key = $stringdelim . addslashes($key) . $stringdelim;
-			}
+        // Begin the array export
+        else
+        {
+            // Start the string
+            $out = "array (\n";
 
-			// If the value is a string, delimit it
-			if (is_string($value)) {
-				$value = $stringdelim . addslashes($value) . $stringdelim;
-			}
+            // Loop through each value in array
+            foreach ($array as $key => $value)
+            {
+                // If the key is a string, delimit it
+                if (is_string($key)) {
+                    $key = $stringdelim . addslashes($key) . $stringdelim;
+                }
 
-			// We have an array, so do some recursion
-			elseif (is_array($value))
-			{
-				// Do some basic recursion while increasing the indent
-				$recur_array = explode($newline, var_export($value, true));
-				$recur_newarr = array ();
-				foreach ($recur_array as $recur_line) {
-					$recur_newarr[] = $indent . $recur_line;
-				}
-				$recur_array = implode($newline, $recur_newarr);
-				$value = $newline . $recur_array;
-			}
+                // If the value is a string, delimit it
+                if (is_string($value)) {
+                    $value = $stringdelim . addslashes($value) . $stringdelim;
+                }
 
-			// Piece together the line
-			$out .= $indent . $key . $doublearrow . $value . $lineend;
-		}
+                // We have an array, so do some recursion
+                elseif (is_array($value))
+                {
+                    // Do some basic recursion while increasing the indent
+                    $recur_array = explode($newline, var_export($value, true));
+                    $recur_newarr = array ();
+                    foreach ($recur_array as $recur_line) {
+                        $recur_newarr[] = $indent . $recur_line;
+                    }
+                    $recur_array = implode($newline, $recur_newarr);
+                    $value = $newline . $recur_array;
+                }
 
-		// End our string
-		$out .= ")";
+                // Piece together the line
+                $out .= $indent . $key . $doublearrow . $value . $lineend;
+            }
 
-		// Decide method of output
-		if ($return === true) {
-			return $out;
-		} else {
-			echo $out;
-			return null;
-		}
+            // End our string
+            $out .= ")";
+        }
+
+
+        // Decide method of output
+        if ($return === true) {
+            return $out;
+        } else {
+            echo $out;
+            return null;
+        }
     }
 }
 ?>
