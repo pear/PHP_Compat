@@ -33,41 +33,46 @@
  */
 if (!function_exists('str_ireplace2'))
 {
-	function str_ireplace2 ($search, $replace, $subject, $count = null)
+	function str_ireplace2 ($search, $replace, $subject, &$count = 0)
 	{
+		// If search isn't an array, make it one
 		if (!is_array($search)) {
 			$search = array ($search);
 		}
-
+	
+		// If replace isn't an array, make it one, and pad it to the length of search
 		if (!is_array($replace))
 		{
-			if (!is_array($search)) {
-				$replace = array ($replace);
-			}
-			else
-			{
-				$c = count($search);
-				$rString = $replace;
-				unset($replace);
+			$replace_string = $replace;
 
-				for ($i = 0; $i < $c; $i++) {
-					$replace[$i] = $rString;
-				}
+			$replace = array ();
+			for ($i = 0, $c = count($search); $i < $c; $i++)
+			{
+				$replace[$i] = $replace_string;
 			}
 		}
 
-		foreach ($search as $find_key => $find_item)
+		// Loop through each search
+		foreach ($search as $find_key => $find_value)
 		{
-			$between = explode(strtolower($find_item), strtolower($subject));
+			// Split the array into segments, in between each part is our search
+			$segments = explode(strtolower($find_value), strtolower($subject));
+
+			// The number of replacements done is the number of segments minus the first
+			$count += count($segments) - 1;
 			$pos = 0;
 
-			foreach ($between as $between_key => $between_item)
+			// Loop through each segment
+			foreach ($segments as $segment_key => $segment_value)
 			{
-				$between[$between_key] = substr($subject, $pos, strlen($between_item));
-				$pos += strlen($between_item) + strlen($find_item);
+				// Replace the lowercase segments with the upper case versions
+				$segments[$segment_key] = substr($subject, $pos, strlen($segment_value));
+				// Increase the position relative to the initial string
+				$pos += strlen($segment_value) + strlen($find_value);
 			}
-
-			$subject = implode($replace[$find_key], $between);
+	
+			// Put our original string back together
+			$subject = implode($replace[$find_key], $segments);
 		}
 
 		return $subject;
