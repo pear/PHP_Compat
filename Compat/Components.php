@@ -77,6 +77,7 @@ $components['function']['vprintf']                    = '4.1.0';
 $components['function']['vsprintf']                   = '4.1.0';
 
 // Constants
+$components['constant']['DIRECTORY_SEPARATOR']        = '4.0.6';
 $components['constant']['E_STRICT']                   = '5.0.0';
 $components['constant']['FILE']                       = '4.3.0';
 $components['constant']['PATH_SEPARATOR']             = '4.2.0';
