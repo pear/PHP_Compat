@@ -30,10 +30,11 @@
  * @version     1.0
  * @added       PHP5
  * @requires    PHP3
+ * @todo        add $count as 4th param, can't set an optional referenced variable in php4 :(
  */
 if (!function_exists('str_ireplace'))
 {
-    function str_ireplace ($search, $replace, $subject, &$count = 0)
+    function str_ireplace ($search, $replace, $subject)
     {
         if (is_string($search) && is_array($replace)) {
             trigger_error('Array to string conversion', E_USER_NOTICE);
@@ -76,6 +77,7 @@ if (!function_exists('str_ireplace'))
         }
 
         // Loop through each subject
+		$count = 0;
         foreach ($subject as $subject_key => $subject_value)
         {
             // Loop through each search
