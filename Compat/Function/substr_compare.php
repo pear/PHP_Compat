@@ -58,11 +58,12 @@ if (!function_exists('substr_compare'))
         }
 
         $main_str = substr($main_str, $offset, $length);
+        $str = substr($str, 0, strlen($main_str));
 
-        if ($case_insensitive) {
-            return strcasecmp($main_str, $str);
-        } else {
+        if ($case_insensitive === false) {
             return strcmp($main_str, $str);
+        } else {
+            return strcasecmp($main_str, $str);
         }
     }
 }
