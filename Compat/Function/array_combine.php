@@ -26,18 +26,25 @@
  * 
  * http://php.net/function.array_combine
  *
- * @author        Ross Smith <pearspam@netebb.com>
  * @author        Aidan Lister <aidan@virtualexplorer.com.au>
  * @version       1.0
  */
 if (!function_exists('array_combine'))
 {
-    function array_combine($keys, $values)
+    function array_combine(&$keys, &$values)
     {
-        if (count($keys) !== count($values) ||
-            count($keys) === 0 ||
-            count($values) === 0) {
+		if (!is_array($keys)) {
+			trigger_error('array_combine() expects parameter 1 to be array, string given', E_USER_WARNING);
+			return null;
+		}
 
+        if (count($keys) !== count($values)) {
+            trigger_error('array_combine() Both parameters should have equal number of elements', E_USER_WARNING);
+            return false;
+        }
+
+        if (count($keys) === 0 || count($values) === 0) {
+            trigger_error('array_combine() Both parameters should have number of elements at least 0', E_USER_WARNING);
             return false;
         }
 
