@@ -70,9 +70,9 @@ $components['function']['str_word_count']             = '4.3.0';
 $components['function']['stripos']                    = '5.0.0';
 $components['function']['strpbrk']                    = '5.0.0';
 $components['function']['strripos']                   = '5.0.0';
-$components['function']['substr_componentsare']       = '5.0.0';
+$components['function']['substr_compare']             = '5.0.0';
 $components['function']['var_export']                 = '4.2.0';
-$components['function']['version_componentsare']      = '4.1.0';
+$components['function']['version_compare']            = '4.1.0';
 $components['function']['vprintf']                    = '4.1.0';
 $components['function']['vsprintf']                   = '4.1.0';
 
