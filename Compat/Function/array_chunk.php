@@ -35,17 +35,26 @@ if (!function_exists('array_chunk'))
 {
     function array_chunk ($input, $size, $preserve_keys = false)
     {
-        reset($input);
-        $i = $j = 0;
+        if (!is_array($input)) {
+            trigger_error('array_chunk() expects parameter 1 to be array, ' . gettype($input) . ' given', E_USER_WARNING);
+            return null;
+        }
+		
+        if (!is_int($size)) {
+            trigger_error('array_chunk() expects parameter 2 to be long, ' . gettype($size) . ' given', E_USER_WARNING);
+            return null;
+        }
+		
+		$i = $j = 0;
 
-        while(list($key, $value) = each($input))
+        foreach ($input as $key => $value)
         {
             if (!isset($chunks[$i])) {
                 $chunks[$i] = array ();
             }
 
             if (count($chunks[$i]) < $size) {
-                if($preserve_keys === true) {
+                if($preserve_keys !== false) {
                     $chunks[$i][$key] = $value;
                     $j++;
                 } else {
@@ -53,7 +62,7 @@ if (!function_exists('array_chunk'))
                 }
             } else {
                 $i++;
-                if($preserve_keys === true) {
+                if($preserve_keys !== false) {
                     $chunks[$i][$key] = $value;
                     $j++;
                 } else {
