@@ -35,9 +35,9 @@ if (!function_exists('vprintf'))
 {
     function vprintf ()
     {
-		array_unshift($args, $string);
-		call_user_func_array('printf', $args);
-		return null;
+        array_unshift($args, $string);
+        call_user_func_array('printf', $args);
+        return null;
     }
 }
 ?>

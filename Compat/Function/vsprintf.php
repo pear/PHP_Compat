@@ -35,8 +35,8 @@ if (!function_exists('vsprintf'))
 {
     function vsprintf ($string, $args)
     {
-		array_unshift($args, $string);
-		return call_user_func_array('sprintf', $args);
+        array_unshift($args, $string);
+        return call_user_func_array('sprintf', $args);
     }
 }
 ?>
