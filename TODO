@@ -4,7 +4,6 @@ Functions
 * array_uintersect_uassoc
 * array_uintersect
 * array_udiff_uassoc
-* php_strip_whitespace
 
 Tests
 ---------
