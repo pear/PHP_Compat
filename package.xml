@@ -154,7 +154,6 @@ Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND</notes>
 					<file>str-ireplace_04_search-arr-replace-str.phpt</file>
 					<file>str-ireplace_05_search-str-replace-arr.phpt</file>
 					<file>str-ireplace_06_allarray.phpt</file>
-					<file>str-ireplace_07_count.phpt</file>
 					<file>E_STRICT.phpt</file>
 					<file>FILE.phpt</file>
 					<file>PATH_SEPARATOR.phpt</file>
