@@ -33,11 +33,13 @@ if (!function_exists('is_a'))
 {
     function is_a($object, $class)
     {
-        if (get_class($object) == strtolower($class)) {
-            return true;
+        if (!is_object($object)) {
+            return false;
         }
 
-        else {
+        if (get_class($object) == strtolower($class)) {
+            return true;
+        } else {
             return is_subclass_of($object, $class);
         }
     }
