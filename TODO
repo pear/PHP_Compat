@@ -1,17 +1,14 @@
 Functions
 ---------
-* array_walk_recursive
 * array_uintersect_assoc
 * array_uintersect_uassoc
 * array_uintersect
 * array_udiff_uassoc
 * php_strip_whitespace
 * php_check_syntax
-* str_shuffle - remove use of shuffle
 
 Tests
 ---------
-* array_walk_recursive
 * array_uintersect_assoc
 * array_uintersect_uassoc
 * array_uintersect

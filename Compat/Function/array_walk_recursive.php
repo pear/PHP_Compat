@@ -12,7 +12,8 @@
 // | obtain it through the world-wide-web, please send a note to          |
 // | license@php.net so we can mail you a copy immediately.               |
 // +----------------------------------------------------------------------+
-// | Authors: Aidan Lister <aidan@php.net>                                |
+// | Authors: Tom Buskens <ortega@php.net>                                |
+// |          Aidan Lister <aidan@php.net>                                |
 // +----------------------------------------------------------------------+
 //
 // $Id$
@@ -24,6 +25,7 @@
  * @category    PHP
  * @package     PHP_Compat
  * @link        http://php.net/function.array_walk_recursive
+ * @author      Tom Buskens <ortega@php.net>
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 5
@@ -31,9 +33,34 @@
  */
 if (!function_exists('array_walk_recursive'))
 {
-    function array_walk_recursive()
+    function array_walk_recursive(&$input, $funcname)
     {
-        return;
+        if (!is_callable($funcname)) {
+            if (is_array($funcname)) {
+                $funcname = $funcname[0] . '::' . $funcname[1];
+            }
+            trigger_error('array_walk_recursive() Not a valid callback ' . $user_func, E_USER_WARNING);
+            return;
+        }
+
+        if (!is_array($input)) {
+            trigger_error('array_walk_recursive() The argument should be an array', E_USER_WARNING);
+            return;
+        }
+
+        $args = func_get_args();
+
+        foreach ($input as $key => $item) {
+            if (is_array($item)) {
+                array_walk_recursive($item, $funcname, $args);
+                $input[$key] = $item;
+            } else {
+                $args[0] = &$item;
+                $args[1] = &$key;
+                call_user_func_array($user_func, $args);
+                $input[$key] = $item;
+            }
+        }
     }
 }
 
