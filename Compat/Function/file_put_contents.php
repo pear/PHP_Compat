@@ -35,7 +35,7 @@ if (!defined('FILE_APPEND')) {
  * @link        http://php.net/function.file_put_contents
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
- * @internal    $resource_context is not supported
+ * @internal    resource_context is not supported
  * @since       PHP 5
  * @require     PHP 4.0.1 (trigger_error)
  */
@@ -49,7 +49,7 @@ if (!function_exists('file_put_contents'))
         }
 
         // If we don't have a string, throw an error
-        if (!is_string($content)) {
+        if (!is_scalar($content)) {
             trigger_error('file_put_contents() The 2nd parameter should be either a string or an array', E_USER_WARNING);
             return false;
         }
