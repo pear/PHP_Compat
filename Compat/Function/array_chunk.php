@@ -69,9 +69,10 @@ if (!function_exists('array_chunk'))
 		// The input is larger than the chunksize
 		else
 		{
+			$j = $i = 0;
+
 			if ($preserve_keys !== false)
 			{
-				$j = $i = 0;
 				foreach ($input as $key => $value)
 				{
 					$chunks[$j][$key] = $value;
@@ -82,7 +83,6 @@ if (!function_exists('array_chunk'))
 			}
 			else
 			{
-				$j = $i = 0;
 				foreach ($input as $key => $value)
 				{
 					$chunks[$j][] = $value;
