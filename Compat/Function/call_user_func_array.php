@@ -31,9 +31,9 @@
  * @since       PHP 4.0.4
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('call_user_func_array2'))
+if (!function_exists('call_user_func_array'))
 {
-    function call_user_func_array2 ($function, $param_arr)
+    function call_user_func_array ($function, $param_arr)
     {
 		$param_arr = (array) $param_arr;
 	
