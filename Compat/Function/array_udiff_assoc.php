@@ -68,7 +68,7 @@ if (!function_exists('array_udiff_assoc'))
             // Check all arrays
             for ($i = 1; $i < $count; $i++)
             {
-                if (!isset($args[$i][$key])) {
+                if (!array_key_exists($key, $args[$i])) {
                     continue;
                 }
                 $result = call_user_func($compare_func, $value, $args[$i][$key]);

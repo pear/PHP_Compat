@@ -43,7 +43,7 @@ if (!function_exists('array_udiff_uassoc'))
         $compare_func = array_pop($args);
         if (!is_callable($compare_func)) {
             if (is_array($compare_func)) {
-                $compare_func = $compare_func[0].'::'.$compare_func[1];
+                $compare_func = $compare_func[0] . '::' . $compare_func[1];
             }
             trigger_error('array_udiff_uassoc() Not a valid callback ' . $compare_func, E_USER_WARNING);
             return;
@@ -63,7 +63,7 @@ if (!function_exists('array_udiff_uassoc'))
         foreach ($args[0] as $key => $value) {
             // Check all arrays
             for ($i = 1; $i < $count; $i++) {
-                if (!isset($args[$i][$key])) {
+                if (!array_key_exists($key, $args[$i])) {
                     continue;
                 }
                 $result = call_user_func($compare_func, $value, $args[$i][$key]);
