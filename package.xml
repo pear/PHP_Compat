@@ -106,18 +106,21 @@
 					</dir>
 				</dir>
 				<dir name="tests" role="test">
-					<file>basic_loadconstant.phpt</file>
-					<file>basic_loadfunction.phpt</file>
-					<file>func_array-combine_simple.phpt</file>
-					<file>func_array-udiff_simple.phpt</file>
-					<file>func_array-udiff-assoc_simple.phpt</file>
-					<file>func_http-build-query_complexarray.phpt</file>
-					<file>func_http-build-query_numindex.phpt</file>
-					<file>func_http-build-query_object.phpt</file>
-					<file>func_http-build-query_simple.phpt</file>
-					<file>func_str-split_chunksize.phpt</file>
-					<file>func_str-split_nondiv.phpt</file>
-					<file>func_str-split_simple.phpt</file>
+					<file>01_loadfunction_01_simple.phpt</file>
+					<file>01_loadfunction_02_array.phpt</file>
+					<file>02_loadconstant_01_simple.phpt</file>
+					<file>02_loadconstant_02_array.phpt</file>
+					<file>03_array-combine_01_simple.phpt</file>
+					<file>04_array-udiff_01_simple.phpt</file>
+					<file>05_array-udiff-assoc_01_simple.phpt</file>
+					<file>06_http-build-query_01_simple.phpt</file>
+					<file>06_http-build-query_02_complexarray.phpt</file>
+					<file>06_http-build-query_03_numindex.phpt</file>
+					<file>06_http-build-query_04_object.phpt</file>
+					<file>07_str-split_01_simple.phpt</file>
+					<file>07_str-split_02_chunksize.phpt</file>
+					<file>07_str-split_03_lessremainder.phpt</file>
+					<file>07_str-split_04_bigchunk.phpt</file>
 				</dir>
 			</dir>
 		</filelist>
