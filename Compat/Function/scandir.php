@@ -33,21 +33,35 @@
  */
 if (!function_exists('scandir'))
 {
-    function scandir($directory)
+    function scandir ($directory, $sorting_order = 0)
     {
-        if (!is_dir($directory)) {
+		if (!is_string($directory)) {
+            trigger_error('scandir() expects parameter 1 to be string, ' . gettype($directory) . ' given', E_USER_WARNING);
+            return null;
+        }
+
+		if (!is_int($sorting_order)) {
+            trigger_error('scandir() expects parameter 2 to be long, ' . gettype($sorting_order) . ' given', E_USER_WARNING);
+            return null;
+        }
+
+		if (!is_dir($directory) || (false === $fh = @opendir($directory))) {
+            trigger_error('scandir() failed to open dir: Invalid argument', E_USER_WARNING);
             return false;
         }
 
         $files = array ();
-
-        $fh = opendir($directory);
         while (false !== ($filename = readdir($fh))) {
             $files[] = $filename;
         }
 
         closedir($fh);
-        sort($files);
+
+		if ($sorting_order == 1) {
+			rsort($files);
+		} else {
+			sort($files);
+		}
 
         return $files;
     }
