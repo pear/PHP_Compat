@@ -27,7 +27,7 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 4.2.0
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('var_export')) {
     function var_export($array, $return = false)

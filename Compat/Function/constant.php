@@ -27,14 +27,14 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 4.0.4
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('constant')) {
     function constant($constant)
     {
         if (!defined($constant)) {
             $error = sprintf('constant() Couldn\'t find constant %s', $constant);
-            trigger_error($error, E_USER_WARNING);
+            user_error($error, E_USER_WARNING);
             return false;
         }
 

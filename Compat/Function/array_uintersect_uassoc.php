@@ -34,7 +34,8 @@ if (!function_exists('array_uintersect_uassoc')) {
     {
         $args = func_get_args();
         if (count($args) < 4) {
-            trigger_error('Wrong parameter count for array_uintersect_uassoc()', E_USER_WARNING);
+            user_error('Wrong parameter count for array_uintersect_uassoc()',
+                E_USER_WARNING);
             return;
         }
 
@@ -44,7 +45,8 @@ if (!function_exists('array_uintersect_uassoc')) {
             if (is_array($key_compare_func)) {
                 $key_compare_func = $key_compare_func[0] . '::' . $key_compare_func[1];
             }
-            trigger_error('array_uintersect_uassoc() Not a valid callback ' . $key_compare_func, E_USER_WARNING);
+            user_error('array_uintersect_uassoc() Not a valid callback ' .
+                $key_compare_func, E_USER_WARNING);
             return;
         }
 
@@ -54,7 +56,8 @@ if (!function_exists('array_uintersect_uassoc')) {
             if (is_array($data_compare_func)) {
                 $data_compare_func = $data_compare_func[0] . '::' . $data_compare_func[1];
             }
-            trigger_error('array_uintersect_uassoc() Not a valid callback ' . $data_compare_func, E_USER_WARNING);
+            user_error('array_uintersect_uassoc() Not a valid callback '
+            . $data_compare_func, E_USER_WARNING);
             return;
         }
 
@@ -62,7 +65,8 @@ if (!function_exists('array_uintersect_uassoc')) {
         $count = count($args);
         for ($i = 0; $i !== $count; $i++) {
             if (!is_array($args[$i])) {
-                trigger_error('array_uintersect_uassoc() Argument #' . ($i + 1) . ' is not an array', E_USER_WARNING);
+                user_error('array_uintersect_uassoc() Argument #' .
+                    ($i + 1) . ' is not an array', E_USER_WARNING);
                 return;
             }
         }

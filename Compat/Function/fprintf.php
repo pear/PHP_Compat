@@ -27,14 +27,14 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 5
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('fprintf')) {
    function fprintf() {
         $args = func_get_args();
 
         if (count($args) < 2) {
-            trigger_error ('Wrong parameter count for fprintf()', E_USER_WARNING);
+            user_error('Wrong parameter count for fprintf()', E_USER_WARNING);
             return;
         }
 
@@ -42,7 +42,8 @@ if (!function_exists('fprintf')) {
         $format = array_shift($args);
 
         if (!is_resource($resource_handle)) {
-            trigger_error ('fprintf(): supplied argument is not a valid stream resource', E_USER_WARNING);
+            user_error('fprintf() supplied argument is not a valid stream resource',
+                E_USER_WARNING);
             return false;
         }
 

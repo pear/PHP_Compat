@@ -27,13 +27,14 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 4.1.0
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('array_key_exists')) {
     function array_key_exists($key, $search)
     {
         if (!is_scalar($key)) {
-            trigger_error('array_key_exists() The first argument should be either a string or an integer', E_USER_WARNING);
+            user_error('array_key_exists() The first argument should be either a string or an integer',
+                E_USER_WARNING);
             return false;
         }
 
@@ -42,7 +43,8 @@ if (!function_exists('array_key_exists')) {
         }
 
         if (!is_array($search)) {
-            trigger_error('array_key_exists() The second argument should be either an array or an object', E_USER_WARNING);
+            user_error('array_key_exists() The second argument should be either an array or an object',
+                E_USER_WARNING);
             return false;
         }
 

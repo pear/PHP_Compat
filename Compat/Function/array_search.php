@@ -28,13 +28,13 @@
  * @author      Thiemo Mättig (http://maettig.com/)
  * @version     $Revision$
  * @since       PHP 4.0.5
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('array_search')) {
     function array_search($needle, $haystack, $strict = false)
     {
         if (!is_array($haystack)) {
-            trigger_error("array_search() Wrong datatype for second argument", E_USER_WARNING);
+            user_error('array_search() Wrong datatype for second argument', E_USER_WARNING);
             return false;
         }
 

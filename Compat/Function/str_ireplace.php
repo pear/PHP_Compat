@@ -27,7 +27,7 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 5
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  * @note        count not by returned by reference, to enable
  *              change '$count = null' to '&$count'
  */
@@ -36,7 +36,7 @@ if (!function_exists('str_ireplace')) {
     {
         // Sanity check
         if (is_string($search) && is_array($replace)) {
-            trigger_error('Array to string conversion', E_USER_NOTICE);
+            user_error('Array to string conversion', E_USER_NOTICE);
             $replace = (string) $replace;
         }
 

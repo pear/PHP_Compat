@@ -34,7 +34,7 @@ if (!function_exists('array_diff_uassoc')) {
         // Sanity check
         $args = func_get_args();
         if (count($args) < 3) {
-            trigger_error('Wrong parameter count for array_diff_uassoc()', E_USER_WARNING);
+            user_error('Wrong parameter count for array_diff_uassoc()', E_USER_WARNING);
             return;
         }
 
@@ -44,7 +44,8 @@ if (!function_exists('array_diff_uassoc')) {
             if (is_array($compare_func)) {
                 $compare_func = $compare_func[0] . '::' . $compare_func[1];
             }
-            trigger_error('array_diff_uassoc() Not a valid callback ' . $compare_func, E_USER_WARNING);
+            user_error('array_diff_uassoc() Not a valid callback ' .
+                $compare_func, E_USER_WARNING);
             return;
         }
 
@@ -52,7 +53,8 @@ if (!function_exists('array_diff_uassoc')) {
         $array_count = count($args);
         for ($i = 0; $i !== $array_count; $i++) {
             if (!is_array($args[$i])) {
-                trigger_error('array_diff_uassoc() Argument #' . ($i + 1) . ' is not an array', E_USER_WARNING);
+                user_error('array_diff_uassoc() Argument #' .
+                    ($i + 1) . ' is not an array', E_USER_WARNING);
                 return;
             }
         }

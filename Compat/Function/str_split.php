@@ -27,19 +27,20 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 5
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('str_split')) {
     function str_split($string, $split_length = 1)
     {
         if (!is_scalar($split_length)) {
-            trigger_error('str_split() expects parameter 2 to be long, ' . gettype($split_length) . ' given', E_USER_WARNING);
+            user_error('str_split() expects parameter 2 to be long, ' .
+                gettype($split_length) . ' given', E_USER_WARNING);
             return false;
         }
 
         $split_length = (int) $split_length;
         if ($split_length < 1) {
-            trigger_error('str_split() The length of each segment must be greater than zero', E_USER_WARNING);
+            user_error('str_split() The length of each segment must be greater than zero', E_USER_WARNING);
             return false;
         }
 

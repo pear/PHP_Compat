@@ -28,7 +28,7 @@
  * @author      Alan Morey <alan@caint.com>
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
- * @since       PHP 4.2.0
+ * @since       PHP 4.0.0
  */
 if (!function_exists('str_rot13')) {
     function str_rot13($str)

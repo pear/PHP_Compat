@@ -27,7 +27,7 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 4.0.4
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('call_user_func_array')) {
     function call_user_func_array($function, $param_arr)
@@ -39,8 +39,9 @@ if (!function_exists('call_user_func_array')) {
             if (is_array($function) && count($function) > 2) {
                 $function = $function[0] . '::' . $function[1];
             }
-            $error = sprintf('call_user_func_array() First argument is expected to be a valid callback, \'%s\' was given', $function);
-            trigger_error($error, E_USER_WARNING);
+            $error = sprintf('call_user_func_array() First argument is expected ' .
+                'to be a valid callback, \'%s\' was given', $function);
+            user_error($error, E_USER_WARNING);
             return;
         }
 

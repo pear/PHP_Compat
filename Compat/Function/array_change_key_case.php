@@ -38,13 +38,14 @@ if (!defined('CASE_UPPER')) {
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 4.2.0
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('array_change_key_case')) {
     function array_change_key_case($input, $case = CASE_LOWER)
     {
         if (!is_array($input)) {
-            trigger_error('array_change_key_case(): The argument should be an array', E_USER_WARNING);
+            user_error('array_change_key_case(): The argument should be an array',
+                E_USER_WARNING);
             return false;
         }
 

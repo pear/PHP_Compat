@@ -27,23 +27,25 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 5
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('stripos')) {
     function stripos($haystack, $needle, $offset = null)
     {
         if (!is_scalar($haystack)) {
-            trigger_error('stripos() expects parameter 1 to be string, ' . gettype($haystack) . ' given', E_USER_WARNING);
+            user_error('stripos() expects parameter 1 to be string, ' .
+                gettype($haystack) . ' given', E_USER_WARNING);
             return false;
         }
 
         if (!is_scalar($needle)) {
-            trigger_error('stripos() needle is not a string or an integer.', E_USER_WARNING);
+            user_error('stripos() needle is not a string or an integer.', E_USER_WARNING);
             return false;
         }
 
         if (!is_int($offset) && !is_bool($offset) && !is_null($offset)) {
-            trigger_error('stripos() expects parameter 3 to be long, ' . gettype($offset) . ' given', E_USER_WARNING);
+            user_error('stripos() expects parameter 3 to be long, ' .
+                gettype($offset) . ' given', E_USER_WARNING);
             return false;
         }
 

@@ -27,18 +27,20 @@
  * @author      Stephan Schmidt <schst@php.net>
  * @version     $Revision$
  * @since       PHP 5
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('strpbrk')) {
     function strpbrk($haystack, $char_list)
     {
         if (!is_scalar($haystack)) {
-            trigger_error('strpbrk() expects parameter 1 to be string, ' . gettype($haystack) . ' given', E_USER_WARNING);
+            user_error('strpbrk() expects parameter 1 to be string, ' .
+                gettype($haystack) . ' given', E_USER_WARNING);
             return false;
         }
 
         if (!is_scalar($char_list)) {
-            trigger_error('strpbrk() expects parameter 2 to be scalar, ' . gettype($needle) . ' given', E_USER_WARNING);
+            user_error('strpbrk() expects parameter 2 to be scalar, ' .
+                gettype($needle) . ' given', E_USER_WARNING);
             return false;
         }
 

@@ -43,13 +43,14 @@ if (!defined('ENT_QUOTES')) {
  * @version     $Revision$
  * @since       PHP 4.3.0
  * @internal    Setting the charset will not do anything
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('html_entity_decode')) {
     function html_entity_decode($string, $quote_style = ENT_COMPAT, $charset = null)
     {
         if (!is_int($quote_style)) {
-            trigger_error('html_entity_decode() expects parameter 2 to be long, ' . gettype($quote_style) . ' given', E_USER_WARNING);
+            user_error('html_entity_decode() expects parameter 2 to be long, ' .
+                gettype($quote_style) . ' given', E_USER_WARNING);
             return;
         }
 

@@ -29,14 +29,15 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 5
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('convert_uuencode')) {
     function convert_uuencode($string)
     {
         // Sanity check
         if (!is_scalar($string)) {
-            trigger_error('convert_uuencode() expects parameter 1 to be string, ' . gettype($string) . ' given', E_USER_WARNING);
+            user_error('convert_uuencode() expects parameter 1 to be string, ' .
+                gettype($string) . ' given', E_USER_WARNING);
             return false;
         }
 

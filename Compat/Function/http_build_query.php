@@ -29,7 +29,7 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 5
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('http_build_query')) {
     function http_build_query($formdata, $numeric_prefix = null)
@@ -41,7 +41,8 @@ if (!function_exists('http_build_query')) {
 
         // Check we have an array to work with
         if (!is_array($formdata)) {
-            trigger_error('http_build_query() Parameter 1 expected to be Array or Object. Incorrect value given.', E_USER_WARNING);
+            user_error('http_build_query() Parameter 1 expected to be Array or Object. Incorrect value given.',
+                E_USER_WARNING);
             return false;
         }
 

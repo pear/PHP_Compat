@@ -27,13 +27,14 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 4.3.0
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('str_word_count')) {
     function str_word_count($string, $format = null)
     {
         if ($format != 1 && $format != 2 && $format !== null) {
-            trigger_error("str_word_count() The specified format parameter, '$format' is invalid", E_USER_WARNING);
+            user_error('str_word_count() The specified format parameter, "' . $format . '" is invalid',
+                E_USER_WARNING);
             return false;
         }
 

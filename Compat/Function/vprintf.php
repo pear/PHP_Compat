@@ -33,7 +33,7 @@ if (!function_exists('vprintf')) {
     function vprintf ($format, $args)
     {
         if (count($args) < 2) {
-            trigger_error('vprintf() Too few arguments', E_USER_WARNING);
+            user_error('vprintf() Too few arguments', E_USER_WARNING);
             return;
         }
 

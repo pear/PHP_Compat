@@ -28,24 +28,27 @@
  * @author      Thiemo Mättig (http://maettig.com)
  * @version     $Revision$
  * @since       PHP 4.2.0
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('array_chunk')) {
     function array_chunk($input, $size, $preserve_keys = false)
     {
         if (!is_array($input)) {
-            trigger_error('array_chunk() expects parameter 1 to be array, ' . gettype($input) . ' given', E_USER_WARNING);
+            user_error('array_chunk() expects parameter 1 to be array, ' .
+                gettype($input) . ' given', E_USER_WARNING);
             return;
         }
 
         if (!is_numeric($size)) {
-            trigger_error('array_chunk() expects parameter 2 to be long, ' . gettype($size) . ' given', E_USER_WARNING);
+            user_error('array_chunk() expects parameter 2 to be long, ' .
+                gettype($size) . ' given', E_USER_WARNING);
             return;
         }
 
         $size = (int)$size;
         if ($size <= 0) {
-            trigger_error('array_chunk() Size parameter expected to be greater than 0', E_USER_WARNING);
+            user_error('array_chunk() Size parameter expected to be greater than 0',
+                E_USER_WARNING);
             return;
         }
 

@@ -27,23 +27,25 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 5
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('scandir')) {
     function scandir($directory, $sorting_order = 0)
     {
         if (!is_string($directory)) {
-            trigger_error('scandir() expects parameter 1 to be string, ' . gettype($directory) . ' given', E_USER_WARNING);
+            user_error('scandir() expects parameter 1 to be string, ' .
+                gettype($directory) . ' given', E_USER_WARNING);
             return;
         }
 
         if (!is_int($sorting_order) && !is_bool($sorting_order)) {
-            trigger_error('scandir() expects parameter 2 to be long, ' . gettype($sorting_order) . ' given', E_USER_WARNING);
+            user_error('scandir() expects parameter 2 to be long, ' .
+                gettype($sorting_order) . ' given', E_USER_WARNING);
             return;
         }
 
         if (!is_dir($directory) || (false === $fh = @opendir($directory))) {
-            trigger_error('scandir() failed to open dir: Invalid argument', E_USER_WARNING);
+            user_error('scandir() failed to open dir: Invalid argument', E_USER_WARNING);
             return false;
         }
 

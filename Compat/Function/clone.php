@@ -27,7 +27,7 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 5.0.0
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  */
 if (version_compare(phpversion(), '5.0') === -1) {
     eval('
@@ -35,7 +35,7 @@ if (version_compare(phpversion(), '5.0') === -1) {
         {
             // Sanity check
             if (!is_object($object)) {
-                trigger_error(\'clone() __clone method called on non-object\', E_USER_WARNING);
+                user_error(\'clone() __clone method called on non-object\', E_USER_WARNING);
                 return;
             }
 

@@ -27,7 +27,7 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 4.2.0
- * @require     PHP 4.0.0 (Type Casting)
+ * @require     PHP 4.0.0 (user_error) (Type Casting)
  */
 if (!function_exists('floatval')) {
     function floatval($var)

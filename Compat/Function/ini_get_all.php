@@ -27,14 +27,15 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 4.2.0
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('ini_get_all')) {
     function ini_get_all($extension = null)
     {
         // Sanity check
         if (!is_scalar($extension)) {
-            trigger_error('ini_get_all() expects parameter 1 to be string, ' . gettype($extension) . ' given', E_USER_WARNING);
+            user_error('ini_get_all() expects parameter 1 to be string, ' .
+                gettype($extension) . ' given', E_USER_WARNING);
             return false;
         }
         

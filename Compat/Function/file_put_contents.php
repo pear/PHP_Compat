@@ -37,7 +37,7 @@ if (!defined('FILE_APPEND')) {
  * @version     $Revision$
  * @internal    resource_context is not supported
  * @since       PHP 5
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('file_put_contents')) {
     function file_put_contents($filename, $content, $flags = null, $resource_context = null)
@@ -49,7 +49,8 @@ if (!function_exists('file_put_contents')) {
 
         // If we don't have a string, throw an error
         if (!is_scalar($content)) {
-            trigger_error('file_put_contents() The 2nd parameter should be either a string or an array', E_USER_WARNING);
+            user_error('file_put_contents() The 2nd parameter should be either a string or an array',
+                E_USER_WARNING);
             return false;
         }
 
@@ -68,7 +69,8 @@ if (!function_exists('file_put_contents')) {
 
         // Open the file for writing
         if (($fh = @fopen($filename, $mode, $use_inc_path)) === false) {
-            trigger_error('file_put_contents() failed to open stream: Permission denied', E_USER_WARNING);
+            user_error('file_put_contents() failed to open stream: Permission denied',
+                E_USER_WARNING);
             return false;
         }
 
@@ -78,7 +80,7 @@ if (!function_exists('file_put_contents')) {
             $errormsg = sprintf('file_put_contents() Failed to write %d bytes to %s',
                             $length,
                             $filename);
-            trigger_error($errormsg, E_USER_WARNING);
+            user_error($errormsg, E_USER_WARNING);
             return false;
         }
 
@@ -90,7 +92,7 @@ if (!function_exists('file_put_contents')) {
             $errormsg = sprintf('file_put_contents() Only %d of %d bytes written, possibly out of free disk space.',
                             $bytes,
                             $length);
-            trigger_error($errormsg, E_USER_WARNING);
+            user_error($errormsg, E_USER_WARNING);
             return false;
         }
 

@@ -29,23 +29,26 @@
  * @author      Stephan Schmidt <schst@php.net>
  * @version     $Revision$
  * @since       PHP 5
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('strripos')) {
     function strripos($haystack, $needle, $offset = null)
     {
         if (!is_scalar($haystack)) {
-            trigger_error('strripos() expects parameter 1 to be scalar, ' . gettype($haystack) . ' given', E_USER_WARNING);
+            user_error('strripos() expects parameter 1 to be scalar, ' .
+                gettype($haystack) . ' given', E_USER_WARNING);
             return false;
         }
 
         if (!is_scalar($needle)) {
-            trigger_error('strripos() expects parameter 2 to be scalar, ' . gettype($needle) . ' given', E_USER_WARNING);
+            user_error('strripos() expects parameter 2 to be scalar, ' .
+                gettype($needle) . ' given', E_USER_WARNING);
             return false;
         }
 
         if (!is_int($offset) && !is_bool($offset) && !is_null($offset)) {
-            trigger_error('strripos() expects parameter 3 to be long, ' . gettype($offset) . ' given', E_USER_WARNING);
+            user_error('strripos() expects parameter 3 to be long, ' .
+                gettype($offset) . ' given', E_USER_WARNING);
             return false;
         }
 

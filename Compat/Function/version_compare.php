@@ -29,24 +29,27 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 4.1.0
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('version_compare')) {
     function version_compare($version1, $version2, $operator = '<')
     {
         // Check input
         if (!is_scalar($version1)) {
-            trigger_error('version_compare() expects parameter 1 to be string, ' . gettype($version1) . ' given', E_USER_WARNING);
+            user_error('version_compare() expects parameter 1 to be string, ' .
+                gettype($version1) . ' given', E_USER_WARNING);
             return;
         }
 
         if (!is_scalar($version2)) {
-            trigger_error('version_compare() expects parameter 2 to be string, ' . gettype($version2) . ' given', E_USER_WARNING);
+            user_error('version_compare() expects parameter 2 to be string, ' .
+                gettype($version2) . ' given', E_USER_WARNING);
             return;
         }
 
         if (!is_scalar($operator)) {
-            trigger_error('version_compare() expects parameter 3 to be string, ' . gettype($operator) . ' given', E_USER_WARNING);
+            user_error('version_compare() expects parameter 3 to be string, ' .
+                gettype($operator) . ' given', E_USER_WARNING);
             return;
         }
 

@@ -27,14 +27,14 @@
  * @author      Tom Buskens <ortega@php.net>
  * @version     $Revision$
  * @since       PHP 5.0.2
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('array_diff_key')) {
     function array_diff_key()
     {
         $args = func_get_args();
         if (count($args) < 2) {
-            trigger_error('Wrong parameter count for array_diff_key()', E_USER_WARNING);
+            user_error('Wrong parameter count for array_diff_key()', E_USER_WARNING);
             return;
         }
 
@@ -42,7 +42,8 @@ if (!function_exists('array_diff_key')) {
         $array_count = count($args);
         for ($i = 0; $i !== $array_count; $i++) {
             if (!is_array($args[$i])) {
-                trigger_error('array_diff_key() Argument #' . ($i + 1) . ' is not an array', E_USER_WARNING);
+                user_error('array_diff_key() Argument #' .
+                    ($i + 1) . ' is not an array', E_USER_WARNING);
                 return;
             }
         }

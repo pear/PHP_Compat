@@ -29,30 +29,34 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 5
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('substr_compare')) {
     function substr_compare($main_str, $str, $offset, $length = null, $case_insensitive = false)
     {
         if (!is_string($main_str)) {
-            trigger_error('substr_compare() expects parameter 1 to be string, ' . gettype($main_str) . ' given', E_USER_WARNING);
+            user_error('substr_compare() expects parameter 1 to be string, ' .
+                gettype($main_str) . ' given', E_USER_WARNING);
             return;
         }
 
         if (!is_string($str)) {
-            trigger_error('substr_compare() expects parameter 2 to be string, ' . gettype($str) . ' given', E_USER_WARNING);
+            user_error('substr_compare() expects parameter 2 to be string, ' .
+                gettype($str) . ' given', E_USER_WARNING);
             return;
         }
         
         if (!is_int($offset)) {
-            trigger_error('substr_compare() expects parameter 3 to be long, ' . gettype($offset) . ' given', E_USER_WARNING);
+            user_error('substr_compare() expects parameter 3 to be long, ' .
+                gettype($offset) . ' given', E_USER_WARNING);
             return;
         }
         
         if (is_null($length)) {
             $length = strlen($main_str) - $offset;
         } elseif ($offset >= strlen($main_str)) {
-            trigger_error('substr_compare() The start position cannot exceed initial string length', E_USER_WARNING);
+            user_error('substr_compare() The start position cannot exceed initial string length',
+                E_USER_WARNING);
             return false;
         }
 

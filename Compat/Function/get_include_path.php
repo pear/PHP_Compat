@@ -27,6 +27,7 @@
  * @author      Stephan Schmidt <schst@php.net>
  * @version     $Revision$
  * @since       PHP 4.3.0
+ * @require     PHP 4.0.0
  */
 if (!function_exists('get_include_path')) {
     function get_include_path()

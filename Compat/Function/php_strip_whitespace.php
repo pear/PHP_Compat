@@ -27,14 +27,15 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 5
- * @require     PHP 4.0.1 (trigger_error), Tokenizer extension
+ * @require     PHP 4.0.0 (user_error) + Tokenizer extension
  */
 if (!function_exists('php_strip_whitespace')) {
     function php_strip_whitespace($file)
     {
         // Sanity check
         if (!is_scalar($file)) {
-            trigger_error('php_strip_whitespace() expects parameter 1 to be string, ' . gettype($file) . ' given', E_USER_WARNING);
+            user_error('php_strip_whitespace() expects parameter 1 to be string, ' .
+                gettype($file) . ' given', E_USER_WARNING);
             return;
         }
 

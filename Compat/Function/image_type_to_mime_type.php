@@ -92,7 +92,7 @@ if (!defined('IMAGETYPE_XBM')) {
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 4.3.0
- * @require     PHP 3
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('image_type_to_mime_type')) {
     function image_type_to_mime_type($imagetype)

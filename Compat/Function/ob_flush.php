@@ -28,7 +28,7 @@
  * @author      Thiemo Mättig (http://maettig.com/)
  * @version     $Revision$
  * @since       PHP 4.2.0
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('ob_flush')) {
     function ob_flush()
@@ -37,7 +37,7 @@ if (!function_exists('ob_flush')) {
             return ob_start();
         }
 
-        trigger_error("ob_flush() Failed to flush buffer. No buffer to flush.", E_USER_NOTICE);
+        user_error("ob_flush() Failed to flush buffer. No buffer to flush.", E_USER_NOTICE);
 
         return false;
     }

@@ -27,7 +27,7 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 4.3.0
- * @require     PHP 4.0.1 (trigger_error)
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('array_diff_assoc')) {
     function array_diff_assoc()
@@ -36,14 +36,15 @@ if (!function_exists('array_diff_assoc')) {
         $args = func_get_args();
         $count = count($args);
         if (count($args) < 2) {
-            trigger_error('Wrong parameter count for array_diff_assoc()', E_USER_WARNING);
+            user_error('Wrong parameter count for array_diff_assoc()', E_USER_WARNING);
             return;
         }
 
         // Check arrays
         for ($i = 0; $i < $count; $i++) {
             if (!is_array($args[$i])) {
-                trigger_error('array_diff_assoc() Argument #' . ($i + 1) . ' is not an array', E_USER_WARNING);
+                user_error('array_diff_assoc() Argument #' .
+                    ($i + 1) . ' is not an array', E_USER_WARNING);
                 return;
             }
         }
