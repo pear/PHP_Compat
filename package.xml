@@ -120,7 +120,8 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
 		<license>PHP License</license>
 		<state>stable</state>
 		<notes>Added more components:
-* str_word_count</notes>
+* str_word_count
+* str_rot13</notes>
 		<filelist>
 			<dir name="/" baseinstalldir="PHP" role="php">	 
 				<file>Compat.php</file>
@@ -157,6 +158,7 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
 						<file>str_ireplace.php</file>
 						<file>str_split.php</file>
 						<file>str_word_count.php</file>
+						<file>str_rot13.php</file>
 						<file>stripos.php</file>
 						<file>strripos.php</file>
 						<file>var_export.php</file>
@@ -194,6 +196,7 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
 						<file>str_ireplace.phpt</file>
 						<file>str_split.phpt</file>
 						<file>str_word_count.phpt</file>
+						<file>str_rot13.phpt</file>
 						<file>stripos.phpt</file>
 						<file>strripos.phpt</file>
 						<file>var_export.phpt</file>
