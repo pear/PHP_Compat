@@ -9,7 +9,8 @@ $search = '{object}';
 $replace = array('cat', 'dog', 'tiger');
 $subject = 'The dog jumped over the {object}';
 
-echo @sstr_ireplace($search, $replace, $subject);
+// Supress the error, no way of knowing how it'll turn out on the users machine
+echo @str_ireplace($search, $replace, $subject);
 ?>
 --EXPECT--
 The dog jumped over the Array
