@@ -28,7 +28,18 @@
         <date>2004-05-19</date>
         <license>PHP License</license>
         <state>beta</state>
-        <notes>This package is in beta while any bugs are ironed out.</notes>
+        <notes>
+<![CDATA[
+This package is in beta while any bugs are ironed out.
+Includes:
+* E_STRICT
+* array_combine
+* file_get_contents
+* file_put_contents
+* is_a
+* scandir
+]]>
+     </notes>
     </release>
 
     <release>
