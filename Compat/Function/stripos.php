@@ -61,9 +61,14 @@ if (!function_exists('stripos'))
             }
         }
 
-        $segments = explode (strtolower($needle), strtolower($haystack), 2);
-        $position = strlen($segments[0]) + $fix;
+        $segments = explode(strtolower($needle), strtolower($haystack), 2);
+        
+        // Check there was a match
+        if (count($segments) == 1) {
+            return false;
+        }
 
+        $position = strlen($segments[0]) + $fix;
         return $position;
     }
 }
