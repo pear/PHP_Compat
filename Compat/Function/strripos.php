@@ -32,11 +32,11 @@
  * @version     1.0
  * @added       PHP 5
  * @requires    PHP 3
- * @todo        Support offset
+ * @todo		Ensure it searches for the entire needle, not just the first char
  */
-if (!function_exists('strripos'))
+if (!function_exists('strripos2'))
 {
-    function strripos ($haystack, $needle, $offset = null)
+    function strripos2 ($haystack, $needle, $offset = null)
     {
         if (!is_scalar($haystack)) {
             trigger_error('strripos() expects parameter 1 to be scalar, ' . gettype($haystack) . ' given', E_USER_WARNING);
@@ -53,7 +53,25 @@ if (!function_exists('strripos'))
             return false;
         }
 
-        return strrpos(strtolower($haystack), strtolower($needle));
+		// Manipulate the string if there is an offset
+		$fix = 0;
+		if (!is_null($offset)) {
+			if ($offset > 0) {
+				$haystack = substr($haystack, $offset, strlen($haystack) - $offset);
+				$fix = $offset;
+			}
+			else {
+				if (abs($offset) > strlen($haystack)) {
+					return false;
+				}
+
+				$haystack = substr($haystack, 0, strlen($haystack) + $offset);
+				echo $haystack;
+			}
+		}
+
+		$pos = strrpos(strtolower($haystack), strtolower($needle));
+		return ($pos === false) ? false : $pos + $fix;
     }
 }
 ?>
