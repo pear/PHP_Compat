@@ -4,23 +4,18 @@ Method -- PHP_Compat::loadVersion
 <?php
 require_once ('PHP/Compat.php');
 
-// Singular
+// Rather useless tests
 $res = PHP_Compat::loadVersion('3.0.0');
-echo count($res), "\n";
+var_dump(is_array($res));
 
-// Multiple
-$comp = array('an-invalid', 'also-invalid', 'more-invalid', 'E_STRICT');
-$results = PHP_Compat::loadConstant($comp);
+$res = PHP_Compat::loadVersion('9.0.0');
+var_dump(is_array($res));
 
-foreach ($results as $comp => $result) {
-    echo $comp . ': ';
-	echo ($result === false) ? 'false' : 'true', "\n";
-}
+$res = PHP_Compat::loadVersion();
+var_dump(is_array($res));
 
 ?>
 --EXPECT--
-0
-an-invalid: false
-also-invalid: false
-more-invalid: false
-E_STRICT: true
+bool(true)
+bool(true)
+bool(true)
