@@ -28,7 +28,7 @@
  * @link        http://php.net/function.file_get_contents
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
- * @internal    $resource_context is not supported
+ * @internal    resource_context is not supported
  * @since       PHP 5
  * @require     PHP 4.0.1 (trigger_error)
  */
@@ -36,7 +36,7 @@ if (!function_exists('file_get_contents'))
 {
     function file_get_contents ($filename, $incpath = false, $resource_context = null)
     {
-        if ($fh = @fopen($filename, 'rb', $incpath) === false) {
+        if (false === $fh = fopen($filename, 'rb', $incpath)) {
             trigger_error('file_get_contents() failed to open stream: No such file or directory', E_USER_WARNING);
             return false;
         }
