@@ -45,32 +45,53 @@ if (!function_exists('array_chunk'))
             return null;
         }
 		
-		$i = $j = 0;
+		$chunks = array ();
 
-        foreach ($input as $key => $value)
-        {
-            if (!isset($chunks[$i])) {
-                $chunks[$i] = array ();
-            }
-
-            if (count($chunks[$i]) < $size) {
-                if($preserve_keys !== false) {
-                    $chunks[$i][$key] = $value;
-                    $j++;
-                } else {
-                    $chunks[$i][] = $value;
-                }
-            } else {
-                $i++;
-                if($preserve_keys !== false) {
-                    $chunks[$i][$key] = $value;
-                    $j++;
-                } else {
-                    $j = 0;
-                    $chunks[$i][$j] = $value;
-                }
-            }
-        }
+		// The input is smaller than the chunksize
+		if (count($input) <= $size)
+		{
+			if ($preserve_keys !== false)
+			{
+				foreach ($input as $key => $value)
+				{
+					$chunks[0][$key] = $value;
+				}
+			}
+			else
+			{
+				foreach ($input as $value)
+				{
+					$chunks[0][] = $value;
+				}
+			}
+		}
+	
+		// The input is larger than the chunksize
+		else
+		{
+			if ($preserve_keys !== false)
+			{
+				$j = $i = 0;
+				foreach ($input as $key => $value)
+				{
+					$chunks[$j][$key] = $value;
+					if (++$i == $size) {
+						$j++;
+					}
+				}
+			}
+			else
+			{
+				$j = $i = 0;
+				foreach ($input as $key => $value)
+				{
+					$chunks[$j][] = $value;
+					if (++$i == $size) {
+						$j++;
+					}
+				}
+			}
+		}
 
         return $chunks;
     }
