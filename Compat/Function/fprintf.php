@@ -30,16 +30,20 @@
  * @version     1.0
  * @added       PHP 5
  * @requires    PHP 4.1.0
- * @todo        Add php replacement errors
- * @todo        Test
  */
 if (!function_exists('fprintf'))
 {
    function fprintf () {
-       $args = func_get_args();
-       $resource_handle = array_shift($args);
-       $format = array_shift($args);
-       return fwrite($fp, vsprintf($format, $args));
+        $args = func_get_args();
+
+        if (count($args) < 2) {
+            trigger_error ('Wrong parameter count for fprintf()', E_USER_WARNING);
+            return null;
+        }
+
+        $resource_handle = array_shift($args);
+        $format = array_shift($args);
+        return fwrite($resource_handle, vsprintf($format, $args));
    }
 }
 
