@@ -92,6 +92,8 @@
                         <file>STDIN.php</file>
                         <file>STDOUT.php</file>
                         <file>STDERR.php</file>
+						<file>FILE_USE_INCLUDE_PATH</file>
+						<file>FILE_APPEND</file>
                     </dir>
                     <dir name="Function">
                         <file>array_combine.php</file>
@@ -122,6 +124,8 @@
                     <file>07_str-split_03_lessremainder.phpt</file>
                     <file>07_str-split_04_bigchunk.phpt</file>
                     <file>08_file-put-contents_01_simple.phpt</file>
+                    <file>08_file-put-contents_02_array.phpt</file>
+                    <file>08_file-put-contents_03_append.phpt</file>
                     <file>09_file-get-contents_01_simple.phpt</file>
                     <file>10_is-a_01_simple.phpt</file>
                     <file>11_scandir_01_simple.phpt</file>
