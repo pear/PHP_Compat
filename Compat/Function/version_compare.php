@@ -32,7 +32,7 @@
  * @require     PHP 4.0.1 (trigger_error)
  */
 if (!function_exists('version_compare')) {
-    function version_compare ($version1, $version2, $operator = '<')
+    function version_compare($version1, $version2, $operator = '<')
     {
         // Check input
         if (!is_scalar($version1)) {
@@ -75,6 +75,7 @@ if (!function_exists('version_compare')) {
             'beta'  => 2,
             'b'     => 2,
             'RC'    => 3,
+            'p'     => 4,
             'pl'    => 4);
 
         // Loop through each segment in the version string
