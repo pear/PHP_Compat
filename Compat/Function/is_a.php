@@ -1,13 +1,13 @@
 <?php
 /**
-* Replace is_a()
-* PHP 5
-*
-* http://php.net/function.is_a
-*
-* @author        Aidan Lister <aidan@php.net>
-* @version       1.0
-*/
+ * Replace is_a()
+ * PHP 5
+ *
+ * http://php.net/function.is_a
+ *
+ * @author        Aidan Lister <aidan@php.net>
+ * @version       1.0
+ */
 if (!function_exists('is_a'))
 {
     function is_a ($object, $class)

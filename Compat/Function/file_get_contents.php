@@ -1,13 +1,13 @@
 <?php
 /**
-* Replace file_get_contents()
-* PHP 5
-*
-* http://php.net/function.file_get_contents
-*
-* @author        Aidan Lister <aidan@php.net>
-* @version       1.0
-*/
+ * Replace file_get_contents()
+ * PHP 5
+ *
+ * http://php.net/function.file_get_contents
+ *
+ * @author        Aidan Lister <aidan@php.net>
+ * @version       1.0
+ */
 if (!function_exists('file_get_contents'))
 {
     function file_get_contents ($filename, $incpath = false)

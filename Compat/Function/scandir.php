@@ -1,13 +1,13 @@
 <?php
 /**
-* Replace scandir()
-* PHP 5
-*
-* http://php.net/function.scandir
-*
-* @author        Aidan Lister <aidan@php.net>
-* @version       1.0
-*/
+ * Replace scandir()
+ * PHP 5
+ *
+ * http://php.net/function.scandir
+ *
+ * @author        Aidan Lister <aidan@php.net>
+ * @version       1.0
+ */
 if (!function_exists('scandir'))
 {
     function scandir($directory)
