@@ -30,23 +30,60 @@
  * @link        http://php.net/function.file_put_contents
  * @author      Aidan Lister <aidan@php.net>
  * @version     1.0
+ * @internal	$flags = FILE_USE_INCLUDE_PATH is not supported, nor is $resource_context
  */
-if (!function_exists('file_put_contents'))
+if (!function_exists('file_put_contents2'))
 {
-    function file_put_contents ($filename, $content)
-    {
+    function file_put_contents2 ($filename, $content, $flags = null, $resource_context = null)
+	{
+		// If $content is an array, convert it to a string
+        if (is_array($content)) {
+			$content = implode('', $content);
+		}
+
+		// If we don't have a string, throw an error
+		if (!is_string($content)) {
+            trigger_error('file_put_contents() The 2nd parameter should be either a string or an array', E_USER_WARNING);
+			return false;
+        }		
+		
+		// Get the length of date to write
+		$length = strlen($content);
+
+		// Check what mode we are using
+		$mode = ($flags & FILE_APPEND) ?
+					$mode = 'a' :
+					$mode = 'w';
+
+		// Open the file for writing
+        if (($fh = @fopen($filename, $mode)) === false) {
+            trigger_error('file_put_contents() failed to open stream: Permission denied', E_USER_WARNING);
+			return false;
+        }
+
+		// Write to the file
         $bytes = 0;
-
-        if (($file = fopen($filename, 'w+')) === false) {
+        if (($bytes = @fwrite($fh, $content)) === false) {
+			$errormsg = sprintf('file_put_contents() Failed to write %d bytes to %s',
+							$length,
+							$filename);
+			trigger_error($errormsg, E_USER_WARNING);
             return false;
         }
 
-        if (($bytes = fwrite($file, $content)) === false) {
-            return false;
-        }
+		// Close the handle
+        @fclose($fh);
 
-        fclose($file);
+		// Check all the data was written
+		if ($bytes != $length) {
+			$errormsg = sprintf('file_put_contents() Only %d of %d bytes written, possibly out of free disk space.',
+							$bytes,
+							$length);
+			trigger_error($errormsg, E_USER_WARNING);
+			return false;
+		}
 
+		// Return length
         return $bytes;
     }
 }
