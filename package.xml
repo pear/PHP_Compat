@@ -30,6 +30,12 @@
 			<email>aidan@php.net</email>
 			<role>lead</role>
 		</maintainer>
+		<maintainer>
+			<user>schst</user>
+			<name>Stephan Schmidt</name>
+			<email>schst@php.net</email>
+			<role>developer</role>
+		</maintainer>
 	</maintainers>
 
 	<release>
@@ -69,6 +75,7 @@
 		<notes>
 			Added more components:
 			* http_build_query
+			* array_udiff
 
 			Still in beta!
 		</notes>
@@ -91,6 +98,7 @@
 						<file>scandir.php</file>
 						<file>str_split.php</file>
 						<file>http_build_query.php</file>
+						<file>array_udiff.php</file>
 					</dir>
 				</dir>
 			</dir>
