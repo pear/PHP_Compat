@@ -42,16 +42,18 @@ if (!function_exists('vprintf'))
         }
         
         $args = array();
-        foreach ($array as $a) {
+        foreach ($array as $a)
+		{
             if (is_numeric($a)) {
                 array_push($args, $a);
             } else {
-                @settype($a, 'string');
-                array_push($args, '\''.$a.'\'');
+                settype($a, 'string');
+                array_push($args, '\'' . $a . '\'');
             }
         }
-        $call = 'return sprintf( \''.$string.'\', '.implode(',', $args).');';
-        return eval($call);
+
+        $call = 'printf(\'' . $string . '\', ' . implode(',', $args) . ');';
+		eval($call);
     }
 }
 ?>
