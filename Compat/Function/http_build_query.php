@@ -51,6 +51,9 @@ if (!function_exists('http_build_query'))
             return;
         }
 
+        // Argument seperator
+        $separator = ini_get('arg_separator.output');
+
         // Start building the query
         $tmp = array ();
         foreach ($formdata as $key => $val)
@@ -71,7 +74,7 @@ if (!function_exists('http_build_query'))
             }
         }
 
-        return implode('&', $tmp);
+        return implode($separator, $tmp);
     }
 
     // Helper function
@@ -93,7 +96,10 @@ if (!function_exists('http_build_query'))
             }
         }
 
-        return implode('&', $tmp);
+        // Argument seperator
+        $separator = ini_get('arg_separator.output');
+
+        return implode($separator, $tmp);
     }
 }
 ?>
