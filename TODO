@@ -1,8 +1,22 @@
 Functions
 ---------
+array_diff_key
+array_diff_ukey
+array_intersect_assoc
+array_intersect_key
+array_intersect_uassoc
+array_intersect_ukey
+
 
 Tests
 ---------
+array_diff_key
+array_diff_ukey
+array_intersect_assoc
+array_intersect_key
+array_intersect_uassoc
+array_intersect_ukey
+
 
 Methods
 -------
