@@ -27,30 +27,54 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 4.2.0
- * @require     PHP 4.0.1 (trigger_error)
- * @internal    raw_output not implemented
+ * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('md5_file')) {
     function md5_file($filename, $raw_output = false)
     {
         // Sanity check
         if (!is_scalar($filename)) {
-            trigger_error('md5_file() expects parameter 1 to be string, ' . gettype($filename) . ' given', E_USER_WARNING);
+            user_error('md5_file() expects parameter 1 to be string, ' .
+                gettype($filename) . ' given', E_USER_WARNING);
             return;
         }
 
         if (!is_scalar($raw_output)) {
-            trigger_error('md5_file() expects parameter 2 to be bool, ' . gettype($raw_output) . ' given', E_USER_WARNING);
+            user_error('md5_file() expects parameter 2 to be bool, ' .
+                gettype($raw_output) . ' given', E_USER_WARNING);
             return;
         }
 
         if (!file_exists($filename)) {
-            trigger_error('md5_file() Unable to open file', E_USER_WARNING);
+            user_error('md5_file() Unable to open file', E_USER_WARNING);
+            return false;
+        }
+        
+        // Read the file
+        if (false === $fh = fopen($filename, 'rb')) {
+            user_error('md5_file() failed to open stream: No such file or directory',
+                E_USER_WARNING);
             return false;
         }
 
-        $file = file_get_contents($filename);
-        return md5($file);
+        clearstatcache();
+        if ($fsize = @filesize($filename)) {
+            $data = fread($fh, $fsize);
+        } else {
+            $data = '';
+            while (!feof($fh)) {
+                $data .= fread($fh, 8192);
+            }
+        }
+
+        fclose($fh);
+
+        // Return
+        if ($raw_output === true) {
+            $data = pack('H*', $data);
+        }
+
+        return $data;
     }
 }
 
