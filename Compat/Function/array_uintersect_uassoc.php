@@ -29,9 +29,9 @@
  * @since       PHP 5
  * @require     PHP 4.0.6 (is_callable)
  */
-if (!function_exists('array_uintersect_uassoc2'))
+if (!function_exists('array_uintersect_uassoc'))
 {
-    function array_uintersect_uassoc2()
+    function array_uintersect_uassoc()
     {
         $args = func_get_args();
         if (count($args) < 4) {
@@ -60,28 +60,31 @@ if (!function_exists('array_uintersect_uassoc2'))
         }
 
         // Check arrays
-        $array_count = count($args);
-        for ($i = 0; $i !== $array_count; $i++) {
+        $count = count($args);
+        for ($i = 0; $i !== $count; $i++) {
             if (!is_array($args[$i])) {
                 trigger_error('array_uintersect_uassoc() Argument #' . ($i + 1) . ' is not an array', E_USER_WARNING);
                 return;
             }
         }
 
-        // Compare entries
-        $output = array();
-        foreach ($args[0] as $key => $item) {
-            for ($i = 1; $i < $array_count; $i++) {
-                if (array_key_exists($key, $args[$i])) {
-                     $compare = call_user_func($key_compare_func, $item, $args[$i][$key]);
-                     if ($compare === 0) {
-                         $output[$key] = $item;
-                     }
+        // Traverse values of the first array
+        $intersect = array ();
+        foreach ($args[0] as $key => $value) {
+            // Check all arrays
+            for ($i = 1; $i < $count; $i++) {
+                if (!array_key_exists($key, $args[$i])) {
+                    continue;
+                }
+                $result = call_user_func($key_compare_func, $value, $args[$i][$key]);
+                if ($result === 0) {
+                    $intersect[$key] = $value;
+                    continue;
                 }
             }
         }
 
-        return $output;
+        return $intersect;
     }
 }
 
