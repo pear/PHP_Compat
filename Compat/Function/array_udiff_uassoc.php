@@ -33,7 +33,52 @@ if (!function_exists('array_udiff_uassoc'))
 {
     function array_udiff_uassoc()
     {
+        $args = func_get_args();
+        if (count($args) < 3) {
+            trigger_error('Wrong parameter count for array_udiff_uassoc()', E_USER_WARNING);
+            return;
+        }
 
+        // Get compare function
+        $compare_func = array_pop($args);
+        if (!is_callable($compare_func)) {
+            if (is_array($compare_func)) {
+                $compare_func = $compare_func[0].'::'.$compare_func[1];
+            }
+            trigger_error('array_udiff_uassoc() Not a valid callback ' . $compare_func, E_USER_WARNING);
+            return;
+        }
+
+        // Check arrays
+        $count = count($args);
+        for ($i = 0; $i < $count; $i++)
+        {
+            if (!is_array($args[$i])) {
+                trigger_error('array_udiff_uassoc() Argument #' . ($i + 1) . ' is not an array', E_USER_WARNING);
+                return;
+            }
+        }
+
+        $diff = array ();
+        // Traverse values of the first array
+        foreach ($args[0] as $key => $value)
+        {
+            // Check all arrays
+            for ($i = 1; $i < $count; $i++)
+            {
+                if (!isset($args[$i][$key])) {
+                    continue;
+                }
+                $result = call_user_func($compare_func, $value, $args[$i][$key]);
+                if ($result === 0) {
+                    continue 2;
+                }
+            }
+
+            $diff[$key] = $value;
+        }
+
+        return $diff;
     }
 }
 

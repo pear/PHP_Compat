@@ -43,10 +43,9 @@ if (!function_exists('array_udiff_assoc'))
 
         // Get compare function
         $compare_func = array_pop($args);
-        if (!is_callable($compare_func))
-        {
+        if (!is_callable($compare_func)) {
             if (is_array($compare_func)) {
-                $compare_func = $compare_func[0].'::'.$compare_func[1];
+                $compare_func = $compare_func[0] . '::' . $compare_func[1];
             }
             trigger_error('array_udiff_assoc() Not a valid callback ' . $compare_func, E_USER_WARNING);
             return;
