@@ -27,6 +27,7 @@
  * @package     PHP_Compat
  * @link        http://php.net/function.array_chunk
  * @author      Aidan Lister <aidan@php.net>
+ * @author      Thiemo Mättig <thiemo.maettig@gmx.de>
  * @version     $Revision$
  * @since       PHP 4.2.0
  */
