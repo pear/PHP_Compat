@@ -76,6 +76,9 @@
 			Added more components:
 			* http_build_query
 			* array_udiff
+			* array_udiff_assoc
+
+			Added Unit tests.
 
 			Still in beta!
 		</notes>
@@ -99,7 +102,22 @@
 						<file>str_split.php</file>
 						<file>http_build_query.php</file>
 						<file>array_udiff.php</file>
+						<file>array_udiff_assoc.php</file>
 					</dir>
+				</dir>
+				<dir name="tests" role="test">
+					<file>basic_loadconstant.phpt</file>
+					<file>basic_loadfunction.phpt</file>
+					<file>func_array-combine_simple.phpt</file>
+					<file>func_array-udiff_simple.phpt</file>
+					<file>func_array-udiff-assoc_simple.phpt</file>
+					<file>func_http-build-query_complexarray.phpt</file>
+					<file>func_http-build-query_numindex.phpt</file>
+					<file>func_http-build-query_object.phpt</file>
+					<file>func_http-build-query_simple.phpt</file>
+					<file>func_str-split_chunksize.phpt</file>
+					<file>func_str-split_nondiv.phpt</file>
+					<file>func_str-split_simple.phpt</file>
 				</dir>
 			</dir>
 		</filelist>
