@@ -3,7 +3,10 @@
     <name>PHP_Compat</name>
     <summary>Provides missing functionality for older versions of PHP.</summary>
 
-    <description>PHP_Compat provides missing functionality in the form of Constants and Functions and Enviroment settings for older versions of PHP.</description>
+    <description>
+        PHP_Compat provides missing functionality in the form of
+        Constants and Functions and Enviroment settings for older versions of PHP.
+    </description>
 
     <maintainers>
         <maintainer>
@@ -33,7 +36,9 @@
         <date>2004-05-27</date>
         <license>PHP License</license>
         <state>beta</state>
-        <notes>Added more components:
+        <notes>
+<![CDATA[
+Added more components:
 * str_split
 * STDIN
 * STDOUT
@@ -42,7 +47,9 @@
 Made a number of bugfixes.
 Added replica PHP error messages.
 
-Still in beta until any last bugs are found and removed.</notes>
+Still in beta until any last bugs are found and removed.
+]]>
+        </notes>
     </release>
 
     <release>
@@ -50,7 +57,9 @@ Still in beta until any last bugs are found and removed.</notes>
         <date>2004-05-28</date>
         <license>PHP License</license>
         <state>beta</state>
-        <notes>Added more components:
+        <notes>
+<![CDATA[
+Added more components:
 * http_build_query
 * array_udiff
 * array_udiff_assoc
@@ -59,7 +68,9 @@ Still in beta until any last bugs are found and removed.</notes>
 
 Heavily modified file_put_contents for greater support
 A couple of bug fixes
-Added complete unit testing!</notes>
+Added complete unit testing!
+]]>
+        </notes>
     </release>
 
     <release>
@@ -67,7 +78,9 @@ Added complete unit testing!</notes>
         <date>2004-05-30</date>
         <license>PHP License</license>
         <state>beta</state>
-        <notes>Added more components:
+        <notes>
+<![CDATA[
+Added more components:
 * fprintf
 * stripos
 * strripos
@@ -76,7 +89,9 @@ Added complete unit testing!</notes>
 * STD (The commandline constants)
 
 Removed the seperate files for STDIN/STDOUT/STDERR
-Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND</notes>
+Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND
+]]>
+        </notes>
     </release>
 
     <release>
@@ -84,7 +99,9 @@ Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND</notes>
         <date>2004-06-02</date>
         <license>PHP License</license>
         <state>stable</state>
-        <notes>Added more components:
+        <notes>
+<![CDATA[
+Added more components:
 * array_change_key_case
 * array_chunk
 * array_diff_assoc
@@ -92,7 +109,9 @@ Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND</notes>
 * vsprintf
 * var_export
 
-Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour).</notes>
+Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour).
+]]>
+        </notes>
     </release>
 
     <release>
@@ -100,7 +119,9 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
         <date>2004-06-26</date>
         <license>PHP License</license>
         <state>stable</state>
-        <notes>Added more components:
+        <notes>
+<![CDATA[
+Added more components:
 * html_entity_decode
 * version_compare
 * image_type_to_mime_type
@@ -111,7 +132,9 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
 * ob_clean
 * ob_flush
 * ob_get_clean
-* ob_get_flush</notes>
+* ob_get_flush
+]]>
+        </notes>
     </release>
 
     <release>
@@ -119,15 +142,24 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
         <date>2004-07-01</date>
         <license>PHP License</license>
         <state>stable</state>
-        <notes>Added more components:
+        <notes>
+<![CDATA[
+Added more components:
 * str_word_count
 * str_rot13
 * convert_uuencode
 * convert_uudecode
+* strpbrk
+* array_walk_recursive
 * array_uintersect_assoc
 * array_uintersect_uassoc
-* array_walk_recursive
-* strpbrk</notes>
+* array_uintersect
+* array_udiff_uassoc
+
+Added loadVersion:
+* Automatically loads functions to a specific version of PHP
+]]>
+        </notes>
         <filelist>
             <dir name="/" baseinstalldir="PHP" role="php">     
                 <file>Compat.php</file>
@@ -147,6 +179,8 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
                         <file>array_search.php</file>
                         <file>array_udiff.php</file>
                         <file>array_udiff_assoc.php</file>
+                        <file>array_udiff_uassoc.php</file>
+                        <file>array_intersect_assoc.php</file>
                         <file>array_uintersect_assoc.php</file>
                         <file>array_uintersect_uassoc.php</file>
                         <file>array_walk_recursive.php</file>
@@ -191,6 +225,8 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
                         <file>array_search.phpt</file>
                         <file>array_udiff.phpt</file>
                         <file>array_udiff_assoc.phpt</file>
+                        <file>array_udiff_uassoc.phpt</file>
+                        <file>array_uintersect.phpt</file>
                         <file>array_uintersect_assoc.phpt</file>
                         <file>array_uintersect_uassoc.phpt</file>
                         <file>array_walk_recursive.phpt</file>

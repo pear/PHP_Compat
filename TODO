@@ -1,6 +1,8 @@
-* array-walk-recursive
+* array_walk_recursive
 * array_uintersect_assoc
 * array_uintersect_uassoc
+* array_uintersect
+* array_udiff_uassoc
 * convert_uuencode
 * convert_uudecode
 * loadVersion in main class
