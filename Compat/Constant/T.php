@@ -34,4 +34,5 @@ if (!defined('T_ML_COMMENT')) {
    define('T_DOC_COMMENT', T_ML_COMMENT);
 }
 
+define('T_OLD_FUNCTION', 330);
 ?>
