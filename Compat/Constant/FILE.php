@@ -30,9 +30,9 @@
  * @version     $Revision$
  * @since       PHP 5
  */
-defined('FILE_USE_INCLUDE_PATH')    or define('FILE_USE_INCLUDE_PATH',        1);
-defined('FILE_IGNORE_NEW_LINES')    or define('FILE_IGNORE_NEW_LINES',        2);
-defined('FILE_SKIP_EMPTY_LINES')    or define('FILE_SKIP_EMPTY_LINES',        4);
-defined('FILE_APPEND')              or define('FILE_APPEND',                  8);
-defined('FILE_NO_DEFAULT_CONTEXT')  or define('FILE_NO_DEFAULT_CONTEXT',      16);
+if (!defined('FILE_USE_INCLUDE_PATH'))    { define('FILE_USE_INCLUDE_PATH',    1);  }
+if (!defined('FILE_IGNORE_NEW_LINES'))    { define('FILE_IGNORE_NEW_LINES',    2);  }
+if (!defined('FILE_SKIP_EMPTY_LINES'))    { define('FILE_SKIP_EMPTY_LINES',    4);  }
+if (!defined('FILE_APPEND'))              { define('FILE_APPEND',              8);  }
+if (!defined('FILE_NO_DEFAULT_CONTEXT'))  { define('FILE_NO_DEFAULT_CONTEXT',  16); }
 ?>

@@ -30,9 +30,8 @@
  * @version     $Revision$
  * @since       PHP 4.3.0-RC2
  */
-if (!defined('PATH_SEPARATOR')) {
-    define('PATH_SEPARATOR',
-        strtoupper(substr(PHP_OS, 0, 3) == 'WIN') ?
+if (!defined('PATH_SEPARATOR')) { define('PATH_SEPARATOR',
+    strtoupper(substr(PHP_OS, 0, 3) == 'WIN') ?
         ';' :
         ':');
 }
