@@ -23,16 +23,54 @@
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/array_intersect_ukey
- * @author      Aidan Lister <aidan@php.net>
+ * @link        http://php.net/function.array_intersect_ukey
+ * @author      Tom Buskens <ortega@php.net>
  * @version     $Revision$
- * @since       PHP 5.1.0
- * @require     PHP 4.0.1 (trigger_error)
+ * @since       PHP 5.0.2
+ * @require     PHP 4.0.6 (is_callable)
  */
 if (!function_exists('array_intersect_ukey')) {
     function array_intersect_ukey()
     {
+        $args = func_get_args();
+        if (count($args) < 3) {
+            trigger_error('Wrong parameter count for array_intersect_ukey()', E_USER_WARNING);
+            return;
+        }
 
+        // Get compare function
+        $compare_func = array_pop($args);
+        if (!is_callable($compare_func)) {
+            if (is_array($compare_func)) {
+                $compare_func = $compare_func[0].'::'.$compare_func[1];
+            }
+            trigger_error('array_diff_ukey() Not a valid callback ' . $compare_func, E_USER_WARNING);
+            return;
+        }
+
+        // Check arrays
+        $array_count = count($args);
+        for ($i = 0; $i !== $array_count; $i++) {
+            if (!is_array($args[$i])) {
+                trigger_error('array_intersect_ukey() Argument #' . ($i + 1) . ' is not an array', E_USER_WARNING);
+                return;
+            }
+        }
+
+        // Compare entries
+        $result = array();
+        foreach ($args[0] as $key1 => $value1) {
+            for ($i = 1; $i !== $array_count; $i++) {
+                foreach ($args[$i] as $key2 => $value2) {
+                    if (!(call_user_func($compare_func, (string) $key1, (string) $key2))) {
+                        $result[$key1] = $value1;
+                        break 2;
+                    }
+                }
+            }
+        }
+
+        return $result;
     }
 }
 

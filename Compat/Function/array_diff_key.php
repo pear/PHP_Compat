@@ -23,16 +23,42 @@
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/array_diff_key
- * @author      Aidan Lister <aidan@php.net>
+ * @link        http://php.net/function.array_diff_key
+ * @author      Tom Buskens <ortega@php.net>
  * @version     $Revision$
- * @since       PHP 5.1.0
+ * @since       PHP 5.0.2
  * @require     PHP 4.0.1 (trigger_error)
  */
 if (!function_exists('array_diff_key')) {
     function array_diff_key()
     {
+        $args = func_get_args();
+        if (count($args) < 2) {
+            trigger_error('Wrong parameter count for array_diff_key()', E_USER_WARNING);
+            return;
+        }
 
+        // Check arrays
+        $array_count = count($args);
+        for ($i = 0; $i !== $array_count; $i++) {
+            if (!is_array($args[$i])) {
+                trigger_error('array_diff_key() Argument #' . ($i + 1) . ' is not an array', E_USER_WARNING);
+                return;
+            }
+        }
+
+        $result = $args[0];
+        foreach ($args[0] as $key1 => $value1) {
+            for ($i = 1; $i !== $array_count; $i++) {
+                foreach ($args[$i] as $key2 => $value2) {
+                    if ((string) $key1 === (string) $key2) {
+                        unset($result[$key2]);
+                        break 2;
+                    }
+                }
+            }
+        }
+        return $result;
     }
 }
 
