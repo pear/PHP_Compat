@@ -24,18 +24,18 @@
 /**
  * Replace stripos()
  *
- * Added in PHP 5
- *
  * @category    PHP
  * @package     PHP_Compat
  * @link        http://php.net/function.stripos
  * @author      Stephan Schmidt <schst@php.net>
  * @author      Aidan Lister <aidan@php.net>
  * @version     1.0
+ * @added       PHP 5
+ * @requires    PHP 3
  */
 if (!function_exists('stripos'))
 {
-    function stripos($haystack, $needle, $offset = null)
+    function stripos ($haystack, $needle, $offset = null)
     {
         if (!is_scalar($haystack)) {
             trigger_error('stripos() expects parameter 1 to be string, ' . gettype($haystack) . ' given', E_USER_WARNING);

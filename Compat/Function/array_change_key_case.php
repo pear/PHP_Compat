@@ -32,14 +32,14 @@ if(!defined('CASE_UPPER')) {
 /**
  * Replace array_change_key_case()
  *
- * Added in PHP 4.2
- *
  * @category    PHP
  * @package     PHP_Compat
  * @link        http://php.net/function.array_change_key_case
  * @author      Stephan Schmidt <schst@php.net>
  * @author      Aidan Lister <aidan@php.net>
  * @version     1.0
+ * @added       PHP 4.2
+ * @requires    PHP 3
  */
 if (!function_exists('array_change_key_case'))
 {

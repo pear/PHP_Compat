@@ -39,6 +39,8 @@ if (!defined('FILE_USE_INCLUDE_PATH')) {
  * @author      Aidan Lister <aidan@php.net>
  * @version     1.0
  * @internal    $resource_context is not supported
+ * @added       PHP 5
+ * @requires    PHP 3
  */
 if (!function_exists('file_put_contents'))
 {

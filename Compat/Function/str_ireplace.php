@@ -28,8 +28,8 @@
  * @link        http://php.net/function.str_ireplace
  * @author      Aidan Lister <aidan@php.net>
  * @version     1.0
- * @added       PHP5
- * @requires    PHP3
+ * @added       PHP 5
+ * @requires    PHP 3
  * @internal    count not by returned by reference, not possible in php4
  */
 if (!function_exists('str_ireplace'))
@@ -77,7 +77,7 @@ if (!function_exists('str_ireplace'))
         }
 
         // Loop through each subject
-		$count = 0;
+        $count = 0;
         foreach ($subject as $subject_key => $subject_value)
         {
             // Loop through each search

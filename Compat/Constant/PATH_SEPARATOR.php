@@ -23,13 +23,13 @@
 /**
  * Replace constant PATH_SEPARATOR
  *
- * Added in PHP 4.3.0-RC2
- * 
  * @category    PHP
  * @package     PHP_Compat
  * @link        http://php.net/ref.dir
  * @author      Aidan Lister <aidan@php.net>
  * @version     1.0
+ * @added       PHP 4.3.0-RC2
+ * @requires    PHP 3
  */
 if (!defined('PATH_SEPARATOR')) {
     define('PATH_SEPARATOR',

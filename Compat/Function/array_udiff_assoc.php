@@ -24,18 +24,18 @@
 /**
  * Replace array_udiff_assoc()
  *
- * Added in PHP 5
- *
  * @category    PHP
  * @package     PHP_Compat
  * @author      Stephan Schmidt <schst@php.net>
  * @author      Aidan Lister <aidan@php.net>
  * @version     1.0
  * @link        http://php.net/function.array-udiff-assoc
+ * @added       PHP 5
+ * @requires    PHP 3
  */
 if (!function_exists('array_udiff_assoc'))
 {
-    function array_udiff_assoc()
+    function array_udiff_assoc ()
     {
         $args = func_get_args();
         if (count($args) < 3) {

@@ -28,18 +28,18 @@
  * @link        http://php.net/function.fprintf
  * @author      Aidan Lister <aidan@php.net>
  * @version     1.0
- * @added		PHP5
- * @requires	PHP4.1.0
- * @todo		Add php replacement errors
- * @todo		Test
+ * @added       PHP 5
+ * @requires    PHP 4.1.0
+ * @todo        Add php replacement errors
+ * @todo        Test
  */
 if (!function_exists('fprintf'))
 {
    function fprintf () {
-	   $args = func_get_args();
-	   $resource_handle = array_shift($args);
-	   $format = array_shift($args);
-	   return fwrite($fp, vsprintf($format, $args));
+       $args = func_get_args();
+       $resource_handle = array_shift($args);
+       $format = array_shift($args);
+       return fwrite($fp, vsprintf($format, $args));
    }
 }
 

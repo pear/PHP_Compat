@@ -24,20 +24,20 @@
 /**
  * Replace strripos()
  *
- * Added in PHP 5
- *
  * @category    PHP
  * @package     PHP_Compat
  * @link        http://php.net/function.strripos
  * @author      Stephan Schmidt <schst@php.net>
  * @author      Aidan Lister <aidan@php.net>
  * @version     1.0
+ * @added       PHP 5
+ * @requires    PHP 3
  * @todo        Support offset
  */
 if (!function_exists('strripos'))
 {
-	function strripos ($haystack, $needle, $offset = null)
-	{
+    function strripos ($haystack, $needle, $offset = null)
+    {
         if (!is_scalar($haystack)) {
             trigger_error('strripos() expects parameter 1 to be scalar, ' . gettype($haystack) . ' given', E_USER_WARNING);
             return false;

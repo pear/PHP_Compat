@@ -23,13 +23,13 @@
 /**
  * Replace scandir()
  *
- * Added in PHP 5
- *
  * @category    PHP
  * @package     PHP_Compat
  * @link        http://php.net/function.scandir
  * @author      Aidan Lister <aidan@php.net>
  * @version     1.0
+ * @added       PHP 5
+ * @requires    PHP 3
  */
 if (!function_exists('scandir'))
 {

@@ -23,14 +23,14 @@
 /**
  * Replace file_get_contents()
  *
- * Added in PHP 5
- *
  * @category    PHP
  * @package     PHP_Compat
  * @link        http://php.net/function.file_get_contents
  * @author      Aidan Lister <aidan@php.net>
  * @version     1.0
  * @internal    $resource_context is not supported
+ * @added       PHP 5
+ * @requires    PHP 3
  */
 if (!function_exists('file_get_contents'))
 {
