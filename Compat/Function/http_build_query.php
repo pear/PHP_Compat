@@ -37,38 +37,18 @@ if (!function_exists('http_build_query'))
 {
     function http_build_query ($formdata, $numeric_prefix = null)
     {
-		// Helper function
-        function __http_build_query ($array, $name)
-        {
-            $tmp = array ();
-            foreach ($array as $key => $value)
-            {
-                if (is_array($value)) {
-                    array_push($tmp, __http_build_query($value, sprintf('%s[%s]', $name, $key)));
-                }
-
-                elseif (is_scalar($value)) {
-                    array_push($tmp, sprintf('%s[%s]=%s', $name, urlencode($key), urlencode($value)));
-                }
-
-                elseif (is_object($value)) {
-                    array_push($tmp, __http_build_query(get_object_vars($value), sprintf('%s[%s]', $name, $key)));
-                }
-            }
-
-            return implode('&', $tmp);
-        }
-
-        // Convert an object to an array
+        // If $formdata is an object, convert it to an array
         if (is_object($formdata)) {
             $formdata = get_object_vars($formdata);
         }
     
+		// Check we have an array to work with
         if (!is_array($formdata)) {
             trigger_error('http_build_query(): Parameter 1 expected to be Array or Object. Incorrect value given.', E_USER_WARNING);
             return false;
         }
         
+		// Start building the query
         $tmp = array ();
         foreach ($formdata as $key => $val)
         {
@@ -81,6 +61,7 @@ if (!function_exists('http_build_query'))
                 continue;
             }
 
+			// If the value is an array, recursively parse it
             if (is_array($val)) {
                 array_push($tmp, __http_build_query($val, urlencode($key)));
                 continue;
@@ -89,5 +70,27 @@ if (!function_exists('http_build_query'))
 
         return implode('&', $tmp);
     }
+
+	// Helper function
+	function __http_build_query ($array, $name)
+	{
+		$tmp = array ();
+		foreach ($array as $key => $value)
+		{
+			if (is_array($value)) {
+				array_push($tmp, __http_build_query($value, sprintf('%s[%s]', $name, $key)));
+			}
+
+			elseif (is_scalar($value)) {
+				array_push($tmp, sprintf('%s[%s]=%s', $name, urlencode($key), urlencode($value)));
+			}
+
+			elseif (is_object($value)) {
+				array_push($tmp, __http_build_query(get_object_vars($value), sprintf('%s[%s]', $name, $key)));
+			}
+		}
+
+		return implode('&', $tmp);
+	}
 }
 ?>
