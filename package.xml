@@ -151,32 +151,32 @@ Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND</notes>
 					</dir>
 				</dir>
 				<dir name="tests" role="test">
-					<file>E_STRICT.phpt</file>
-					<file>FILE.phpt</file>
-					<file>PATH_SEPARATOR.phpt</file>
-					<file>STD.phpt</file>
 					<file>array-change-key-case_simple.phpt</file>
 					<file>array-chunk_simple.phpt</file>
 					<file>array-combine_simple.phpt</file>
 					<file>array-diff-assoc_simple.phpt</file>
 					<file>array-udiff-assoc_simple.phpt</file>
 					<file>array-udiff_simple.phpt</file>
+					<file>e-strict.phpt</file>
 					<file>file-get-contents_simple.phpt</file>
 					<file>file-put-contents_append.phpt</file>
 					<file>file-put-contents_array.phpt</file>
 					<file>file-put-contents_simple.phpt</file>
+					<file>file.phpt</file>
 					<file>fprintf_simple.phpt</file>
 					<file>http-build-query_complexarray.phpt</file>
 					<file>http-build-query_numindex.phpt</file>
 					<file>http-build-query_object.phpt</file>
 					<file>http-build-query_simple.phpt</file>
 					<file>is-a_simple.phpt</file>
+					<file>path-separator.phpt</file>
 					<file>php-compat-loadconstant_array.phpt</file>
 					<file>php-compat-loadconstant_simple.phpt</file>
 					<file>php-compat-loadfunction_array.phpt</file>
 					<file>php-compat-loadfunction_simple.phpt</file>
 					<file>scandir_simple.phpt</file>
 					<file>scandir_sort.phpt</file>
+					<file>std.phpt</file>
 					<file>str-ireplace_allarray.phpt</file>
 					<file>str-ireplace_search-arr-replace-arr.phpt</file>
 					<file>str-ireplace_search-arr-replace-str.phpt</file>
