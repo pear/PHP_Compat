@@ -15,7 +15,7 @@
 // | Author: Aidan Lister <aidan@php.net>                                 |
 // +----------------------------------------------------------------------+
 //
-// $id$
+// $Id$
 //
 
 
@@ -52,7 +52,7 @@ class PHP_Compat
             $file = sprintf('PHP/Compat/Function/%s.php',
                                 $function);
 
-            if (@include_once $file !== false) {
+            if ((@include_once $file) !== false) {
                 return true;
             }
 
@@ -79,7 +79,7 @@ class PHP_Compat
             $file = sprintf('PHP/Compat/Constant/%s.php',
                                 $constant);
 
-            if (@include_once $file !== false) {
+            if ((@include_once $file) !== false) {
                 return true;
             }
 
