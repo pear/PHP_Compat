@@ -30,10 +30,34 @@
  * @link        http://php.net/function.fprintf
  * @author      Aidan Lister <aidan@php.net>
  * @version     1.0
+ * @todo        Fix, test, etc
  */
 if (!function_exists('fprintf'))
 {
-	// TODO
+   if (function_exists('vsprintf')) { // >= 4.1.0
+       function fprintf() {
+           $args = func_get_args();
+           $fp = array_shift($args);
+           $format = array_shift($args);
+           return fwrite($fp, vsprintf($format, $args));
+       }
+   } else { // < 4.1.0
+       function fprintf() {
+           $args = func_get_args();
+           $fp = array_shift($args);
+           $format = array_shift($args);
+           $code = '';
+           for ($i = 0; $i < count($args); ++$i) {
+               if ($code) {
+                   $code .= ',';
+               }
+               $code .= '$args[' . $i . ']';
+           }
+           $code = 'return sprintf($format, ' . $code . ');';
+           $rv = eval($code);
+           return $rv ? fwrite($fp, $rv) : false;
+       }
+   }
 }
 
 ?>
