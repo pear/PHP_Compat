@@ -32,7 +32,7 @@
 if (!function_exists('str_word_count')) {
     function str_word_count($string, $format = null)
     {
-        if ($format != 1 && $format != 2 && $format !== null) {
+        if ($format !== 1 && $format !== 2 && $format !== null) {
             user_error('str_word_count() The specified format parameter, "' . $format . '" is invalid',
                 E_USER_WARNING);
             return false;
@@ -43,11 +43,11 @@ if (!function_exists('str_word_count')) {
 
         switch ($format) {
             case null:
-                return count($word_array);
+                $result = count($word_array);
                 break;
 
             case 1:
-                return $word_array;
+                $result = $word_array;
                 break;
 
             case 2:
@@ -55,10 +55,13 @@ if (!function_exists('str_word_count')) {
                 $word_assoc = array();
                 foreach ($word_array as $word) {
                     $word_assoc[$lastmatch = strpos($string, $word, $lastmatch)] = $word;
+                    $lastmatch += strlen($word);
                 }
-                return $word_assoc;
+                $result = $word_assoc;
                 break;
         }
+
+        return $result;
     }
 }
 
