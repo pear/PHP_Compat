@@ -9,7 +9,7 @@ $string = "abcd";
 $tmpfname = tempnam('/tmp', 'php');
 
 $res = file_put_contents($tmpfname, $string);
-$data = implode('', fopen($tmpfname));
+$data = implode('', file($tmpfname));
 
 unlink($tmpfname);
 

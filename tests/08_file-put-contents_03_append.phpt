@@ -9,16 +9,18 @@ $string = 'foobar';
 $string2 = 'testtest';
 $tmpfname = tempnam('/tmp', 'php');
 
-$res = file_put_contents($tmpfname, $string);
-$res = file_put_contents($tmpfname, $string2, FILE_APPEND);
-
-$data = implode('', fopen($tmpfname));
+echo file_put_contents($tmpfname, $string), "\n";
+echo file_put_contents($tmpfname, $string2, FILE_APPEND), "\n";
+echo implode('', file($tmpfname)), "\n";
+echo file_put_contents($tmpfname, $string2), "\n";
+echo implode('', file($tmpfname));
 
 unlink($tmpfname);
 
-echo $res, "\n";
-echo $data;
 ?>
 --EXPECT--
 6
+8
 foobartesttest
+8
+testtest
