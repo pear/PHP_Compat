@@ -33,38 +33,38 @@
  */
 if (!function_exists('array_chunk'))
 {
-   function array_chunk( $input, $size, $preserve_keys = FALSE ) {
-       @reset( $input );
-      
-       $i = $j = 0;
+    function array_chunk ($input, $size, $preserve_keys = false)
+    {
+        reset($input);
+        $i = $j = 0;
 
-       while( @list( $key, $value ) = @each( $input ) ) {
-           if( !( isset( $chunks[$i] ) ) ) {
-               $chunks[$i] = array();
-           }
+        while(list($key, $value) = each($input))
+        {
+            if (!isset($chunks[$i])) {
+                $chunks[$i] = array ();
+            }
 
-           if( count( $chunks[$i] ) < $size ) {
-               if( $preserve_keys ) {
-                   $chunks[$i][$key] = $value;
-                   $j++;
-               } else {
-                   $chunks[$i][] = $value;
-               }
-           } else {
-               $i++;
+            if (count($chunks[$i]) < $size) {
+                if($preserve_keys === true) {
+                    $chunks[$i][$key] = $value;
+                    $j++;
+                } else {
+                    $chunks[$i][] = $value;
+                }
+            } else {
+                $i++;
+                if($preserve_keys === true) {
+                    $chunks[$i][$key] = $value;
+                    $j++;
+                } else {
+                    $j = 0;
+                    $chunks[$i][$j] = $value;
+                }
+            }
+        }
 
-               if( $preserve_keys ) {
-                   $chunks[$i][$key] = $value;
-                   $j++;
-               } else {
-                   $j = 0;
-                   $chunks[$i][$j] = $value;
-               }
-           }
-       }
-
-       return $chunks;
-   }
+        return $chunks;
+    }
 }
 
 ?>
