@@ -13,7 +13,8 @@
 // | obtain it through the world-wide-web, please send a note to          |
 // | license@php.net so we can mail you a copy immediately.               |
 // +----------------------------------------------------------------------+
-// | Authors: Aidan Lister <aidan@php.net>                                |
+// | Authors: Stephan Schmidt <schst@php.net>                             |
+// |          Aidan Lister <aidan@php.net>                                |
 // +----------------------------------------------------------------------+
 //
 // $Id$
@@ -28,33 +29,30 @@
  * @category    PHP
  * @package     PHP_Compat
  * @link        http://php.net/function.strripos
+ * @author      Stephan Schmidt <schst@php.net>
  * @author      Aidan Lister <aidan@php.net>
  * @version     1.0
  */
-if (!function_exists('strripos'))
+if (!function_exists('strripos2'))
 {
-   /**
-    * Find position of last occurrence of a case-insensitive string in a string
-    *
-    * @param    string           haystack
-    * @param    string           needle
-    * @param    integer          offset
-    * @return   integer|boolean  position or false
-    * @todo     support offset
-    */
-	function strripos($haystack, $needle, $offset = null) {
-
+	function strripos2($haystack, $needle, $offset = null)
+	{
         if (!is_scalar($haystack)) {
-            trigger_error('strripos() expects parameter 1 to be string, '.gettype($haystack).' given', E_USER_WARNING);
-            return null;
+            trigger_error('strripos() expects parameter 1 to be string, ' . gettype($haystack) . ' given', E_USER_WARNING);
+            return false;
         }
 
         if (!is_scalar($needle)) {
-            trigger_error('strripos(): needle is not a string or an integer.', E_USER_WARNING);
-            return null;
+            trigger_error('strripos() needle is not a string or an integer.', E_USER_WARNING);
+            return false;
         }
 
-        return strrpos(strtolower($haystack), strtolower($needle));
+        if (!is_null($offset) && !is_numeric($offset)) {
+            trigger_error('strripos() expects parameter 3 to be string, ' . gettype($offset) . ' given', E_USER_WARNING);
+            return false;
+        }
+
+        return strrpos(strtolower($haystack), strtolower($needle), $offset);
     }
 }
 ?>
