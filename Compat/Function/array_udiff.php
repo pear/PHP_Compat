@@ -39,7 +39,7 @@ if (!function_exists('array_udiff'))
 
         if (count($args) < 3) {
             trigger_error('Wrong parameter count for array_udiff()', E_USER_WARNING);
-            return null;
+            return;
         }
 
         // Get compare function
@@ -49,7 +49,7 @@ if (!function_exists('array_udiff'))
                 $compare_func = $compare_func[0] . '::' . $compare_func[1];
             }
             trigger_error('array_udiff() Not a valid callback ' . $compare_func, E_USER_WARNING);
-            return null;
+            return;
         }
 
         // Check arrays
@@ -57,7 +57,7 @@ if (!function_exists('array_udiff'))
         for ($i = 0; $i < $cnt; $i++) {
             if (!is_array($args[$i])) {
                 trigger_error('array_udiff() Argument #' . ($i + 1). ' is not an array', E_USER_WARNING);
-                return null;
+                return;
             }
         }
 

@@ -36,19 +36,19 @@ if (!function_exists('array_chunk'))
     {
         if (!is_array($input)) {
             trigger_error('array_chunk() expects parameter 1 to be array, ' . gettype($input) . ' given', E_USER_WARNING);
-            return null;
+            return;
         }
 
         if (!is_numeric($size)) {
             trigger_error('array_chunk() expects parameter 2 to be long, ' . gettype($size) . ' given', E_USER_WARNING);
-            return null;
+            return;
         }
 
         $size = (int)$size;
         if ($size <= 0)
         {
             trigger_error('array_chunk() Size parameter expected to be greater than 0', E_USER_WARNING);
-            return null;
+            return;
         }
 
         $chunks = array();

@@ -48,7 +48,7 @@ if (!function_exists('http_build_query'))
 
         // If the array is empty, return null
         if (empty($formdata)) {
-            return null;
+            return;
         }
 
         // Start building the query

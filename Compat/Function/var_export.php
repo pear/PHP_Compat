@@ -94,7 +94,7 @@ if (!function_exists('var_export'))
             return $out;
         } else {
             echo $out;
-            return null;
+            return;
         }
     }
 }

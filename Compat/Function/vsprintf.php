@@ -35,7 +35,7 @@ if (!function_exists('vsprintf'))
     {
         if (count($args) < 2) {
             trigger_error('vsprintf() Too few arguments', E_USER_WARNING);
-            return null;
+            return;
         }
 
         array_unshift($args, $format);

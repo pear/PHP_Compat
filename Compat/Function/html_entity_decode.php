@@ -51,7 +51,7 @@ if (!function_exists('html_entity_decode'))
     {
         if (!is_int($quote_style)) {
             trigger_error('html_entity_decode() expects parameter 2 to be long, ' . gettype($quote_style) . ' given', E_USER_WARNING);
-            return null;
+            return;
         }
 
         $trans_tbl = get_html_translation_table(HTML_ENTITIES);

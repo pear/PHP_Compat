@@ -38,7 +38,7 @@ if (!function_exists('array_diff_assoc'))
         $count = count($args);
         if (count($args) < 2) {
             trigger_error('Wrong parameter count for array_diff_assoc()', E_USER_WARNING);
-            return null;
+            return;
         }
 
         // Check arrays
@@ -46,7 +46,7 @@ if (!function_exists('array_diff_assoc'))
         {
             if (!is_array($args[$i])) {
                 trigger_error('array_diff_assoc() Argument #' . ($i + 1) . ' is not an array', E_USER_WARNING);
-                return null;
+                return;
             }
         }
 

@@ -38,17 +38,17 @@ if (!function_exists('version_compare')) {
         // Check input
         if (!is_scalar($version1)) {
             trigger_error('version_compare() expects parameter 1 to be string, ' . gettype($version1) . ' given', E_USER_WARNING);
-            return null;
+            return;
         }
 
         if (!is_scalar($version2)) {
             trigger_error('version_compare() expects parameter 2 to be string, ' . gettype($version2) . ' given', E_USER_WARNING);
-            return null;
+            return;
         }
 
         if (!is_scalar($operator)) {
             trigger_error('version_compare() expects parameter 3 to be string, ' . gettype($operator) . ' given', E_USER_WARNING);
-            return null;
+            return;
         }
 
         // Standardise versions
@@ -157,7 +157,7 @@ if (!function_exists('version_compare')) {
                     return (bool) ($compare < 0);
                     break;
                 default:
-                    return null;
+                    return;
             }
         }
 

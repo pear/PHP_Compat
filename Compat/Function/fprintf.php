@@ -36,7 +36,7 @@ if (!function_exists('fprintf'))
 
         if (count($args) < 2) {
             trigger_error ('Wrong parameter count for fprintf()', E_USER_WARNING);
-            return null;
+            return;
         }
 
         $resource_handle = array_shift($args);

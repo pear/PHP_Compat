@@ -43,7 +43,7 @@ if (!function_exists('call_user_func_array'))
             }
             $error = sprintf('call_user_func_array() First argument is expected to be a valid callback, \'%s\' was given', $function);
             trigger_error($error, E_USER_WARNING);
-            return null;
+            return;
         }
 
         // Build argument string
