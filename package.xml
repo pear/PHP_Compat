@@ -86,6 +86,26 @@
 			A couple of bug fixes
 			Added complete unit testing!
 		</notes>
+	</release>
+
+	<release>
+		<version>1.0.0RC2</version>
+		<date>2004-05-30</date>
+		<license>PHP License</license>
+		<state>beta</state>
+		<notes>
+			Added more components:
+			* vprintf
+			* fprintf
+			* stripos
+			* strripos
+			* str_ireplace
+			* FILE (The filesystem constants)
+			* STD (The commandline constants)
+
+			Removed the seperate files for STDIN/STDOUT/STDERR
+			Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND
+		</notes>
 		<filelist>
 			<dir name="/" baseinstalldir="PHP" role="php">	 
 				<file>Compat.php</file>
@@ -93,11 +113,8 @@
 					<dir name="Constant">
 						<file>E_STRICT.php</file>
 						<file>PATH_SEPARATOR.php</file>
-						<file>STDIN.php</file>
-						<file>STDOUT.php</file>
-						<file>STDERR.php</file>
-						<file>FILE_USE_INCLUDE_PATH.php</file>
-						<file>FILE_APPEND.php</file>
+						<file>STD.php</file>
+						<file>FILE.php</file>
 					</dir>
 					<dir name="Function">
 						<file>array_combine.php</file>
@@ -109,6 +126,11 @@
 						<file>http_build_query.php</file>
 						<file>array_udiff.php</file>
 						<file>array_udiff_assoc.php</file>
+						<file>vprintf.php</file>
+						<file>fprintf.php</file>
+						<file>stripos.php</file>
+						<file>strripos.php</file>
+						<file>str_ireplace.php</file>
 					</dir>
 				</dir>
 				<dir name="tests" role="test">
@@ -134,12 +156,14 @@
 					<file>str-split_03_lessremainder.phpt</file>
 					<file>str-split_04_bigchunk.phpt</file>
 					<file>E_STRICT.phpt</file>
-					<file>FILE_APPEND.phpt</file>
-					<file>FILE_USE_INCLUDE_PATH.phpt</file>
+					<file>FILE.phpt</file>
 					<file>PATH_SEPARATOR.phpt</file>
-					<file>STDERR.phpt</file>
-					<file>STDIN.phpt</file>
-					<file>STDOUT.phpt</file>
+					<file>STD.phpt</file>
+					<file>vprintf_01_simple.phpt</file>
+					<file>fprintf_01_simple.phpt</file>
+					<file>stripos_01_simple.phpt</file>
+					<file>strripos_01_simple.phpt</file>
+					<file>str_ireplace_01_simple.phpt</file>
 				</dir>
 			</dir>
 		</filelist>
