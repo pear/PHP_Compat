@@ -23,8 +23,7 @@ Functions:
 * fprintf
 * stripos
 * strripos
-* str_ireplace
-</description>
+* str_ireplace</description>
 
 	<maintainers>
 		<maintainer>
@@ -46,9 +45,7 @@ Functions:
 		<date>2004-05-19</date>
 		<license>PHP License</license>
 		<state>beta</state>
-		<notes>
-			This package is in beta while any bugs are ironed out.
-		</notes>
+		<notes>This package is in beta while any bugs are ironed out.</notes>
 	</release>
 
 	<release>
@@ -56,18 +53,16 @@ Functions:
 		<date>2004-05-27</date>
 		<license>PHP License</license>
 		<state>beta</state>
-		<notes>
-			Added more components:
-			* str_split
-			* STDIN
-			* STDOUT
-			* STDERR
+		<notes>Added more components:
+* str_split
+* STDIN
+* STDOUT
+* STDERR
 
-			Made a number of bugfixes.
-			Added replica PHP error messages.
+Made a number of bugfixes.
+Added replica PHP error messages.
 
-			Still in beta until any last bugs are found and removed.
-		</notes>
+Still in beta until any last bugs are found and removed.</notes>
 	</release>
 
 	<release>
@@ -75,18 +70,16 @@ Functions:
 		<date>2004-05-28</date>
 		<license>PHP License</license>
 		<state>beta</state>
-		<notes>
-			Added more components:
-			* http_build_query
-			* array_udiff
-			* array_udiff_assoc
-			* FILE_APPEND
-			* FILE_USE_INCLUDE_PATH
+		<notes>Added more components:
+* http_build_query
+* array_udiff
+* array_udiff_assoc
+* FILE_APPEND
+* FILE_USE_INCLUDE_PATH
 
-			Heavily modified file_put_contents for greater support
-			A couple of bug fixes
-			Added complete unit testing!
-		</notes>
+Heavily modified file_put_contents for greater support
+A couple of bug fixes
+Added complete unit testing!</notes>
 	</release>
 
 	<release>
@@ -94,19 +87,17 @@ Functions:
 		<date>2004-05-30</date>
 		<license>PHP License</license>
 		<state>beta</state>
-		<notes>
-			Added more components:
-			* vprintf
-			* fprintf
-			* stripos
-			* strripos
-			* str_ireplace
-			* FILE (The filesystem constants)
-			* STD (The commandline constants)
+		<notes>Added more components:
+* vprintf
+* fprintf
+* stripos
+* strripos
+* str_ireplace
+* FILE (The filesystem constants)
+* STD (The commandline constants)
 
-			Removed the seperate files for STDIN/STDOUT/STDERR
-			Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND
-		</notes>
+Removed the seperate files for STDIN/STDOUT/STDERR
+Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND</notes>
 		<filelist>
 			<dir name="/" baseinstalldir="PHP" role="php">	 
 				<file>Compat.php</file>
