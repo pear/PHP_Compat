@@ -7,7 +7,17 @@ Function -- version_compare
 require_once 'PHP/Compat.php';
 PHP_Compat::loadFunction('version_compare');
 
-print "TESTING COMPARE\n";
+// Basic
+print "testing basic\n";
+test('1', '2');
+test('10', '2');
+test('1.0', '1.1');
+test('1.2', '1.0.1');
+test('1.2.p3', '1.2.4');
+test('1.2.y', '1.2.z');
+
+// Comparisons
+print "testing compare\n";
 $special_forms = array("-dev", "a1", "b1", "RC1", "", "pl1");
 $operators = array(
     "lt", "<",
@@ -17,17 +27,15 @@ $operators = array(
     "eq", "=", "==",
     "ne", "<>", "!="
 );
-test("1", "2");
-test("10", "2");
-test("1.0", "1.1");
-test("1.2", "1.0.1");
+
 foreach ($special_forms as $f1) {
     foreach ($special_forms as $f2) {
 	test("1.0$f1", "1.0$f2");
     }
 }
 
-print "TESTING OPERATORS\n";
+// Operators
+print "testing operators\n";
 foreach ($special_forms as $f1) {
     foreach ($special_forms as $f2) {
         foreach ($operators as $op) {
@@ -56,12 +64,14 @@ function test($v1, $v2) {
 }
 
 ?>
---EXPECT--
-TESTING COMPARE
+testing basic
 1 < 2
 10 > 2
 1.0 < 1.1
 1.2 > 1.0.1
+1.2.p3 > 1.2.4
+1.2.y = 1.2.z
+testing compare
 1.0-dev = 1.0-dev
 1.0-dev < 1.0a1
 1.0-dev < 1.0b1
@@ -98,7 +108,7 @@ TESTING COMPARE
 1.0pl1 > 1.0RC1
 1.0pl1 > 1.0
 1.0pl1 = 1.0pl1
-TESTING OPERATORS
+testing operators
 1.0-dev lt 1.0-dev : false
 1.0-dev  < 1.0-dev : false
 1.0-dev le 1.0-dev : true
