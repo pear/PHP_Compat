@@ -41,7 +41,7 @@
 				<dir name="Compat">
 					<dir name="Constant">
 						<file>E_STRICT.php</file>
-						<file>PATH_SEPERATOR.php</file>
+						<file>PATH_SEPARATOR.php</file>
 					</dir>
 					<dir name="Function">
 						<file>array_combine.php</file>
