@@ -57,6 +57,17 @@ if (!function_exists('str_ireplace2'))
 			}
 		}
 
+		// Check the replace array is padded to the correct length
+		$length_replace = count($replace);
+		$length_search = count($search);
+		if ($length_replace < $length_search)
+		{
+			for ($i = $length_replace; $i < $length_search; $i++)
+			{
+				$replace[$i] = '';
+			}
+		}
+
 		// If subject is not an array, make it one
 		$was_array = false;
 		if (!is_array($subject)) {
@@ -85,7 +96,7 @@ if (!function_exists('str_ireplace2'))
 					// Increase the position relative to the initial string
 					$pos += strlen($segment_value) + strlen($search_value);
 				}
-
+				
 				// Put our original string back together
 				$subject_value = implode($replace[$search_key], $segments);
 			}
@@ -100,9 +111,7 @@ if (!function_exists('str_ireplace2'))
 
 		// Otherwise, just return the array
 		return $result;
-
 	}
-
 }
 
 ?>
