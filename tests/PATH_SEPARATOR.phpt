@@ -5,9 +5,13 @@ PHP_Compat PATH_SEPARATOR
 require_once ('PHP/Compat.php');
 PHP_Compat::loadConstant('PATH_SEPARATOR');
 
-if (defined('PATH_SEPARATOR')) {
-    echo 'true';
-}
+strtoupper(substr(PHP_OS, 0, 3) == 'WIN') ?
+        ';' :
+        ':');
+
+echo (PATH_SEPARATOR == ';' || PATH_SEPARATOR == ':') ?
+        'true' :
+        'false';
 ?>
 --EXPECT--
 true

@@ -5,9 +5,7 @@ PHP_Compat E_STRICT
 require_once ('PHP/Compat.php');
 PHP_Compat::loadConstant('E_STRICT');
 
-if (defined('E_STRICT')) {
-    echo 'true';
-}
+echo E_STRICT;
 ?>
 --EXPECT--
-true
+2048
