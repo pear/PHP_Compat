@@ -101,7 +101,7 @@ Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND</notes>
 
 	<release>
 		<version>1.0.0</version>
-		<date>2004-06-2</date>
+		<date>2004-06-02</date>
 		<license>PHP License</license>
 		<state>stable</state>
 		<notes>Added more components:
