@@ -41,20 +41,16 @@ if (!function_exists('convert_uudecode'))
             return false;
         }
 
-        if (false) {
+        if (strlen($string) < 8) {
             trigger_error('convert_uuencode() The given parameter is not a valid uuencoded string', E_USER_WARNING);
-            return false;
-        }
-
-        if ($string == '') {
             return false;
         }
 
         $decoded = '';
         foreach (explode("\n", $string) as $line) {
-            
+
             $c = count($bytes = unpack('c*', substr(trim($line), 1)));
-            
+
             while ($c % 4) {
                 $bytes[++$c] = 0;
             }
@@ -76,7 +72,7 @@ if (!function_exists('convert_uudecode'))
             }
         }
 
-        return $decoded;
+        return rtrim($decoded, "\0");
     }
 }
 
