@@ -27,17 +27,21 @@
  * @package     PHP_Compat
  * @link        http://php.net/function.vprintf
  * @author      Aidan Lister <aidan@php.net>
- * @version     1.0
- * @added       PHP 4.1.0
- * @requires    PHP 4.0.4
+ * @version     $Revision$
+ * @since       PHP 4.1.0
  */
 if (!function_exists('vprintf'))
 {
-    function vprintf ()
+    function vprintf ($format, $args)
     {
-        array_unshift($args, $string);
-        call_user_func_array('printf', $args);
-        return null;
+        if (count($args) < 2)
+        {
+            trigger_error('vprintf() Too few arguments', E_USER_WARNING);
+            return null;
+        }
+		
+        array_unshift($args, $format);
+        return call_user_func_array('printf', $args);
     }
 }
 ?>

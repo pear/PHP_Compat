@@ -32,9 +32,15 @@
  */
 if (!function_exists('vsprintf'))
 {
-    function vsprintf ($string, $args)
+    function vsprintf ($format, $args)
     {
-        array_unshift($args, $string);
+        if (count($args) < 2)
+        {
+            trigger_error('vsprintf() Too few arguments', E_USER_WARNING);
+            return null;
+        }
+
+        array_unshift($args, $format);
         return call_user_func_array('sprintf', $args);
     }
 }
