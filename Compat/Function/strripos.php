@@ -32,10 +32,11 @@
  * @author      Stephan Schmidt <schst@php.net>
  * @author      Aidan Lister <aidan@php.net>
  * @version     1.0
+ * @todo        Support negative offsets
  */
-if (!function_exists('strripos2'))
+if (!function_exists('strripos'))
 {
-	function strripos2($haystack, $needle, $offset = null)
+	function strripos ($haystack, $needle, $offset = null)
 	{
         if (!is_scalar($haystack)) {
             trigger_error('strripos() expects parameter 1 to be string, ' . gettype($haystack) . ' given', E_USER_WARNING);
