@@ -33,11 +33,13 @@ if (!function_exists('var_export')) {
     function var_export($array, $return = false)
     {
         // Common output variables
-        $indent         = '  ';
-        $doublearrow    = ' => ';
-        $lineend        = ",\n";
-        $stringdelim    = '\'';
-        $newline        = "\n";
+        $indent      = '  ';
+        $doublearrow = ' => ';
+        $lineend     = ",\n";
+        $stringdelim = '\'';
+        $newline     = "\n";
+        $find        = array(null, '\\', '\'');
+        $replace     = array('NULL', '\\\\', '\\\'');
 
         // Check the export isn't a simple string / int
         if (is_string($array)) {
@@ -53,22 +55,26 @@ if (!function_exists('var_export')) {
             foreach ($array as $key => $value) {
                 // If the key is a string, delimit it
                 if (is_string($key)) {
-                    $key = $stringdelim . addslashes($key) . $stringdelim;
+                    $key = str_replace($find, $replace, $key);
+                    $key = $stringdelim . $key . $stringdelim;
                 }
 
-                // If the value is a string, delimit it
-                if (is_string($value)) {
-                    $value = $stringdelim . addslashes($value) . $stringdelim;
-                } elseif (is_array($value)) {
+                // Delimit value                   
+                if (is_array($value)) {
                     // We have an array, so do some recursion
                     // Do some basic recursion while increasing the indent
                     $recur_array = explode($newline, var_export($value, true));
-                    $recur_newarr = array ();
+                    $temp_array = array();
                     foreach ($recur_array as $recur_line) {
-                        $recur_newarr[] = $indent . $recur_line;
+                        $temp_array[] = $indent . $recur_line;
                     }
-                    $recur_array = implode($newline, $recur_newarr);
+                    $recur_array = implode($newline, $temp_array);
                     $value = $newline . $recur_array;
+                } elseif (is_null($value)) {
+                    $value = 'NULL';
+                } else {
+                    $value = str_replace($find, $replace, $value);
+                    $value = $stringdelim . $value . $stringdelim;
                 }
 
                 // Piece together the line
