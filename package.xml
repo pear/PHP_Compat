@@ -160,6 +160,7 @@ Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND</notes>
 					<file>fprintf_01_simple.phpt</file>
 					<file>stripos_01_simple.phpt</file>
 					<file>strripos_01_simple.phpt</file>
+					<file>strripos_02_offset.phpt</file>
 					<file>str-ireplace_01_simple.phpt</file>
 					<file>str-ireplace_02_subjectarray.phpt</file>
 					<file>str-ireplace_03_search-arr-replace-arr.phpt</file>
