@@ -17,9 +17,11 @@ var_dump(stripos($haystack, $needle));
 var_dump(stripos($haystack, $needle, 4));
 var_dump(stripos($haystack, $needle, 10));
 var_dump(stripos($haystack, $needle, 15));
+var_dump(stripos($haystack, 'idontexist', 15));
 ?>
 --EXPECT--
 int(11)
 int(11)
 int(11)
 int(41)
+bool(false)
