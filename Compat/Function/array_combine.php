@@ -31,7 +31,7 @@
  */
 if (!function_exists('array_combine'))
 {
-    function array_combine(&$keys, &$values)
+    function array_combine($keys, $values)
     {
         if (!is_array($keys)) {
             trigger_error('array_combine() expects parameter 1 to be array, ' . gettype($keys) . ' given', E_USER_WARNING);
@@ -39,7 +39,7 @@ if (!function_exists('array_combine'))
         }
 
         if (!is_array($values)) {
-            trigger_error('array_combine() expects parameter 2 to be array, ' . gettype($keys) . ' given', E_USER_WARNING);
+            trigger_error('array_combine() expects parameter 2 to be array, ' . gettype($values) . ' given', E_USER_WARNING);
             return null;
         }
 
