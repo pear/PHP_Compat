@@ -27,24 +27,15 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 4.3.0
- * @require     PHP 4.0.6 (is_callable)
+ * @require     PHP 4.0.1 (trigger_error)
  */
 if (!function_exists('array_intersect_assoc')) {
     function array_intersect_assoc()
     {
+        // Sanity check
         $args = func_get_args();
-        if (count($args) < 3) {
+        if (count($args) < 2) {
             trigger_error('wrong parameter count for array_intersect_assoc()', E_USER_WARNING);
-            return;
-        }
-
-        // Get compare function
-        $user_func = array_pop($args);
-        if (!is_callable($user_func)) {
-            if (is_array($user_func)) {
-                $user_func = $user_func[0] . '::' . $user_func[1];
-            }
-            trigger_error('array_intersect_assoc() Not a valid callback ' . $user_func, E_USER_WARNING);
             return;
         }
 
@@ -58,43 +49,19 @@ if (!function_exists('array_intersect_assoc')) {
         }
 
         // Compare entries
-        $output = array();
-        foreach ($args[0] as $key => $item) {
-            /*
-            old
-            for ($i = 1; $i !== $array_count; $i++) {
-                if (array_key_exists($key, $args[$i])) {
-                     $compare = call_user_func($user_func, $item, $args[$i][$key]);
-                     if ($compare === 0) {
-                         $output[$key] = $item;
-                     }
+        $intersect = array();
+        foreach ($args[0] as $key => $value) {
+            $intersect[$key] = $value;
+
+            for ($i = 1; $i < $array_count; $i++) {
+                if (!isset($args[$i][$key]) || $args[$i][$key] != $value) {
+                    unset($intersect[$key]);
+                    break;
                 }
-                
             }
-            */
-        
-            /*
-            working
-               foreach ($args[0] as $k => $v)
-               {
-                   $intersection[$k] = $v;
-
-                   for ($i = 1; $i < count($args); $i++)
-                   {
-                       if (!isset($args[$i][$k]) || $args[$i][$k] != $v)
-                       {
-                           unset($intersection[$k]);
-                           break;
-                       }
-                   }
-               }
-
-               return $intersection; 
-            */
         }
 
-
-        return $output;
+        return $intersect;
     }
 }
 
