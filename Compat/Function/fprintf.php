@@ -43,6 +43,12 @@ if (!function_exists('fprintf'))
 
         $resource_handle = array_shift($args);
         $format = array_shift($args);
+
+		if (!is_resource($resource_handle)) {
+			trigger_error ('fprintf(): supplied argument is not a valid stream resource', E_USER_WARNING);
+			return false;
+		}
+
         return fwrite($resource_handle, vsprintf($format, $args));
    }
 }
