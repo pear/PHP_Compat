@@ -31,9 +31,9 @@
  * @added       PHP 4.2.0
  * @requires    PHP 3
  */
-if (!function_exists('var_export2'))
+if (!function_exists('var_export'))
 {
-    function var_export2 ($array, $return = false)
+    function var_export ($array, $return = false)
     {
 		// Common output variables
 		$indent         = '  ';
