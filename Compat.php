@@ -20,10 +20,10 @@
 
 
 /**
- * Provides a set of functions replacing missing functionality
- *   in older versions of PHP
+ * Provides missing functionality in the form of constants and functions
+ *   for older versions of PHP
  *
- * This class should be called statically
+ * The methods in this class should be called statically
  *
  * Optionally, you may simply include the file.
  *   e.g. require_once 'PHP/Compat/Function/scandir.php';
@@ -35,9 +35,9 @@ class PHP_Compat
 {
 
     /**
-     * Load function[s]
+     * Load a function, or array of functions
      *
-     * @param string|array $function The function[s] to load.
+     * @param string|array $function The function or functions to load.
      * @return void
      */
     function loadFunction ($function)
@@ -62,9 +62,9 @@ class PHP_Compat
 
 
     /**
-     * Load constant[s]
+     * Load a constant, or array of constants
      *
-     * @param string|array $constant The constant[s] to load.
+     * @param string|array $constant The constant or constants to load.
      * @return void
      */
     function loadConstant ($constant)
