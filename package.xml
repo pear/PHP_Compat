@@ -22,6 +22,7 @@ Functions:
 * file_put_contents
 * fprintf
 * http_build_query
+* html_entity_decode
 * is_a
 * scandir
 * str_ireplace
@@ -120,6 +121,15 @@ Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND</notes>
 * var_export
 
 Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour).</notes>
+	</release>
+
+	<release>
+		<version>1.1.0</version>
+		<date>2004-14-02</date>
+		<license>PHP License</license>
+		<state>stable</state>
+		<notes>Added more components:
+		* html_entity_decode</notes>
 		<filelist>
 			<dir name="/" baseinstalldir="PHP" role="php">	 
 				<file>Compat.php</file>
@@ -141,6 +151,7 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
 						<file>file_put_contents.php</file>
 						<file>fprintf.php</file>
 						<file>http_build_query.php</file>
+						<file>html_entity_decode.php</file>
 						<file>is_a.php</file>
 						<file>scandir.php</file>
 						<file>str_ireplace.php</file>
@@ -170,6 +181,7 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
 					<file>http-build-query_numindex.phpt</file>
 					<file>http-build-query_object.phpt</file>
 					<file>http-build-query_simple.phpt</file>
+					<file>html-entity-decode_simple.phpt</file>
 					<file>is-a_simple.phpt</file>
 					<file>path-separator.phpt</file>
 					<file>php-compat-loadconstant_array.phpt</file>
