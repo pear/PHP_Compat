@@ -22,10 +22,49 @@
 		<maintainer>
 			<user>aidan</user>
 			<name>Aidan Lister</name>
-			<email>aidan@virtualexplorer.com.au</email>
+			<email>aidan@php.net</email>
 			<role>lead</role>
 		</maintainer>
 	</maintainers>
+
+	<release>
+		<version>0.2</version>
+		<date>2004-05-27</date>
+		<license>PHP License</license>
+		<state>beta</state>
+		<notes>
+			Added more components:
+			* str_split
+			* STDIN
+			* STDOUT
+			* STDERR
+
+			Made a number of bugfixes.
+			Added PHP style error messages.
+		</notes>
+		<filelist>
+			<dir name="/" baseinstalldir="PHP" role="php">	 
+				<file>Compat.php</file>
+				<dir name="Compat">
+					<dir name="Constant">
+						<file>E_STRICT.php</file>
+						<file>PATH_SEPARATOR.php</file>
+						<file>STDIN.php</file>
+						<file>STDOUT.php</file>
+						<file>STDERR.php</file>
+					</dir>
+					<dir name="Function">
+						<file>array_combine.php</file>
+						<file>file_get_contents.php</file>
+						<file>file_put_contents.php</file>
+						<file>is_a.php</file>
+						<file>scandir.php</file>
+						<file>str_split.php</file>
+					</dir>
+				</dir>
+			</dir>
+		</filelist>
+	</release>
 
 	<release>
 		<version>0.1</version>
@@ -35,25 +74,6 @@
 		<notes>
 			This package is in beta while any bugs are ironed out.
 		</notes>
-
-		<filelist>
-			<dir name="/" baseinstalldir="PHP" role="php">	 
-				<file>Compat.php</file>
-				<dir name="Compat">
-					<dir name="Constant">
-						<file>E_STRICT.php</file>
-						<file>PATH_SEPARATOR.php</file>
-					</dir>
-					<dir name="Function">
-						<file>array_combine.php</file>
-						<file>file_get_contents.php</file>
-						<file>file_put_contents.php</file>
-						<file>is_a.php</file>
-						<file>scandir.php</file>
-					</dir>
-				</dir>
-			</dir>
-		</filelist>
 	</release>
 
 </package>
