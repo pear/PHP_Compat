@@ -31,30 +31,46 @@
  * @since       PHP 4.0.4
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('call_user_func_array'))
+if (!function_exists('call_user_func_array2'))
 {
-    function call_user_func_array ()
+    function call_user_func_array2 ($function, $param_arr)
     {
-		$argString = '';
+		$param_arr = (array) $param_arr;
+	
+		// Sanity check
+        if (!is_callable($function))
+        {
+            if (is_array($function) && count($function) > 2) {
+                $function = $function[0] . '::' . $function[1];
+            }
+			$error = sprintf('call_user_func_array() First argument is expected to be a valid callback, \'%s\' was given', $function);
+            trigger_error($error, E_USER_WARNING);
+            return null;
+        }
+
+		// Build argument string
+		$arg_string = '';
 		$comma = '';
-		for ($i = 0; $i < count($args); $i ++) {
-			$argString .= $comma . "\$args[$i]";
+		for ($i = 0, $x = count($param_arr); $i < $x; $i++) {
+			$arg_string .= $comma . "\$param_arr[$i]";
 			$comma = ', ';
 		}
 
-		if (is_array($func))
+		// Determine method of calling function
+		if (is_array($function))
 		{
-			$obj =& $func[0];
-			$meth = $func[1];
+			$object =& $function[0];
+			$method = $function[1];
 
-			if (is_string($func[0])) {
-				eval("\$retval = $obj::\$meth($argString);");
+			// Static vs method call
+			if (is_string($function[0])) {
+				eval("\$retval = $object::\$method($arg_string);");
 			} else {
-				eval("\$retval = \$obj->\$meth($argString);");
+				eval("\$retval = \$object->\$method($arg_string);");
 			}
 		}
 		else {
-			eval("\$retval = \$func($argString);");
+			eval("\$retval = \$function($arg_string);");
 		}
 
 		return $retval;
