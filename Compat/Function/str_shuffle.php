@@ -33,19 +33,21 @@ if (!function_exists('str_shuffle'))
 {
     function str_shuffle($str)
     {
-        $array = array();
-        for($i = 0, $ii = strlen($str); $i < $ii; $i++) {
-            $array[] = $str[$i];
+        $newstr = '';
+        $strlen = strlen($str);
+        $str = (string) $str;
+
+        // Seed
+        list($usec, $sec) = explode(' ', microtime());
+        $seed = (float) $sec + ((float) $usec * 100000);
+        mt_srand($seed);
+
+        // Shuffle
+        for ($i = 0; $strlen > $i; $i++) {
+            $newstr .= $str[mt_rand(0, $strlen - 1)];
         }
 
-        shuffle($array);
-
-        $newstring = '';
-        for($i = 0, $ii = count($array); $i < $ii; $i++) {
-            $newstring .= $array[$i];
-        }
-
-        return $newstring;
+        return $newstr;
     }
 }
 
