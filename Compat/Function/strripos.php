@@ -39,12 +39,12 @@ if (!function_exists('strripos'))
 	function strripos ($haystack, $needle, $offset = null)
 	{
         if (!is_scalar($haystack)) {
-            trigger_error('strripos() expects parameter 1 to be string, ' . gettype($haystack) . ' given', E_USER_WARNING);
+            trigger_error('strripos() expects parameter 1 to be scalar, ' . gettype($haystack) . ' given', E_USER_WARNING);
             return false;
         }
 
         if (!is_scalar($needle)) {
-            trigger_error('strripos() needle is not a string or an integer.', E_USER_WARNING);
+            trigger_error('strripos() expects parameter 2 to be scalar, ' . gettype($haystack) . ' given', E_USER_WARNING);
             return false;
         }
 
