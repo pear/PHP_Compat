@@ -1,5 +1,5 @@
 --TEST--
-PHP_Compat scandir() -- simple
+PHP_Compat scandir() -- with sorting
 --FILE--
 <?php
 require_once ('PHP/Compat.php');
@@ -25,8 +25,8 @@ rmdir('tmp');
 --EXPECT--
 Array
 (
-    [0] => .
-    [1] => ..
-    [2] => test1
-    [3] => test2
+    [0] => test2
+    [1] => test1
+    [2] => ..
+    [3] => .
 )
