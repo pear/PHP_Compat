@@ -34,7 +34,7 @@
  */
 if (!function_exists('array_search'))
 {
-    function array_search ()
+    function array_search ($needle, $haystack, $strict = false)
     {
         if (!is_array($haystack)) {
             trigger_error("array_search() Wrong datatype for second argument", E_USER_WARNING);
