@@ -33,9 +33,9 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     1.0
  */
-if (!function_exists('http_build_query'))
+if (!function_exists('http_build_query2'))
 {
-    function http_build_query ($formdata, $numeric_prefix = null)
+    function http_build_query2 ($formdata, $numeric_prefix = null)
     {
         // If $formdata is an object, convert it to an array
         if (is_object($formdata)) {
@@ -47,6 +47,11 @@ if (!function_exists('http_build_query'))
             trigger_error('http_build_query(): Parameter 1 expected to be Array or Object. Incorrect value given.', E_USER_WARNING);
             return false;
         }
+
+		// If the array is empty, return null
+		if (empty($formdata)) {
+			return null;
+		}
         
 		// Start building the query
         $tmp = array ();
