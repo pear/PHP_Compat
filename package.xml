@@ -9,6 +9,9 @@
 		Constants:
 		* E_STRICT
 		* PATH_SEPERATOR
+		* STDIN
+		* STDOUT
+		* STDERR
 
 		Functions:
 		* file_get_contents
