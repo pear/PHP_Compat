@@ -77,6 +77,8 @@
             * http_build_query
             * array_udiff
             * array_udiff_assoc
+			* FILE_APPEND
+			* FILE_USE_INCLUDE_PATH
 
             Heavily modified file_put_contents for greater support
             A couple of bug fixes
