@@ -30,10 +30,11 @@
  * @link        http://php.net/function.file_get_contents
  * @author      Aidan Lister <aidan@php.net>
  * @version     1.0
+ * @internal    $resource_context is not supported
  */
 if (!function_exists('file_get_contents'))
 {
-    function file_get_contents ($filename, $incpath = false)
+    function file_get_contents ($filename, $incpath = false, $resource_context = null)
     {
         $file = fopen($filename, 'rb', $incpath);
 
