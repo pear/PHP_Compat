@@ -32,7 +32,7 @@
  * @author      Stephan Schmidt <schst@php.net>
  * @author      Aidan Lister <aidan@php.net>
  * @version     1.0
- * @todo        Support negative offsets
+ * @todo        Support offset
  */
 if (!function_exists('strripos'))
 {
@@ -53,7 +53,7 @@ if (!function_exists('strripos'))
             return false;
         }
 
-        return strrpos(strtolower($haystack), strtolower($needle), $offset);
+        return strrpos(strtolower($haystack), strtolower($needle));
     }
 }
 ?>
