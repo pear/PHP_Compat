@@ -32,7 +32,6 @@
  * @version     1.0
  * @added       PHP 5
  * @requires    PHP 3
- * @internal    Only searches for first char in needle, not whole string
  */
 if (!function_exists('strripos'))
 {
@@ -55,22 +54,30 @@ if (!function_exists('strripos'))
 
         // Manipulate the string if there is an offset
         $fix = 0;
-        if (!is_null($offset)) {
+        if (!is_null($offset))
+		{
+			// If the offset is larger than the haystack, return
+			if (abs($offset) >= strlen($haystack)) {
+				return false;
+			}
+
+			// Check whether offset is negative or positive
             if ($offset > 0) {
                 $haystack = substr($haystack, $offset, strlen($haystack) - $offset);
-                $fix = $offset;
+				// We need to add this to the position of the needle
+				$fix = $offset;
             }
             else {
-                if (abs($offset) > strlen($haystack)) {
-                    return false;
-                }
-
                 $haystack = substr($haystack, 0, strlen($haystack) + $offset);
             }
         }
 
-        $pos = strrpos(strtolower($haystack), strtolower($needle));
-        return ($pos === false) ? false : $pos + $fix;
+        $segments = explode(strtolower($needle), strtolower($haystack));
+		
+		$last_seg = count($segments) - 1;
+		$position = strlen($haystack) + $fix - strlen($segments[$last_seg]) - strlen($needle);
+
+		return $position;
     }
 }
 ?>
