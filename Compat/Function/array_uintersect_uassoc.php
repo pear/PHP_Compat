@@ -71,7 +71,7 @@ if (!function_exists('array_uintersect_uassoc2'))
         // Compare entries
         $output = array();
         foreach ($args[0] as $key => $item) {
-            for ($i = 1; $i !== $array_count; $i++) {
+            for ($i = 1; $i < $array_count; $i++) {
                 if (array_key_exists($key, $args[$i])) {
                      $compare = call_user_func($key_compare_func, $item, $args[$i][$key]);
                      if ($compare === 0) {
