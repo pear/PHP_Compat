@@ -1,11 +1,25 @@
+Functions
+---------
 * array_walk_recursive
 * array_uintersect_assoc
 * array_uintersect_uassoc
 * array_uintersect
 * array_udiff_uassoc
-* convert_uuencode
-* convert_uudecode
 * substr_compare
 * php_strip_whitespace
 * php_check_syntax
+
+Tests
+---------
+* array_walk_recursive
+* array_uintersect_assoc
+* array_uintersect_uassoc
+* array_uintersect
+* array_udiff_uassoc
+* substr_compare
+* php_strip_whitespace
+* php_check_syntax
+
+Methods
+-------
 * loadVersion in main class
