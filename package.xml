@@ -1,147 +1,147 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <package version="1.0">
-    <name>PHP_Compat</name>
-    <summary>Provides missing functionality for older versions of PHP.</summary>
+	<name>PHP_Compat</name>
+	<summary>Provides missing functionality for older versions of PHP.</summary>
 
-    <description>
-        PHP_Compat provides missing functionality in the form of Constants and Functions for older versions of PHP.
+	<description>
+		PHP_Compat provides missing functionality in the form of Constants and Functions for older versions of PHP.
 
-        Constants:
-        * E_STRICT
-        * PATH_SEPERATOR
-        * STDIN
-        * STDOUT
-        * STDERR
+		Constants:
+		* E_STRICT
+		* PATH_SEPERATOR
+		* STDIN
+		* STDOUT
+		* STDERR
 		* FILE_APPEND
 		* FILE_USE_INCLUDE_PATH
 
-        Functions:
-        * file_get_contents
-        * file_put_contents
-        * is_a
-        * scandir
-        * array_combine
-        * str_split
-        * http_build_query
-    </description>
+		Functions:
+		* file_get_contents
+		* file_put_contents
+		* is_a
+		* scandir
+		* array_combine
+		* str_split
+		* http_build_query
+	</description>
 
-    <maintainers>
-        <maintainer>
-            <user>aidan</user>
-            <name>Aidan Lister</name>
-            <email>aidan@php.net</email>
-            <role>lead</role>
-        </maintainer>
-        <maintainer>
-            <user>schst</user>
-            <name>Stephan Schmidt</name>
-            <email>schst@php.net</email>
-            <role>developer</role>
-        </maintainer>
-    </maintainers>
+	<maintainers>
+		<maintainer>
+			<user>aidan</user>
+			<name>Aidan Lister</name>
+			<email>aidan@php.net</email>
+			<role>lead</role>
+		</maintainer>
+		<maintainer>
+			<user>schst</user>
+			<name>Stephan Schmidt</name>
+			<email>schst@php.net</email>
+			<role>developer</role>
+		</maintainer>
+	</maintainers>
 
-    <release>
-        <version>0.1</version>
-        <date>2004-05-19</date>
-        <license>PHP License</license>
-        <state>beta</state>
-        <notes>
-            This package is in beta while any bugs are ironed out.
-        </notes>
-    </release>
+	<release>
+		<version>0.1</version>
+		<date>2004-05-19</date>
+		<license>PHP License</license>
+		<state>beta</state>
+		<notes>
+			This package is in beta while any bugs are ironed out.
+		</notes>
+	</release>
 
-    <release>
-        <version>0.2</version>
-        <date>2004-05-27</date>
-        <license>PHP License</license>
-        <state>beta</state>
-        <notes>
-            Added more components:
-            * str_split
-            * STDIN
-            * STDOUT
-            * STDERR
+	<release>
+		<version>0.2</version>
+		<date>2004-05-27</date>
+		<license>PHP License</license>
+		<state>beta</state>
+		<notes>
+			Added more components:
+			* str_split
+			* STDIN
+			* STDOUT
+			* STDERR
 
-            Made a number of bugfixes.
-            Added replica PHP error messages.
+			Made a number of bugfixes.
+			Added replica PHP error messages.
 
-            Still in beta until any last bugs are found and removed.
-        </notes>
-    </release>
+			Still in beta until any last bugs are found and removed.
+		</notes>
+	</release>
 
-    <release>
-        <version>1.0.0RC1</version>
-        <date>2004-05-28</date>
-        <license>PHP License</license>
-        <state>beta</state>
-        <notes>
-            Added more components:
-            * http_build_query
-            * array_udiff
-            * array_udiff_assoc
+	<release>
+		<version>1.0.0RC1</version>
+		<date>2004-05-28</date>
+		<license>PHP License</license>
+		<state>beta</state>
+		<notes>
+			Added more components:
+			* http_build_query
+			* array_udiff
+			* array_udiff_assoc
 			* FILE_APPEND
 			* FILE_USE_INCLUDE_PATH
 
-            Heavily modified file_put_contents for greater support
-            A couple of bug fixes
-            Added complete unit testing!
-        </notes>
-        <filelist>
-            <dir name="/" baseinstalldir="PHP" role="php">     
-                <file>Compat.php</file>
-                <dir name="Compat">
-                    <dir name="Constant">
-                        <file>E_STRICT.php</file>
-                        <file>PATH_SEPARATOR.php</file>
-                        <file>STDIN.php</file>
-                        <file>STDOUT.php</file>
-                        <file>STDERR.php</file>
+			Heavily modified file_put_contents for greater support
+			A couple of bug fixes
+			Added complete unit testing!
+		</notes>
+		<filelist>
+			<dir name="/" baseinstalldir="PHP" role="php">	 
+				<file>Compat.php</file>
+				<dir name="Compat">
+					<dir name="Constant">
+						<file>E_STRICT.php</file>
+						<file>PATH_SEPARATOR.php</file>
+						<file>STDIN.php</file>
+						<file>STDOUT.php</file>
+						<file>STDERR.php</file>
 						<file>FILE_USE_INCLUDE_PATH.php</file>
 						<file>FILE_APPEND.php</file>
-                    </dir>
-                    <dir name="Function">
-                        <file>array_combine.php</file>
-                        <file>file_get_contents.php</file>
-                        <file>file_put_contents.php</file>
-                        <file>is_a.php</file>
-                        <file>scandir.php</file>
-                        <file>str_split.php</file>
-                        <file>http_build_query.php</file>
-                        <file>array_udiff.php</file>
-                        <file>array_udiff_assoc.php</file>
-                    </dir>
-                </dir>
-                <dir name="tests" role="test">
-                    <file>array-combine_01_simple.phpt</file>
-                    <file>array-udiff_01_simple.phpt</file>
-                    <file>array-udiff-assoc_01_simple.phpt</file>
-                    <file>file-get-contents_01_simple.phpt</file>
-                    <file>file-put-contents_01_simple.phpt</file>
-                    <file>file-put-contents_02_array.phpt</file>
-                    <file>file-put-contents_03_append.phpt</file>
-                    <file>http-build-query_01_simple.phpt</file>
-                    <file>http-build-query_02_complexarray.phpt</file>
-                    <file>http-build-query_03_numindex.phpt</file>
-                    <file>http-build-query_04_object.phpt</file>
-                    <file>is-a_01_simple.phpt</file>
-                    <file>php-compat-loadconstant_01_simple.phpt</file>
-                    <file>php-compat-loadconstant_02_array.phpt</file>
-                    <file>php-compat-loadfunction_01_simple.phpt</file>
-                    <file>php-compat-loadfunction_02_array.phpt</file>
-                    <file>scandir_01_simple.phpt</file>
-                    <file>str-split_01_simple.phpt</file>
-                    <file>str-split_02_chunksize.phpt</file>
-                    <file>str-split_03_lessremainder.phpt</file>
-                    <file>str-split_04_bigchunk.phpt</file>
-                    <file>E_STRICT.phpt</file>
+					</dir>
+					<dir name="Function">
+						<file>array_combine.php</file>
+						<file>file_get_contents.php</file>
+						<file>file_put_contents.php</file>
+						<file>is_a.php</file>
+						<file>scandir.php</file>
+						<file>str_split.php</file>
+						<file>http_build_query.php</file>
+						<file>array_udiff.php</file>
+						<file>array_udiff_assoc.php</file>
+					</dir>
+				</dir>
+				<dir name="tests" role="test">
+					<file>array-combine_01_simple.phpt</file>
+					<file>array-udiff_01_simple.phpt</file>
+					<file>array-udiff-assoc_01_simple.phpt</file>
+					<file>file-get-contents_01_simple.phpt</file>
+					<file>file-put-contents_01_simple.phpt</file>
+					<file>file-put-contents_02_array.phpt</file>
+					<file>file-put-contents_03_append.phpt</file>
+					<file>http-build-query_01_simple.phpt</file>
+					<file>http-build-query_02_complexarray.phpt</file>
+					<file>http-build-query_03_numindex.phpt</file>
+					<file>http-build-query_04_object.phpt</file>
+					<file>is-a_01_simple.phpt</file>
+					<file>php-compat-loadconstant_01_simple.phpt</file>
+					<file>php-compat-loadconstant_02_array.phpt</file>
+					<file>php-compat-loadfunction_01_simple.phpt</file>
+					<file>php-compat-loadfunction_02_array.phpt</file>
+					<file>scandir_01_simple.phpt</file>
+					<file>str-split_01_simple.phpt</file>
+					<file>str-split_02_chunksize.phpt</file>
+					<file>str-split_03_lessremainder.phpt</file>
+					<file>str-split_04_bigchunk.phpt</file>
+					<file>E_STRICT.phpt</file>
 					<file>FILE_APPEND.phpt</file>
 					<file>FILE_USE_INCLUDE_PATH.phpt</file>
 					<file>PATH_SEPARATOR.phpt</file>
 					<file>STDERR.phpt</file>
 					<file>STDIN.phpt</file>
 					<file>STDOUT.phpt</file>
-                </dir>
-            </dir>
-        </filelist>
-    </release>
+				</dir>
+			</dir>
+		</filelist>
+	</release>
 </package>
