@@ -42,7 +42,7 @@ if (!function_exists('stripos')) {
             return false;
         }
 
-        if (!is_null($offset) && !is_numeric($offset)) {
+        if (!is_int($offset) && !is_bool($offset) && !is_null($offset)) {
             trigger_error('stripos() expects parameter 3 to be long, ' . gettype($offset) . ' given', E_USER_WARNING);
             return false;
         }

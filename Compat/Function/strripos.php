@@ -31,8 +31,8 @@
  * @since       PHP 5
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('strripos')) {
-    function strripos($haystack, $needle, $offset = null)
+if (!function_exists('strripos2')) {
+    function strripos2($haystack, $needle, $offset = null)
     {
         if (!is_scalar($haystack)) {
             trigger_error('strripos() expects parameter 1 to be scalar, ' . gettype($haystack) . ' given', E_USER_WARNING);
@@ -44,7 +44,7 @@ if (!function_exists('strripos')) {
             return false;
         }
 
-        if (!is_null($offset) && !is_numeric($offset)) {
+        if (!is_int($offset) && !is_bool($offset) && !is_null($offset)) {
             trigger_error('strripos() expects parameter 3 to be long, ' . gettype($offset) . ' given', E_USER_WARNING);
             return false;
         }
