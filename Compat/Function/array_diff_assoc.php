@@ -37,13 +37,13 @@ if (!function_exists('array_diff_assoc'))
     {
         // Check we have enough arguments
         $args = func_get_args();
+        $count = count($args);
         if (count($args) < 2) {
             trigger_error('Wrong parameter count for array_diff_assoc()', E_USER_WARNING);
             return null;
         }
     
         // Check arrays
-        $count = count($args);
         for ($i = 0; $i < $count; $i++)
         {
             if (!is_array($args[$i])) {
@@ -54,7 +54,7 @@ if (!function_exists('array_diff_assoc'))
     
         // Get the comparison array
         $array_comp = array_shift($args);
-        $count = $count - 1;
+        --$count;
 
         // Traverse values of the first array
         foreach ($array_comp as $key => $value)
