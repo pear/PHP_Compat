@@ -7,28 +7,22 @@ Function -- str_split
 require_once ('PHP/Compat.php');
 PHP_Compat::loadFunction('str_split');
 
-// Simple
 $str = "Hello Friend";
-$arr = str_split($str);
 
+// Simple
+$arr = str_split($str);
 print_r($arr);
 
 // With a chunk size specified
-$str = "Hello Friend";
 $arr = str_split($str, 3);
-
 print_r($arr);
 
 // With chunk size bigger than the string
-$str = "abcd";
-$arr = str_split($str, 3);
-
+$arr = str_split($str, 60);
 print_r($arr);
 
 // String that has a remainder less than the chunk size
-$str = "abcd";
-$arr = str_split($str, 3);
-
+$arr = str_split($str, 11);
 print_r($arr);
 ?>
 --EXPECT--
@@ -56,11 +50,10 @@ Array
 )
 Array
 (
-    [0] => abc
-    [1] => d
+    [0] => Hello Friend
 )
 Array
 (
-    [0] => abc
+    [0] => Hello Frien
     [1] => d
 )

@@ -18,7 +18,7 @@ $subject = 'The dog jumped over the {object}';
 echo str_ireplace($search, $replace, $subject), "\n";
 
 //
-// With subject as array
+// Test 1: With subject as array
 //
 
 // As a full array
@@ -33,29 +33,30 @@ $replace = 'Lady';
 $subject = array('The dog jumped over the {object}');
 print_r(str_ireplace($search, $replace, $subject));
 
+
 // 
-// Search as string, replace as array
+// Test 2: Search as string, replace as array
 //
 
 $search = '{object}';
 $replace = array('cat', 'dog', 'tiger');
 $subject = 'The dog jumped over the {object}';
-
 // Supress the error, no way of knowing how it'll turn out on the users machine
 echo @str_ireplace($search, $replace, $subject), "\n";
 
+
 //
-// Search as array, Replace as string
+// Test 3: Search as array, Replace as string
 //
 
 $search = array('{ANIMAL}', '{OBJECT}', '{THING}');
 $replace = 'frog';
 $subject = 'The {animal} jumped over the {object} and the {thing}...';
-
 echo str_ireplace($search, $replace, $subject), "\n";
 
+
 //
-// Search and Replace as arrays
+// Test 4: Search and Replace as arrays
 //
 
 // Simple
@@ -76,14 +77,14 @@ $replace = array('frog', 'gate', 'door');
 $subject = 'The {animal} jumped over the {object} and the {thing}...';
 echo str_ireplace($search, $replace, $subject), "\n";
 
+
 //
-// All arrays
+// Test 5: All arrays
 //
 
 $search = array('{ANIMAL}', '{OBJECT}', '{THING}');
 $replace = array('frog', 'gate', 'beer');
 $subject = array('A {animal}', 'The {object}', 'My {thing}');
-
 print_r(str_ireplace($search, $replace, $subject));
 
 ?>

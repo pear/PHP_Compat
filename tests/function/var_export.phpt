@@ -7,9 +7,12 @@ Function -- var_export
 require_once ('PHP/Compat.php');
 PHP_Compat::loadFunction('var_export');
 
+// Simple
 $a = array (1, 2, array ("a", "b", "c"));
 var_export($a);
 echo "\n";
+
+// With return
 echo var_export($a, true);
 ?>
 --EXPECT--

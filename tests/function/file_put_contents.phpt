@@ -7,29 +7,20 @@ Function -- file_put_contents
 require_once ('PHP/Compat.php');
 PHP_Compat::loadFunction('file_put_contents');
 
+// Create a temp file
+$tmpfname = tempnam('/tmp', 'phpcompat');
+
 // With a string
 $string = "abcd";
-$tmpfname = tempnam('/tmp', 'php');
 
-$res = file_put_contents($tmpfname, $string);
-$data = implode('', file($tmpfname));
-
-unlink($tmpfname);
-
-echo $res, "\n";
-echo $data, "\n";
+echo file_put_contents($tmpfname, $string), "\n";
+echo implode('', file($tmpfname)), "\n";
 
 // With an array
 $string = array('foo', 'bar');
-$tmpfname = tempnam('/tmp', 'php');
 
-$res = file_put_contents($tmpfname, $string);
-$data = implode('', file($tmpfname));
-
-unlink($tmpfname);
-
-echo $res, "\n";
-echo $data, "n";
+echo file_put_contents($tmpfname, $string), "\n";
+echo implode('', file($tmpfname)), "\n";
 
 // Test append
 $string = 'foobar';

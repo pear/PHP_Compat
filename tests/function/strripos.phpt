@@ -7,16 +7,13 @@ Function -- strripos
 require_once ('PHP/Compat.php');
 PHP_Compat::loadFunction('strripos');
 
-// Simple
-$haystack = 'Cat Dog Lion Mouse Sheep Wolf Cat Dog';
-$needle  = 'DOG';
-
-var_dump(strripos($haystack, $needle));
-
-// With offset
 $haystack = 'Cat Dinner Dog Lion Mouse Sheep Wolf Cat Dog Donut';
 $needle  = 'DOG';
 
+// Simple
+var_dump(strripos($haystack, $needle));
+
+// With offset
 var_dump(strripos($haystack, $needle, 3));
 var_dump(strripos($haystack, $needle, 30));
 var_dump(strripos($haystack, $needle, 50));
@@ -26,7 +23,7 @@ var_dump(strripos($haystack, $needle, -30));
 var_dump(strripos($haystack, $needle, -50));
 ?>
 --EXPECT--
-int(34)
+int(41)
 int(41)
 int(41)
 bool(false)
