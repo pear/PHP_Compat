@@ -20,6 +20,7 @@
 		* scandir
 		* array_combine
 		* str_split
+		* http_build_query
 	</description>
 
 	<maintainers>
@@ -58,6 +59,19 @@
 
 			Still in beta until any last bugs are found and removed.
 		</notes>
+	</release>
+
+	<release>
+		<version>0.3</version>
+		<date>2004-05-28</date>
+		<license>PHP License</license>
+		<state>beta</state>
+		<notes>
+			Added more components:
+			* http_build_query
+
+			Still in beta!
+		</notes>
 		<filelist>
 			<dir name="/" baseinstalldir="PHP" role="php">	 
 				<file>Compat.php</file>
@@ -76,6 +90,7 @@
 						<file>is_a.php</file>
 						<file>scandir.php</file>
 						<file>str_split.php</file>
+						<file>http_build_query.php</file>
 					</dir>
 				</dir>
 			</dir>
