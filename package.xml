@@ -19,7 +19,6 @@ Functions:
 * is_a
 * scandir
 * str_split
-* vprintf
 * fprintf
 * stripos
 * strripos
@@ -88,7 +87,6 @@ Added complete unit testing!</notes>
 		<license>PHP License</license>
 		<state>beta</state>
 		<notes>Added more components:
-* vprintf
 * fprintf
 * stripos
 * strripos
@@ -118,7 +116,6 @@ Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND</notes>
 						<file>http_build_query.php</file>
 						<file>array_udiff.php</file>
 						<file>array_udiff_assoc.php</file>
-						<file>vprintf.php</file>
 						<file>fprintf.php</file>
 						<file>stripos.php</file>
 						<file>strripos.php</file>
@@ -147,7 +144,6 @@ Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND</notes>
 					<file>str-split_02_chunksize.phpt</file>
 					<file>str-split_03_lessremainder.phpt</file>
 					<file>str-split_04_bigchunk.phpt</file>
-					<file>vprintf_01_simple.phpt</file>
 					<file>fprintf_01_simple.phpt</file>
 					<file>stripos_01_simple.phpt</file>
 					<file>strripos_01_simple.phpt</file>
