@@ -23,7 +23,7 @@
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/array_key_exists
+ * @link        http://php.net/function.array_key_exists
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 4.1.0

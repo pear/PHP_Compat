@@ -24,7 +24,7 @@
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/array_uintersect_assoc
+ * @link        http://php.net/function.array_uintersect_assoc
  * @author      Tom Buskens <ortega@php.net>
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$

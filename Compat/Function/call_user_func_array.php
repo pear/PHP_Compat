@@ -23,7 +23,7 @@
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/call_user_func_array
+ * @link        http://php.net/function.call_user_func_array
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 4.0.4

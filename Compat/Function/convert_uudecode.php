@@ -24,7 +24,7 @@
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/convert_uudecode
+ * @link        http://php.net/function.convert_uudecode
  * @author      Michael Wallner <mike@php.net>
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$

@@ -23,7 +23,7 @@
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/array_search
+ * @link        http://php.net/function.array_search
  * @author      Aidan Lister <aidan@php.net>
  * @author      Thiemo Mättig (http://maettig.com/)
  * @version     $Revision$

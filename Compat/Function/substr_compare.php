@@ -24,7 +24,7 @@
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/substr_compare
+ * @link        http://php.net/function.substr_compare
  * @author      Tom Buskens <ortega@php.net>
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$

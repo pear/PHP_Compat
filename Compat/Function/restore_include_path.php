@@ -26,7 +26,7 @@
  * @link        http://php.net/function.restore_include_path
  * @author      Stephan Schmidt <schst@php.net>
  * @version     $Revision$
- * @since       PHP 4.3
+ * @since       PHP 4.3.0
  */
 if (!function_exists('restore_include_path'))
 {

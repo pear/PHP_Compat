@@ -23,7 +23,7 @@
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/constant
+ * @link        http://php.net/function.constant
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 4.0.4

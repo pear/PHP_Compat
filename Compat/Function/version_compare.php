@@ -24,7 +24,7 @@
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/version_compare
+ * @link        http://php.net/function.version_compare
  * @author      Philippe Jausions <Philippe.Jausions@11abacus.com>
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$

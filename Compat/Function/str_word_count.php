@@ -23,7 +23,7 @@
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/str_word_count
+ * @link        http://php.net/function.str_word_count
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 4.3.0

@@ -23,7 +23,7 @@
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/ob_flush
+ * @link        http://php.net/function.ob_flush
  * @author      Aidan Lister <aidan@php.net>
  * @author      Thiemo Mättig (http://maettig.com/)
  * @version     $Revision$

@@ -23,7 +23,7 @@
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/array_udiff_uassoc
+ * @link        http://php.net/function.array_udiff_uassoc
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 5

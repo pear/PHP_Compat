@@ -23,7 +23,7 @@
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/str_shuffle
+ * @link        http://php.net/function.str_shuffle
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 4.3.0
