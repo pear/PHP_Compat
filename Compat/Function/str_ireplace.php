@@ -34,6 +34,7 @@
 if (!function_exists('str_ireplace')) {
     function str_ireplace($search, $replace, $subject, $count = null)
     {
+        // Sanity check
         if (is_string($search) && is_array($replace)) {
             trigger_error('Array to string conversion', E_USER_NOTICE);
             $replace = (string) $replace;
@@ -43,6 +44,7 @@ if (!function_exists('str_ireplace')) {
         if (!is_array($search)) {
             $search = array ($search);
         }
+        $search = array_values($search);
 
         // If replace isn't an array, make it one, and pad it to the length of search
         if (!is_array($replace)) {
@@ -53,6 +55,7 @@ if (!function_exists('str_ireplace')) {
                 $replace[$i] = $replace_string;
             }
         }
+        $replace = array_values($replace);
 
         // Check the replace array is padded to the correct length
         $length_replace = count($replace);
