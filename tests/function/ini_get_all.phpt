@@ -1,7 +1,7 @@
 --TEST--
 Function -- ini_get_all
 --SKIPIF--
-<?php if (function_exists('ini_get_all')) { echo 'sskip'; } ?>
+<?php if (function_exists('ini_get_all')) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once 'PHP/Compat.php';
