@@ -60,7 +60,7 @@ if (!function_exists('array_combine')) {
         $values  = array_values($values);
 
         $combined = array();
-        for ($i = 0, $i < $key_count; $i++) {
+        for ($i = 0; $i < $key_count; $i++) {
             $combined[$keys[$i]] = $values[$i];
         }
 
