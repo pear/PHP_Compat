@@ -44,7 +44,7 @@ if (!function_exists('http_build_query'))
     
         // Check we have an array to work with
         if (!is_array($formdata)) {
-            trigger_error('http_build_query(): Parameter 1 expected to be Array or Object. Incorrect value given.', E_USER_WARNING);
+            trigger_error('http_build_query() Parameter 1 expected to be Array or Object. Incorrect value given.', E_USER_WARNING);
             return false;
         }
 
