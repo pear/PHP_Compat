@@ -1,7 +1,13 @@
 --TEST--
 Function -- php_strip_whitespace
 --SKIPIF--
-<?php if (function_exists('php_strip_whitespace')) { echo 'skip'; } ?>
+<?php
+if (function_exists('php_strip_whitespace') ||
+    !extension_loaded('tokenizer')) {
+        
+    echo 'skip';
+}
+?>
 --FILE--
 <?php
 require_once 'PHP/Compat.php';
