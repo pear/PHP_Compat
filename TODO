@@ -5,16 +5,10 @@ Functions
 * array_uintersect
 * array_udiff_uassoc
 * php_strip_whitespace
-* php_check_syntax
 
 Tests
 ---------
-* array_uintersect_assoc
-* array_uintersect_uassoc
-* array_uintersect
 * array_udiff_uassoc
-* php_strip_whitespace
-* php_check_syntax
 
 Methods
 -------
