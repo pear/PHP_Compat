@@ -33,9 +33,9 @@
  * @since       PHP 4.1.0
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('version_compare2'))
+if (!function_exists('version_compare'))
 {
-    function version_compare2 ($version1, $version2, $operator = '')
+    function version_compare ($version1, $version2, $operator = '')
     {
         // Check input
         if (!is_scalar($version1)) {
