@@ -12,7 +12,7 @@ touch('tmp/test2');
 
 // Scan it
 $dir    = 'tmp';
-$files = scandir($dir, 1);
+$files = scandir($dir);
 
 // List the results
 print_r($files);
