@@ -5,4 +5,7 @@
 * array_udiff_uassoc
 * convert_uuencode
 * convert_uudecode
+* substr_compare
+* php_strip_whitespace
+* php_check_syntax
 * loadVersion in main class
