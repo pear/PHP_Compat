@@ -66,7 +66,6 @@ if (!function_exists('strripos'))
                 }
 
                 $haystack = substr($haystack, 0, strlen($haystack) + $offset);
-                echo $haystack;
             }
         }
 
