@@ -15,6 +15,7 @@
 		* is_a
 		* scandir
 		* array_combine
+		* str_split
 	</description>
 
 	<maintainers>
