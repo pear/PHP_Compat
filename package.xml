@@ -121,6 +121,15 @@
 					<file>07_str-split_02_chunksize.phpt</file>
 					<file>07_str-split_03_lessremainder.phpt</file>
 					<file>07_str-split_04_bigchunk.phpt</file>
+					<file>08_file-put-contents_01_simple.phpt</file>
+					<file>09_file-get-contents_01_simple.phpt</file>
+					<file>10_is-a_01_simple.phpt</file>
+					<file>11_scandir_01_simple.phpt</file>
+					<file>12_PATH_SEPARATOR.phpt</file>
+					<file>13_E_STRICT.phpt</file>
+					<file>14_STDOUT.phpt</file>
+					<file>15_STDERR.phpt</file>
+					<file>15_STDIN.phpt</file>
 				</dir>
 			</dir>
 		</filelist>
