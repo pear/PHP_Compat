@@ -21,67 +21,67 @@
 
 
 if (!defined('IMAGETYPE_GIF')) {
-    define('IMAGETYPE_GIF', 0);
+    define('IMAGETYPE_GIF', 1);
 }
 
 if (!defined('IMAGETYPE_JPEG')) {
-    define('IMAGETYPE_JPEG', 1);
+    define('IMAGETYPE_JPEG', 2);
 }
 
 if (!defined('IMAGETYPE_PNG')) {
-    define('IMAGETYPE_PNG', 2);
+    define('IMAGETYPE_PNG', 3);
 }
 
 if (!defined('IMAGETYPE_SWF')) {
-    define('IMAGETYPE_SWF', 3);
+    define('IMAGETYPE_SWF', 4);
 }
 
 if (!defined('IMAGETYPE_PSD')) {
-    define('IMAGETYPE_PSD', 4);
+    define('IMAGETYPE_PSD', 5);
 }
 
 if (!defined('IMAGETYPE_BMP')) {
-    define('IMAGETYPE_BMP', 5);
+    define('IMAGETYPE_BMP', 6);
 }
 
 if (!defined('IMAGETYPE_TIFF_II')) {
-    define('IMAGETYPE_TIFF_II', 6);
+    define('IMAGETYPE_TIFF_II', 7);
 }
 
 if (!defined('IMAGETYPE_TIFF_MM')) {
-    define('IMAGETYPE_TIFF_MM', 7);
+    define('IMAGETYPE_TIFF_MM', 8);
 }
 
 if (!defined('IMAGETYPE_JPC')) {
-    define('IMAGETYPE_JPC', 8);
+    define('IMAGETYPE_JPC', 9);
 }
 
 if (!defined('IMAGETYPE_JP2')) {
-    define('IMAGETYPE_JP2', 9);
+    define('IMAGETYPE_JP2', 10);
 }
 
 if (!defined('IMAGETYPE_JPX')) {
-    define('IMAGETYPE_JPX', 10);
+    define('IMAGETYPE_JPX', 11);
 }
 
 if (!defined('IMAGETYPE_JB2')) {
-    define('IMAGETYPE_JB2', 11);
+    define('IMAGETYPE_JB2', 12);
 }
 
 if (!defined('IMAGETYPE_SWC')) {
-    define('IMAGETYPE_SWC', 12);
+    define('IMAGETYPE_SWC', 13);
 }
 
 if (!defined('IMAGETYPE_IFF')) {
-    define('IMAGETYPE_IFF', 13);
+    define('IMAGETYPE_IFF', 14);
 }
 
 if (!defined('IMAGETYPE_WBMP')) {
-    define('IMAGETYPE_WBMP', 14);
+    define('IMAGETYPE_WBMP', 15);
 }
 
 if (!defined('IMAGETYPE_XBM')) {
-    define('IMAGETYPE_XBM', 15);
+    define('IMAGETYPE_XBM', 16);
 }
 
 
@@ -98,30 +98,52 @@ if (!defined('IMAGETYPE_XBM')) {
  */
 if (!function_exists('image_type_to_mime_type'))
 {
-    function image_type_to_mime_type ($imagetype)
+    function image_type_to_mime_type($imagetype)
     {
-        static $image_type_to_mime_type = array (
-            IMAGETYPE_GIF        => 'image/gif',
-            IMAGETYPE_JPEG       => 'image/jpeg',
-            IMAGETYPE_PNG        => 'image/png',
-            IMAGETYPE_SWF        => 'application/x-shockwave-flash',
-            IMAGETYPE_PSD        => 'image/psd',
-            IMAGETYPE_BMP        => 'image/bmp',
-            IMAGETYPE_TIFF_II    => 'image/tiff',
-            IMAGETYPE_TIFF_MM    => 'image/tiff',
-            IMAGETYPE_JPC        => 'application/octet-stream',
-            IMAGETYPE_JP2        => 'image/jp2',
-            IMAGETYPE_JPX        => 'application/octet-stream',
-            IMAGETYPE_JB2        => 'application/octet-stream',
-            IMAGETYPE_SWC        => 'application/x-shockwave-flash',
-            IMAGETYPE_IFF        => 'image/iff',
-            IMAGETYPE_WBMP       => 'image/vnd.wap.wbmp',
-            IMAGETYPE_XBM        => 'image/xbm',
-        );
+        switch ($imagetype):
+            case IMAGETYPE_GIF:
+                return "image/gif";
+                break;
+            case IMAGETYPE_JPEG:
+                return "image/jpeg";
+                break;
+            case IMAGETYPE_PNG:
+                return "image/png";
+                break;
+            case IMAGETYPE_SWF:
+            case IMAGETYPE_SWC:
+                return "application/x-shockwave-flash";
+                break;
+            case IMAGETYPE_PSD:
+                return "image/psd";
+                break;
+            case IMAGETYPE_BMP:
+                return "image/bmp";
+                break;
+            case IMAGETYPE_TIFF_MM:
+            case IMAGETYPE_TIFF_II:
+                return "image/tiff";
+                break;
+            case IMAGETYPE_JP2:
+                return "image/jp2";
+                break;
+            case IMAGETYPE_IFF:
+                return "image/iff";
+                break;
+            case IMAGETYPE_WBMP:
+                return "image/vnd.wap.wbmp";
+                break;
+            case IMAGETYPE_XBM:
+                return "image/xbm";
+                break;
+            case IMAGETYPE_JPX:
+            case IMAGETYPE_JB2:
+            case IMAGETYPE_JPC:
+            default:
+                return "application/octet-stream";
+                break;
 
-        return (isset($image_type_to_mime_type[$imagetype]) ?
-            $image_type_to_mime_type[$imagetype] :
-            $image_type_to_mime_type[IMAGETYPE_JPC]);
+        endswitch;
     }
 }
 
