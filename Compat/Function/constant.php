@@ -33,11 +33,17 @@
  */
 if (!function_exists('constant'))
 {
-    function constant ()
+    function constant ($constant)
     {
-        eval("\$temp=$constant;");
+		if (!defined($constant)) {
+			$error = sprintf('constant() Couldn\'t find constant %s', $constant);
+            trigger_error($error, E_USER_WARNING);
+            return false;
+		}
 
-        return $temp;
+        eval("\$value=$constant;");
+
+        return $value;
     }
 }
 
