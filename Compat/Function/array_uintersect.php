@@ -12,7 +12,8 @@
 // | obtain it through the world-wide-web, please send a note to          |
 // | license@php.net so we can mail you a copy immediately.               |
 // +----------------------------------------------------------------------+
-// | Authors: Aidan Lister <aidan@php.net>                                |
+// | Authors: Tom Buskens <ortega@php.net>                                |
+// |          Aidan Lister <aidan@php.net>                                |
 // +----------------------------------------------------------------------+
 //
 // $Id$
@@ -24,6 +25,7 @@
  * @category    PHP
  * @package     PHP_Compat
  * @link        http://php.net/array_uintersect
+ * @author      Tom Buskens <ortega@php.net>
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 5
@@ -33,7 +35,58 @@ if (!function_exists('array_uintersect'))
 {
     function array_uintersect()
     {
+        // Get arguments
+        $args = func_get_args();
 
+        if (count($args) < 3) {
+            trigger_error('wrong parameter count for array_uintersect()', E_USER_WARNING);
+            return;
+        }
+
+        // Get callback functions
+        $user_func_item = array_pop($args);
+
+        if (is_array($user_func_item) && count($user_func_item) === 2) {
+            $user_func_item = current($user_func_item) . '::' . current($user_func_item);
+        }
+        if (!is_callable($user_func_item)) {
+            trigger_error('array_uintersect() Not a valid callback ' . $user_func_item, E_USER_WARNING);
+            return;
+        }
+
+        // Check arrays
+        $array_count = count($args);
+
+        for ($i = 0; $i !== $array_count; $i++) {
+
+            if (!is_array($args[$i])) {
+                trigger_error('array_uintersect() [...]: Argument #' . ($i + 1) . ' is not an array', E_USER_WARNING);
+                return;
+            }
+            
+        }
+
+        // Compare entries
+        $output = array();
+        foreach ($args[0] as $key => $item) {
+
+            for ($i = 1; $i !== $array_count; $i++) {
+
+                $array = $args[$i];
+
+                foreach($array as $key0 => $item0) {
+
+                    if (!call_user_func($user_func_item, $item, $item0)) {
+                        
+                        $output[$key] = $item;
+                            
+                    }
+                    
+                }
+            }            
+        }
+
+        return $output;
     }
 }
 
