@@ -27,7 +27,7 @@
  *
  * @category    PHP
  * @package     PHP_Compat
- * @version     1.1.0
+ * @version     1.2.0
  * @author      Aidan Lister <aidan@php.net>
  * @static
  */
@@ -36,56 +36,78 @@ class PHP_Compat
     /**
      * Load a function, or array of functions
      *
-     * @param   string|array    $function The function or functions to load.
-     * @return  bool|array      true if loaded, false if not
+     * @param   string|array    $function The function or functions to load
+     * @return  bool|array      TRUE if loaded, FALSE if not
      */
-    function loadFunction ($function)
+    function loadFunction($function)
     {
         if (is_array($function)) {
-
-            $res = array ();
+            $res = array();
             foreach ($function as $singlefunc) {
-                $res[] = PHP_Compat::loadFunction($singlefunc);
+                $res[$singlefunc] = PHP_Compat::loadFunction($singlefunc);
             }
+
             return $res;
-
-        } else {
-
-            if (!function_exists($function)) {
-                $file = sprintf('PHP/Compat/Function/%s.php', $function);
-                if ((@include_once $file) !== false) {
-                    return true;
-                }
-            }
-            return false;
         }
+
+        if (!function_exists($function)) {
+            $file = sprintf('PHP/Compat/Function/%s.php', $function);
+            if ((@include_once $file) !== false) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 
     /**
      * Load a constant, or array of constants
      *
-     * @param   string|array    $constant The constant or constants to load.
-     * @return  bool|array      true if loaded, false if not
+     * @param   string|array    $constant The constant or constants to load
+     * @return  bool|array      TRUE if loaded, FALSE if not
      */
-    function loadConstant ($constant)
+    function loadConstant($constant)
     {
         if (is_array($constant)) {
-
-            $res = array ();
+            $res = array();
             foreach ($constant as $singleconst) {
-                $res[] = PHP_Compat::loadConstant($singleconst);
+                $res[$singleconst] = PHP_Compat::loadConstant($singleconst);
             }
+
             return $res;
-
-        } else {
-
-            $file = sprintf('PHP/Compat/Constant/%s.php', $constant);
-            if ((@include_once $file) !== false) {
-                return true;
-            }
-            return false;
         }
+
+        $file = sprintf('PHP/Compat/Constant/%s.php', $constant);
+        if ((@include_once $file) !== false) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+    /**
+     * Load components for a PHP version
+     *
+     * @param   string      $version    PHP Version to load
+     * @return  array       An associative array of component names loaded
+     */
+    function loadVersion($version = null)
+    {
+        require_once 'Compat/Components.php';
+
+        $res = array();
+        foreach ($components as $type => $slice) {
+            $loadfunc = 'load' . $type;
+            foreach ($slice as $component => $compversion) {
+                if ($version === null || version_compare($version, $compversion) === 1) {
+                    $res[$component] = PHP_Compat::$loadfunc($component);
+                }
+            }
+        }
+
+        return $res;
     }
 }
 
