@@ -3,27 +3,28 @@
 	<name>PHP_Compat</name>
 	<summary>Provides missing functionality for older versions of PHP.</summary>
 
-	<description>
-		PHP_Compat provides missing functionality in the form of Constants and Functions for older versions of PHP.
+	<description>PHP_Compat provides missing functionality in the form of Constants and Functions for older versions of PHP.
 
-		Constants:
-		* E_STRICT
-		* PATH_SEPERATOR
-		* STDIN
-		* STDOUT
-		* STDERR
-		* FILE_APPEND
-		* FILE_USE_INCLUDE_PATH
+Constants:
+* E_STRICT
+* PATH_SEPERATOR
+* STDIN, STDOUT, STDERR
+* FILE_USE_INCLUDE_PATH, FILE_IGNORE_NEW_LINES, FILE_SKIP_EMPTY_LINES, FILE_APPEND, FILE_NO_DEFAULT_CONTEXT 
 
-		Functions:
-		* file_get_contents
-		* file_put_contents
-		* is_a
-		* scandir
-		* array_combine
-		* str_split
-		* http_build_query
-	</description>
+Functions:
+* array_combine
+* file_get_contents
+* file_put_contents
+* http_build_query
+* is_a
+* scandir
+* str_split
+* vprintf
+* fprintf
+* stripos
+* strripos
+* str_ireplace
+</description>
 
 	<maintainers>
 		<maintainer>
@@ -155,15 +156,15 @@
 					<file>str-split_02_chunksize.phpt</file>
 					<file>str-split_03_lessremainder.phpt</file>
 					<file>str-split_04_bigchunk.phpt</file>
-					<file>E_STRICT.phpt</file>
-					<file>FILE.phpt</file>
-					<file>PATH_SEPARATOR.phpt</file>
-					<file>STD.phpt</file>
 					<file>vprintf_01_simple.phpt</file>
 					<file>fprintf_01_simple.phpt</file>
 					<file>stripos_01_simple.phpt</file>
 					<file>strripos_01_simple.phpt</file>
-					<file>str_ireplace_01_simple.phpt</file>
+					<file>str-ireplace_01_simple.phpt</file>
+					<file>E_STRICT.phpt</file>
+					<file>FILE.phpt</file>
+					<file>PATH_SEPARATOR.phpt</file>
+					<file>STD.phpt</file>
 				</dir>
 			</dir>
 		</filelist>
