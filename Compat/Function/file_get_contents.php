@@ -44,17 +44,14 @@ if (!function_exists('file_get_contents'))
         clearstatcache();
         if ($fsize = filesize($filename)) {
             $data = fread($fh, $fsize);
-        }
-        
-        else {
+        } else {
             while (!feof($fh)) {
                 $data .= fread($fh, 8192);
             }
         }
 
         fclose($fh);
-
-        return $data;    
+        return $data;
     }
 }
 
