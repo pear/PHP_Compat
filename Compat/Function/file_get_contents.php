@@ -40,9 +40,10 @@ if (!function_exists('file_get_contents'))
         }
 
         clearstatcache();
-        if ($fsize = filesize($filename)) {
+        if ($fsize = @filesize($filename)) {
             $data = fread($fh, $fsize);
         } else {
+            $data = '';
             while (!feof($fh)) {
                 $data .= fread($fh, 8192);
             }
