@@ -70,7 +70,8 @@ if (!function_exists('version_compare')) {
         while (empty($v1[0]) && array_shift($v1)) {}
         while (empty($v2[0]) && array_shift($v2)) {}
 
-        // Describe our release states
+        // Release state order
+        // '#' stands for any number
         $versions = array(
             'dev'   => 0,
             'alpha' => 1,
@@ -78,8 +79,9 @@ if (!function_exists('version_compare')) {
             'beta'  => 2,
             'b'     => 2,
             'RC'    => 3,
-            'p'     => 4,
-            'pl'    => 4);
+            '#'     => 4,
+            'p'     => 5,
+            'pl'    => 5);
 
         // Loop through each segment in the version string
         $compare = 0;
@@ -87,16 +89,32 @@ if (!function_exists('version_compare')) {
             if ($v1[$i] == $v2[$i]) {
                 continue;
             }
-            if (is_numeric($v1[$i]) && is_numeric($v2[$i])) {
-                $compare = ($v1[$i] < $v2[$i]) ? -1 : 1;
-            } elseif (is_numeric($v1[$i])) {
+            $i1 = $v1[$i];
+            $i2 = $v2[$i];
+            if (is_numeric($i1) && is_numeric($i2)) {
+                $compare = ($i1 < $i2) ? -1 : 1;
+                break;
+            }
+            // We use the position of '#' in the versions list
+            // for numbers... (so take care of # in original string)
+            if ($i1 == '#') {
+                $i1 = '';
+            } elseif (is_numeric($i1)) {
+                $i1 = '#';
+            }
+            if ($i2 == '#') {
+                $i2 = '';
+            } elseif (is_numeric($i2])) {
+                $i2 = '#';
+            }
+            if (isset($versions[$i1]) && isset($versions[$i2])) {
+                $compare = ($versions[$i1] < $versions[$i2]) ? -1 : 1;
+            } elseif (isset($versions[$i1])) {
                 $compare = 1;
-            } elseif (is_numeric($v2[$i])) {
+            } elseif (isset($versions[$i2])) {
                 $compare = -1;
-            } elseif (isset($versions[$v1[$i]]) && isset($versions[$v2[$i]])) {
-                $compare = ($versions[$v1[$i]] < $versions[$v2[$i]]) ? -1 : 1;
             } else {
-                $compare = strcmp($v2[$i], $v1[$i]);
+                $compare = 0;
             }
 
             break;
