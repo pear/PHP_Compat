@@ -68,7 +68,7 @@
 	</release>
 
 	<release>
-		<version>0.3</version>
+		<version>1.0.0RC1</version>
 		<date>2004-05-28</date>
 		<license>PHP License</license>
 		<state>beta</state>
@@ -78,9 +78,9 @@
 			* array_udiff
 			* array_udiff_assoc
 
-			Added Unit tests.
-
-			Still in beta!
+			Heavily modified file_put_contents for greater support
+			A couple of bug fixes
+			Added complete unit testing!
 		</notes>
 		<filelist>
 			<dir name="/" baseinstalldir="PHP" role="php">	 
