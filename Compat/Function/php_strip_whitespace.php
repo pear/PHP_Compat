@@ -37,7 +37,9 @@ if (!function_exists('php_strip_whitespace'))
         $file = implode('', file($file));
 
         // Remove whitespace
-        // FIXME
+        $file = preg_replace('#(<\?php\n?)(.*?)(\?>)#se',
+            "'\\1' . str_replace(\"\n\", ' ', '\\2') . '\\3'",
+            $file);
 
         // Remove comments
         $file = preg_replace('#//[^\n]+#s', '', $file);
