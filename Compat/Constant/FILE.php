@@ -33,15 +33,19 @@
 if (!defined('FILE_USE_INCLUDE_PATH')) {
     define('FILE_USE_INCLUDE_PATH', 1);
 }
+
 if (!defined('FILE_IGNORE_NEW_LINES')) {
     define('FILE_IGNORE_NEW_LINES', 2);
 }
+
 if (!defined('FILE_SKIP_EMPTY_LINES')) {
     define('FILE_SKIP_EMPTY_LINES', 4);
 }
+
 if (!defined('FILE_APPEND')) {
     define('FILE_APPEND', 8);
 }
+
 if (!defined('FILE_NO_DEFAULT_CONTEXT')) {
     define('FILE_NO_DEFAULT_CONTEXT', 16);
 }

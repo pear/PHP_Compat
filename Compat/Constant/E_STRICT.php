@@ -30,6 +30,8 @@
  * @version     $Revision$
  * @since       PHP 5
  */
-if (!defined('E_STRICT')) { define('E_STRICT', 2048); }
+if (!defined('E_STRICT')) {
+    define('E_STRICT', 2048);
+}
 
 ?>

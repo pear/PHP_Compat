@@ -29,7 +29,7 @@
  *
  * @category    PHP
  * @package     PHP_Compat
- * @version     0.1
+ * @version     1.1.0
  * @author      Aidan Lister <aidan@php.net>
  * @static
  */
