@@ -50,7 +50,7 @@ if (!function_exists('php_strip_whitespace'))
         // Process
         foreach ($tokens as $token) {
             if (is_string($token)) {
-                // This will be ";"
+                // Single character tokens
                 $source .= $token;
             } else {
                 list($id, $text) = $token;
