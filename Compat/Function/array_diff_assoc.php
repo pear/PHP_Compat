@@ -31,10 +31,11 @@
  * @added       PHP 4.3.0
  * @requires    PHP 3
  */
-if (!function_exists('array_diff_assoc2'))
+if (!function_exists('array_diff_assoc'))
 {
-    function array_diff_assoc2 ()
+    function array_diff_assoc ()
     {
+		// Check we have enough arguments
         $args = func_get_args();
         if (count($args) < 2) {
             trigger_error('Wrong parameter count for array_diff_assoc()', E_USER_WARNING);
@@ -51,28 +52,29 @@ if (!function_exists('array_diff_assoc2'))
             }
         }
     
-        $diff = array ();
+		// Get the comparison array
+		$array_comp = array_shift($args);
+		$count = $count - 1;
+
         // Traverse values of the first array
-        foreach ($args[0] as $key => $value)
+        foreach ($array_comp as $key => $value)
         {
-            // Loop through each other array
-            for ($i = 1; $i < $count; $i++)
+            // Loop through the other arrays
+            for ($i = 0; $i < $count; $i++)
             {
-				// Loop through the current arrays key/val pairs and compare
+				// Loop through this arrays key/value pairs and compare
 				foreach ($args[$i] as $comp_key => $comp_value)
 				{
 					if ((string)$key === (string)$comp_key &&
 						(string)$value === (string)$comp_value) {
 
-						echo 'found a match';
+						unset($array_comp[$key]);
 					}
 				}
             }
-
-            $diff[$key] = $value;
         }
 
-        return $diff;
+        return $array_comp;
     }
 }
 ?>
