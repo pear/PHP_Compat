@@ -128,7 +128,7 @@ if (!function_exists('version_compare')) {
 
         // Compare the versions
         if (func_num_args() > 2)
-		{
+        {
             switch ($operator)
             {
                 case '>':
@@ -144,6 +144,7 @@ if (!function_exists('version_compare')) {
                     return (bool) ($compare <= 0);
                     break;
                 case '==':
+                case '=':
                 case 'eq':
                     return (bool) ($compare == 0);
                     break;
