@@ -21,6 +21,7 @@
 
 /**
  * Replace is_a()
+ *
  * PHP 5
  *
  * http://php.net/function.is_a

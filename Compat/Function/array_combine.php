@@ -21,6 +21,7 @@
 
 /**
  * Replace array_combine()
+ *
  * PHP 5
  * 
  * http://php.net/function.array_combine

@@ -21,6 +21,7 @@
 
 /**
  * Replace scandir()
+ *
  * PHP 5
  *
  * http://php.net/function.scandir

@@ -21,6 +21,7 @@
 
 /**
  * Replace constant E_STRICT
+ *
  * PHP 5
  *
  * http://php.net/manual/ref.errorfunc.php#e-strict

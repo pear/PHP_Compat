@@ -21,6 +21,7 @@
 
 /**
  * Replace constant PATH_SEPARATOR
+ *
  * PHP 4.3.0-RC2
  * 
  * http://au2.php.net/ref.dir

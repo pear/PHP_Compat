@@ -21,6 +21,7 @@
 
 /**
  * Replace file_get_contents()
+ *
  * PHP 5
  *
  * http://php.net/function.file_get_contents

@@ -21,6 +21,7 @@
 
 /**
  * Replace file_put_contents()
+ *
  * PHP 5
  *
  * http://php.net/function.file_put_contents
