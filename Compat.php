@@ -33,7 +33,6 @@
  */
 class PHP_Compat
 {
-
     /**
      * Load a function, or array of functions
      *
@@ -43,22 +42,21 @@ class PHP_Compat
     function loadFunction ($function)
     {
         if (is_array($function)) {
+
             $res = array ();
             foreach ($function as $singlefunc) {
                 $res[] = PHP_Compat::loadFunction($singlefunc);
             }
             return $res;
-        }
 
-        else {
+        } else {
+
             if (!function_exists($function)) {
                 $file = sprintf('PHP/Compat/Function/%s.php', $function);
-
                 if ((@include_once $file) !== false) {
                     return true;
                 }
             }
-
             return false;
         }
     }
@@ -73,80 +71,22 @@ class PHP_Compat
     function loadConstant ($constant)
     {
         if (is_array($constant)) {
+
             $res = array ();
             foreach ($constant as $singleconst) {
                 $res[] = PHP_Compat::loadConstant($singleconst);
             }
             return $res;
-        }
 
-        else {
+        } else {
+
             $file = sprintf('PHP/Compat/Constant/%s.php', $constant);
-
             if ((@include_once $file) !== false) {
                 return true;
             }
-
             return false;
         }
     }
-
-
-    /**
-     * Load all missing components
-     *
-     * @return  bool|array      true if loaded, false if not
-     */
-    function loadVersion ()
-    {
-        $functions = array(
-            'array_change_key_case',
-            'array_chunk',
-            'array_combine',
-            'array_diff_assoc',
-            'array_key_exists',
-            'array_search',
-            'array_udiff',
-            'array_udiff_assoc',
-            'call_user_func_array',
-            'constant',
-            'file_get_contents',
-            'file_put_contents',
-            'fprintf',
-            'html_entity_decode',
-            'http_build_query',
-            'image_type_to_mime_type',
-            'is_a',
-            'ob_clean',
-            'ob_flush',
-            'ob_get_clean',
-            'ob_get_flush',
-            'scandir',
-            'stripos',
-            'strripos',
-            'str_ireplace',
-            'str_split',
-            'str_word_count',
-            'var_export',
-            'version_compare',
-            'vprintf',
-            'vsprintf',
-        );
-
-        $results[] = PHP_Compat::loadFunction($functions);
-
-        $constants = array(
-            'E_STRICT',
-            'FILE',
-            'PATH_SEPARATOR',
-            'STD',
-        );
-
-        $results[] = PHP_Compat::loadConstant($constants);
-
-        return $results;
-    }
-
 }
 
 ?>
