@@ -59,7 +59,7 @@ if (!function_exists('array_udiff'))
         for ($i = 0; $i < $cnt; $i++) {
             if (!is_array($args[$i])) {
                 trigger_error('array_udiff() Argument #' . ($i + 1). ' is not an array', E_USER_WARNING);
-				return null;
+                return null;
             }
         }
     

@@ -46,7 +46,7 @@ if (!function_exists('array_udiff_assoc'))
         // Get compare function
         $compare_func = array_pop($args);
         if (!is_callable($compare_func))
-		{
+        {
             if (is_array($compare_func)) {
                 $compare_func = $compare_func[0].'::'.$compare_func[1];
             }
@@ -57,20 +57,20 @@ if (!function_exists('array_udiff_assoc'))
         // Check arrays
         $cnt = count($args);
         for ($i = 0; $i < $cnt; $i++)
-		{
+        {
             if (!is_array($args[$i])) {
                 trigger_error('array_udiff() Argument #' . ($i + 1) . ' is not an array', E_USER_WARNING);
-				return null;
+                return null;
             }
         }
     
         $diff = array();
         // Traverse values of the first array
         foreach ($args[0] as $key => $val)
-		{
+        {
             // Check all arrays
             for ($i = 1; $i < $cnt; $i++)
-			{
+            {
                 if (!isset($args[$i][$key])) {
                     continue;
                 }

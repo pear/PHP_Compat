@@ -6,7 +6,7 @@ require_once ('PHP/Compat.php');
 $comps = array('invalid', 'also-invalid', 'more-invalid', 'E_STRICT');
 $res = PHP_Compat::loadConstant($comps);
 foreach ($res as $value) {
-	echo ($value === false) ? 'false' : 'true', "\n";
+    echo ($value === false) ? 'false' : 'true', "\n";
 }
 ?>
 --EXPECT--

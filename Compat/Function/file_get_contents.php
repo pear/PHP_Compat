@@ -39,7 +39,7 @@ if (!function_exists('file_get_contents'))
         $file = fopen($filename, 'rb', $incpath);
 
         if ($file) {
-			clearstatcache();
+            clearstatcache();
             if ($fsize = filesize($filename)) {
                 $data = fread($file, $fsize);
             }
