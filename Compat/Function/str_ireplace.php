@@ -35,6 +35,11 @@ if (!function_exists('str_ireplace2'))
 {
 	function str_ireplace2 ($search, $replace, $subject, &$count = 0)
 	{
+		if (is_string($search) && is_array($replace)) {
+			trigger_error('Array to string conversion', E_USER_NOTICE);
+			$replace = (string) $replace;
+		}
+
 		// If search isn't an array, make it one
 		if (!is_array($search)) {
 			$search = array ($search);
@@ -52,31 +57,71 @@ if (!function_exists('str_ireplace2'))
 			}
 		}
 
-		// Loop through each search
-		foreach ($search as $find_key => $find_value)
+		// If subject is an array
+		if (is_array($subject))
 		{
-			// Split the array into segments, in between each part is our search
-			$segments = explode(strtolower($find_value), strtolower($subject));
-
-			// The number of replacements done is the number of segments minus the first
-			$count += count($segments) - 1;
-			$pos = 0;
-
-			// Loop through each segment
-			foreach ($segments as $segment_key => $segment_value)
+			// Loop through each subject
+			foreach ($subject as $subject_key => $subject_value)
 			{
-				// Replace the lowercase segments with the upper case versions
-				$segments[$segment_key] = substr($subject, $pos, strlen($segment_value));
-				// Increase the position relative to the initial string
-				$pos += strlen($segment_value) + strlen($find_value);
-			}
-	
-			// Put our original string back together
-			$subject = implode($replace[$find_key], $segments);
-		}
+				// Loop through each search
+				foreach ($search as $search_key => $search_value)
+				{
+					// Split the array into segments, in between each part is our search
+					$segments = explode(strtolower($search_value), strtolower($subject_value));
 
-		return $subject;
+					// The number of replacements done is the number of segments minus the first
+					$count += count($segments) - 1;
+					$pos = 0;
+
+					// Loop through each segment
+					foreach ($segments as $segment_key => $segment_value)
+					{
+						// Replace the lowercase segments with the upper case versions
+						$segments[$segment_key] = substr($subject_value, $pos, strlen($segment_value));
+						// Increase the position relative to the initial string
+						$pos += strlen($segment_value) + strlen($search_value);
+					}
+
+					// Put our original string back together
+					$subject_value = implode($replace[$search_key], $segments);
+				}
+
+				$result[$subject_key] = $subject_value;
+			}
+
+			return $result;
+
+		}
+		
+		else
+		{
+			// Loop through each search
+			foreach ($search as $search_key => $search_value)
+			{
+				// Split the array into segments, in between each part is our search
+				$segments = explode(strtolower($search_value), strtolower($subject));
+
+				// The number of replacements done is the number of segments minus the first
+				$count += count($segments) - 1;
+				$pos = 0;
+
+				// Loop through each segment
+				foreach ($segments as $segment_key => $segment_value)
+				{
+					// Replace the lowercase segments with the upper case versions
+					$segments[$segment_key] = substr($subject, $pos, strlen($segment_value));
+					// Increase the position relative to the initial string
+					$pos += strlen($segment_value) + strlen($search_value);
+				}
+		
+				// Put our original string back together
+				$subject = implode($replace[$search_key], $segments);
+			}
+
+			return $subject;
+		}
 	}
+
 }
 
 ?>
