@@ -31,9 +31,9 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     1.0
  */
-defined('FILE_USE_INCLUDE_PATH')	or define('FILE_USE_INCLUDE_PATH',		1);
-defined('FILE_IGNORE_NEW_LINES')	or define('FILE_IGNORE_NEW_LINES',		2);
-defined('FILE_SKIP_EMPTY_LINES')	or define('FILE_SKIP_EMPTY_LINES',		4);
-defined('FILE_APPEND')				or define('FILE_APPEND',				8);
-defined('FILE_NO_DEFAULT_CONTEXT')	or define('FILE_NO_DEFAULT_CONTEXT',	16);
+defined('FILE_USE_INCLUDE_PATH')    or define('FILE_USE_INCLUDE_PATH',        1);
+defined('FILE_IGNORE_NEW_LINES')    or define('FILE_IGNORE_NEW_LINES',        2);
+defined('FILE_SKIP_EMPTY_LINES')    or define('FILE_SKIP_EMPTY_LINES',        4);
+defined('FILE_APPEND')              or define('FILE_APPEND',                  8);
+defined('FILE_NO_DEFAULT_CONTEXT')  or define('FILE_NO_DEFAULT_CONTEXT',      16);
 ?>
