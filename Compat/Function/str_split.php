@@ -29,8 +29,7 @@
  * @since       PHP 5
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('str_split'))
-{
+if (!function_exists('str_split')) {
     function str_split($string, $split_length = 1)
     {
         if (!is_numeric($split_length)) {

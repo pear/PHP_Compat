@@ -45,8 +45,7 @@ if (!defined('ENT_QUOTES')) {
  * @internal    Setting the charset will not do anything
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('html_entity_decode'))
-{
+if (!function_exists('html_entity_decode')) {
     function html_entity_decode($string, $quote_style = ENT_COMPAT, $charset = null)
     {
         if (!is_int($quote_style)) {

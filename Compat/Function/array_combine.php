@@ -29,8 +29,7 @@
  * @since       PHP 5
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('array_combine'))
-{
+if (!function_exists('array_combine')) {
     function array_combine($keys, $values)
     {
         if (!is_array($keys)) {

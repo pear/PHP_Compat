@@ -28,8 +28,7 @@
  * @version     $Revision$
  * @since       PHP 4.3.0
  */
-if (!function_exists('get_include_path'))
-{
+if (!function_exists('get_include_path')) {
     function get_include_path()
     {
         return ini_get('include_path');

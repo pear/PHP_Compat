@@ -29,8 +29,7 @@
  * @since       PHP 4.2.0
  * @require     PHP 4.0.0 (is_subclass_of)
  */
-if (!function_exists('is_a'))
-{
+if (!function_exists('is_a')) {
     function is_a($object, $class)
     {
         if (!is_object($object)) {

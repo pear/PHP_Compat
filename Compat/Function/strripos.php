@@ -31,8 +31,7 @@
  * @since       PHP 5
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('strripos'))
-{
+if (!function_exists('strripos')) {
     function strripos($haystack, $needle, $offset = null)
     {
         if (!is_scalar($haystack)) {
@@ -52,8 +51,7 @@ if (!function_exists('strripos'))
 
         // Manipulate the string if there is an offset
         $fix = 0;
-        if (!is_null($offset))
-        {
+        if (!is_null($offset)) {
             // If the offset is larger than the haystack, return
             if (abs($offset) >= strlen($haystack)) {
                 return false;
@@ -64,8 +62,7 @@ if (!function_exists('strripos'))
                 $haystack = substr($haystack, $offset, strlen($haystack) - $offset);
                 // We need to add this to the position of the needle
                 $fix = $offset;
-            }
-            else {
+            } else {
                 $haystack = substr($haystack, 0, strlen($haystack) + $offset);
             }
         }

@@ -31,8 +31,7 @@
  * @since       PHP 5
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('substr_compare'))
-{
+if (!function_exists('substr_compare')) {
     function substr_compare($main_str, $str, $offset, $length = null, $case_insensitive = false)
     {
         if (!is_string($main_str)) {

@@ -29,8 +29,7 @@
  * @since       PHP 4.3.0
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('str_word_count'))
-{
+if (!function_exists('str_word_count')) {
     function str_word_count($string, $format = null)
     {
         if ($format != 1 && $format != 2 && $format !== null) {

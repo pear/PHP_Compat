@@ -29,8 +29,7 @@
  * @since       PHP 5
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('strpbrk'))
-{
+if (!function_exists('strpbrk')) {
     function strpbrk($haystack, $char_list)
     {
         if (!is_scalar($haystack)) {

@@ -30,8 +30,7 @@
  * @since       PHP 5
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('file_get_contents'))
-{
+if (!function_exists('file_get_contents')) {
     function file_get_contents($filename, $incpath = false, $resource_context = null)
     {
         if (false === $fh = fopen($filename, 'rb', $incpath)) {

@@ -29,8 +29,7 @@
  * @since       PHP 5
  * @require     PHP 4.0.6 (is_callable)
  */
-if (!function_exists('array_intersect_uassoc'))
-{
+if (!function_exists('array_intersect_uassoc')) {
     function array_intersect_uassoc()
     {
 

@@ -29,8 +29,7 @@
  * @since       PHP 4.3.0
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('array_diff_assoc'))
-{
+if (!function_exists('array_diff_assoc')) {
     function array_diff_assoc()
     {
         // Check we have enough arguments
@@ -42,8 +41,7 @@ if (!function_exists('array_diff_assoc'))
         }
 
         // Check arrays
-        for ($i = 0; $i < $count; $i++)
-        {
+        for ($i = 0; $i < $count; $i++) {
             if (!is_array($args[$i])) {
                 trigger_error('array_diff_assoc() Argument #' . ($i + 1) . ' is not an array', E_USER_WARNING);
                 return;
@@ -55,16 +53,14 @@ if (!function_exists('array_diff_assoc'))
         --$count;
 
         // Traverse values of the first array
-        foreach ($array_comp as $key => $value)
-        {
+        foreach ($array_comp as $key => $value) {
             // Loop through the other arrays
-            for ($i = 0; $i < $count; $i++)
-            {
+            for ($i = 0; $i < $count; $i++) {
                 // Loop through this arrays key/value pairs and compare
-                foreach ($args[$i] as $comp_key => $comp_value)
-                {
+                foreach ($args[$i] as $comp_key => $comp_value) {
                     if ((string)$key === (string)$comp_key &&
-                        (string)$value === (string)$comp_value) {
+                        (string)$value === (string)$comp_value)
+                    {
 
                         unset($array_comp[$key]);
                     }

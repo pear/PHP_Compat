@@ -31,8 +31,7 @@
  * @since       PHP 5
  * @require     PHP 4.0.6 (is_callable)
  */
-if (!function_exists('array_udiff'))
-{
+if (!function_exists('array_udiff')) {
     function array_udiff()
     {
         $args = func_get_args();

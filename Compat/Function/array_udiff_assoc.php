@@ -31,8 +31,7 @@
  * @since       PHP 5
  * @require     PHP 4.0.6 (is_callable)
  */
-if (!function_exists('array_udiff_assoc'))
-{
+if (!function_exists('array_udiff_assoc')) {
     function array_udiff_assoc()
     {
         $args = func_get_args();
@@ -53,8 +52,7 @@ if (!function_exists('array_udiff_assoc'))
 
         // Check arrays
         $count = count($args);
-        for ($i = 0; $i < $count; $i++)
-        {
+        for ($i = 0; $i < $count; $i++) {
             if (!is_array($args[$i])) {
                 trigger_error('array_udiff_assoc() Argument #' . ($i + 1) . ' is not an array', E_USER_WARNING);
                 return;
@@ -63,11 +61,9 @@ if (!function_exists('array_udiff_assoc'))
 
         $diff = array ();
         // Traverse values of the first array
-        foreach ($args[0] as $key => $value)
-        {
+        foreach ($args[0] as $key => $value) {
             // Check all arrays
-            for ($i = 1; $i < $count; $i++)
-            {
+            for ($i = 1; $i < $count; $i++) {
                 if (!array_key_exists($key, $args[$i])) {
                     continue;
                 }

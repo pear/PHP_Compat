@@ -40,8 +40,7 @@ if (!defined('CASE_UPPER')) {
  * @since       PHP 4.2.0
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('array_change_key_case'))
-{
+if (!function_exists('array_change_key_case')) {
     function array_change_key_case($input, $case = CASE_LOWER)
     {
         if (!is_array($input)) {

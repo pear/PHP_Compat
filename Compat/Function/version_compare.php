@@ -32,7 +32,6 @@
  * @require     PHP 4.0.1 (trigger_error)
  */
 if (!function_exists('version_compare')) {
-
     function version_compare ($version1, $version2, $operator = '<')
     {
         // Check input
@@ -80,24 +79,19 @@ if (!function_exists('version_compare')) {
 
         // Loop through each segment in the version string
         $compare = 0;
-        for ($i = 0, $x = min(count($v1), count($v2)); $i < $x; $i++)
-        {
+        for ($i = 0, $x = min(count($v1), count($v2)); $i < $x; $i++) {
             if ($v1[$i] == $v2[$i]) {
                 continue;
             }
             if (is_numeric($v1[$i]) && is_numeric($v2[$i])) {
                 $compare = ($v1[$i] < $v2[$i]) ? -1 : 1;
-            }
-            elseif (is_numeric($v1[$i])) {
+            } elseif (is_numeric($v1[$i])) {
                 $compare = 1;
-            }
-            elseif (is_numeric($v2[$i])) {
+            } elseif (is_numeric($v2[$i])) {
                 $compare = -1;
-            }
-            elseif (isset($versions[$v1[$i]]) && isset($versions[$v2[$i]])) {
+            } elseif (isset($versions[$v1[$i]]) && isset($versions[$v2[$i]])) {
                 $compare = ($versions[$v1[$i]] < $versions[$v2[$i]]) ? -1 : 1;
-            }
-            else {
+            } else {
                 $compare = strcmp($v2[$i], $v1[$i]);
             }
 
@@ -106,16 +100,13 @@ if (!function_exists('version_compare')) {
 
         // If previous loop didn't find anything, compare the "extra" segments
         if ($compare == 0) {
-            if (count($v2) > count($v1))
-            {
+            if (count($v2) > count($v1)) {
                 if (isset($versions[$v2[$i]])) {
                     $compare = ($versions[$v2[$i]] < 4) ? 1 : -1;
                 } else {
                     $compare = -1;
                 }
-            }
-            elseif (count($v2) < count($v1))
-            {
+            } elseif (count($v2) < count($v1)) {
                 if (isset($versions[$v1[$i]])) {
                     $compare = ($versions[$v1[$i]] < 4) ? -1 : 1;
                 } else {
@@ -125,10 +116,8 @@ if (!function_exists('version_compare')) {
         }
 
         // Compare the versions
-        if (func_num_args() > 2)
-        {
-            switch ($operator)
-            {
+        if (func_num_args() > 2) {
+            switch ($operator) {
                 case '>':
                 case 'gt':
                     return (bool) ($compare > 0);

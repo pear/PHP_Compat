@@ -30,8 +30,7 @@
  * @since       PHP 4.3.0
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('ob_get_clean'))
-{
+if (!function_exists('ob_get_clean')) {
     function ob_get_clean()
     {
         $contents = ob_get_contents();

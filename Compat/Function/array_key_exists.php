@@ -29,8 +29,7 @@
  * @since       PHP 4.1.0
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('array_key_exists'))
-{
+if (!function_exists('array_key_exists')) {
     function array_key_exists($key, $search)
     {
         if (!is_scalar($key)) {

@@ -30,8 +30,7 @@
  * @since       PHP 4.3.0
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('ob_get_flush'))
-{
+if (!function_exists('ob_get_flush')) {
     function ob_get_flush()
     {
         $contents = ob_get_contents();

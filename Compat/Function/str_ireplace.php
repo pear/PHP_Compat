@@ -31,8 +31,7 @@
  * @note        count not by returned by reference, to enable
  *              change '$count = null' to '&$count'
  */
-if (!function_exists('str_ireplace'))
-{
+if (!function_exists('str_ireplace')) {
     function str_ireplace($search, $replace, $subject, $count = null)
     {
         if (is_string($search) && is_array($replace)) {
@@ -46,13 +45,11 @@ if (!function_exists('str_ireplace'))
         }
 
         // If replace isn't an array, make it one, and pad it to the length of search
-        if (!is_array($replace))
-        {
+        if (!is_array($replace)) {
             $replace_string = $replace;
 
             $replace = array ();
-            for ($i = 0, $c = count($search); $i < $c; $i++)
-            {
+            for ($i = 0, $c = count($search); $i < $c; $i++) {
                 $replace[$i] = $replace_string;
             }
         }
@@ -60,10 +57,8 @@ if (!function_exists('str_ireplace'))
         // Check the replace array is padded to the correct length
         $length_replace = count($replace);
         $length_search = count($search);
-        if ($length_replace < $length_search)
-        {
-            for ($i = $length_replace; $i < $length_search; $i++)
-            {
+        if ($length_replace < $length_search) {
+            for ($i = $length_replace; $i < $length_search; $i++) {
                 $replace[$i] = '';
             }
         }
@@ -77,11 +72,9 @@ if (!function_exists('str_ireplace'))
 
         // Loop through each subject
         $count = 0;
-        foreach ($subject as $subject_key => $subject_value)
-        {
+        foreach ($subject as $subject_key => $subject_value) {
             // Loop through each search
-            foreach ($search as $search_key => $search_value)
-            {
+            foreach ($search as $search_key => $search_value) {
                 // Split the array into segments, in between each part is our search
                 $segments = explode(strtolower($search_value), strtolower($subject_value));
 
@@ -90,8 +83,7 @@ if (!function_exists('str_ireplace'))
                 $pos = 0;
 
                 // Loop through each segment
-                foreach ($segments as $segment_key => $segment_value)
-                {
+                foreach ($segments as $segment_key => $segment_value) {
                     // Replace the lowercase segments with the upper case versions
                     $segments[$segment_key] = substr($subject_value, $pos, strlen($segment_value));
                     // Increase the position relative to the initial string

@@ -19,19 +19,18 @@
 
 
 /**
- * Replace aray_diff_ukey()
+ * Replace array_diff_ukey()
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/aray_diff_ukey
+ * @link        http://php.net/array_diff_ukey
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 5.1.0
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('aray_diff_ukey'))
-{
-    function aray_diff_ukey()
+if (!function_exists('array_diff_ukey')) {
+    function array_diff_ukey()
     {
 
     }

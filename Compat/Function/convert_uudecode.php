@@ -31,8 +31,7 @@
  * @since       PHP 5
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('convert_uudecode'))
-{
+if (!function_exists('convert_uudecode')) {
     function convert_uudecode($string)
     {
         // Sanity check

@@ -28,8 +28,7 @@
  * @version     $Revision$
  * @since       PHP 4.3.0
  */
-if (!function_exists('restore_include_path'))
-{
+if (!function_exists('restore_include_path')) {
     function restore_include_path()
     {
         return ini_restore('include_path');

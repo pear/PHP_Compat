@@ -29,8 +29,7 @@
  * @since       PHP 5.1.0
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('array_intersect_key'))
-{
+if (!function_exists('array_intersect_key')) {
     function array_intersect_key()
     {
 

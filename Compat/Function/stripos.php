@@ -29,8 +29,7 @@
  * @since       PHP 5
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('stripos'))
-{
+if (!function_exists('stripos')) {
     function stripos($haystack, $needle, $offset = null)
     {
         if (!is_scalar($haystack)) {
@@ -50,10 +49,8 @@ if (!function_exists('stripos'))
 
         // Manipulate the string if there is an offset
         $fix = 0;
-        if (!is_null($offset))
-        {
-            if ($offset > 0)
-            {
+        if (!is_null($offset)) {
+            if ($offset > 0) {
                 $haystack = substr($haystack, $offset, strlen($haystack) - $offset);
                 $fix = $offset;
             }

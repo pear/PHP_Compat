@@ -30,8 +30,7 @@
  * @since       PHP 4.2.0
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('array_chunk'))
-{
+if (!function_exists('array_chunk')) {
     function array_chunk($input, $size, $preserve_keys = false)
     {
         if (!is_array($input)) {
@@ -45,8 +44,7 @@ if (!function_exists('array_chunk'))
         }
 
         $size = (int)$size;
-        if ($size <= 0)
-        {
+        if ($size <= 0) {
             trigger_error('array_chunk() Size parameter expected to be greater than 0', E_USER_WARNING);
             return;
         }
@@ -54,14 +52,11 @@ if (!function_exists('array_chunk'))
         $chunks = array();
         $i = 0;
 
-        if ($preserve_keys !== false)
-        {
+        if ($preserve_keys !== false) {
             foreach ($input as $key => $value) {
                 $chunks[(int)($i++ / $size)][$key] = $value;
             }
-        }
-        else
-        {
+        } else {
             foreach ($input as $value) {
                 $chunks[(int)($i++ / $size)][] = $value;
             }

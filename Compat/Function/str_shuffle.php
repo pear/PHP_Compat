@@ -29,8 +29,7 @@
  * @since       PHP 4.3.0
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('str_shuffle'))
-{
+if (!function_exists('str_shuffle')) {
     function str_shuffle($str)
     {
         $newstr = '';

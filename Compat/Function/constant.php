@@ -29,8 +29,7 @@
  * @since       PHP 4.0.4
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('constant'))
-{
+if (!function_exists('constant')) {
     function constant($constant)
     {
         if (!defined($constant)) {

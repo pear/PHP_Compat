@@ -29,8 +29,7 @@
  * @since       PHP 4.2.0
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('var_export'))
-{
+if (!function_exists('var_export')) {
     function var_export($array, $return = false)
     {
         // Common output variables
@@ -43,20 +42,15 @@ if (!function_exists('var_export'))
         // Check the export isn't a simple string / int
         if (is_string($array)) {
             $out = $stringdelim . $array . $stringdelim;
-        }
-        elseif (is_int($array)) {
+        } elseif (is_int($array)) {
             $out = (string)$array;
-        }
-
-        // Begin the array export
-        else
-        {
+        } else {
+            // Begin the array export
             // Start the string
             $out = "array (\n";
 
             // Loop through each value in array
-            foreach ($array as $key => $value)
-            {
+            foreach ($array as $key => $value) {
                 // If the key is a string, delimit it
                 if (is_string($key)) {
                     $key = $stringdelim . addslashes($key) . $stringdelim;
@@ -65,11 +59,8 @@ if (!function_exists('var_export'))
                 // If the value is a string, delimit it
                 if (is_string($value)) {
                     $value = $stringdelim . addslashes($value) . $stringdelim;
-                }
-
-                // We have an array, so do some recursion
-                elseif (is_array($value))
-                {
+                } elseif (is_array($value)) {
+                    // We have an array, so do some recursion
                     // Do some basic recursion while increasing the indent
                     $recur_array = explode($newline, var_export($value, true));
                     $recur_newarr = array ();

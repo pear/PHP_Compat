@@ -29,8 +29,7 @@
  * @since       PHP 4.3.0
  * @require     PHP 4.0.6 (is_callable)
  */
-if (!function_exists('array_intersect_assoc'))
-{
+if (!function_exists('array_intersect_assoc')) {
     function array_intersect_assoc()
     {
         $args = func_get_args();

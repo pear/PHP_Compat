@@ -29,8 +29,7 @@
  * @since       PHP 5
  * @require     PHP 4.0.6 (is_callable)
  */
-if (!function_exists('array_uintersect_uassoc'))
-{
+if (!function_exists('array_uintersect_uassoc')) {
     function array_uintersect_uassoc()
     {
         $args = func_get_args();
@@ -77,7 +76,8 @@ if (!function_exists('array_uintersect_uassoc'))
                 foreach ($args[$i] as $ckey => $cvalue) {
                     // Compare key and value
                     if (call_user_func($key_compare_func, $key, $ckey) === 0 && 
-                        call_user_func($data_compare_func, $value, $cvalue) === 0) {
+                        call_user_func($data_compare_func, $value, $cvalue) === 0)
+                    {
 
                         $intersect[$key] = $value;
                         continue;

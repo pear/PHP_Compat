@@ -28,8 +28,7 @@
  * @version     $Revision$
  * @since       PHP 4.3.0
  */
-if (!function_exists('set_include_path'))
-{
+if (!function_exists('set_include_path')) {
     function set_include_path($new_include_path)
     {
         return ini_set('include_path', $new_include_path);

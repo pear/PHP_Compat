@@ -31,8 +31,7 @@
  * @since       PHP 5
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('convert_uuencode'))
-{
+if (!function_exists('convert_uuencode')) {
     function convert_uuencode($string)
     {
         // Sanity check

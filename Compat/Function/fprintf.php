@@ -29,8 +29,7 @@
  * @since       PHP 5
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('fprintf'))
-{
+if (!function_exists('fprintf')) {
    function fprintf() {
         $args = func_get_args();
 

@@ -30,8 +30,7 @@
  * @version     $Revision$
  * @since       PHP 4.2.0
  */
-if (!function_exists('str_rot13'))
-{
+if (!function_exists('str_rot13')) {
     function str_rot13($str)
     {
         $from = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

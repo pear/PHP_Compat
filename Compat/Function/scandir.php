@@ -29,8 +29,7 @@
  * @since       PHP 5
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('scandir'))
-{
+if (!function_exists('scandir')) {
     function scandir($directory, $sorting_order = 0)
     {
         if (!is_string($directory)) {

@@ -19,19 +19,18 @@
 
 
 /**
- * Replace aray_diff_key()
+ * Replace array_diff_key()
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/aray_diff_key
+ * @link        http://php.net/array_diff_key
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 5.1.0
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('aray_diff_key'))
-{
-    function aray_diff_key()
+if (!function_exists('array_diff_key')) {
+    function array_diff_key()
     {
 
     }

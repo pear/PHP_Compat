@@ -30,8 +30,7 @@
  * @since       PHP 4.0.5
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('array_search'))
-{
+if (!function_exists('array_search')) {
     function array_search($needle, $haystack, $strict = false)
     {
         if (!is_array($haystack)) {

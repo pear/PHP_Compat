@@ -31,8 +31,7 @@
  * @since       PHP 5
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('http_build_query'))
-{
+if (!function_exists('http_build_query')) {
     function http_build_query($formdata, $numeric_prefix = null)
     {
         // If $formdata is an object, convert it to an array
@@ -56,8 +55,7 @@ if (!function_exists('http_build_query'))
 
         // Start building the query
         $tmp = array ();
-        foreach ($formdata as $key => $val)
-        {
+        foreach ($formdata as $key => $val) {
             if (is_integer($key) && $numeric_prefix != null) {
                 $key = $numeric_prefix . $key;
             }
@@ -81,17 +79,12 @@ if (!function_exists('http_build_query'))
     function __http_build_query ($array, $name)
     {
         $tmp = array ();
-        foreach ($array as $key => $value)
-        {
+        foreach ($array as $key => $value) {
             if (is_array($value)) {
                 array_push($tmp, __http_build_query($value, sprintf('%s[%s]', $name, $key)));
-            }
-
-            elseif (is_scalar($value)) {
+            } elseif (is_scalar($value)) {
                 array_push($tmp, sprintf('%s[%s]=%s', $name, urlencode($key), urlencode($value)));
-            }
-
-            elseif (is_object($value)) {
+            } elseif (is_object($value)) {
                 array_push($tmp, __http_build_query(get_object_vars($value), sprintf('%s[%s]', $name, $key)));
             }
         }

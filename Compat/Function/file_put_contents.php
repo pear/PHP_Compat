@@ -39,8 +39,7 @@ if (!defined('FILE_APPEND')) {
  * @since       PHP 5
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('file_put_contents'))
-{
+if (!function_exists('file_put_contents')) {
     function file_put_contents($filename, $content, $flags = null, $resource_context = null)
     {
         // If $content is an array, convert it to a string

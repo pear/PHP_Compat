@@ -30,8 +30,7 @@
  * @since       PHP 4.2.0
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('ob_flush'))
-{
+if (!function_exists('ob_flush')) {
     function ob_flush()
     {
         if (@ob_end_flush()) {

@@ -29,8 +29,7 @@
  * @since       PHP 5
  * @require     PHP 4.0.1 (trigger_error), Tokenizer extension
  */
-if (!function_exists('php_strip_whitespace'))
-{
+if (!function_exists('php_strip_whitespace')) {
     function php_strip_whitespace($file)
     {
         // Sanity check

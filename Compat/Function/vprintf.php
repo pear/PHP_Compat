@@ -29,8 +29,7 @@
  * @since       PHP 4.1.0
  * @require     PHP 4.0.4 (call_user_func_array)
  */
-if (!function_exists('vprintf'))
-{
+if (!function_exists('vprintf')) {
     function vprintf ($format, $args)
     {
         if (count($args) < 2) {

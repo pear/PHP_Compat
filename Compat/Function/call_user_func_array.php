@@ -29,15 +29,13 @@
  * @since       PHP 4.0.4
  * @require     PHP 4.0.1 (trigger_error)
  */
-if (!function_exists('call_user_func_array'))
-{
+if (!function_exists('call_user_func_array')) {
     function call_user_func_array($function, $param_arr)
     {
         $param_arr = array_values((array) $param_arr);
 
         // Sanity check
-        if (!is_callable($function))
-        {
+        if (!is_callable($function)) {
             if (is_array($function) && count($function) > 2) {
                 $function = $function[0] . '::' . $function[1];
             }
@@ -55,8 +53,7 @@ if (!function_exists('call_user_func_array'))
         }
 
         // Determine method of calling function
-        if (is_array($function))
-        {
+        if (is_array($function)) {
             $object =& $function[0];
             $method = $function[1];
 
@@ -66,8 +63,7 @@ if (!function_exists('call_user_func_array'))
             } else {
                 eval("\$retval = \$object->\$method($arg_string);");
             }
-        }
-        else {
+        } else {
             eval("\$retval = \$function($arg_string);");
         }
 
