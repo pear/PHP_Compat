@@ -38,6 +38,11 @@ if (!function_exists('array_combine'))
 			return null;
 		}
 
+		if (!is_array($values)) {
+			trigger_error('array_combine() expects parameter 2 to be array, string given', E_USER_WARNING);
+			return null;
+		}
+
         if (count($keys) !== count($values)) {
             trigger_error('array_combine() Both parameters should have equal number of elements', E_USER_WARNING);
             return false;
