@@ -163,15 +163,23 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
 						<file>array_chunk.phpt</file>
 						<file>array_combine.phpt</file>
 						<file>array_diff_assoc.phpt</file>
+						<file>array_key_exists.php</file>
+						<file>array_search.php</file>
 						<file>array_udif_assoc.phpt</file>
 						<file>array_udiff.phpt</file>
+						<file>call_user_func_array.php</file>
+						<file>constant.php</file>
 						<file>file_get_contents.phpt</file>
 						<file>file_put_contents.phpt</file>
 						<file>fprintf.phpt</file>
 						<file>html_entity_decode.phpt</file>
 						<file>http_build_query.phpt</file>
+						<file>image_type_to_mime_type.php</file>
 						<file>is_a.phpt</file>
-						<file>image_type_to_mime_type.phpt</file>
+						<file>ob_clean.phpt</file>
+						<file>ob_flush.phpt</file>
+						<file>ob_get_clean.phpt</file>
+						<file>ob_get_flush.phpt</file>
 						<file>scandir.phpt</file>
 						<file>str_ireplace.phpt</file>
 						<file>str_split.phpt</file>
