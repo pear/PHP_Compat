@@ -51,21 +51,18 @@ if (!function_exists('array_udiff_uassoc'))
 
         // Check arrays
         $count = count($args);
-        for ($i = 0; $i < $count; $i++)
-        {
+        for ($i = 0; $i < $count; $i++) {
             if (!is_array($args[$i])) {
                 trigger_error('array_udiff_uassoc() Argument #' . ($i + 1) . ' is not an array', E_USER_WARNING);
                 return;
             }
         }
 
-        $diff = array ();
         // Traverse values of the first array
-        foreach ($args[0] as $key => $value)
-        {
+        $diff = array ();
+        foreach ($args[0] as $key => $value) {
             // Check all arrays
-            for ($i = 1; $i < $count; $i++)
-            {
+            for ($i = 1; $i < $count; $i++) {
                 if (!isset($args[$i][$key])) {
                     continue;
                 }
