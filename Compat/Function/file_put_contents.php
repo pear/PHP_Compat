@@ -32,9 +32,9 @@
  * @version     1.0
  * @internal	$flags = FILE_USE_INCLUDE_PATH is not supported, nor is $resource_context
  */
-if (!function_exists('file_put_contents2'))
+if (!function_exists('file_put_contents'))
 {
-    function file_put_contents2 ($filename, $content, $flags = null, $resource_context = null)
+    function file_put_contents ($filename, $content, $flags = null, $resource_context = null)
 	{
 		// If $content is an array, convert it to a string
         if (is_array($content)) {
