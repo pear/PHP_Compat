@@ -1,11 +1,11 @@
 --TEST--
-PHP_Compat STDIN
+PHP_Compat FILE_USE_INCLUDE_PATH
 --FILE--
 <?php
 require_once ('PHP/Compat.php');
-PHP_Compat::loadConstant('STDIN');
+PHP_Compat::loadConstant('FILE_USE_INCLUDE_PATH');
 
-if (defined('STDIN')) {
+if (defined('FILE_USE_INCLUDE_PATH')) {
     echo 'true';
 }
 ?>

@@ -1,11 +1,11 @@
 --TEST--
-PHP_Compat STDIN
+PHP_Compat FILE_APPEND
 --FILE--
 <?php
 require_once ('PHP/Compat.php');
-PHP_Compat::loadConstant('STDIN');
+PHP_Compat::loadConstant('FILE_APPEND');
 
-if (defined('STDIN')) {
+if (defined('FILE_APPEND')) {
     echo 'true';
 }
 ?>
