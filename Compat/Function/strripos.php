@@ -48,7 +48,7 @@ if (!function_exists('strripos2'))
         }
 
         if (!is_null($offset) && !is_numeric($offset)) {
-            trigger_error('strripos() expects parameter 3 to be string, ' . gettype($offset) . ' given', E_USER_WARNING);
+            trigger_error('strripos() expects parameter 3 to be long, ' . gettype($offset) . ' given', E_USER_WARNING);
             return false;
         }
 
