@@ -29,9 +29,8 @@
  * @link        http://php.net/function.strripos
  * @author      Aidan Lister <aidan@php.net>
  * @author      Stephan Schmidt <schst@php.net>
- * @version     1.0
- * @added       PHP 5
- * @requires    PHP 3
+ * @version     $Revision$
+ * @since       PHP 5
  */
 if (!function_exists('strripos'))
 {

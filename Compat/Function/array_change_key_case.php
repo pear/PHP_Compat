@@ -37,9 +37,8 @@ if(!defined('CASE_UPPER')) {
  * @link        http://php.net/function.array_change_key_case
  * @author      Stephan Schmidt <schst@php.net>
  * @author      Aidan Lister <aidan@php.net>
- * @version     1.0
- * @added       PHP 4.2.0
- * @requires    PHP 3
+ * @version     $Revision$
+ * @since       PHP 4.2.0
  */
 if (!function_exists('array_change_key_case'))
 {

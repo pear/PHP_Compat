@@ -29,9 +29,8 @@
  * @link        http://php.net/function.http-build-query
  * @author      Stephan Schmidt <schst@php.net>
  * @author      Aidan Lister <aidan@php.net>
- * @version     1.0
- * @added       PHP 5
- * @requires    PHP 3
+ * @version     $Revision$
+ * @since       PHP 5
  */
 if (!function_exists('http_build_query'))
 {

@@ -28,10 +28,9 @@
  * @package     PHP_Compat
  * @author      Stephan Schmidt <schst@php.net>
  * @author      Aidan Lister <aidan@php.net>
- * @version     1.0
+ * @version     $Revision$
  * @link        http://php.net/function.array-udiff-assoc
- * @added       PHP 5
- * @requires    PHP 3
+ * @since       PHP 5
  */
 if (!function_exists('array_udiff_assoc'))
 {

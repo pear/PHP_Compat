@@ -27,9 +27,8 @@
  * @package     PHP_Compat
  * @link        http://php.net/features.commandline
  * @author      Aidan Lister <aidan@php.net>
- * @version     1.0
- * @added       PHP 4.3.0
- * @requires    PHP 3
+ * @version     $Revision$
+ * @since       PHP 4.3.0
  */
 defined('STDIN')    or define('STDIN',        fopen('php://stdin',  'r'));
 defined('STDOUT')   or define('STDOUT',       fopen('php://stdout', 'w'));

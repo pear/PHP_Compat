@@ -37,10 +37,9 @@ if (!defined('FILE_USE_INCLUDE_PATH')) {
  * @package     PHP_Compat
  * @link        http://php.net/function.file_put_contents
  * @author      Aidan Lister <aidan@php.net>
- * @version     1.0
+ * @version     $Revision$
  * @internal    $resource_context is not supported
- * @added       PHP 5
- * @requires    PHP 3
+ * @since       PHP 5
  */
 if (!function_exists('file_put_contents'))
 {
