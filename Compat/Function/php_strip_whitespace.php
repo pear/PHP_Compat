@@ -33,22 +33,53 @@ if (!function_exists('php_strip_whitespace'))
 {
     function php_strip_whitespace($file)
     {
-        // Perhaps a better idea would be to use the tokenizer?
+        // Sanity check
+        if (!is_scalar($file)) {
+            trigger_error('php_strip_whitespace() expects parameter 1 to be string, ' . gettype($file) . ' given', E_USER_WARNING);
+            return;
+        }
 
+        // Load file / tokens
+        $source = implode('', file($file));
+        $tokens = token_get_all($source);
 
-        // Load file
-        $file = implode('', file($file));
+        // Init
+        $source = '';
+        $was_ws = false;
 
-        // Remove whitespace
-        $file = preg_replace('#(<\?php\n?)(.*?)(\?>)#se',
-            "'\\1' . str_replace(\"\n\", ' ', '\\2') . '\\3'",
-            $file);
+        // Process
+        foreach ($tokens as $token) {
+            if (is_string($token)) {
+                // This will be ";"
+                $source .= $token;
+            } else {
+                list($id, $text) = $token;
+                
+                switch ($id) {
+                    // Skip all comments
+                    case T_COMMENT:
+                    case T_ML_COMMENT:
+                    case T_DOC_COMMENT:
+                        break;
 
-        // Remove comments
-        $file = preg_replace('#//[^\n]+#s', '', $file);
-        $file = preg_replace('#/\*.*\*/+#su', '', $file);
+                    // Remove whitespace
+                    case T_WHITESPACE:
+                        // We don't want more than one whitespace in a row replaced
+                        if ($was_ws !== true) {
+                            $source .= ' ';
+                        }
+                        $was_ws = true;
+                        break;
 
-        return $file;
+                    default:
+                        $was_ws = false;
+                        $source .= $text;
+                        break;
+                }
+            }
+        }
+
+        return $source;
     }
 }
 
