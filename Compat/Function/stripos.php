@@ -13,12 +13,12 @@
 // | obtain it through the world-wide-web, please send a note to          |
 // | license@php.net so we can mail you a copy immediately.               |
 // +----------------------------------------------------------------------+
-// | Authors: Aidan Lister <aidan@php.net>                                |
+// | Authors: Stephan Schmidt <schst@php.net>                             |
+// |          Aidan Lister <aidan@php.net>                                |
 // +----------------------------------------------------------------------+
 //
 // $Id$
 //
-
 
 /**
  * Replace stripos()
@@ -28,12 +28,33 @@
  * @category    PHP
  * @package     PHP_Compat
  * @link        http://php.net/function.stripos
+ * @author      Stephan Schmidt <schst@php.net>
  * @author      Aidan Lister <aidan@php.net>
  * @version     1.0
  */
 if (!function_exists('stripos'))
 {
-	// TODO
-}
+   /**
+    * Find position of first occurrence of a case-insensitive string
+    *
+    * @param    string           haystack
+    * @param    string           needle
+    * @param    integer          offset
+    * @return   integer|boolean  position or false
+    */
+	function stripos($haystack, $needle, $offset = null) {
 
+        if (!is_scalar($haystack)) {
+            trigger_error('stripos() expects parameter 1 to be string, '.gettype($haystack).' given', E_USER_WARNING);
+            return null;
+        }
+
+        if (!is_scalar($needle)) {
+            trigger_error('stripos(): needle is not a string or an integer.', E_USER_WARNING);
+            return null;
+        }
+
+        return strpos(strtolower($haystack), strtolower($needle), $offset);
+    }
+}
 ?>
