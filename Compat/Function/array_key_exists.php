@@ -49,7 +49,7 @@ if (!function_exists('array_key_exists'))
             return false;
         }
 
-		return in_array($key, array_keys($search));
+        return in_array($key, array_keys($search));
     }
 }
 
