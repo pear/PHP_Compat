@@ -27,7 +27,7 @@
  *
  * @category    PHP
  * @package     PHP_Compat
- * @version     1.2.0
+ * @version     $Revision$
  * @author      Aidan Lister <aidan@php.net>
  * @static
  */
@@ -96,12 +96,17 @@ class PHP_Compat
     function loadVersion($version = null)
     {
         require_once 'Compat/Components.php';
+        PHP_Compat::loadFunction('version_compare');
+        $phpversion = phpversion();
 
         $res = array();
         foreach ($components as $type => $slice) {
             $loadfunc = 'load' . $type;
             foreach ($slice as $component => $compversion) {
-                if ($version === null || version_compare($version, $compversion) === 1) {
+                $vc = version_compare($version, $compversion);
+                $vp = version_compare($phpversion, $compversion);
+
+                if ($version === null || ($vc === 0 && $vp === -1)) {
                     $res[$component] = PHP_Compat::$loadfunc($component);
                 }
             }
