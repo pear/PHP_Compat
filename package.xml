@@ -117,7 +117,9 @@ Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND</notes>
 * array_diff_assoc
 * vprintf
 * vsprintf
-* var_export</notes>
+* var_export
+
+Fixed behaviour of stripos/strripos</notes>
 		<filelist>
 			<dir name="/" baseinstalldir="PHP" role="php">	 
 				<file>Compat.php</file>
