@@ -33,7 +33,28 @@
  */
 if (!function_exists('strripos'))
 {
-	// TODO
-}
+   /**
+    * Find position of last occurrence of a case-insensitive string in a string
+    *
+    * @param    string           haystack
+    * @param    string           needle
+    * @param    integer          offset
+    * @return   integer|boolean  position or false
+    * @todo     support offset
+    */
+	function strripos($haystack, $needle, $offset = null) {
 
+        if (!is_scalar($haystack)) {
+            trigger_error('strripos() expects parameter 1 to be string, '.gettype($haystack).' given', E_USER_WARNING);
+            return null;
+        }
+
+        if (!is_scalar($needle)) {
+            trigger_error('strripos(): needle is not a string or an integer.', E_USER_WARNING);
+            return null;
+        }
+
+        return strrpos(strtolower($haystack), strtolower($needle));
+    }
+}
 ?>
