@@ -31,26 +31,48 @@
  * @added       PHP 4.3.0
  * @requires    PHP 3
  */
-if (!function_exists('array_diff_assoc'))
+if (!function_exists('array_diff_assoc2'))
 {
-    function array_diff_assoc ()
+    function array_diff_assoc2 ()
     {
         $args = func_get_args();
-      
-        $res = $args[0];
-        if(!is_array($res)) {
-            return array();
+        if (count($args) < 2) {
+            trigger_error('Wrong parameter count for array_diff_assoc()', E_USER_WARNING);
+            return null;
         }
-      
-        for($i=1;$i<count($args);$i++) {
-            if(!is_array($args[$i])) {
-                continue;
-            }
-            foreach ($args[$i] as $key => $data) {
-                unset($res[$key]);
+    
+        // Check arrays
+        $count = count($args);
+        for ($i = 0; $i < $count; $i++)
+        {
+            if (!is_array($args[$i])) {
+                trigger_error('array_diff_assoc() Argument #' . ($i + 1) . ' is not an array', E_USER_WARNING);
+                return null;
             }
         }
-        return $res;
+    
+        $diff = array ();
+        // Traverse values of the first array
+        foreach ($args[0] as $key => $value)
+        {
+            // Loop through each other array
+            for ($i = 1; $i < $count; $i++)
+            {
+				// Loop through the current arrays key/val pairs and compare
+				foreach ($args[$i] as $comp_key => $comp_value)
+				{
+					if ((string)$key === (string)$comp_key &&
+						(string)$value === (string)$comp_value) {
+
+						echo 'found a match';
+					}
+				}
+            }
+
+            $diff[$key] = $value;
+        }
+
+        return $diff;
     }
 }
 ?>
