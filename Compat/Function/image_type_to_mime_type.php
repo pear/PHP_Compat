@@ -20,67 +20,67 @@
 //
 
 
-if (!defined(IMAGETYPE_GIF)) {
+if (!defined('IMAGETYPE_GIF')) {
 	define('IMAGETYPE_GIF', 0);
 }
 
-if (!defined(IMAGETYPE_JPEG)) {
+if (!defined('IMAGETYPE_JPEG')) {
 	define('IMAGETYPE_JPEG', 1);
 }
 
-if (!defined(IMAGETYPE_PNG)) {
+if (!defined('IMAGETYPE_PNG')) {
 	define('IMAGETYPE_PNG', 2);
 }
 
-if (!defined(IMAGETYPE_SWF)) {
+if (!defined('IMAGETYPE_SWF')) {
 	define('IMAGETYPE_SWF', 3);
 }
 
-if (!defined(IMAGETYPE_PSD)) {
+if (!defined('IMAGETYPE_PSD')) {
 	define('IMAGETYPE_PSD', 4);
 }
 
-if (!defined(IMAGETYPE_BMP)) {
+if (!defined('IMAGETYPE_BMP')) {
 	define('IMAGETYPE_BMP', 5);
 }
 
-if (!defined(IMAGETYPE_TIFF_II)) {
+if (!defined('IMAGETYPE_TIFF_II')) {
 	define('IMAGETYPE_TIFF_II', 6);
 }
 
-if (!defined(IMAGETYPE_TIFF_MM)) {
+if (!defined('IMAGETYPE_TIFF_MM')) {
 	define('IMAGETYPE_TIFF_MM', 7);
 }
 
-if (!defined(IMAGETYPE_JPC)) {
+if (!defined('IMAGETYPE_JPC')) {
 	define('IMAGETYPE_JPC', 8);
 }
 
-if (!defined(IMAGETYPE_JP2)) {
+if (!defined('IMAGETYPE_JP2')) {
 	define('IMAGETYPE_JP2', 9);
 }
 
-if (!defined(IMAGETYPE_JPX)) {
+if (!defined('IMAGETYPE_JPX')) {
 	define('IMAGETYPE_JPX', 10);
 }
 
-if (!defined(IMAGETYPE_JB2)) {
+if (!defined('IMAGETYPE_JB2')) {
 	define('IMAGETYPE_JB2', 11);
 }
 
-if (!defined(IMAGETYPE_SWC)) {
+if (!defined('IMAGETYPE_SWC')) {
 	define('IMAGETYPE_SWC', 12);
 }
 
-if (!defined(IMAGETYPE_IFF)) {
+if (!defined('IMAGETYPE_IFF')) {
 	define('IMAGETYPE_IFF', 13);
 }
 
-if (!defined(IMAGETYPE_WBMP)) {
+if (!defined('IMAGETYPE_WBMP')) {
 	define('IMAGETYPE_WBMP', 14);
 }
 
-if (!defined(IMAGETYPE_XBM)) {
+if (!defined('IMAGETYPE_XBM')) {
 	define('IMAGETYPE_XBM', 15);
 }
 
