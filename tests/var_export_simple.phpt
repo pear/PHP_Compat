@@ -7,6 +7,7 @@ PHP_Compat::loadFunction('var_export');
 
 $a = array (1, 2, array ("a", "b", "c"));
 var_export($a);
+echo "\n";
 echo var_export($a, true);
 ?>
 --EXPECT--
