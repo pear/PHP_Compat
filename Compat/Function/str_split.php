@@ -39,7 +39,7 @@ if (!function_exists('str_split')) {
 
         $split_length = (int) $split_length;
         if ($split_length < 1) {
-            trigger_error('str_split() The length of each segment must be greater then zero', E_USER_WARNING);
+            trigger_error('str_split() The length of each segment must be greater than zero', E_USER_WARNING);
             return false;
         }
 
