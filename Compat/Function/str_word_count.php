@@ -39,27 +39,23 @@ if (!function_exists('str_word_count'))
             trigger_error("str_word_count() The specified format parameter, '$format' is invalid", E_USER_WARNING);
             return false;
         }
-		
+
+		$word_string = preg_replace('/[0-9]+/', '', $string);
+		$word_array  = preg_split('/[^A-Za-z0-9_\']+/', $wordstr, -1, PREG_SPLIT_NO_EMPTY);
+
 		switch ($format):
 			case null:
-				$wordstr = preg_replace('/[0-9]+/', '', $string);
-				$count = count(preg_split('/[^A-Za-z0-9_\']+/', $wordstr, -1, PREG_SPLIT_NO_EMPTY));
-
-				return $count;
+				return count($word_array);
 				break;
 			
 			case 1:
-				$wordstr = preg_replace('/[0-9]+/', '', $string);
-				return preg_split('/[^A-Za-z0-9_\']+/', $wordstr, -1, PREG_SPLIT_NO_EMPTY);
+				return $word_array;
 				break;
 
 			case 2:
-				$wordstr = preg_replace('/[0-9]+/', '', $string);
-				$matches = preg_split('/[^A-Za-z0-9_\']+/', $wordstr, -1, PREG_SPLIT_NO_EMPTY);
-				
 				$lastmatch = 0;
-				foreach ($matches as $match) {
-					$array[$lastmatch = strpos($string, $match, $lastmatch)] = $match;
+				foreach ($word_array as $word) {
+					$array[$lastmatch = strpos($string, $word, $lastmatch)] = $word;
 				}
 				return $array;
 				break;
