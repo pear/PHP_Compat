@@ -26,12 +26,13 @@
  * @link        http://php.net/ref.dir
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
- * @since       PHP 4.3.0-RC2
+ * @since       PHP 4.3.0
  */
-if (!defined('PATH_SEPARATOR')) { define('PATH_SEPARATOR',
-    strtoupper(substr(PHP_OS, 0, 3) == 'WIN') ?
-        ';' :
-        ':');
+if (!defined('PATH_SEPARATOR')) {
+    define('PATH_SEPARATOR',
+        strtoupper(substr(PHP_OS, 0, 3) == 'WIN') ?
+            ';' :
+            ':');
 }
 
 ?>
