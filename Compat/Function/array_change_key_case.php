@@ -21,11 +21,11 @@
 //
 
 
-if(!defined('CASE_LOWER')) {
+if (!defined('CASE_LOWER')) {
     define('CASE_LOWER', 0);
 }
 
-if(!defined('CASE_UPPER')) {
+if (!defined('CASE_UPPER')) {
     define('CASE_UPPER', 1);
 }
 
@@ -49,8 +49,8 @@ if (!function_exists('array_change_key_case'))
             return false;
         }
         
-        $output = array ();
-        $keys   = array_keys($input);
+        $output   = array ();
+        $keys     = array_keys($input);
         $casefunc = ($case == CASE_LOWER) ? 'strtolower' : 'strtoupper';
 
         foreach ($keys as $key) {
