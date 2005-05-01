@@ -23,6 +23,20 @@ class testclass2
     }
 }
 
+class testclass3
+{
+    var $bar;
+}
+
+class testclass4
+{
+    var $foo;
+    function __clone()
+    {
+        $this->foo = clone($this->foo);
+    }
+}
+
 // Test 1: Initial value
 $aa = new testclass;
 echo $aa->foo, "\n"; // foo
@@ -37,9 +51,19 @@ $cc = new testclass2;
 echo $cc->foo, "\n"; // foo
 $dd = clone($cc);
 echo $dd->foo, "\n"; // bar
+
+// Test 4: Bug #3649
+$a = new testclass3;
+$a->foo =& new testclass4;
+$a->foo->bar = 'hello';
+$aclone = clone($a);
+$aclone->b->bar = 'goodbye';
+echo $a->foo->bar, "\n";
+
 ?>
 --EXPECT--
 foo
 foo
 foo
 bar
+hello
