@@ -36,7 +36,8 @@ if (!function_exists('array_uintersect')) {
     {
         $args = func_get_args();
         if (count($args) < 3) {
-            user_error('wrong parameter count for array_uintersect()', E_USER_WARNING);
+            user_error('wrong parameter count for array_uintersect()',
+                E_USER_WARNING);
             return;
         }
 
@@ -67,7 +68,7 @@ if (!function_exists('array_uintersect')) {
             for ($i = 1; $i !== $array_count; $i++) {
                 $array = $args[$i];
                 foreach($array as $key0 => $item0) {
-                    if (!call_user_func($compare_func, $item, $item0)) {
+                    if (!call_user_func($user_func, $item, $item0)) {
                         $output[$key] = $item;
                     }
                 }
