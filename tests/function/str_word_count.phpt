@@ -53,5 +53,5 @@ Array
     [6] => I
     [8] => am
     [11] => repeated
-    [18] => repeated
+    [20] => repeated
 )
