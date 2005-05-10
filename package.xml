@@ -212,7 +212,7 @@
 
     <release>
         <version>1.4.0</version>
-        <date>2004-xx-xx</date>
+        <date>2004-10-05</date>
         <license>PHP License</license>
         <state>stable</state>
         <notes>
@@ -228,7 +228,7 @@
 
          Bug fixes:
          * Improved loadVersion method
-         * Fixed clone bug
+         * Fixed bug in clone
         </notes>
         <filelist>
             <dir name="/" baseinstalldir="PHP" role="php">     
