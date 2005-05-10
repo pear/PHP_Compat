@@ -28,16 +28,15 @@
         <license>PHP License</license>
         <state>beta</state>
         <notes>
-<![CDATA[
-This package is in beta while any bugs are ironed out.
-Includes:
-* E_STRICT
-* array_combine
-* file_get_contents
-* file_put_contents
-* is_a
-* scandir
-]]>
+         This package is in beta while any bugs are ironed out.
+
+         Components:
+         * E_STRICT
+         * array_combine
+         * file_get_contents
+         * file_put_contents
+         * is_a
+         * scandir
      </notes>
     </release>
 
@@ -47,18 +46,21 @@ Includes:
         <license>PHP License</license>
         <state>beta</state>
         <notes>
-<![CDATA[
-Added more components:
-* str_split
-* STDIN
-* STDOUT
-* STDERR
+         Still in beta until any last bugs are found and removed.
 
-Made a number of bugfixes.
-Added replica PHP error messages.
+         Added more components:
+         * str_split
+         * STDIN
+         * STDOUT
+         * STDERR
 
-Still in beta until any last bugs are found and removed.
-]]>
+         Bug fixes:
+         * file_get_contents
+         * file_put_contents
+         * array_combine
+
+         Other changes:
+         * Added replica PHP error messages.
         </notes>
     </release>
 
@@ -68,18 +70,19 @@ Still in beta until any last bugs are found and removed.
         <license>PHP License</license>
         <state>beta</state>
         <notes>
-<![CDATA[
-Added more components:
-* http_build_query
-* array_udiff
-* array_udiff_assoc
-* FILE_APPEND
-* FILE_USE_INCLUDE_PATH
+         Added more components:
+         * http_build_query
+         * array_udiff
+         * array_udiff_assoc
+         * FILE_APPEND
+         * FILE_USE_INCLUDE_PATH
 
-Heavily modified file_put_contents for greater support
-A couple of bug fixes
-Added complete unit testing!
-]]>
+         Bug fixes:
+         * Heavily modified file_put_contents for greater support
+         * str_split
+
+         Other changes:
+         * Added complete unit testing!
         </notes>
     </release>
 
@@ -89,18 +92,17 @@ Added complete unit testing!
         <license>PHP License</license>
         <state>beta</state>
         <notes>
-<![CDATA[
-Added more components:
-* fprintf
-* stripos
-* strripos
-* str_ireplace
-* FILE (The filesystem constants)
-* STD (The commandline constants)
+         Added more components:
+         * fprintf
+         * stripos
+         * strripos
+         * str_ireplace
+         * FILE (The filesystem constants)
+         * STD (The commandline constants)
 
-Removed the seperate files for STDIN/STDOUT/STDERR
-Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND
-]]>
+         Other changes:
+         * Removed the seperate files for STDIN/STDOUT/STDERR
+         * Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND
         </notes>
     </release>
 
@@ -110,17 +112,16 @@ Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND
         <license>PHP License</license>
         <state>stable</state>
         <notes>
-<![CDATA[
-Added more components:
-* array_change_key_case
-* array_chunk
-* array_diff_assoc
-* vprintf
-* vsprintf
-* var_export
+         Added more components:
+         * array_change_key_case
+         * array_chunk
+         * array_diff_assoc
+         * vprintf
+         * vsprintf
+         * var_export
 
-Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour).
-]]>
+         Bug fixes:
+         * Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour).
         </notes>
     </release>
 
@@ -130,20 +131,18 @@ Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour)
         <license>PHP License</license>
         <state>stable</state>
         <notes>
-<![CDATA[
-Added more components:
-* html_entity_decode
-* version_compare
-* image_type_to_mime_type
-* array_key_exists
-* array_search
-* call_user_func_array
-* constant
-* ob_clean
-* ob_flush
-* ob_get_clean
-* ob_get_flush
-]]>
+         Added more components:
+         * html_entity_decode
+         * version_compare
+         * image_type_to_mime_type
+         * array_key_exists
+         * array_search
+         * call_user_func_array
+         * constant
+         * ob_clean
+         * ob_flush
+         * ob_get_clean
+         * ob_get_flush
         </notes>
     </release>
 
@@ -153,25 +152,23 @@ Added more components:
         <license>PHP License</license>
         <state>stable</state>
         <notes>
-<![CDATA[
-Added more components:
-* str_word_count
-* str_rot13
-* convert_uuencode
-* convert_uudecode
-* strpbrk
-* array_walk_recursive
-* array_uintersect_assoc
-* array_uintersect_uassoc
-* array_uintersect
-* array_udiff_uassoc
-* str_shuffle
-* substr_compare
-* get_include_path
-* set_include_path
-* restore_include_path
-* php_strip_whitespace
-]]>
+         Added more components:
+         * str_word_count
+         * str_rot13
+         * convert_uuencode
+         * convert_uudecode
+         * strpbrk
+         * array_walk_recursive
+         * array_uintersect_assoc
+         * array_uintersect_uassoc
+         * array_uintersect
+         * array_udiff_uassoc
+         * str_shuffle
+         * substr_compare
+         * get_include_path
+         * set_include_path
+         * restore_include_path
+         * php_strip_whitespace
         </notes>
     </release>
 
@@ -181,27 +178,25 @@ Added more components:
         <license>PHP License</license>
         <state>stable</state>
         <notes>
-<![CDATA[
-Added more components:
-* array_diff_key 
-* array_diff_ukey
-* array_diff_uassoc
-* array_intersect_assoc
-* array_intersect_key
-* array_intersect_uassoc
-* array_intersect_ukey
-* floatval
-* ini_get_all
-* md5_file
-* clone
-* PHP_EOL
-* UPLOAD_ERR (File upload constants)
-* T (Tokenizer constants)
+         Added more components:
+         * array_diff_key 
+         * array_diff_ukey
+         * array_diff_uassoc
+         * array_intersect_assoc
+         * array_intersect_key
+         * array_intersect_uassoc
+         * array_intersect_ukey
+         * floatval
+         * ini_get_all
+         * md5_file
+         * clone
+         * PHP_EOL
+         * UPLOAD_ERR (File upload constants)
+         * T (Tokenizer constants)
 
-Added loadVersion():
-* Allows automatic loading of all components
-* or, loading all components until a given version of PHP is reached.
-]]>
+         Added loadVersion():
+         * Allows automatic loading of all components
+         * or, loading all components until a given version of PHP is reached.
         </notes>
     </release>
 
@@ -211,9 +206,7 @@ Added loadVersion():
         <license>PHP License</license>
         <state>stable</state>
         <notes>
-<![CDATA[
-Fixed problems with loadVersion
-]]>
+         Fixed problems with loadVersion
         </notes>
     </release>
 
@@ -223,12 +216,19 @@ Fixed problems with loadVersion
         <license>PHP License</license>
         <state>stable</state>
         <notes>
-<![CDATA[
-Added more components:
-* DIRECTORY_SEPARATOR
+         Added more components:
+         * DIRECTORY_SEPARATOR
+         * pg_affected_rows
+         * pg_unescape_bytea
+         * pg_escape_bytea
+         * ibase_timefmt
+         * get_headers
+         * debug_print_backtrace
+         * mhash
 
-Improved loadVersion method
-]]>
+         Bug fixes:
+         * Improved loadVersion method
+         * Fixed clone bug
         </notes>
         <filelist>
             <dir name="/" baseinstalldir="PHP" role="php">     
@@ -262,7 +262,7 @@ Improved loadVersion method
                         <file>array_udiff.php</file>
                         <file>array_udiff_assoc.php</file>
                         <file>array_udiff_uassoc.php</file>
-                        <file>array_uintersect_assoc.php</file>
+                        <file>array_uintersect.php</file>
                         <file>array_uintersect_assoc.php</file>
                         <file>array_uintersect_uassoc.php</file>
                         <file>array_walk_recursive.php</file>
@@ -271,22 +271,29 @@ Improved loadVersion method
                         <file>constant.php</file>
                         <file>convert_uuencode.php</file>
                         <file>convert_uudecode.php</file>
+                        <file>debug_print_backtrace.php</file>
                         <file>file_get_contents.php</file>
                         <file>file_put_contents.php</file>
                         <file>floatval.php</file>
                         <file>fprintf.php</file>
+                        <file>get_headers.php</file>
                         <file>get_include_path.php</file>
                         <file>html_entity_decode.php</file>
                         <file>http_build_query.php</file>
+                        <file>ibase_timefmt.php</file>
                         <file>image_type_to_mime_type.php</file>
                         <file>ini_get_all.php</file>
                         <file>is_a.php</file>
                         <file>md5_file.php</file>
+                        <file>mhash.php</file>
                         <file>ob_clean.php</file>
                         <file>ob_flush.php</file>
                         <file>ob_get_clean.php</file>
                         <file>ob_get_flush.php</file>
                         <file>php_strip_whitespace.php</file>
+                        <file>pg_affected_rows.php</file>
+                        <file>pg_escape_bytea.php</file>
+                        <file>pg_unescape_bytea.php</file>
                         <file>restore_include_path.php</file>
                         <file>scandir.php</file>
                         <file>set_include_path.php</file>
@@ -345,22 +352,29 @@ Improved loadVersion method
                         <file>constant.phpt</file>
                         <file>convert_uuencode.phpt</file>
                         <file>convert_uudecode.phpt</file>
+                        <file>debug_print_backtrace.phpt</file>
                         <file>file_get_contents.phpt</file>
                         <file>file_put_contents.phpt</file>
                         <file>floatval.phpt</file>
                         <file>fprintf.phpt</file>
+                        <file>get_headers.phpt</file>
                         <file>get_include_path.phpt</file>
                         <file>html_entity_decode.phpt</file>
                         <file>http_build_query.phpt</file>
+                        <file>ibase_timefmt.phpt</file>
                         <file>image_type_to_mime_type.phpt</file>
                         <file>ini_get_all.phpt</file>
                         <file>is_a.phpt</file>
                         <file>md5_file.phpt</file>
+                        <file>mhash.phpt</file>
                         <file>ob_clean.phpt</file>
                         <file>ob_flush.phpt</file>
                         <file>ob_get_clean.phpt</file>
                         <file>ob_get_flush.phpt</file>
                         <file>php_strip_whitespace.phpt</file>
+                        <file>pg_affected_rows.phpt</file>
+                        <file>pg_escape_bytea.phpt</file>
+                        <file>pg_unescape_bytea.phpt</file>
                         <file>restore_include_path.phpt</file>
                         <file>scandir.phpt</file>
                         <file>set_include_path.phpt</file>
