@@ -1,0 +1,18 @@
+Functions
+=========
+* get_headers
+  Needs to follow location requests
+
+* mhash
+  Need to add more hashing algorithms
+
+Tests
+=====
+* Proper testing for:
+  debug_print_backtrace
+  get_headers
+  ibase_timefmt
+  mhash
+  pg_affected_rows
+  pg_escape_bytea
+  pg_unescape_bytea
