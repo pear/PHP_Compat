@@ -41,18 +41,19 @@ if (!function_exists('array_uintersect')) {
         }
 
         // Get compare function
-        $compare_func = array_pop($args);
-        if (!is_callable($compare_func)) {
-            if (is_array($compare_func)) {
-                $compare_func = $compare_func[0].'::'.$compare_func[1];
+        $user_func = array_pop($args);
+        if (!is_callable($user_func)) {
+            if (is_array($user_func)) {
+                $user_func = $user_func[0] . '::' . $user_func[1];
             }
-            user_error('array_uintersect() Not a valid callback ' . $compare_func, E_USER_WARNING);
+            user_error('array_uintersect() Not a valid callback ' .
+                $user_func, E_USER_WARNING);
             return;
         }
 
         // Check arrays
         $array_count = count($args);
-        for ($i = 0; $i !== $array_count; $i++) {
+        for ($i = 0; $i < $array_count; $i++) {
             if (!is_array($args[$i])) {
                 user_error('array_uintersect() Argument #' .
                     ($i + 1) . ' is not an array', E_USER_WARNING);
