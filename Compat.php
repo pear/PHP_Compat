@@ -107,7 +107,8 @@ class PHP_Compat
 
         // Init
         $phpversion = phpversion();
-        $methods = array('function' => 'loadFunction',
+        $methods = array(
+            'function' => 'loadFunction',
             'constant' => 'loadConstant');
         $res = array();
 
@@ -116,7 +117,7 @@ class PHP_Compat
             foreach ($slice as $component => $compversion) {
                 if (($version === null &&
                         1 === version_compare($compversion, $phpversion)) ||    // C > PHP
-                    (0 === version_compare($compversion, $version) ||           // C = S
+                       (0 === version_compare($compversion, $version) ||        // C = S
                         1 === version_compare($compversion, $phpversion))) {    // C > PHP
                     
                     $res[$type][$component] =
