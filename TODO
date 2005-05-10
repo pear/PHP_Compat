@@ -16,3 +16,18 @@ Tests
   pg_affected_rows
   pg_escape_bytea
   pg_unescape_bytea
+
+Other
+=====
+* Extensions
+  SPL
+  FTP
+
+* Enviroments
+  register_globals=on/off
+  magic_quotes=on/off
+
+* Add class for functions with changed parameters
+  microtime
+  str_ireplace
+  range
