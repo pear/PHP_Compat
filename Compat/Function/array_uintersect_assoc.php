@@ -53,7 +53,7 @@ if (!function_exists('array_uintersect_assoc')) {
 
         // Check arrays
         $array_count = count($args);
-        for ($i = 0; $i !== $array_count; $i++) {
+        for ($i = 0; $i < $array_count; $i++) {
             if (!is_array($args[$i])) {
                 user_error('array_uintersect_assoc() Argument #' .
                     ($i + 1) . ' is not an array', E_USER_WARNING);
@@ -71,7 +71,6 @@ if (!function_exists('array_uintersect_assoc')) {
                          $output[$key] = $item;
                      }
                 }
-                
             }
         }
 
