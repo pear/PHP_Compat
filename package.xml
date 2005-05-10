@@ -317,7 +317,7 @@
                     <file>loadfunction.phpt</file>
                     <file>loadversion.phpt</file>
                     <dir name="constant">
-                        <file>directory_separator.php</file>
+                        <file>directory_separator.phpt</file>
                         <file>e_strict.phpt</file>
                         <file>file.phpt</file>
                         <file>path_separator.phpt</file>
