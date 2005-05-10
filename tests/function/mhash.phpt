@@ -16,5 +16,5 @@ $hash = mhash(MHASH_MD5, $input, "Jefe");
 echo bin2hex($hash) . "\n";
 ?>
 --EXPECT--
-d03cb659cbf9192dcd066272249f8412 
+ae2e4b39f3b5ee2c8b585994294201ea
 750c783e6ab0b503eaa86e310a5db738
