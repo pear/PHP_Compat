@@ -31,8 +31,8 @@
  * @since       PHP 5
  * @require     PHP 4.0.0
  */
-if (!function_exists('debug_print_backtrace2')) {
-    function debug_print_backtrace2()
+if (!function_exists('debug_print_backtrace')) {
+    function debug_print_backtrace()
     {
         // Get backtrace
         $backtrace = debug_backtrace();
