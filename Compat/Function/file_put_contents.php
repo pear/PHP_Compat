@@ -54,13 +54,13 @@ if (!function_exists('file_put_contents')) {
             return false;
         }
 
-        // Get the length of date to write
+        // Get the length of data to write
         $length = strlen($content);
 
         // Check what mode we are using
         $mode = ($flags & FILE_APPEND) ?
-                    $mode = 'a' :
-                    $mode = 'w';
+                    'a' :
+                    'w';
 
         // Check if we're using the include path
         $use_inc_path = ($flags & FILE_USE_INCLUDE_PATH) ?
