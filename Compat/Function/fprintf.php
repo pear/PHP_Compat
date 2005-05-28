@@ -48,7 +48,7 @@ if (!function_exists('fprintf')) {
         }
 
         return fwrite($resource_handle, vsprintf($format, $args));
-   }
+    }
 }
 
 ?>
