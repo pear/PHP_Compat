@@ -55,7 +55,7 @@ if (!function_exists('strripos')) {
         // Manipulate the string if there is an offset
         $fix = 0;
         if (!is_null($offset)) {
-            // If the offset is larger than the haystack, return
+            // If the offset is larger than the haystack, return false
             if (abs($offset) >= strlen($haystack)) {
                 return false;
             }
@@ -66,11 +66,25 @@ if (!function_exists('strripos')) {
                 // We need to add this to the position of the needle
                 $fix = $offset;
             } else {
-                $haystack = substr($haystack, 0, strlen($haystack) + $offset);
+                // Check if the last letter of the new haystack (with offset
+                //   taken into account) is the same as the first letter of
+                //   the needle
+                if ($haystack{strlen($haystack) + $offset} === $needle{0}) {
+                    // We need to add the length of the needle back onto the haystack
+                    $haystack = substr($haystack, 0, strlen($haystack) + $offset + 1 + strlen($needle));
+                } else {
+                    // Only simple chop required
+                    $haystack = substr($haystack, 0, strlen($haystack) + $offset + 1);
+                }
             }
         }
 
         $segments = explode(strtolower($needle), strtolower($haystack));
+
+        // Pattern not found
+        if (count($segments) === 1) {
+            return false;
+        }
 
         $last_seg = count($segments) - 1;
         $position = strlen($haystack) + $fix - strlen($segments[$last_seg]) - strlen($needle);
