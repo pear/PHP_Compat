@@ -61,7 +61,7 @@ if (!function_exists('stripos')) {
         $segments = explode(strtolower($needle), strtolower($haystack), 2);
 
         // Check there was a match
-        if (count($segments) == 1) {
+        if (count($segments) === 1) {
             return false;
         }
 
