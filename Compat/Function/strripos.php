@@ -26,7 +26,6 @@
  * @package     PHP_Compat
  * @link        http://php.net/function.strripos
  * @author      Aidan Lister <aidan@php.net>
- * @author      Stephan Schmidt <schst@php.net>
  * @version     $Revision$
  * @since       PHP 5
  * @require     PHP 4.0.0 (user_error)
@@ -34,6 +33,7 @@
 if (!function_exists('strripos')) {
     function strripos($haystack, $needle, $offset = null)
     {
+        // Sanity check
         if (!is_scalar($haystack)) {
             user_error('strripos() expects parameter 1 to be scalar, ' .
                 gettype($haystack) . ' given', E_USER_WARNING);
@@ -52,44 +52,27 @@ if (!function_exists('strripos')) {
             return false;
         }
 
-        // Manipulate the string if there is an offset
-        $fix = 0;
-        if (!is_null($offset)) {
-            // If the offset is larger than the haystack, return false
-            if (abs($offset) >= strlen($haystack)) {
-                return false;
-            }
+        // Initialise variables
+        $needle         = strtolower($needle);
+        $haystack       = strtolower($haystack);
+        $needle_fc      = $needle{0};
+        $needle_len     = strlen($needle);
+        $haystack_len   = strlen($haystack);
+        $offset         = (int) $offset;
+        $leftlimit      = ($offset >= 0) ? $offset : 0;
+        $p              = ($offset >= 0) ?
+                                $haystack_len :
+                                $haystack_len + $offset + 1;
 
-            // Check whether offset is negative or positive
-            if ($offset > 0) {
-                $haystack = substr($haystack, $offset, strlen($haystack) - $offset);
-                // We need to add this to the position of the needle
-                $fix = $offset;
-            } else {
-                // Check if the last letter of the new haystack (with offset
-                //   taken into account) is the same as the first letter of
-                //   the needle
-                if ($haystack{strlen($haystack) + $offset} === $needle{0}) {
-                    // We need to add the length of the needle back onto the haystack
-                    $haystack = substr($haystack, 0, strlen($haystack) + $offset + 1 + strlen($needle));
-                } else {
-                    // Only simple chop required
-                    $haystack = substr($haystack, 0, strlen($haystack) + $offset + 1);
-                }
+        // Reverse iterate haystack
+        while (--$p > $leftlimit) {
+            if ($needle_fc === $haystack{$p} &&
+                substr($haystack, $p, $needle_len) === $needle) {
+                return $p;
             }
         }
 
-        $segments = explode(strtolower($needle), strtolower($haystack));
-
-        // Pattern not found
-        if (count($segments) === 1) {
-            return false;
-        }
-
-        $last_seg = count($segments) - 1;
-        $position = strlen($haystack) + $fix - strlen($segments[$last_seg]) - strlen($needle);
-
-        return $position;
+        return false;
     }
 }
 
