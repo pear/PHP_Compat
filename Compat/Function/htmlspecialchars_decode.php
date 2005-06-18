@@ -27,7 +27,7 @@
  * @link        http://php.net/function.htmlspecialchars_decode
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
- * @since       PHP 5
+ * @since       PHP 5.1.0
  * @require     PHP 4.0.0 (user_error)
  */
 if (!function_exists('htmlspecialchars_decode')) {
@@ -40,7 +40,7 @@ if (!function_exists('htmlspecialchars_decode')) {
             return;
         }
 
-        if (!is_int($quote_style)) {
+        if (!is_int($quote_style) && $quote_style !== null) {
             user_error('htmlspecialchars_decode() expects parameter 2 to be integer, ' .
                 gettype($quote_style) . ' given', E_USER_WARNING);
             return;
