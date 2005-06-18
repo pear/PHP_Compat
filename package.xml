@@ -230,6 +230,23 @@
          * Improved loadVersion method
          * Fixed bug in clone
         </notes>
+    </release>
+
+    <release>
+        <version>1.4.1</version>
+        <date>2004-19-05</date>
+        <license>PHP License</license>
+        <state>stable</state>
+        <notes>
+         Added more components:
+         * fputcsv
+         * htmlspecialchars_decode
+
+         Bug fixes:
+         * Fixed declaration of debug_print_backtrace
+         * Fixed number of bugs in strripos
+         * Fixed bugs with large offsets in str_split
+        </notes>
         <filelist>
             <dir name="/" baseinstalldir="PHP" role="php">     
                 <file>Compat.php</file>
@@ -276,9 +293,11 @@
                         <file>file_put_contents.php</file>
                         <file>floatval.php</file>
                         <file>fprintf.php</file>
+                        <file>fputcsv.php</file>
                         <file>get_headers.php</file>
                         <file>get_include_path.php</file>
                         <file>html_entity_decode.php</file>
+                        <file>htmlspecialchars_decode.php</file>
                         <file>http_build_query.php</file>
                         <file>ibase_timefmt.php</file>
                         <file>image_type_to_mime_type.php</file>
@@ -357,9 +376,11 @@
                         <file>file_put_contents.phpt</file>
                         <file>floatval.phpt</file>
                         <file>fprintf.phpt</file>
+                        <file>fputcsv.phpt</file>
                         <file>get_headers.phpt</file>
                         <file>get_include_path.phpt</file>
                         <file>html_entity_decode.phpt</file>
+                        <file>htmlspecialchars_decode.phpt</file>
                         <file>http_build_query.phpt</file>
                         <file>ibase_timefmt.phpt</file>
                         <file>image_type_to_mime_type.phpt</file>
