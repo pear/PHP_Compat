@@ -50,12 +50,12 @@ if (!function_exists('htmlspecialchars_decode')) {
         $from   = array('&amp;', '&lt;', '&gt;');
         $to     = array('&', '<', '>');
         
-        if ($quote_style ^ ENT_NOQUOTES) {
+        // The function does not behave as documented
+        // This matches the actual behaviour of the function
+        if ($quote_style & ENT_COMPAT || $quote_style & ENT_QUOTES) {
             $from[] = '&quot;';
             $to[]   = '"';
-        }
-        
-        if ($quote_style & ENT_QUOTES) {
+            
             $from[] = '&#039;';
             $to[]   = "'";
         }
