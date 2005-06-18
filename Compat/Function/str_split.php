@@ -43,9 +43,28 @@ if (!function_exists('str_split')) {
             user_error('str_split() The length of each segment must be greater than zero', E_USER_WARNING);
             return false;
         }
+        
+        // Select split method
+        if ($split_length < 65536) {
+            // Faster, but only works for less than 2^16
+            preg_match_all('/.{1,' . $split_length . '}/s', $string, $matches);
+            return $matches[0];
+        } else {
+            // Required due to preg limitations
+            $arr = array();
+            $idx = 0;
+            $pos = 0;
+            $len = strlen($string);
 
-        preg_match_all('/.{1,' . $split_length . '}/s', $string, $matches);
-        return $matches[0];
+            while ($len > 0) {
+                $blk = ($len < $split_length) ? $len : $split_length;
+                $arr[$idx++] = substr($string, $pos, $blk);
+                $pos += $blk;
+                $len -= $blk;
+            }
+
+            return $arr;
+        }
     }
 }
 
