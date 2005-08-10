@@ -65,7 +65,7 @@ if (!function_exists('strripos')) {
                                 $haystack_len + $offset + 1;
 
         // Reverse iterate haystack
-        while (--$p > $leftlimit) {
+        while (--$p >= $leftlimit) {
             if ($needle_fc === $haystack{$p} &&
                 substr($haystack, $p, $needle_len) === $needle) {
                 return $p;
