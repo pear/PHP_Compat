@@ -28,6 +28,10 @@ var_dump(strripos($haystack, 'How about no'));
 // Test for negative offset scanning bug
 var_dump(strripos('abcdef', 'bc', -5));
 var_dump(strripos('aaafrogaa', 'frog', -5));
+
+// Bug #5049
+var_dump(strripos('testing', 'test'));
+
 ?>
 --EXPECT--
 int(41)
@@ -41,3 +45,4 @@ bool(false)
 bool(false)
 int(1)
 int(3)
+int(0)
