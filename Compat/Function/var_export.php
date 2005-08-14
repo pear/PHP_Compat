@@ -32,7 +32,7 @@
 if (!function_exists('var_export')) {
     function var_export($array, $return = false)
     {
-        // Common output variables
+        // Init
         $indent      = '  ';
         $doublearrow = ' => ';
         $lineend     = ",\n";
@@ -41,52 +41,65 @@ if (!function_exists('var_export')) {
         $find        = array(null, '\\', '\'');
         $replace     = array('NULL', '\\\\', '\\\'');
 
-        // Check the export isn't a simple string / int
-        if (is_string($array)) {
-            $out = $stringdelim . $array . $stringdelim;
-        } elseif (is_int($array)) {
-            $out = (string)$array;
-        } else {
-            // Begin the array export
-            // Start the string
-            $out = "array (\n";
+        switch (is_array($array)) {
+            // Array
+            case true:
+                // Begin the array export
+                // Start the string
+                $out = "array (\n";
 
-            // Loop through each value in array
-            foreach ($array as $key => $value) {
-                // If the key is a string, delimit it
-                if (is_string($key)) {
-                    $key = str_replace($find, $replace, $key);
-                    $key = $stringdelim . $key . $stringdelim;
-                }
-
-                // Delimit value                   
-                if (is_array($value)) {
-                    // We have an array, so do some recursion
-                    // Do some basic recursion while increasing the indent
-                    $recur_array = explode($newline, var_export($value, true));
-                    $temp_array = array();
-                    foreach ($recur_array as $recur_line) {
-                        $temp_array[] = $indent . $recur_line;
+                // Loop through each value in array
+                foreach ($array as $key => $value) {
+                    // Key
+                    if (is_string($key)) {
+                        for ($i = 0, $c = count($find); $i < $c; $i++) {
+                            $array = str_replace($find[$i], $replace[$i], $array);
+                        }
+                        $out = $stringdelim . $array . $stringdelim;
                     }
-                    $recur_array = implode($newline, $temp_array);
-                    $value = $newline . $recur_array;
-                } elseif (is_null($value)) {
-                    $value = 'NULL';
-                } else {
-                    $value = str_replace($find, $replace, $value);
-                    $value = $stringdelim . $value . $stringdelim;
+                    
+                    // Value
+                    if (is_array($value)) {
+                        // Do some recursion while increasing indent
+                        $recur_array = explode($newline, var_export($value, true));
+                        $temp_array = array();
+                        foreach ($recur_array as $recur_line) {
+                            $temp_array[] = $indent . $recur_line;
+                        }
+                        $recur_array = implode($newline, $temp_array);
+                        $value = $newline . $recur_array;
+                    } else {
+                        $value = var_export($value, true);
+                    }
+
+                    // Piece line together
+                    $out .= $indent . $key . $doublearrow . $value . $lineend;
                 }
 
-                // Piece together the line
-                $out .= $indent . $key . $doublearrow . $value . $lineend;
-            }
+                // End string
+                $out .= ")";
+                break;
 
-            // End our string
-            $out .= ")";
+            // Primitive type
+            case false:
+                if (is_string($array)) {
+                    for ($i = 0, $c = count($find); $i < $c; $i++) {
+                        $array = str_replace($find[$i], $replace[$i], $array);
+                    }
+                    $out = $stringdelim . $array . $stringdelim;
+                } elseif (is_int($array) || is_float($array)) {
+                    $out = (string) $array;
+                } elseif (is_bool($array)) {
+                    $out = $array ? 'true' : 'false';
+                } elseif (is_null($array) || is_resource($array)) {
+                    $out = 'NULL';
+                } else {
+                    $out = '* ERROR *';
+                }
+                break;
         }
 
-
-        // Decide method of output
+        // Method of output
         if ($return === true) {
             return $out;
         } else {
