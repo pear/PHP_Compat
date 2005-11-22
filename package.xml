@@ -247,6 +247,32 @@
          * Fixed number of bugs in strripos
          * Fixed bugs with large offsets in str_split
         </notes>
+    </release>
+
+    <release>
+        <version>1.5.0</version>
+        <date>2005-11-22</date>
+        <license>PHP License</license>
+        <state>stable</state>
+        <notes>
+         Added more components:
+         * is_scalar
+         * property_exists
+         * inet_pton
+         * inet_ntop
+         * bcinvert
+         * bcpowmod
+         * mime_content_type
+
+         Bug fixes:
+         * Fixed #4783 (PATH_SEPARATOR)
+         * Fixed #4788 (version_compare)
+         * Fixed #4851 (var_export)
+         * Fixed #5049 (strripos)
+         * Fixed #5078 (str_shuffle)
+         * Fixed #5691 (fputcsv)
+         * Fixed #5469 (md5_file)
+        </notes>
         <filelist>
             <dir name="/" baseinstalldir="PHP" role="php">     
                 <file>Compat.php</file>
@@ -283,6 +309,8 @@
                         <file>array_uintersect_assoc.php</file>
                         <file>array_uintersect_uassoc.php</file>
                         <file>array_walk_recursive.php</file>
+                        <file>bcinvert.php</file>
+                        <file>bcpowmod.php</file>
                         <file>call_user_func_array.php</file>
                         <file>clone.php</file>
                         <file>constant.php</file>
@@ -301,10 +329,13 @@
                         <file>http_build_query.php</file>
                         <file>ibase_timefmt.php</file>
                         <file>image_type_to_mime_type.php</file>
+                        <file>inet_ntop.php</file>
+                        <file>inet_pton.php</file>
                         <file>ini_get_all.php</file>
                         <file>is_a.php</file>
                         <file>md5_file.php</file>
                         <file>mhash.php</file>
+                        <file>mime_content_type.php</file>
                         <file>ob_clean.php</file>
                         <file>ob_flush.php</file>
                         <file>ob_get_clean.php</file>
@@ -366,6 +397,8 @@
                         <file>array_uintersect_assoc.phpt</file>
                         <file>array_uintersect_uassoc.phpt</file>
                         <file>array_walk_recursive.phpt</file>
+                        <file>bcinvert.phpt</file>
+                        <file>bcpowmod.phpt</file>
                         <file>call_user_func_array.phpt</file>
                         <file>clone.phpt</file>
                         <file>constant.phpt</file>
@@ -384,10 +417,13 @@
                         <file>http_build_query.phpt</file>
                         <file>ibase_timefmt.phpt</file>
                         <file>image_type_to_mime_type.phpt</file>
+                        <file>inet_ntop.phpt</file>
+                        <file>inet_pton.phpt</file>
                         <file>ini_get_all.phpt</file>
                         <file>is_a.phpt</file>
                         <file>md5_file.phpt</file>
                         <file>mhash.phpt</file>
+                        <file>mime_content_type.phpt</file>
                         <file>ob_clean.phpt</file>
                         <file>ob_flush.phpt</file>
                         <file>ob_get_clean.phpt</file>
