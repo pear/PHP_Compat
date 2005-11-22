@@ -70,6 +70,7 @@ if (!function_exists('md5_file')) {
         fclose($fh);
 
         // Return
+        $data = md5($data);
         if ($raw_output === true) {
             $data = pack('H*', $data);
         }
