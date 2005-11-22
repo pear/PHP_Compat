@@ -421,6 +421,7 @@
                         <file>inet_pton.phpt</file>
                         <file>ini_get_all.phpt</file>
                         <file>is_a.phpt</file>
+                        <file>is_scalar.phpt</file>
                         <file>md5_file.phpt</file>
                         <file>mhash.phpt</file>
                         <file>mime_content_type.phpt</file>
