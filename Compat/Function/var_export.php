@@ -93,6 +93,12 @@ if (!function_exists('var_export')) {
                     $out = $array ? 'true' : 'false';
                 } elseif (is_null($array) || is_resource($array)) {
                     $out = 'NULL';
+                } elseif (is_object($array)) {
+                    $out = "\n$indent" . 'class ' . get_class($array) . " {\n";
+                    foreach (get_object_vars($array) as $key => $val) {
+                        $out .= $indent . '  var $' . $key . ' = ' . var_export($val, true) . ";\n";
+                    }
+                    $out .= $indent . '}';
                 } else {
                     $out = '* ERROR *';
                 }
