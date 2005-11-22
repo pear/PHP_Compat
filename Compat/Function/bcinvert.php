@@ -34,7 +34,7 @@ if (!function_exists('bcinvert')) {
     {
         // Sanity check
         if (!is_scalar($a)) {
-            user_error('bcinvert() expects parameter 2 to be string, ' .
+            user_error('bcinvert() expects parameter 1 to be string, ' .
                 gettype($a) . ' given', E_USER_WARNING);
             return false;
         }

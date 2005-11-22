@@ -34,7 +34,7 @@ if (!function_exists('bcpowmod')) {
     {
         // Sanity check
         if (!is_scalar($x)) {
-            user_error('bcpowmod() expects parameter 2 to be string, ' .
+            user_error('bcpowmod() expects parameter 1 to be string, ' .
                 gettype($x) . ' given', E_USER_WARNING);
             return false;
         }
@@ -46,13 +46,13 @@ if (!function_exists('bcpowmod')) {
         }
 
         if (!is_scalar($modulus)) {
-            user_error('bcpowmod() expects parameter 2 to be string, ' .
+            user_error('bcpowmod() expects parameter 3 to be string, ' .
                 gettype($modulus) . ' given', E_USER_WARNING);
             return false;
         }
 
         if (!is_scalar($scale)) {
-            user_error('bcpowmod() expects parameter 2 to be integer, ' .
+            user_error('bcpowmod() expects parameter 4 to be integer, ' .
                 gettype($scale) . ' given', E_USER_WARNING);
             return false;
         }
