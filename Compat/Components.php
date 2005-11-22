@@ -24,6 +24,7 @@ $components['function']['array_chunk']                = '4.2.0';
 $components['function']['array_combine']              = '5.0.0';
 $components['function']['array_diff_assoc']           = '4.3.0';
 $components['function']['array_diff_key']             = '5.0.2';
+$components['function']['array_diff_uassoc']          = '5.0.0';
 $components['function']['array_diff_ukey']            = '5.0.2';
 $components['function']['array_intersect_assoc']      = '5.0.0';
 $components['function']['array_intersect_key']        = '5.0.2';
