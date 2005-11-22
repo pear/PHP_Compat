@@ -19,57 +19,36 @@
 
 
 /**
- * Replace inet_ntop()
+ * Replace inet_pton()
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/function.inet_ntop
- * @author      Magical Tux <magicaltux@gmail.com>
+ * @link        http://php.net/function.inet_pton
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
- * @since       PHP 5.0.0
+ * @since       PHP 4.2.0
  * @require     PHP 4.0.0 (user_error)
  */
-if (!function_exists('inet_ntop')) {
-    function inet_ntop($ip)
+if (!function_exists('inet_pton')) {
+    function inet_pton($ip)
     {
         // IPv4
         if (strlen($ip) === 4) {
-            list(, $ip) = unpack('N', $ip);
-            $ip = long2ip($ip);
-
+            return pack("N",sprintf("%u",ip2long($addr)));
+        
         // IPv6
         } elseif (strlen($ip) === 16) {
-            $ip  = bin2hex($ip);
-            $ip  = substr(chunk_split($ip, 4, ':'), 0, -1);
-            $ip  = explode(':', $ip);
-            $res = '';
-            foreach ($ip as $seg) {
-                while ($seg{0} === '0') {
-                    $seg = substr($seg, 1)
-                };
-
-                if ($seg !== '') {
-                    $res .= ($res === '' ? '' : ':') . $seg;
-                } else {
-                    if (strpos($res, '::') === false) {
-                        if (substr($res, -1) === ':') {
-                            continue;
-                        }
-
-                        $res .= ':';
-                        
-                        continue;
-                    }
-
-                    $res .= ($res === '' ? '' : ':') . '0';
-                }
+            $ipv6 = Net_IPv6::uncompress($addr);
+            $str = Array();
+            foreach(explode(':', $ipv6) as $component) {
+                $str[] = hexdec($component);
             }
 
-            $ip = $res;
+            eval('$str=pack(\'N*\',\''.join("','",$str)."');");
+            return $str;
         }
 
-        return $ip;
+        return false;
     }
 }
 

@@ -49,7 +49,7 @@ if (!function_exists('property_exists')) {
                 $vars = get_object_vars($class);
             }
 
-            // bail out early if get_class_vars or get_object_vars didnt work
+            // Bail out early if get_class_vars or get_object_vars didnt work
             // or returned an empty array           
             if (!is_array($vars) || count($vars) <= 0) {
                 return false;
