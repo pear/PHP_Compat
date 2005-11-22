@@ -16,6 +16,13 @@ Tests
   pg_affected_rows
   pg_escape_bytea
   pg_unescape_bytea
+  bcpowmod
+  bcinvert
+  mime_content_type
+  is_scalar
+  property_exists
+  inet_pton
+  inet_ntop
 
 Other
 =====
@@ -31,3 +38,5 @@ Other
   microtime
   str_ireplace
   range
+  array_splice
+  mkdirr
