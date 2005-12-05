@@ -12,7 +12,7 @@
 // | obtain it through the world-wide-web, please send a note to          |
 // | license@php.net so we can mail you a copy immediately.               |
 // +----------------------------------------------------------------------+
-// | Authors: Aidan Lister <aidan@php.net>                                |
+// | Authors: Arpad Ray <arpad@php.net>                                   |
 // +----------------------------------------------------------------------+
 //
 // $Id$
@@ -23,32 +23,37 @@
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/function.inet_pton
- * @author      Aidan Lister <aidan@php.net>
+ * @link        http://php.net/inet_pton
+ * @author      Arpad Ray <arpad@php.net>
  * @version     $Revision$
- * @since       PHP 4.2.0
- * @require     PHP 4.0.0 (user_error)
+ * @since       PHP 5.1.0
+ * @require     PHP 4.2.0 (array_fill)
  */
-if (!function_exists('inet_pton')) {
-    function inet_pton($ip)
+if (!function_exists('inet_pton')) {  
+    function inet_pton($address)
     {
-        // IPv4
-        if (strlen($ip) === 4) {
-            return pack("N",sprintf("%u",ip2long($addr)));
-        
-        // IPv6
-        } elseif (strlen($ip) === 16) {
-            $ipv6 = Net_IPv6::uncompress($addr);
-            $str = Array();
-            foreach(explode(':', $ipv6) as $component) {
-                $str[] = hexdec($component);
-            }
-
-            eval('$str=pack(\'N*\',\''.join("','",$str)."');");
-            return $str;
+        $r = ip2long($address);
+        if ($r !== false && $r != -1) {
+            return pack('N', $r);
         }
 
-        return false;
+        $delim_count = substr_count($address, ':');
+        if ($delim_count < 1 || $delim_count > 7) {
+            return false;
+        }
+
+        $r = explode(':', $address);
+        $rcount = count($r);
+        if (($doub = array_search('', $r, 1)) !== false) {
+            $length = (!$doub || $doub == $rcount - 1 ? 2 : 1);
+            array_splice($r, $doub, $length, array_fill(0, 8 + $length - $rcount, 0));
+        }
+
+        $r = array_map('hexdec', $r);
+        array_unshift($r, 'n*');
+        $r = call_user_func_array('pack', $r);
+
+        return $r;
     }
 }
 
