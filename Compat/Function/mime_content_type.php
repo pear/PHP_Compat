@@ -21,22 +21,26 @@
 /**
 * Replace mime_content_type()
 *
-* You will need the `file' command installed and present in your $PATH. If
-* `file' is not available, the type 'application/octet-stream' is returned
+* You will need the `file` command installed and present in your $PATH. If
+* `file` is not available, the type 'application/octet-stream' is returned
 * for all files.
 *
 * @category   PHP
 * @package    PHP_Compat
 * @link       http://php.net/function.mime_content_type
-* @version    CVS: $Revision$
+* @version    $Revision$
 * @author     Ian Eure <ieure@php.net>
-* @copyright  (c) 2005 Ian Eure
 * @since      PHP 4.3.0
 * @require    PHP 4.0.3 (escapeshellarg)
 */
 if (!function_exists('mime_content_type')) {
     function mime_content_type($filename)
     {
+        // Sanity check
+        if (!file_exists($filename)) {
+            return false;
+        }
+
         $filename = escapeshellarg($filename);
         $out = `file -iL $filename 2>/dev/null`;
         if (empty($out)) {
