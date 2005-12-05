@@ -250,10 +250,10 @@
     </release>
 
     <release>
-        <version>1.5.0</version>
+        <version>1.5.0RC1</version>
         <date>2005-12-06</date>
         <license>PHP License</license>
-        <state>stable</state>
+        <state>beta</state>
         <notes>
          Added more components:
          * is_scalar
