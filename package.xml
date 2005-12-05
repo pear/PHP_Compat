@@ -251,7 +251,7 @@
 
     <release>
         <version>1.5.0</version>
-        <date>2005-11-22</date>
+        <date>2005-12-06</date>
         <license>PHP License</license>
         <state>stable</state>
         <notes>
@@ -263,6 +263,9 @@
          * bcinvert
          * bcpowmod
          * mime_content_type
+         * time_sleep_until
+         * array_product
+         * idate
 
          Bug fixes:
          * Fixed #4783 (PATH_SEPARATOR)
@@ -272,6 +275,7 @@
          * Fixed #5078 (str_shuffle)
          * Fixed #5691 (fputcsv)
          * Fixed #5469 (md5_file)
+         * Fixed #6082 (file_put_contents)
         </notes>
         <filelist>
             <dir name="/" baseinstalldir="PHP" role="php">     
@@ -301,6 +305,7 @@
                         <file>array_intersect_uassoc.php</file>
                         <file>array_intersect_ukey.php</file>
                         <file>array_key_exists.php</file>
+                        <file>array_product.php</file>
                         <file>array_search.php</file>
                         <file>array_udiff.php</file>
                         <file>array_udiff_assoc.php</file>
@@ -328,6 +333,7 @@
                         <file>htmlspecialchars_decode.php</file>
                         <file>http_build_query.php</file>
                         <file>ibase_timefmt.php</file>
+                        <file>idate.php</file>
                         <file>image_type_to_mime_type.php</file>
                         <file>inet_ntop.php</file>
                         <file>inet_pton.php</file>
@@ -356,6 +362,7 @@
                         <file>strpbrk.php</file>
                         <file>strripos.php</file>
                         <file>substr_compare.php</file>
+                        <file>time_sleep_until.php</file>
                         <file>var_export.php</file>
                         <file>version_compare.php</file>
                         <file>vprintf.php</file>
@@ -389,6 +396,7 @@
                         <file>array_intersect_uassoc.phpt</file>
                         <file>array_intersect_ukey.phpt</file>
                         <file>array_key_exists.phpt</file>
+                        <file>array_product.phpt</file>
                         <file>array_search.phpt</file>
                         <file>array_udiff.phpt</file>
                         <file>array_udiff_assoc.phpt</file>
@@ -416,6 +424,7 @@
                         <file>htmlspecialchars_decode.phpt</file>
                         <file>http_build_query.phpt</file>
                         <file>ibase_timefmt.phpt</file>
+                        <file>idate.phpt</file>
                         <file>image_type_to_mime_type.phpt</file>
                         <file>inet_ntop.phpt</file>
                         <file>inet_pton.phpt</file>
@@ -445,6 +454,7 @@
                         <file>strpbrk.phpt</file>
                         <file>strripos.phpt</file>
                         <file>substr_compare.phpt</file>
+                        <file>time_sleep_until.phpt</file>
                         <file>var_export.phpt</file>
                         <file>version_compare.phpt</file>
                         <file>vprintf.phpt</file>
