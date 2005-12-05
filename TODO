@@ -21,8 +21,6 @@ Tests
   mime_content_type
   is_scalar
   property_exists
-  inet_pton
-  inet_ntop
 
 Other
 =====
@@ -34,7 +32,7 @@ Other
   register_globals=on/off
   magic_quotes=on/off
 
-* Add class for functions with changed parameters
+* Handle functions with changed signatures
   microtime
   str_ireplace
   range
