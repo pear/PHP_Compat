@@ -34,4 +34,5 @@ if (!function_exists('restore_include_path')) {
         return ini_restore('include_path');
     }
 }
+
 ?>

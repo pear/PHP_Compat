@@ -59,4 +59,5 @@ if (!function_exists('mime_content_type')) {
         return trim($t);
     }
 }
+
 ?> 

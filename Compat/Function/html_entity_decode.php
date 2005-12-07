@@ -69,4 +69,5 @@ if (!function_exists('html_entity_decode')) {
         return strtr($string, $trans_tbl);
     }
 }
+
 ?>

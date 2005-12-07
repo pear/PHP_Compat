@@ -48,5 +48,5 @@ if (!function_exists('idate')) {
         return intval(date($format, $timestamp));
     }
 }
-?>
 
+?>
