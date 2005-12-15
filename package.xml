@@ -14,12 +14,6 @@
             <email>aidan@php.net</email>
             <role>lead</role>
         </maintainer>
-        <maintainer>
-            <user>schst</user>
-            <name>Stephan Schmidt</name>
-            <email>schst@php.net</email>
-            <role>developer</role>
-        </maintainer>
     </maintainers>
 
     <release>
@@ -276,6 +270,39 @@
          * Fixed #5691 (fputcsv)
          * Fixed #5469 (md5_file)
          * Fixed #6082 (file_put_contents)
+        </notes>
+    </release>
+
+    <release>
+        <version>1.5.0</version>
+        <date>2005-12-15</date>
+        <license>PHP License</license>
+        <state>stable</state>
+        <notes>
+         Added more components:
+         * is_scalar
+         * property_exists
+         * inet_pton
+         * inet_ntop
+         * bcinvert
+         * bcpowmod
+         * mime_content_type
+         * time_sleep_until
+         * array_product
+         * idate
+
+         Bug fixes:
+         * Fixed #4783 (PATH_SEPARATOR)
+         * Fixed #4788 (version_compare)
+         * Fixed #4851 (var_export)
+         * Fixed #5049 (strripos)
+         * Fixed #5078 (str_shuffle)
+         * Fixed #5691 (fputcsv)
+         * Fixed #5469 (md5_file)
+         * Fixed #6082 (file_put_contents)
+
+         RC bug fixes:
+         * Fixed #6184 (idate)
         </notes>
         <filelist>
             <dir name="/" baseinstalldir="PHP" role="php">     
