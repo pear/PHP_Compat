@@ -31,44 +31,49 @@
  * @since       PHP 5
  * @require     PHP 4.0.0 (user_error)
  */
-if (!function_exists('substr_compare')) {
-    function substr_compare($main_str, $str, $offset, $length = null, $case_insensitive = false)
-    {
-        if (!is_string($main_str)) {
-            user_error('substr_compare() expects parameter 1 to be string, ' .
-                gettype($main_str) . ' given', E_USER_WARNING);
-            return;
-        }
+function php_compat_substr_compare($main_str, $str, $offset, $length = null, $case_insensitive = false)
+{
+    if (!is_string($main_str)) {
+        user_error('substr_compare() expects parameter 1 to be string, ' .
+            gettype($main_str) . ' given', E_USER_WARNING);
+        return;
+    }
 
-        if (!is_string($str)) {
-            user_error('substr_compare() expects parameter 2 to be string, ' .
-                gettype($str) . ' given', E_USER_WARNING);
-            return;
-        }
-        
-        if (!is_int($offset)) {
-            user_error('substr_compare() expects parameter 3 to be long, ' .
-                gettype($offset) . ' given', E_USER_WARNING);
-            return;
-        }
-        
-        if (is_null($length)) {
-            $length = strlen($main_str) - $offset;
-        } elseif ($offset >= strlen($main_str)) {
-            user_error('substr_compare() The start position cannot exceed initial string length',
-                E_USER_WARNING);
-            return false;
-        }
+    if (!is_string($str)) {
+        user_error('substr_compare() expects parameter 2 to be string, ' .
+            gettype($str) . ' given', E_USER_WARNING);
+        return;
+    }
+    
+    if (!is_int($offset)) {
+        user_error('substr_compare() expects parameter 3 to be long, ' .
+            gettype($offset) . ' given', E_USER_WARNING);
+        return;
+    }
+    
+    if (is_null($length)) {
+        $length = strlen($main_str) - $offset;
+    } elseif ($offset >= strlen($main_str)) {
+        user_error('substr_compare() The start position cannot exceed initial string length',
+            E_USER_WARNING);
+        return false;
+    }
 
-        $main_str = substr($main_str, $offset, $length);
-        $str = substr($str, 0, strlen($main_str));
+    $main_str = substr($main_str, $offset, $length);
+    $str = substr($str, 0, strlen($main_str));
 
-        if ($case_insensitive === false) {
-            return strcmp($main_str, $str);
-        } else {
-            return strcasecmp($main_str, $str);
-        }
+    if ($case_insensitive === false) {
+        return strcmp($main_str, $str);
+    } else {
+        return strcasecmp($main_str, $str);
     }
 }
 
-?>
+
+// Define
+if (!function_exists('substr_compare')) {
+    function substr_compare($main_str, $str, $offset, $length = null, $case_insensitive = false)
+    {
+        return php_compat_substr_compare($main_str, $str, $offset, $length, $case_insensitive);
+    }
+}

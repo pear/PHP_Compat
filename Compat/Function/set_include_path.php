@@ -28,11 +28,16 @@
  * @version     $Revision$
  * @since       PHP 4.3.0
  */
+function php_compat_set_include_path($new_include_path)
+{
+    return ini_set('include_path', $new_include_path);
+}
+
+
+// Define
 if (!function_exists('set_include_path')) {
     function set_include_path($new_include_path)
     {
-        return ini_set('include_path', $new_include_path);
+        return php_compat_set_include_path($new_include_path);
     }
 }
-
-?>

@@ -28,11 +28,16 @@
  * @version     $Revision$
  * @since       PHP 4.3.0
  */
+function php_compat_restore_include_path()
+{
+    return ini_restore('include_path');
+}
+
+
+// Define
 if (!function_exists('restore_include_path')) {
     function restore_include_path()
     {
-        return ini_restore('include_path');
+        return php_compat_restore_include_path();
     }
 }
-
-?>

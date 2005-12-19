@@ -30,17 +30,22 @@
  * @since       PHP 4.3.0
  * @require     PHP 4.0.0 (user_error)
  */
+function php_compat_ob_get_flush()
+{
+    $contents = ob_get_contents();
+
+    if ($contents !== false) {
+        ob_end_flush();
+    }
+
+    return $contents;
+}
+
+
+// Define
 if (!function_exists('ob_get_flush')) {
     function ob_get_flush()
     {
-        $contents = ob_get_contents();
-
-        if ($contents !== false) {
-            ob_end_flush();
-        }
-
-        return $contents;
+        return php_compat_ob_get_flush();
     }
 }
-
-?>

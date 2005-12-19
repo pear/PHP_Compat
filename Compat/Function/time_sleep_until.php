@@ -29,20 +29,26 @@
  * @since       PHP 5.1.0
  * @require     PHP 4.0.1 (trigger_error)
  */
+function php_compat_time_sleep_until($timestamp)
+{
+    list($usec, $sec) = explode(' ', microtime());
+    $now = $sec + $usec;
+    if ($timestamp <= $now) {
+        user_error('Specified timestamp is in the past', E_USER_WARNING);
+        return false;
+    }
+
+    $diff = $timestamp - $now;
+    usleep($diff * 1000000);
+    return true;
+
+}
+
+
+// Define
 if (!function_exists('time_sleep_until')) {
     function time_sleep_until($timestamp)
     {
-	    list($usec, $sec) = explode(' ', microtime());
-        $now = $sec + $usec;
-        if ($timestamp <= $now) {
-            user_error('Specified timestamp is in the past', E_USER_WARNING);
-            return false;
-        }
-
-        $diff = $timestamp - $now;
-        usleep($diff * 1000000);
-        return true;
+        return php_compat_time_sleep_until($timestamp);
     }
 }
-	
-?>

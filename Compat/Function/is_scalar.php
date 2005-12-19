@@ -29,12 +29,17 @@
  * @since       PHP 4.0.5
  * @require     PHP 4 (is_bool) 
  */
+function php_compat_is_scalar($val)
+{
+    // Check input
+    return (is_bool($val) || is_int($val) || is_float($val) || is_string($val));
+}
+
+
+// Define
 if (!function_exists('is_scalar')) {
     function is_scalar($val)
     {
-        // Check input
-        return (is_bool($val) || is_int($val) || is_float($val) || is_string($val));
+        return php_compat_is_scalar($val);
     }
 }
-
-?>

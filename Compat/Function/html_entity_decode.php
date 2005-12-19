@@ -45,29 +45,34 @@ if (!defined('ENT_QUOTES')) {
  * @internal    Setting the charset will not do anything
  * @require     PHP 4.0.0 (user_error)
  */
+function php_compat_html_entity_decode($string, $quote_style = ENT_COMPAT, $charset = null)
+{
+    if (!is_int($quote_style)) {
+        user_error('html_entity_decode() expects parameter 2 to be long, ' .
+            gettype($quote_style) . ' given', E_USER_WARNING);
+        return;
+    }
+
+    $trans_tbl = get_html_translation_table(HTML_ENTITIES);
+    $trans_tbl = array_flip($trans_tbl);
+
+    // Add single quote to translation table;
+    $trans_tbl['&#039;'] = '\'';
+
+    // Not translating double quotes
+    if ($quote_style & ENT_NOQUOTES) {
+        // Remove double quote from translation table
+        unset($trans_tbl['&quot;']);
+    }
+
+    return strtr($string, $trans_tbl);
+}
+
+
+// Define
 if (!function_exists('html_entity_decode')) {
     function html_entity_decode($string, $quote_style = ENT_COMPAT, $charset = null)
     {
-        if (!is_int($quote_style)) {
-            user_error('html_entity_decode() expects parameter 2 to be long, ' .
-                gettype($quote_style) . ' given', E_USER_WARNING);
-            return;
-        }
-
-        $trans_tbl = get_html_translation_table(HTML_ENTITIES);
-        $trans_tbl = array_flip($trans_tbl);
-
-        // Add single quote to translation table;
-        $trans_tbl['&#039;'] = '\'';
-
-        // Not translating double quotes
-        if ($quote_style & ENT_NOQUOTES) {
-            // Remove double quote from translation table
-            unset($trans_tbl['&quot;']);
-        }
-
-        return strtr($string, $trans_tbl);
+        return php_compat_html_entity_decode($string, $quote_style, $charset);
     }
 }
-
-?>

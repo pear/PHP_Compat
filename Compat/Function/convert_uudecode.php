@@ -31,49 +31,54 @@
  * @since       PHP 5
  * @require     PHP 4.0.0 (user_error)
  */
+function php_compat_convert_uudecode($string)
+{
+    // Sanity check
+    if (!is_scalar($string)) {
+        user_error('convert_uuencode() expects parameter 1 to be string, ' .
+            gettype($string) . ' given', E_USER_WARNING);
+        return false;
+    }
+
+    if (strlen($string) < 8) {
+        user_error('convert_uuencode() The given parameter is not a valid uuencoded string', E_USER_WARNING);
+        return false;
+    }
+
+    $decoded = '';
+    foreach (explode("\n", $string) as $line) {
+
+        $c = count($bytes = unpack('c*', substr(trim($line), 1)));
+
+        while ($c % 4) {
+            $bytes[++$c] = 0;
+        }
+
+        foreach (array_chunk($bytes, 4) as $b) {
+            $b0 = $b[0] == 0x60 ? 0 : $b[0] - 0x20;
+            $b1 = $b[1] == 0x60 ? 0 : $b[1] - 0x20;
+            $b2 = $b[2] == 0x60 ? 0 : $b[2] - 0x20;
+            $b3 = $b[3] == 0x60 ? 0 : $b[3] - 0x20;
+            
+            $b0 <<= 2;
+            $b0 |= ($b1 >> 4) & 0x03;
+            $b1 <<= 4;
+            $b1 |= ($b2 >> 2) & 0x0F;
+            $b2 <<= 6;
+            $b2 |= $b3 & 0x3F;
+            
+            $decoded .= pack('c*', $b0, $b1, $b2);
+        }
+    }
+
+    return rtrim($decoded, "\0");
+}
+
+
+// Define
 if (!function_exists('convert_uudecode')) {
     function convert_uudecode($string)
     {
-        // Sanity check
-        if (!is_scalar($string)) {
-            user_error('convert_uuencode() expects parameter 1 to be string, ' .
-                gettype($string) . ' given', E_USER_WARNING);
-            return false;
-        }
-
-        if (strlen($string) < 8) {
-            user_error('convert_uuencode() The given parameter is not a valid uuencoded string', E_USER_WARNING);
-            return false;
-        }
-
-        $decoded = '';
-        foreach (explode("\n", $string) as $line) {
-
-            $c = count($bytes = unpack('c*', substr(trim($line), 1)));
-
-            while ($c % 4) {
-                $bytes[++$c] = 0;
-            }
-
-            foreach (array_chunk($bytes, 4) as $b) {
-                $b0 = $b[0] == 0x60 ? 0 : $b[0] - 0x20;
-                $b1 = $b[1] == 0x60 ? 0 : $b[1] - 0x20;
-                $b2 = $b[2] == 0x60 ? 0 : $b[2] - 0x20;
-                $b3 = $b[3] == 0x60 ? 0 : $b[3] - 0x20;
-                
-                $b0 <<= 2;
-                $b0 |= ($b1 >> 4) & 0x03;
-                $b1 <<= 4;
-                $b1 |= ($b2 >> 2) & 0x0F;
-                $b2 <<= 6;
-                $b2 |= $b3 & 0x3F;
-                
-                $decoded .= pack('c*', $b0, $b1, $b2);
-            }
-        }
-
-        return rtrim($decoded, "\0");
+        return php_compat_convert_uudecode($string);
     }
 }
-
-?>

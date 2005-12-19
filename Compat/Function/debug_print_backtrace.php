@@ -31,37 +31,48 @@
  * @since       PHP 5
  * @require     PHP 4.3.0 (debug_backtrace)
  */
+function php_compat_debug_print_backtrace()
+{
+    // Get backtrace
+    $backtrace = debug_backtrace();
+
+    // Unset call to php_compat_debug_print_backtrace
+    array_shift($backtrace);
+    
+    // Unset possible call to debug_print_backtrace
+    if (isset($backtrace[0]) &&
+        $backtrace[0]['function'] === 'debug_print_backtrace') {
+        array_shift($backtrace);
+    }
+    
+    // Iterate backtrace
+    $calls = array();
+    foreach ($backtrace as $i => $call) {
+        $location = $call['file'] . ':' . $call['line'];
+        $function = (isset($call['class'])) ?
+            $call['class'] . '.' . $call['function'] :
+            $call['function'];
+       
+        $params = '';
+        if (isset($call['args'])) {
+            $params = implode(', ', $call['args']);
+        }
+
+        $calls[] = sprintf('#%d  %s(%s) called at [%s]',
+            $i,
+            $function,
+            $params,
+            $location); 
+    }
+
+    echo implode("\n", $calls);
+}
+
+
+// Define
 if (!function_exists('debug_print_backtrace')) {
     function debug_print_backtrace()
     {
-        // Get backtrace
-        $backtrace = debug_backtrace();
-
-        // Unset call to debug_print_backtrace
-        array_shift($backtrace);
-        
-        // Iterate backtrace
-        $calls = array();
-        foreach ($backtrace as $i => $call) {
-            $location = $call['file'] . ':' . $call['line'];
-            $function = (isset($call['class'])) ?
-                $call['class'] . '.' . $call['function'] :
-                $call['function'];
-           
-            $params = '';
-            if (isset($call['args'])) {
-                $params = implode(', ', $call['args']);
-            }
-
-            $calls[] = sprintf('#%d  %s(%s) called at [%s]',
-                $i,
-                $function,
-                $params,
-                $location); 
-        }
-
-        echo implode("\n", $calls);
+        return php_compat_debug_print_backtrace();
     }
 }
-
-?>

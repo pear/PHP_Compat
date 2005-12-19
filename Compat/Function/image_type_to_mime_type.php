@@ -94,54 +94,59 @@ if (!defined('IMAGETYPE_XBM')) {
  * @since       PHP 4.3.0
  * @require     PHP 4.0.0 (user_error)
  */
+function php_compat_image_type_to_mime_type($imagetype)
+{
+    switch ($imagetype):
+        case IMAGETYPE_GIF:
+            return 'image/gif';
+            break;
+        case IMAGETYPE_JPEG:
+            return 'image/jpeg';
+            break;
+        case IMAGETYPE_PNG:
+            return 'image/png';
+            break;
+        case IMAGETYPE_SWF:
+        case IMAGETYPE_SWC:
+            return 'application/x-shockwave-flash';
+            break;
+        case IMAGETYPE_PSD:
+            return 'image/psd';
+            break;
+        case IMAGETYPE_BMP:
+            return 'image/bmp';
+            break;
+        case IMAGETYPE_TIFF_MM:
+        case IMAGETYPE_TIFF_II:
+            return 'image/tiff';
+            break;
+        case IMAGETYPE_JP2:
+            return 'image/jp2';
+            break;
+        case IMAGETYPE_IFF:
+            return 'image/iff';
+            break;
+        case IMAGETYPE_WBMP:
+            return 'image/vnd.wap.wbmp';
+            break;
+        case IMAGETYPE_XBM:
+            return 'image/xbm';
+            break;
+        case IMAGETYPE_JPX:
+        case IMAGETYPE_JB2:
+        case IMAGETYPE_JPC:
+        default:
+            return 'application/octet-stream';
+            break;
+
+    endswitch;
+}
+
+
+// Define
 if (!function_exists('image_type_to_mime_type')) {
     function image_type_to_mime_type($imagetype)
     {
-        switch ($imagetype):
-            case IMAGETYPE_GIF:
-                return 'image/gif';
-                break;
-            case IMAGETYPE_JPEG:
-                return 'image/jpeg';
-                break;
-            case IMAGETYPE_PNG:
-                return 'image/png';
-                break;
-            case IMAGETYPE_SWF:
-            case IMAGETYPE_SWC:
-                return 'application/x-shockwave-flash';
-                break;
-            case IMAGETYPE_PSD:
-                return 'image/psd';
-                break;
-            case IMAGETYPE_BMP:
-                return 'image/bmp';
-                break;
-            case IMAGETYPE_TIFF_MM:
-            case IMAGETYPE_TIFF_II:
-                return 'image/tiff';
-                break;
-            case IMAGETYPE_JP2:
-                return 'image/jp2';
-                break;
-            case IMAGETYPE_IFF:
-                return 'image/iff';
-                break;
-            case IMAGETYPE_WBMP:
-                return 'image/vnd.wap.wbmp';
-                break;
-            case IMAGETYPE_XBM:
-                return 'image/xbm';
-                break;
-            case IMAGETYPE_JPX:
-            case IMAGETYPE_JB2:
-            case IMAGETYPE_JPC:
-            default:
-                return 'application/octet-stream';
-                break;
-
-        endswitch;
+        return php_compat_image_type_to_mime_type($imagetype);
     }
 }
-
-?>

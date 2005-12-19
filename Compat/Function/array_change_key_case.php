@@ -40,25 +40,30 @@ if (!defined('CASE_UPPER')) {
  * @since       PHP 4.2.0
  * @require     PHP 4.0.0 (user_error)
  */
+function php_compat_array_change_key_case($input, $case = CASE_LOWER)
+{
+    if (!is_array($input)) {
+        user_error('array_change_key_case(): The argument should be an array',
+            E_USER_WARNING);
+        return false;
+    }
+
+    $output   = array ();
+    $keys     = array_keys($input);
+    $casefunc = ($case == CASE_LOWER) ? 'strtolower' : 'strtoupper';
+
+    foreach ($keys as $key) {
+        $output[$casefunc($key)] = $input[$key];
+    }
+
+    return $output;
+}
+
+
+// Define
 if (!function_exists('array_change_key_case')) {
     function array_change_key_case($input, $case = CASE_LOWER)
     {
-        if (!is_array($input)) {
-            user_error('array_change_key_case(): The argument should be an array',
-                E_USER_WARNING);
-            return false;
-        }
-
-        $output   = array ();
-        $keys     = array_keys($input);
-        $casefunc = ($case == CASE_LOWER) ? 'strtolower' : 'strtoupper';
-
-        foreach ($keys as $key) {
-            $output[$casefunc($key)] = $input[$key];
-        }
-
-        return $output;
+        return php_compat_array_change_key_case($input, $case);
     }
 }
-
-?>

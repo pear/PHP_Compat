@@ -29,24 +29,29 @@
  * @since       PHP 5.0.0
  * @require     PHP 4.0.0 (user_error)
  */
+function php_compat_idate($format, $timestamp = false)
+{
+    if (strlen($format) !== 1) {
+        user_error('idate format is one char', E_USER_WARNING);
+        return false;
+    }
+
+    if (strpos('BdhHiILmstUwWyYzZ', $format) === false) {
+        return 0;
+    }
+
+    if ($timestamp === false) {
+        $timestamp = time();
+    }
+
+    return intval(date($format, $timestamp));
+}
+
+
+// Define
 if (!function_exists('idate')) {
     function idate($format, $timestamp = false)
     {
-        if (strlen($format) !== 1) {
-            user_error('idate format is one char', E_USER_WARNING);
-            return false;
-        }
-
-        if (strpos('BdhHiILmstUwWyYzZ', $format) === false) {
-            return 0;
-        }
-
-        if ($timestamp === false) {
-            $timestamp = time();
-        }
-
-        return intval(date($format, $timestamp));
+        return php_compat_idate($format, $timestamp);
     }
 }
-
-?>

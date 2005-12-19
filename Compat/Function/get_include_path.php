@@ -29,11 +29,16 @@
  * @since       PHP 4.3.0
  * @require     PHP 4.0.0
  */
+function php_compat_get_include_path()
+{
+    return ini_get('include_path');
+}
+
+
+// Define
 if (!function_exists('get_include_path')) {
     function get_include_path()
     {
-        return ini_get('include_path');
+        return php_compat_get_include_path();
     }
 }
-
-?>

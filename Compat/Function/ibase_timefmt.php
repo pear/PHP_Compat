@@ -29,28 +29,33 @@
  * @since       PHP 5.0.0
  * @require     PHP 4.0.0 (user_error)
  */
+function php_compat_ibase_timefmt($format, $columntype = IBASE_TIMESTAMP)
+{
+    switch ($columntype) {
+        case IBASE_TIMESTAMP:
+            ini_set('ibase.dateformat', $format);
+            break;
+
+        case IBASE_DATE:
+            ini_set('ibase.dateformat', $format);
+            break;
+
+        case IBASE_TIME:
+            ini_set('ibase.timeformat', $format);
+            break;
+
+        default:
+            return false;
+    }
+
+    return true;
+}
+
+
+// Define
 if (!function_exists('ibase_timefmt')) {
     function ibase_timefmt($format, $columntype = IBASE_TIMESTAMP)
     {
-        switch ($columntype) {
-            case IBASE_TIMESTAMP:
-                ini_set('ibase.dateformat', $format);
-                break;
-
-            case IBASE_DATE:
-                ini_set('ibase.dateformat', $format);
-                break;
-
-            case IBASE_TIME:
-                ini_set('ibase.timeformat', $format);
-                break;
-
-            default:
-                return false;
-        }
-
-        return true;
+        return php_compat_ibase_timefmt($format, $columntype);
     }
 }
-
-?>

@@ -30,17 +30,23 @@
  * @since       PHP 4.2.0
  * @require     PHP 4.0.0 (user_error)
  */
+function php_compat_ob_clean()
+{
+    if (@ob_end_clean()) {
+        return ob_start();
+    }
+
+    user_error("ob_clean() failed to delete buffer. No buffer to delete.", E_USER_NOTICE);
+
+    return false;
+
+}
+
+
+// Define
 if (!function_exists('ob_clean')) {
     function ob_clean()
     {
-        if (@ob_end_clean()) {
-            return ob_start();
-        }
-
-        user_error("ob_clean() failed to delete buffer. No buffer to delete.", E_USER_NOTICE);
-
-        return false;
+        return php_compat_ob_clean();
     }
 }
-
-?>

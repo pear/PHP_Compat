@@ -29,19 +29,24 @@
  * @since       PHP 4.0.4
  * @require     PHP 4.0.0 (user_error)
  */
+function php_compat_constant($constant)
+{
+    if (!defined($constant)) {
+        $error = sprintf('constant() Couldn\'t find constant %s', $constant);
+        user_error($error, E_USER_WARNING);
+        return false;
+    }
+
+    eval("\$value=$constant;");
+
+    return $value;    
+}
+
+
+// Define
 if (!function_exists('constant')) {
     function constant($constant)
     {
-        if (!defined($constant)) {
-            $error = sprintf('constant() Couldn\'t find constant %s', $constant);
-            user_error($error, E_USER_WARNING);
-            return false;
-        }
-
-        eval("\$value=$constant;");
-
-        return $value;
+        return php_compat_constant($constant);
     }
 }
-
-?>

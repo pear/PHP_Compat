@@ -30,43 +30,48 @@
  * @since       PHP 4.2.0
  * @require     PHP 4.0.0 (user_error)
  */
+function php_compat_array_chunk($input, $size, $preserve_keys = false)
+{
+    if (!is_array($input)) {
+        user_error('array_chunk() expects parameter 1 to be array, ' .
+            gettype($input) . ' given', E_USER_WARNING);
+        return;
+    }
+
+    if (!is_numeric($size)) {
+        user_error('array_chunk() expects parameter 2 to be long, ' .
+            gettype($size) . ' given', E_USER_WARNING);
+        return;
+    }
+
+    $size = (int)$size;
+    if ($size <= 0) {
+        user_error('array_chunk() Size parameter expected to be greater than 0',
+            E_USER_WARNING);
+        return;
+    }
+
+    $chunks = array();
+    $i = 0;
+
+    if ($preserve_keys !== false) {
+        foreach ($input as $key => $value) {
+            $chunks[(int)($i++ / $size)][$key] = $value;
+        }
+    } else {
+        foreach ($input as $value) {
+            $chunks[(int)($i++ / $size)][] = $value;
+        }
+    }
+
+    return $chunks;
+}
+
+
+// Define
 if (!function_exists('array_chunk')) {
     function array_chunk($input, $size, $preserve_keys = false)
     {
-        if (!is_array($input)) {
-            user_error('array_chunk() expects parameter 1 to be array, ' .
-                gettype($input) . ' given', E_USER_WARNING);
-            return;
-        }
-
-        if (!is_numeric($size)) {
-            user_error('array_chunk() expects parameter 2 to be long, ' .
-                gettype($size) . ' given', E_USER_WARNING);
-            return;
-        }
-
-        $size = (int)$size;
-        if ($size <= 0) {
-            user_error('array_chunk() Size parameter expected to be greater than 0',
-                E_USER_WARNING);
-            return;
-        }
-
-        $chunks = array();
-        $i = 0;
-
-        if ($preserve_keys !== false) {
-            foreach ($input as $key => $value) {
-                $chunks[(int)($i++ / $size)][$key] = $value;
-            }
-        } else {
-            foreach ($input as $value) {
-                $chunks[(int)($i++ / $size)][] = $value;
-            }
-        }
-
-        return $chunks;
+        return php_compat_array_chunk($input, $size, $preserve_keys);
     }
 }
-
-?>

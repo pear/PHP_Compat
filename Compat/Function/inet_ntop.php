@@ -29,25 +29,30 @@
  * @since       PHP 5.1.0
  * @require     PHP 4.0.0 (long2ip)
  */
+function php_compat_inet_ntop($in_addr)
+{
+    switch (strlen($in_addr)) {
+        case 4:
+            list(,$r) = unpack('N', $in_addr);
+            return long2ip($r);
+
+        case 16:
+            $r = substr(chunk_split(bin2hex($in_addr), 4, ':'), 0, -1);
+            $r = preg_replace(
+                array('/(?::?\b0+\b:?){2,}/', '/\b0+([^0])/e'),
+                array('::', '(int)"$1"?"$1":"0$1"'),
+                $r);
+            return $r;
+    }
+
+    return false;
+}
+
+
+// Define
 if (!function_exists('inet_ntop')) {
     function inet_ntop($in_addr)
     {
-        switch (strlen($in_addr)) {
-            case 4:
-                list(,$r) = unpack('N', $in_addr);
-                return long2ip($r);
-
-            case 16:
-                $r = substr(chunk_split(bin2hex($in_addr), 4, ':'), 0, -1);
-                $r = preg_replace(
-                    array('/(?::?\b0+\b:?){2,}/', '/\b0+([^0])/e'),
-                    array('::', '(int)"$1"?"$1":"0$1"'),
-                    $r);
-                return $r;
-        }
-
-        return false;
+        return php_compat_inet_ntop($in_addr);
     }
 }
-
-?>

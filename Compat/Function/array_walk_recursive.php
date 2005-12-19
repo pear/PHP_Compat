@@ -31,38 +31,43 @@
  * @since       PHP 5
  * @require     PHP 4.0.6 (is_callable)
  */
+function php_compat_array_walk_recursive(&$input, $funcname)
+{
+    if (!is_callable($funcname)) {
+        if (is_array($funcname)) {
+            $funcname = $funcname[0] . '::' . $funcname[1];
+        }
+        user_error('array_walk_recursive() Not a valid callback ' . $user_func,
+            E_USER_WARNING);
+        return;
+    }
+
+    if (!is_array($input)) {
+        user_error('array_walk_recursive() The argument should be an array',
+            E_USER_WARNING);
+        return;
+    }
+
+    $args = func_get_args();
+
+    foreach ($input as $key => $item) {
+        if (is_array($item)) {
+            array_walk_recursive($item, $funcname, $args);
+            $input[$key] = $item;
+        } else {
+            $args[0] = &$item;
+            $args[1] = &$key;
+            call_user_func_array($funcname, $args);
+            $input[$key] = $item;
+        }
+    }    
+}
+
+
+// Define
 if (!function_exists('array_walk_recursive')) {
     function array_walk_recursive(&$input, $funcname)
     {
-        if (!is_callable($funcname)) {
-            if (is_array($funcname)) {
-                $funcname = $funcname[0] . '::' . $funcname[1];
-            }
-            user_error('array_walk_recursive() Not a valid callback ' . $user_func,
-                E_USER_WARNING);
-            return;
-        }
-
-        if (!is_array($input)) {
-            user_error('array_walk_recursive() The argument should be an array',
-                E_USER_WARNING);
-            return;
-        }
-
-        $args = func_get_args();
-
-        foreach ($input as $key => $item) {
-            if (is_array($item)) {
-                array_walk_recursive($item, $funcname, $args);
-                $input[$key] = $item;
-            } else {
-                $args[0] = &$item;
-                $args[1] = &$key;
-                call_user_func_array($funcname, $args);
-                $input[$key] = $item;
-            }
-        }
+        return php_compat_array_walk_recursive(&$input, $funcname);
     }
 }
-
-?>

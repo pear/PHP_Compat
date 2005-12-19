@@ -30,14 +30,19 @@
  * @version     $Revision$
  * @since       PHP 4.0.0
  */
+function php_compat_str_rot13($str)
+{
+    $from = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $to   = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM';
+
+    return strtr($str, $from, $to);
+}
+
+
+// Define
 if (!function_exists('str_rot13')) {
     function str_rot13($str)
     {
-        $from = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $to   = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM';
-
-        return strtr($str, $from, $to);
+        return php_compat_str_rot13($str);
     }
 }
-
-?>

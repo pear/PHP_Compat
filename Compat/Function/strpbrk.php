@@ -29,35 +29,40 @@
  * @since       PHP 5
  * @require     PHP 4.0.0 (user_error)
  */
+function php_compat_strpbrk($haystack, $char_list)
+{
+    if (!is_scalar($haystack)) {
+        user_error('strpbrk() expects parameter 1 to be string, ' .
+            gettype($haystack) . ' given', E_USER_WARNING);
+        return false;
+    }
+
+    if (!is_scalar($char_list)) {
+        user_error('strpbrk() expects parameter 2 to be scalar, ' .
+            gettype($needle) . ' given', E_USER_WARNING);
+        return false;
+    }
+
+    $haystack  = (string) $haystack;
+    $char_list = (string) $char_list;
+
+    $len = strlen($haystack);
+    for ($i = 0; $i < $len; $i++) {
+        $char = substr($haystack, $i, 1);
+        if (strpos($char_list, $char) === false) {
+            continue;
+        }
+        return substr($haystack, $i);
+    }
+
+    return false;
+}
+
+
+// Define
 if (!function_exists('strpbrk')) {
     function strpbrk($haystack, $char_list)
     {
-        if (!is_scalar($haystack)) {
-            user_error('strpbrk() expects parameter 1 to be string, ' .
-                gettype($haystack) . ' given', E_USER_WARNING);
-            return false;
-        }
-
-        if (!is_scalar($char_list)) {
-            user_error('strpbrk() expects parameter 2 to be scalar, ' .
-                gettype($needle) . ' given', E_USER_WARNING);
-            return false;
-        }
-
-        $haystack  = (string) $haystack;
-        $char_list = (string) $char_list;
-
-        $len = strlen($haystack);
-        for ($i = 0; $i < $len; $i++) {
-            $char = substr($haystack, $i, 1);
-            if (strpos($char_list, $char) === false) {
-                continue;
-            }
-            return substr($haystack, $i);
-        }
-
-        return false;
+        return php_compat_strpbrk($haystack, $char_list);
     }
 }
-
-?>

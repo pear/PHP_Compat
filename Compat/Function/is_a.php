@@ -29,19 +29,24 @@
  * @since       PHP 4.2.0
  * @require     PHP 4.0.0 (user_error) (is_subclass_of)
  */
-if (!function_exists('is_a')) {
-    function is_a($object, $class)
-    {
-        if (!is_object($object)) {
-            return false;
-        }
+function php_compat_is_a($object, $class)
+{
+    if (!is_object($object)) {
+        return false;
+    }
 
-        if (get_class($object) == strtolower($class)) {
-            return true;
-        } else {
-            return is_subclass_of($object, $class);
-        }
+    if (get_class($object) == strtolower($class)) {
+        return true;
+    } else {
+        return is_subclass_of($object, $class);
     }
 }
 
-?>
+
+// Define
+if (!function_exists('is_a')) {
+    function is_a($object, $class)
+    {
+        return php_compat_is_a($object, $class);
+    }
+}

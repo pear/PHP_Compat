@@ -94,22 +94,27 @@ if (!defined('MHASH_ADLER32')) {
  * @since       PHP 4.1.0
  * @require     PHP 4.0.0 (user_error)
  */
-if (!function_exists('mhash')) {
-    function mhash($hashtype, $data, $key = '')    
-    {
-        switch ($hashtype) {
-            case MHASH_MD5:
-                $key = str_pad((strlen($key) > 64 ? pack("H*", md5($key)) : $key), 64, chr(0x00));
-                $k_opad = $key ^ (str_pad('', 64, chr(0x5c)));
-                $k_ipad = $key ^ (str_pad('', 64, chr(0x36)));
-                return pack("H*", md5($k_opad . pack("H*", md5($k_ipad .  $data))));
+function php_compat_mhash($hashtype, $data, $key = '')
+{
+    switch ($hashtype) {
+        case MHASH_MD5:
+            $key = str_pad((strlen($key) > 64 ? pack("H*", md5($key)) : $key), 64, chr(0x00));
+            $k_opad = $key ^ (str_pad('', 64, chr(0x5c)));
+            $k_ipad = $key ^ (str_pad('', 64, chr(0x36)));
+            return pack("H*", md5($k_opad . pack("H*", md5($k_ipad .  $data))));
 
-            default:
-                return false;
+        default:
+            return false;
 
-            break;
-        }
+        break;
     }
 }
 
-?>
+
+// Define
+if (!function_exists('mhash')) {
+    function mhash($hashtype, $data, $key = '')
+    {
+        return php_compat_mhash($hashtype, $data, $key = '');
+    }
+}

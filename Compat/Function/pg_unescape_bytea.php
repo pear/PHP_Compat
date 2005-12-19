@@ -30,14 +30,19 @@
  * @since       PHP 4.2.0
  * @require     PHP 4.0.0
  */
+function php_compat_pg_unescape_bytea(&$data)
+{
+    return str_replace(
+        array('$',   '"'),
+        array('\\$', '\\"'),
+        $data);
+}
+
+
+// Define
 if (!function_exists('pg_unescape_bytea')) {
     function pg_unescape_bytea(&$data)
     {
-        return str_replace(
-            array('$',   '"'),
-            array('\\$', '\\"'),
-            $data);
+        return php_compat_pg_unescape_bytea($data);
     }
 }
-
-?>

@@ -29,26 +29,32 @@
  * @since       PHP 5
  * @require     PHP 4.0.0 (user_error)
  */
-if (!function_exists('fprintf')) {
-   function fprintf() {
-        $args = func_get_args();
+function php_compat_fprintf()
+{
+    $args = func_get_args();
 
-        if (count($args) < 2) {
-            user_error('Wrong parameter count for fprintf()', E_USER_WARNING);
-            return;
-        }
-
-        $resource_handle = array_shift($args);
-        $format = array_shift($args);
-
-        if (!is_resource($resource_handle)) {
-            user_error('fprintf() supplied argument is not a valid stream resource',
-                E_USER_WARNING);
-            return false;
-        }
-
-        return fwrite($resource_handle, vsprintf($format, $args));
+    if (count($args) < 2) {
+        user_error('Wrong parameter count for fprintf()', E_USER_WARNING);
+        return;
     }
+
+    $resource_handle = array_shift($args);
+    $format = array_shift($args);
+
+    if (!is_resource($resource_handle)) {
+        user_error('fprintf() supplied argument is not a valid stream resource',
+            E_USER_WARNING);
+        return false;
+    }
+
+    return fwrite($resource_handle, vsprintf($format, $args));
 }
 
-?>
+
+// Define
+if (!function_exists('fprintf')) {
+    function fprintf()
+    {
+        return php_compat_fprintf();
+    }
+}

@@ -29,24 +29,29 @@
  * @since       PHP 4.3.0
  * @require     PHP 4.0.0 (user_error)
  */
+function php_compat_str_shuffle($str)
+{
+    // Init
+    $str = (string) $str;
+
+    // Seed
+    list($usec, $sec) = explode(' ', microtime());
+    $seed = (float) $sec + ((float) $usec * 100000);
+    mt_srand($seed);
+
+    // Shuffle
+    for ($new = '', $len = strlen($str); $len > 0; $str{$p} = $str{$len}) { 
+        $new .= $str{$p = mt_rand(0, --$len)};
+    }
+
+    return $new;
+}
+
+
+// Define
 if (!function_exists('str_shuffle')) {
     function str_shuffle($str)
     {
-        // Init
-        $str = (string) $str;
-
-        // Seed
-        list($usec, $sec) = explode(' ', microtime());
-        $seed = (float) $sec + ((float) $usec * 100000);
-        mt_srand($seed);
-
-        // Shuffle
-        for ($new = '', $len = strlen($str); $len > 0; $str{$p} = $str{$len}) { 
-            $new .= $str{$p = mt_rand(0, --$len)};
-        }
-
-        return $new;
+        return php_compat_str_shuffle($str);
     }
 }
-
-?>

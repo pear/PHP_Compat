@@ -30,14 +30,19 @@
  * @since       PHP 4.2.0
  * @require     PHP 4.0.0
  */
+function php_compat_pg_escape_bytea($data)
+{
+    return str_replace(
+        array(chr(92),  chr(0),   chr(39)),
+        array('\\\134', '\\\000', '\\\047'),
+        $data);
+}
+
+
+// Define
 if (!function_exists('pg_escape_bytea')) {
     function pg_escape_bytea($data)
     {
-        return str_replace(
-            array(chr(92),  chr(0),   chr(39)),
-            array('\\\134', '\\\000', '\\\047'),
-            $data);
+        return php_compat_pg_escape_bytea($data);
     }
 }
-
-?>

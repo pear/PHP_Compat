@@ -29,57 +29,62 @@
  * @since       PHP 4.2.0
  * @require     PHP 4.0.0 (user_error)
  */
+function php_compat_ini_get_all($extension = null)
+{
+    // Sanity check
+    if (!is_scalar($extension)) {
+        user_error('ini_get_all() expects parameter 1 to be string, ' .
+            gettype($extension) . ' given', E_USER_WARNING);
+        return false;
+    }
+    
+    // Get the location of php.ini
+    ob_start();
+    phpinfo(INFO_GENERAL);
+    $info = ob_get_contents();
+    ob_clean();
+    $info = explode("\n", $info);
+    $line = array_values(preg_grep('#php.ini#', $info));
+    list (, $value) = explode('<td class="v">', $line[0]);
+    $inifile = trim(strip_tags($value));
+
+    // Parse
+    if ($extension !== null) {
+        $ini_all = parse_ini_file($inifile, true);
+
+        // Lowercase extension keys
+        foreach ($ini_all as $key => $value) {
+            $ini_arr[strtolower($key)] = $value;
+        }
+
+        $ini = $ini_arr[$extension];
+    } else {
+        $ini = parse_ini_file($inifile);
+    }
+
+    // Order
+    $ini_lc = array_map('strtolower', array_keys($ini));
+    array_multisort($ini_lc, SORT_ASC, SORT_STRING, $ini);
+
+    // Format
+    $info = array();
+    foreach ($ini as $key => $value) {
+        $info[$key] = array(
+            'global_value'  => $value,
+            'local_value'   => ini_get($key),
+            // No way to know this
+            'access'        => -1
+        );
+    }
+
+    return $info;
+}
+
+
+// Define
 if (!function_exists('ini_get_all')) {
     function ini_get_all($extension = null)
     {
-        // Sanity check
-        if (!is_scalar($extension)) {
-            user_error('ini_get_all() expects parameter 1 to be string, ' .
-                gettype($extension) . ' given', E_USER_WARNING);
-            return false;
-        }
-        
-        // Get the location of php.ini
-        ob_start();
-        phpinfo(INFO_GENERAL);
-        $info = ob_get_contents();
-        ob_clean();
-        $info = explode("\n", $info);
-        $line = array_values(preg_grep('#php.ini#', $info));
-        list (, $value) = explode('<td class="v">', $line[0]);
-        $inifile = trim(strip_tags($value));
-
-        // Parse
-        if ($extension !== null) {
-            $ini_all = parse_ini_file($inifile, true);
-
-            // Lowercase extension keys
-            foreach ($ini_all as $key => $value) {
-                $ini_arr[strtolower($key)] = $value;
-            }
-
-            $ini = $ini_arr[$extension];
-        } else {
-            $ini = parse_ini_file($inifile);
-        }
-
-        // Order
-        $ini_lc = array_map('strtolower', array_keys($ini));
-        array_multisort($ini_lc, SORT_ASC, SORT_STRING, $ini);
-
-        // Format
-        $info = array();
-        foreach ($ini as $key => $value) {
-            $info[$key] = array(
-                'global_value'  => $value,
-                'local_value'   => ini_get($key),
-                // No way to know this
-                'access'        => -1
-            );
-        }
-
-        return $info;
+        return php_compat_ini_get_all($extension);
     }
 }
-
-?>

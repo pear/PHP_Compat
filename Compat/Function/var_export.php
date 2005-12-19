@@ -29,108 +29,113 @@
  * @since       PHP 4.2.0
  * @require     PHP 4.0.0 (user_error)
  */
-if (!function_exists('var_export')) {
-    function var_export($var, $return = false, $level = 0)
-    {
-        // Init
-        $indent      = '  ';
-        $doublearrow = ' => ';
-        $lineend     = ",\n";
-        $stringdelim = '\'';
-        $newline     = "\n";
-        $find        = array(null, '\\', '\'');
-        $replace     = array('NULL', '\\\\', '\\\'');
-        $out         = '';
+function php_compat_var_export($var, $return = false, $level = 0)
+{
+    // Init
+    $indent      = '  ';
+    $doublearrow = ' => ';
+    $lineend     = ",\n";
+    $stringdelim = '\'';
+    $newline     = "\n";
+    $find        = array(null, '\\', '\'');
+    $replace     = array('NULL', '\\\\', '\\\'');
+    $out         = '';
+    
+    // Indent
+    $level++;
+    for ($i = 1, $previndent = ''; $i < $level; $i++) {
+        $previndent .= $indent;
+    }
+
+    // Handle each type
+    switch (gettype($var)) {
+        // Array
+        case 'array':
+            $out = 'array (' . $newline;
+            foreach ($var as $key => $value) {
+                // Key
+                if (is_string($key)) {
+                    // Make key safe
+                    for ($i = 0, $c = count($find); $i < $c; $i++) {
+                        $var = str_replace($find[$i], $replace[$i], $var);
+                    }
+                    $key = $stringdelim . $key . $stringdelim;
+                }
+                
+                // Value
+                if (is_array($value)) {
+                    $export = php_compat_var_export($value, true, $level);
+                    $value = $newline . $previndent . $indent . $export;
+                } else {
+                    $value = php_compat_var_export($value, true, $level);
+                }
+
+                // Piece line together
+                $out .= $previndent . $indent . $key . $doublearrow . $value . $lineend;
+            }
+
+            // End string
+            $out .= $previndent . ')';
+            break;
+
+        // String
+        case 'string':
+            // Make the string safe
+            for ($i = 0, $c = count($find); $i < $c; $i++) {
+                $var = str_replace($find[$i], $replace[$i], $var);
+            }
+            $out = $stringdelim . $var . $stringdelim;
+            break;
+
+        // Number
+        case 'integer':
+        case 'double':
+            $out = (string) $var;
+            break;
         
-        // Indent
-        $level++;
-        for ($i = 1, $previndent = ''; $i < $level; $i++) {
-            $previndent .= $indent;
-        }
+        // Boolean
+        case 'boolean':
+            $out = $var ? 'true' : 'false';
+            break;
 
-        // Handle each type
-        switch (gettype($var)) {
-            // Array
-            case 'array':
-                $out = 'array (' . $newline;
-                foreach ($var as $key => $value) {
-                    // Key
-                    if (is_string($key)) {
-                        // Make key safe
-                        for ($i = 0, $c = count($find); $i < $c; $i++) {
-                            $var = str_replace($find[$i], $replace[$i], $var);
-                        }
-                        $key = $stringdelim . $key . $stringdelim;
-                    }
-                    
-                    // Value
-                    if (is_array($value)) {
-                        $export = var_export($value, true, $level);
-                        $value = $newline . $previndent . $indent . $export;
-                    } else {
-                        $value = var_export($value, true, $level);
-                    }
+        // NULLs
+        case 'NULL':
+        case 'resource':
+            $out = 'NULL';
+            break;
 
-                    // Piece line together
-                    $out .= $previndent . $indent . $key . $doublearrow . $value . $lineend;
+        // Objects
+        case 'object':
+            // Start the object export
+            $out = $newline . $previndent . 'class ' . get_class($var) . ' {' . $newline;
+
+            // Export the object vars
+            foreach (get_object_vars($var) as $key => $val) {
+                $out .= $previndent . '  var $' . $key . ' = ';
+                if (is_array($val)) {
+                    $export = php_compat_var_export($val, true, $level);
+                    $out .= $newline . $previndent . $indent .  $export  . ';' . $newline;
+                } else {
+                    $out .= php_compat_var_export($val, true, $level) . ';' . $newline;
                 }
+            }
+            $out .= $previndent . '}';
+            break;
+    }
 
-                // End string
-                $out .= $previndent . ')';
-                break;
-
-            // String
-            case 'string':
-                // Make the string safe
-                for ($i = 0, $c = count($find); $i < $c; $i++) {
-                    $var = str_replace($find[$i], $replace[$i], $var);
-                }
-                $out = $stringdelim . $var . $stringdelim;
-                break;
-
-            // Number
-            case 'integer':
-            case 'double':
-                $out = (string) $var;
-                break;
-            
-            // Boolean
-            case 'boolean':
-                $out = $var ? 'true' : 'false';
-                break;
-
-            // NULLs
-            case 'NULL':
-            case 'resource':
-                $out = 'NULL';
-                break;
-
-            // Objects
-            case 'object':
-                // Start the object export
-                $out = $newline . $previndent . 'class ' . get_class($var) . ' {' . $newline;
-
-                // Export the object vars
-                foreach (get_object_vars($var) as $key => $val) {
-                    $out .= $previndent . '  var $' . $key . ' = ';
-                    if (is_array($val)) {
-                        $export = var_export($val, true, $level);
-                        $out .= $newline . $previndent . $indent .  $export  . ';' . $newline;
-                    } else {
-                        $out .= var_export($val, true, $level) . ';' . $newline;
-                    }
-                }
-                $out .= $previndent . '}';
-                break;
-        }
-
-        // Method of output
-        if ($return === true) {
-            return $out;
-        } else {
-            echo $out;
-        }
+    // Method of output
+    if ($return === true) {
+        return $out;
+    } else {
+        echo $out;
     }
 }
 
-?>
+
+// Define
+if (!function_exists('var_export')) {
+    function var_export($var, $return = false, $level = 0)
+    {
+        return php_compat_var_export($var, $return, $level);
+    }
+}

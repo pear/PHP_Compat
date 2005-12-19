@@ -29,38 +29,43 @@
  * @since       PHP 5.0.2
  * @require     PHP 4.0.0 (user_error)
  */
-if (!function_exists('array_diff_key')) {
-    function array_diff_key()
-    {
-        $args = func_get_args();
-        if (count($args) < 2) {
-            user_error('Wrong parameter count for array_diff_key()', E_USER_WARNING);
+function php_compat_array_diff_key()
+{
+    $args = func_get_args();
+    if (count($args) < 2) {
+        user_error('Wrong parameter count for array_diff_key()', E_USER_WARNING);
+        return;
+    }
+
+    // Check arrays
+    $array_count = count($args);
+    for ($i = 0; $i !== $array_count; $i++) {
+        if (!is_array($args[$i])) {
+            user_error('array_diff_key() Argument #' .
+                ($i + 1) . ' is not an array', E_USER_WARNING);
             return;
         }
+    }
 
-        // Check arrays
-        $array_count = count($args);
-        for ($i = 0; $i !== $array_count; $i++) {
-            if (!is_array($args[$i])) {
-                user_error('array_diff_key() Argument #' .
-                    ($i + 1) . ' is not an array', E_USER_WARNING);
-                return;
-            }
-        }
-
-        $result = $args[0];
-        foreach ($args[0] as $key1 => $value1) {
-            for ($i = 1; $i !== $array_count; $i++) {
-                foreach ($args[$i] as $key2 => $value2) {
-                    if ((string) $key1 === (string) $key2) {
-                        unset($result[$key2]);
-                        break 2;
-                    }
+    $result = $args[0];
+    foreach ($args[0] as $key1 => $value1) {
+        for ($i = 1; $i !== $array_count; $i++) {
+            foreach ($args[$i] as $key2 => $value2) {
+                if ((string) $key1 === (string) $key2) {
+                    unset($result[$key2]);
+                    break 2;
                 }
             }
         }
-        return $result;
     }
+    return $result; 
 }
 
-?>
+
+// Define
+if (!function_exists('array_diff_key')) {
+    function array_diff_key()
+    {
+        return call_usr_func_array('php_compat_array_diff_key', func_get_args());
+    }
+}

@@ -30,11 +30,16 @@
  * @since       PHP 4.2.0
  * @require     PHP 4.0.0
  */
+function php_compat_pg_affected_rows($resource)
+{
+    return pg_cmdtuples($resource);
+}
+
+
+// Define
 if (!function_exists('pg_affected_rows')) {
     function pg_affected_rows($resource)
     {
-        return pg_cmdtuples($resource);
+        return php_compat_pg_affected_rows($resource);
     }
 }
-
-?>

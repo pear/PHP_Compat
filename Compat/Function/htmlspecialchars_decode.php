@@ -30,38 +30,43 @@
  * @since       PHP 5.1.0
  * @require     PHP 4.0.0 (user_error)
  */
+function php_compat_htmlspecialchars_decode($string, $quote_style = null)
+{
+    // Sanity check
+    if (!is_scalar($string)) {
+        user_error('htmlspecialchars_decode() expects parameter 1 to be string, ' .
+            gettype($string) . ' given', E_USER_WARNING);
+        return;
+    }
+
+    if (!is_int($quote_style) && $quote_style !== null) {
+        user_error('htmlspecialchars_decode() expects parameter 2 to be integer, ' .
+            gettype($quote_style) . ' given', E_USER_WARNING);
+        return;
+    }
+
+    // Init
+    $from   = array('&amp;', '&lt;', '&gt;');
+    $to     = array('&', '<', '>');
+    
+    // The function does not behave as documented
+    // This matches the actual behaviour of the function
+    if ($quote_style & ENT_COMPAT || $quote_style & ENT_QUOTES) {
+        $from[] = '&quot;';
+        $to[]   = '"';
+        
+        $from[] = '&#039;';
+        $to[]   = "'";
+    }
+
+    return str_replace($from, $to, $string);
+}
+
+
+// Define
 if (!function_exists('htmlspecialchars_decode')) {
     function htmlspecialchars_decode($string, $quote_style = null)
     {
-        // Sanity check
-        if (!is_scalar($string)) {
-            user_error('htmlspecialchars_decode() expects parameter 1 to be string, ' .
-                gettype($string) . ' given', E_USER_WARNING);
-            return;
-        }
-
-        if (!is_int($quote_style) && $quote_style !== null) {
-            user_error('htmlspecialchars_decode() expects parameter 2 to be integer, ' .
-                gettype($quote_style) . ' given', E_USER_WARNING);
-            return;
-        }
-
-        // Init
-        $from   = array('&amp;', '&lt;', '&gt;');
-        $to     = array('&', '<', '>');
-        
-        // The function does not behave as documented
-        // This matches the actual behaviour of the function
-        if ($quote_style & ENT_COMPAT || $quote_style & ENT_QUOTES) {
-            $from[] = '&quot;';
-            $to[]   = '"';
-            
-            $from[] = '&#039;';
-            $to[]   = "'";
-        }
-
-        return str_replace($from, $to, $string);
+        return php_compat_htmlspecialchars_decode($string, $quote_style);
     }
 }
-
-?>

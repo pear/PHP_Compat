@@ -30,17 +30,22 @@
  * @since       PHP 4.2.0
  * @require     PHP 4.0.0 (user_error)
  */
+function php_compat_ob_flush()
+{
+    if (@ob_end_flush()) {
+        return ob_start();
+    }
+
+    user_error("ob_flush() Failed to flush buffer. No buffer to flush.", E_USER_NOTICE);
+
+    return false;
+}
+
+
+// Define
 if (!function_exists('ob_flush')) {
     function ob_flush()
     {
-        if (@ob_end_flush()) {
-            return ob_start();
-        }
-
-        user_error("ob_flush() Failed to flush buffer. No buffer to flush.", E_USER_NOTICE);
-
-        return false;
+        return php_compat_ob_flush();
     }
 }
-
-?>

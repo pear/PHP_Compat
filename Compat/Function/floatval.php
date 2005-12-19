@@ -29,11 +29,16 @@
  * @since       PHP 4.2.0
  * @require     PHP 4.0.0 (user_error) (Type Casting)
  */
+function php_compat_floatval($var)
+{
+    return (float) $var;
+}
+
+
+// Define
 if (!function_exists('floatval')) {
     function floatval($var)
     {
-        return (float) $var;
+        return php_compat_floatval($var);
     }
 }
-
-?>

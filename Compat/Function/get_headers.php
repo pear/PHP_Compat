@@ -31,47 +31,52 @@
  * @since       PHP 5.0.0
  * @require     PHP 4.0.0 (user_error)
  */
+function php_compat_get_headers($url, $format = 0)
+{
+    // Init
+    $urlinfo = parse_url($url);
+    $port    = isset($urlinfo['port']) ? $urlinfo['port'] : 80;
+
+    // Connect
+    $fp = fsockopen($urlinfo['host'], $port, $errno, $errstr, 30);
+    if ($fp === false) {
+        return false;
+    }
+          
+    // Send request
+    $head = 'HEAD ' . $urlinfo['path'] .
+        (isset($urlinfo['query']) ? '?' . $urlinfo['query'] : '') .
+        ' HTTP/1.0' . "\r\n" .
+        'Host: ' . $urlinfo['host'] . "\r\n\r\n";
+    fputs($fp, $head);
+
+    // Read
+    while (!feof($fp)) {
+        if ($header = trim(fgets($fp, 1024))) {
+            list($key) = explode(':', $header);
+
+            if ($format === 1) {
+                // First element is the HTTP header type, such as HTTP 200 OK
+                // It doesn't have a separate name, so check for it
+                if ($key == $header) {
+                    $headers[] = $header;
+                } else {
+                    $headers[$key] = substr($header, strlen($key)+2);
+                }
+            } else {
+                $headers[] = $header;
+            }
+        }
+    }
+
+    return $headers;
+}
+
+
+// Define
 if (!function_exists('get_headers')) {
     function get_headers($url, $format = 0)
     {
-        // Init
-        $urlinfo = parse_url($url);
-        $port    = isset($urlinfo['port']) ? $urlinfo['port'] : 80;
-
-        // Connect
-        $fp = fsockopen($urlinfo['host'], $port, $errno, $errstr, 30);
-        if ($fp === false) {
-            return false;
-        }
-              
-        // Send request
-        $head = 'HEAD ' . $urlinfo['path'] .
-            (isset($urlinfo['query']) ? '?' . $urlinfo['query'] : '') .
-            ' HTTP/1.0' . "\r\n" .
-            'Host: ' . $urlinfo['host'] . "\r\n\r\n";
-        fputs($fp, $head);
-
-        // Read
-        while (!feof($fp)) {
-            if ($header = trim(fgets($fp, 1024))) {
-                list($key) = explode(':', $header);
-
-                if ($format === 1) {
-                    // First element is the HTTP header type, such as HTTP 200 OK
-                    // It doesn't have a separate name, so check for it
-                    if ($key == $header) {
-                        $headers[] = $header;
-                    } else {
-                        $headers[$key] = substr($header, strlen($key)+2);
-                    }
-                } else {
-                    $headers[] = $header;
-                }
-            }
-        }
-
-        return $headers;
+        return php_compat_get_headers($url, $format);
     }
 }
-
-?>
