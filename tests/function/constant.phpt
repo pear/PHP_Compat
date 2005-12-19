@@ -1,15 +1,12 @@
 --TEST--
 Function -- constant
---SKIPIF--
-<?php if (function_exists('constant')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once 'PHP/Compat.php';
-PHP_Compat::loadFunction('constant');
+require_once 'PHP/Compat/Function/constant.php';
 
 $constant = 'BAR';
 define($constant, 'foo');
-echo constant($constant);
+echo php_compat_constant($constant);
 ?>
 --EXPECT--
 foo

@@ -1,11 +1,8 @@
 --TEST--
 Function -- is_a
---SKIPIF--
-<?php if (function_exists('is_a')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once 'PHP/Compat.php';
-PHP_Compat::loadFunction('is_a');
+require_once 'PHP/Compat/Function/is_a.php';
 
 class WidgetFactory
 {
@@ -14,7 +11,7 @@ class WidgetFactory
 
 $wf = new WidgetFactory();
 
-if (is_a($wf, 'WidgetFactory')) {
+if (php_compat_is_a($wf, 'WidgetFactory')) {
     echo 'true';
 }
 ?>

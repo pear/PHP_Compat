@@ -1,11 +1,8 @@
 --TEST--
 Function -- array_diff_uassoc
---SKIPIF--
-<?php if (function_exists('array_diff_uassoc')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once 'PHP/Compat.php';
-PHP_Compat::loadFunction('array_diff_uassoc');
+require_once 'PHP/Compat/Function/array_diff_uassoc.php';
 
 function key_compare_func($a, $b)
 {
@@ -18,7 +15,7 @@ function key_compare_func($a, $b)
 
 $array1 = array('a' => 'green', 'b' => 'brown', 'c' => 'blue', 'red');
 $array2 = array('a' => 'green', 'yellow', 'red');
-$result = array_diff_uassoc($array1, $array2, 'key_compare_func');
+$result = php_compat_array_diff_uassoc($array1, $array2, 'key_compare_func');
 print_r($result);
 
 ?>

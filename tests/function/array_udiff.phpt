@@ -1,11 +1,8 @@
 --TEST--
 Function -- array_udiff
---SKIPIF--
-<?php if (function_exists('array_udiff')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once 'PHP/Compat.php';
-PHP_Compat::loadFunction('array_udiff');
+require_once 'PHP/Compat/Function/array_udiff.php';
 
 class cr {
     var $priv_member;
@@ -24,7 +21,7 @@ class cr {
 $a = array("0.1" => new cr(9), "0.5" => new cr(12), 0 => new cr(23), 1=> new cr(4), 2 => new cr(-15),);
 $b = array("0.2" => new cr(9), "0.5" => new cr(22), 0 => new cr(3), 1=> new cr(4), 2 => new cr(-15),);
 
-$result = array_udiff($a, $b, array("cr", "comp_func_cr"));
+$result = php_compat_array_udiff($a, $b, array("cr", "comp_func_cr"));
 echo serialize($result);
 ?>
 --EXPECT--

@@ -1,13 +1,10 @@
 --TEST--
 Function -- str_shuffle
---SKIPIF--
-<?php if (function_exists('str_shuffle')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once 'PHP/Compat.php';
-PHP_Compat::loadFunction('str_shuffle');
+require_once 'PHP/Compat/Function/str_shuffle.php';
 
-$string = str_shuffle('ab');
+$string = php_compat_str_shuffle('ab');
 if ($string == 'ab' ||
     $string == 'ba' ||
     $string == 'aa' ||

@@ -1,13 +1,10 @@
 --TEST--
 Function -- http_build_query
---SKIPIF--
-<?php if (function_exists('http_build_query')) { echo 'skip'; } ?>
 --INI--
 arg_separator.output=QQQ
 --FILE--
 <?php
-require_once 'PHP/Compat.php';
-PHP_Compat::loadFunction('http_build_query');
+require_once 'PHP/Compat/Function/http_build_query.php';
 
 // Simple
 $data = array('foo'=>'bar',
@@ -15,7 +12,7 @@ $data = array('foo'=>'bar',
              'cow'=>'milk',
              'php'=>'hypertext processor');
 
-echo http_build_query($data), "\n";
+echo php_compat_http_build_query($data), "\n";
 
 
 // With an object
@@ -31,13 +28,13 @@ class myClass {
 }
 
 $data = new myClass();
-echo http_build_query($data), "\n";
+echo php_compat_http_build_query($data), "\n";
 
 
 // With numerically indexed elements
 $data = array('foo', 'bar', 'baz', 'boom', 'cow' => 'milk', 'php' =>'hypertext processor');
-echo http_build_query($data), "\n";
-echo http_build_query($data, 'myvar_'), "\n";
+echo php_compat_http_build_query($data), "\n";
+echo php_compat_http_build_query($data, 'myvar_'), "\n";
 
 
 // With a complex array
@@ -60,7 +57,7 @@ $data = array('user' => array(
                         'sex'=>'F')),
              'CEO');
 
-echo http_build_query($data, 'flags_');
+echo php_compat_http_build_query($data, 'flags_');
 ?>
 --EXPECT--
 foo=barQQQbaz=boomQQQcow=milkQQQphp=hypertext+processor

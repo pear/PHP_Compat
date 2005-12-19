@@ -1,16 +1,13 @@
 --TEST--
 Function -- array_uintersect
---SKIPIF--
-<?php if (function_exists('array_uintersect')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once 'PHP/Compat.php';
-PHP_Compat::loadFunction('array_uintersect');
+require_once 'PHP/Compat/Function/array_uintersect.php';
 
 $array1 = array('a' => 'green', 'b' => 'brown', 'c' => 'blue', 'red');
 $array2 = array('a' => 'GREEN', 'B' => 'brown', 'yellow', 'red');
 
-print_r(array_uintersect($array1, $array2, 'strcasecmp'));
+print_r(php_compat_array_uintersect($array1, $array2, 'strcasecmp'));
 ?>
 --EXPECT--
 Array

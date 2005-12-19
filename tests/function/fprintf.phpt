@@ -1,15 +1,12 @@
 --TEST--
 Function -- fprintf
---SKIPIF--
-<?php if (function_exists('fprintf')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once 'PHP/Compat.php';
-PHP_Compat::loadFunction('fprintf');
+require_once 'PHP/Compat/Function/fprintf.php';
 
 $tmpfname = tempnam('/tmp', 'php');
 $handle = fopen($tmpfname, 'w');
-fprintf($handle, 'The %s went to the %s for %d days', 'dog', 'park', 2);
+php_compat_fprintf($handle, 'The %s went to the %s for %d days', 'dog', 'park', 2);
 fclose($handle);
 $data = implode('', file($tmpfname));
 unlink($tmpfname);

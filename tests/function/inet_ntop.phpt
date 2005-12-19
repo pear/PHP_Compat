@@ -1,11 +1,8 @@
 --TEST--
 Function -- inet_ntop
---SKIPIF--
-<?php if (function_exists('inet_ntop')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once 'PHP/Compat.php';
-PHP_Compat::loadFunction('inet_ntop');
+require_once 'PHP/Compat/Function/inet_ntop.php';
 
 $adds = array(
     '127.0.0.1'                  => '7f000001',
@@ -17,7 +14,7 @@ $adds = array(
 
 foreach ($adds as $k => $v) {
     echo "\ntesting: $k\n    ";
-    var_dump(inet_ntop(pack('H*', $v)));
+    var_dump(php_compat_inet_ntop(pack('H*', $v)));
 }
 
 ?>

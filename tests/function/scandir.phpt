@@ -1,11 +1,8 @@
 --TEST--
 Function -- scandir
---SKIPIF--
-<?php if (function_exists('scandir')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once 'PHP/Compat.php';
-PHP_Compat::loadFunction('scandir');
+require_once 'PHP/Compat/Function/scandir.php';
 
 // Create a folder and fill it with files
 mkdir('tmp');
@@ -15,9 +12,9 @@ touch('tmp/test2');
 // Scan it
 $dir    = 'tmp';
 // Not sorted
-$files = scandir($dir);
+$files = php_compat_scandir($dir);
 // Sorted
-$files2 = scandir($dir, 1);
+$files2 = php_compat_scandir($dir, 1);
 
 // List the results
 print_r($files);

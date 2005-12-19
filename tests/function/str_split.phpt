@@ -1,28 +1,25 @@
 --TEST--
 Function -- str_split
---SKIPIF--
-<?php if (function_exists('str_split')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once 'PHP/Compat.php';
-PHP_Compat::loadFunction('str_split');
+require_once 'PHP/Compat/Function/str_split.php';
 
 $str = "Hello Friend";
 
 // Simple
-$arr = str_split($str);
+$arr = php_compat_str_split($str);
 print_r($arr);
 
 // With a chunk size specified
-$arr = str_split($str, 3);
+$arr = php_compat_str_split($str, 3);
 print_r($arr);
 
 // With chunk size bigger than the string
-$arr = str_split($str, 60);
+$arr = php_compat_str_split($str, 60);
 print_r($arr);
 
 // String that has a remainder less than the chunk size
-$arr = str_split($str, 11);
+$arr = php_compat_str_split($str, 11);
 print_r($arr);
 ?>
 --EXPECT--

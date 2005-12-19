@@ -1,11 +1,8 @@
 --TEST--
 Function -- str_ireplace
---SKIPIF--
-<?php if (function_exists('str_ireplace')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once 'PHP/Compat.php';
-PHP_Compat::loadFunction('str_ireplace');
+require_once 'PHP/Compat/Function/str_ireplace.php';
 
 //
 // Simple
@@ -15,7 +12,7 @@ $search = '{object}';
 $replace = 'fence';
 $subject = 'The dog jumped over the {object}';
 
-echo str_ireplace($search, $replace, $subject), "\n";
+echo php_compat_str_ireplace($search, $replace, $subject), "\n";
 
 //
 // Test 1: With subject as array
@@ -25,13 +22,13 @@ echo str_ireplace($search, $replace, $subject), "\n";
 $search = '{SUBJECT}';
 $replace = 'Lady';
 $subject = array('A {subject}', 'The {subject}', 'My {subject}');
-print_r(str_ireplace($search, $replace, $subject));
+print_r(php_compat_str_ireplace($search, $replace, $subject));
 
 // As a single array
 $search = '{SUBJECT}';
 $replace = 'Lady';
 $subject = array('The dog jumped over the {object}');
-print_r(str_ireplace($search, $replace, $subject));
+print_r(php_compat_str_ireplace($search, $replace, $subject));
 
 
 //
@@ -42,7 +39,7 @@ $search = '{object}';
 $replace = array('cat', 'dog', 'tiger');
 $subject = 'The dog jumped over the {object}';
 // Supress the error, no way of knowing how it'll turn out on the users machine
-echo @str_ireplace($search, $replace, $subject), "\n";
+echo @php_compat_str_ireplace($search, $replace, $subject), "\n";
 
 
 //
@@ -52,7 +49,7 @@ echo @str_ireplace($search, $replace, $subject), "\n";
 $search = array('{ANIMAL}', '{OBJECT}', '{THING}');
 $replace = 'frog';
 $subject = 'The {animal} jumped over the {object} and the {thing}...';
-echo str_ireplace($search, $replace, $subject), "\n";
+echo php_compat_str_ireplace($search, $replace, $subject), "\n";
 
 
 //
@@ -63,19 +60,19 @@ echo str_ireplace($search, $replace, $subject), "\n";
 $search = array('{ANIMAL}', '{OBJECT}');
 $replace = array('frog', 'gate');
 $subject = 'The {animal} jumped over the {object}';
-echo str_ireplace($search, $replace, $subject), "\n";
+echo php_compat_str_ireplace($search, $replace, $subject), "\n";
 
 // More in search
 $search = array('{ANIMAL}', '{OBJECT}', '{THING}');
 $replace = array('frog', 'gate');
 $subject = 'The {animal} jumped over the {object} and the {thing}...';
-echo str_ireplace($search, $replace, $subject), "\n";
+echo php_compat_str_ireplace($search, $replace, $subject), "\n";
 
 // More in replace
 $search = array('{ANIMAL}', '{OBJECT}');
 $replace = array('frog', 'gate', 'door');
 $subject = 'The {animal} jumped over the {object} and the {thing}...';
-echo str_ireplace($search, $replace, $subject), "\n";
+echo php_compat_str_ireplace($search, $replace, $subject), "\n";
 
 
 //
@@ -85,7 +82,7 @@ echo str_ireplace($search, $replace, $subject), "\n";
 $search = array('{ANIMAL}', '{OBJECT}', '{THING}');
 $replace = array('frog', 'gate', 'beer');
 $subject = array('A {animal}', 'The {object}', 'My {thing}');
-print_r(str_ireplace($search, $replace, $subject));
+print_r(php_compat_str_ireplace($search, $replace, $subject));
 
 ?>
 --EXPECT--

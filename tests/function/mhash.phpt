@@ -1,18 +1,15 @@
 --TEST--
 Function -- mhash
---SKIPIF--
-<?php if (function_exists('mhash')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once 'PHP/Compat.php';
-PHP_Compat::loadFunction('mhash');
+require_once 'PHP/Compat/Function/mhash.php';
 
 $input = "what do ya want for nothing?";
 
-$hash = mhash(MHASH_MD5, $input);
+$hash = php_compat_mhash(MHASH_MD5, $input);
 echo bin2hex($hash) . "\n";
 
-$hash = mhash(MHASH_MD5, $input, "Jefe");
+$hash = php_compat_mhash(MHASH_MD5, $input, "Jefe");
 echo bin2hex($hash) . "\n";
 ?>
 --EXPECT--

@@ -1,11 +1,8 @@
 --TEST--
-Function -- inet_pton
---SKIPIF--
-<?php if (function_exists('inet_pton')) { echo 'skip'; } ?>
+Function -- mime_content_type
 --FILE--
 <?php
-require_once 'PHP/Compat.php';
-PHP_Compat::loadFunction('inet_pton');
+require_once 'PHP/Compat/Function/mime_content_type.php';
 
 echo 'test';
 ?>

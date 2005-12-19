@@ -1,23 +1,20 @@
 --TEST--
 Function -- array_chunk
---SKIPIF--
-<?php if (function_exists('array_chunk')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once 'PHP/Compat.php';
-PHP_Compat::loadFunction('array_chunk');
+require_once 'PHP/Compat/Function/array_chunk.php';
 
 $input_array = array(2 => 'a', 3 => 'b', 4 => 'c', 5 => 'd', 6 => 'e');
-print_r(array_chunk($input_array, 2));
-print_r(array_chunk($input_array, 2, true));
-print_r(array_chunk($input_array, 3));
-print_r(array_chunk($input_array, 3, true));
-print_r(array_chunk($input_array, 4));
-print_r(array_chunk($input_array, 4, true));
-print_r(array_chunk($input_array, 5));
-print_r(array_chunk($input_array, 5, true));
-print_r(array_chunk($input_array, 6));
-print_r(array_chunk($input_array, 6, true));
+print_r(php_compat_array_chunk($input_array, 2));
+print_r(php_compat_array_chunk($input_array, 2, true));
+print_r(php_compat_array_chunk($input_array, 3));
+print_r(php_compat_array_chunk($input_array, 3, true));
+print_r(php_compat_array_chunk($input_array, 4));
+print_r(php_compat_array_chunk($input_array, 4, true));
+print_r(php_compat_array_chunk($input_array, 5));
+print_r(php_compat_array_chunk($input_array, 5, true));
+print_r(php_compat_array_chunk($input_array, 6));
+print_r(php_compat_array_chunk($input_array, 6, true));
 ?>
 --EXPECT--
 Array

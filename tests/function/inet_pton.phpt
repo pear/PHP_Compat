@@ -1,11 +1,8 @@
 --TEST--
 Function -- inet_pton
---SKIPIF--
-<?php if (function_exists('inet_pton')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once 'PHP/Compat.php';
-PHP_Compat::loadFunction('inet_pton');
+require_once 'PHP/Compat/Function/inet_pton.php';
 
 $adds = array(
     '127.0.0.1'                  => '7f000001',
@@ -17,7 +14,7 @@ $adds = array(
 
 foreach ($adds as $k => $v) {
     echo "\ntesting: $k\n    ";
-    echo bin2hex(inet_pton($k)), "\n";
+    echo bin2hex(php_compat_inet_pton($k)), "\n";
 }
 
 ?>

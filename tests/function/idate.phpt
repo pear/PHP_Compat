@@ -1,11 +1,8 @@
 --TEST--
 Function -- idate
---SKIPIF--
-<?php if (function_exists('idate')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once 'PHP/Compat.php';
-PHP_Compat::loadFunction('idate');
+require_once 'PHP/Compat/Function/idate.php';
 
 $tests = array(
     'B',    // OK
@@ -42,7 +39,7 @@ foreach ($tests as $v) {
     echo 'testing: ';
     var_dump($v);
     echo "\nresult:  ";
-    $res = idate($v);
+    $res = php_compat_idate($v);
     if (!$res) {
         var_dump($res);
     } else {

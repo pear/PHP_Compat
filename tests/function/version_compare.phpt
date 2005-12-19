@@ -1,11 +1,8 @@
 --TEST--
 Function -- version_compare
---SKIPIF--
-<?php if (function_exists('version_compare')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once 'PHP/Compat.php';
-PHP_Compat::loadFunction('version_compare');
+require_once 'PHP/Compat/Function/version_compare.php';
 
 // Basic
 print "testing basic\n";
@@ -41,14 +38,14 @@ foreach ($special_forms as $f1) {
         foreach ($operators as $op) {
             $v1 = "1.0$f1";
             $v2 = "1.0$f2";
-            $test = version_compare($v1, $v2, $op) ? "true" : "false";
+            $test = php_compat_version_compare($v1, $v2, $op) ? "true" : "false";
             printf("%7s %2s %-7s : %s\n", $v1, $op, $v2, $test);
         }
     }
 }
 
 function test($v1, $v2) {
-    $compare = version_compare($v1, $v2);
+    $compare = php_compat_version_compare($v1, $v2);
     switch ($compare) {
 	case -1:
 	    print "$v1 < $v2\n";

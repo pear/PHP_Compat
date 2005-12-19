@@ -1,13 +1,10 @@
 --TEST--
 Function -- get_include_path
---SKIPIF--
-<?php if (function_exists('get_include_path')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once 'PHP/Compat.php';
-PHP_Compat::loadFunction('get_include_path');
+require_once 'PHP/Compat/Function/get_include_path.php';
 
-if (get_include_path() == ini_get('include_path')) {
+if (php_compat_get_include_path() == ini_get('include_path')) {
     echo 'true';
 }
 ?>

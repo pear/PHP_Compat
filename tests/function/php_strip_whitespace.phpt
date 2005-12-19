@@ -1,17 +1,10 @@
 --TEST--
 Function -- php_strip_whitespace
 --SKIPIF--
-<?php
-if (function_exists('php_strip_whitespace') ||
-    !extension_loaded('tokenizer')) {
-        
-    echo 'skip';
-}
-?>
+<?php if (!extension_loaded('tokenizer')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once 'PHP/Compat.php';
-PHP_Compat::loadFunction('php_strip_whitespace');
+require_once 'PHP/Compat/Function/php_strip_whitespace.php';
 
 // Here is some sample PHP code to write to the file
 $string = '<?php
@@ -21,9 +14,9 @@ $string = '<?php
  * Another PHP comment
  */
 
-echo        php_strip_whitespace($_SERVER[\'PHP_SELF\']);
+echo        microtime();
 // Newlines are considered whitespace, and are removed too:
-do_nothing();
+microtime();
 ?>';
 
 // Create a temp file
@@ -32,11 +25,11 @@ $fh = fopen($tmpfname, 'w');
 fwrite($fh, $string);
 
 // Test
-echo php_strip_whitespace($tmpfname);
+echo php_compat_php_strip_whitespace($tmpfname);
 
 // Close
 fclose($fh);
 ?>
 --EXPECT--
 <?php
- echo php_strip_whitespace($_SERVER['PHP_SELF']); do_nothing(); ?>
+ echo microtime(); microtime(); ?>

@@ -1,14 +1,11 @@
 --TEST--
 Function -- floatval
---SKIPIF--
-<?php if (function_exists('floatval')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once 'PHP/Compat.php';
-PHP_Compat::loadFunction('floatval');
+require_once 'PHP/Compat/Function/floatval.php';
 
 $var = '12312.123';
-var_dump(floatval($var));
+var_dump(php_compat_floatval($var));
 ?>
 --EXPECT--
 float(12312.123)

@@ -1,19 +1,16 @@
 --TEST--
 Function -- str_word_count
---SKIPIF--
-<?php if (function_exists('str_word_count')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once 'PHP/Compat.php';
-PHP_Compat::loadFunction('str_word_count');
+require_once 'PHP/Compat/Function/str_word_count.php';
 
 $str = "Hello friend, you're \r\nsdf\tlooking    3865\t9879 good to\"day, yes \"sir\" you am!";
-var_dump(str_word_count($str));
-print_r(str_word_count($str, 1));
-print_r(str_word_count($str, 2));
+var_dump(php_compat_str_word_count($str));
+print_r(php_compat_str_word_count($str, 1));
+print_r(php_compat_str_word_count($str, 2));
 
 $str = 'hello I am repeated repeated';
-print_r(str_word_count($str, 2));
+print_r(php_compat_str_word_count($str, 2));
 ?>
 --EXPECT--
 int(12)

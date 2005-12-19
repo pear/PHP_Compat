@@ -1,11 +1,8 @@
 --TEST--
 Function -- ibase_timefmt
---SKIPIF--
-<?php if (function_exists('ibase_timefmt')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once 'PHP/Compat.php';
-PHP_Compat::loadFunction('ibase_timefmt');
+require_once 'PHP/Compat/Function/ibase_timefmt.php';
 
 echo 'test';
 ?>

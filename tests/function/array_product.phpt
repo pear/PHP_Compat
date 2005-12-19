@@ -1,11 +1,8 @@
 --TEST--
 Function -- array_product
---SKIPIF--
-<?php if (function_exists('array_product')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once 'PHP/Compat.php';
-PHP_Compat::loadFunction('array_product');
+require_once 'PHP/Compat/Function/array_product.php';
 
 function ehandler($no, $str)
 {
@@ -24,7 +21,7 @@ $tests = array(
 
 foreach ($tests as $v) {
     echo "testing: (", (is_array($v) ? implode(' * ', $v) : $v), ")\n    result: ";
-    var_dump(array_product($v));
+    var_dump(php_compat_array_product($v));
     echo "\n\n"; 
 }
 

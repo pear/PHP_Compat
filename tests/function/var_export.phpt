@@ -1,36 +1,33 @@
 --TEST--
 Function -- var_export
---SKIPIF--
-<?php if (function_exists('var_export')) { echo 'skip'; } ?>
 --FILE--
 <?php
-require_once 'PHP/Compat.php';
-PHP_Compat::loadFunction('var_export');
+require_once 'PHP/Compat/Function/var_export.php';
 
 // Simple
-var_export(true);
+php_compat_var_export(true);
 echo "\n";
 
-var_export(false);
+php_compat_var_export(false);
 echo "\n";
 
-var_export(null); 
+php_compat_var_export(null); 
 echo "\n";
 
 $fp = fopen(__FILE__, 'r');
-var_export($fp);
+php_compat_var_export($fp);
 fclose($fp);
 echo "\n";
 
-var_export(array(1, array(2, array(3, 4), array(5, array(6, array(7))))));
+php_compat_var_export(array(1, array(2, array(3, 4), array(5, array(6, array(7))))));
 echo "\n";
 
 $a = array (1, 2, array ("a", "b", "c"));
-var_export($a);
+php_compat_var_export($a);
 echo "\n\n";
 
 // With return
-echo var_export($a, true);
+echo php_compat_var_export($a, true);
 echo "\n\n";
 
 // More complex
@@ -41,7 +38,7 @@ $a = array(
     'Yes \ No'          =>'Yes \ No O\'neil',
     'foo'               => null,
     );
-var_export($a);
+php_compat_var_export($a);
 echo "\n\n";
 
 // Classes
@@ -49,7 +46,7 @@ $var = new stdClass;
 $var->foo = 'foo';
 $var->bar = 'bar';
 $var = array(array($var));
-var_export($var);
+php_compat_var_export($var);
 
 ?>
 --EXPECT--
