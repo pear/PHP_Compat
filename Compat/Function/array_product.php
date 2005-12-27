@@ -29,7 +29,7 @@
  * @since       PHP 5.1.0
  * @require     PHP 4.0.1 (trigger_error)
  */
-function php_compat_array_product()
+function php_compat_array_product($array)
 {
     if (!is_array($array)) {
         trigger_error('The argument should be an array', E_USER_WARNING);
