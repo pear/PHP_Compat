@@ -57,7 +57,7 @@ function php_compat_var_export($var, $return = false, $level = 0)
                 if (is_string($key)) {
                     // Make key safe
                     for ($i = 0, $c = count($find); $i < $c; $i++) {
-                        $var = str_replace($find[$i], $replace[$i], $var);
+                        $key = str_replace($find[$i], $replace[$i], $key);
                     }
                     $key = $stringdelim . $key . $stringdelim;
                 }
