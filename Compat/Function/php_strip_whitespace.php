@@ -19,6 +19,16 @@
 
 
 /**
+ * Replace T_DOC_COMMENT in PHP 4
+ */
+if (!defined('T_ML_COMMENT')) {
+   define('T_ML_COMMENT', T_COMMENT);
+} else {
+   define('T_DOC_COMMENT', T_ML_COMMENT);
+}
+
+
+/**
  * Replace php_strip_whitespace()
  *
  * @category    PHP
