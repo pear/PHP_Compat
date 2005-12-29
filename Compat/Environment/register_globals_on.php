@@ -13,6 +13,7 @@
 // | license@php.net so we can mail you a copy immediately.               |
 // +----------------------------------------------------------------------+
 // | Authors: Aidan Lister <aidan@php.net>                                |
+// |          Arpad Ray <arpad@php.net>                                   |
 // +----------------------------------------------------------------------+
 //
 // $Id$
@@ -25,17 +26,40 @@
  * @package     PHP_Compat
  * @link        http://php.net/magic_qutoes
  * @author      Aidan Lister <aidan@php.net>
+ * @author      Arpad Ray <arpad@php.net>
  * @version     $Revision$
  */
 if (!ini_get('register_globals')) {
-    $superglobals = array($_SERVER, $_ENV, $_FILES, $_COOKIE, $_POST, $_GET);
-
-    if (isset($_SESSION)) {
-        array_unshift($superglobals, $_SESSION);
+    $superglobals = array(
+        'S' => &$_SERVER,
+        'E' => &$_ENV,
+        'C' => &$_COOKIE,
+        'P' => &$_POST,
+        'G' => &$_GET
+    );
+    $order = ini_get('variables_order');
+    $order_length = strlen($order);
+    $inputs = array();
+    
+    // add the specified superglobals in order
+    for ($i = 0; $i < $order_length; $i++) {
+        $key = strtoupper($order[$i]);
+        if (isset($superglobals[$key])) {
+            if ($key == 'S' && !isset($_SESSION)) {
+                continue;
+            }
+            if (($key == 'G' || $key == 'P') && strtoupper($_SERVER['REQUEST_METHOD'][0]) == $key) {
+                $inputs[] =& $_FILES;
+            }
+            $inputs[] =& $superglobals[$key];
+        }
     }
 
-    foreach ($superglobals as $superglobal) {
-        extract($superglobal, EXTR_SKIP);
+    foreach ($inputs as $input) {
+        if (isset($input['GLOBALS'])) {
+            continue;
+        }
+        extract($input);
     }
 
     // Register the change
