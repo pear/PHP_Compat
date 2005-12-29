@@ -13,6 +13,7 @@
 // | license@php.net so we can mail you a copy immediately.               |
 // +----------------------------------------------------------------------+
 // | Authors: Aidan Lister <aidan@php.net>                                |
+// |          Arpad Ray <arpad@php.net>                                   |
 // +----------------------------------------------------------------------+
 //
 // $Id$
@@ -23,17 +24,24 @@
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/function.microtime_float
+ * @link        http://php.net/function.microtime
  * @author      Aidan Lister <aidan@php.net>
+ * @author      Arpad Ray <arpad@php.net>
  * @version     $Revision$
  * @since       PHP 5.0.0 (Added optional get_as_float parameter)
  * @require     PHP 4.0.0 (user_error)
  */
 function php_compat_microtime($get_as_float = false)
-{ 
-    list ($msec, $sec) = explode(' ', microtime()); 
-    $microtime = (float) $msec + (float) $sec;
-    return $microtime; 
+{
+    if (!function_exists('gettimeofday')) {
+        $time = time();
+        return $get_as_float ? ($time * 1000000.0) : '0.00000000 ' . $time;
+    } 
+    $gtod = gettimeofday();
+    $usec = $gtod['usec'] / 1000000.0;
+    return $get_as_float
+        ? (float) ($gtod['sec'] + $usec)
+        : (sprintf('%.8f ', $usec) . $gtod['sec']);
 }
 
 
