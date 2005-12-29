@@ -36,7 +36,7 @@ class PHP_Compat
     /**
      * Load a function, or array of functions
      *
-     * @param   string|array    $function The function or functions to load
+     * @param   string|array    $function   The function or functions to load
      * @return  bool|array      TRUE if loaded, FALSE if not
      */
     function loadFunction($function)
@@ -66,7 +66,7 @@ class PHP_Compat
     /**
      * Load a constant, or array of constants
      *
-     * @param   string|array    $constant The constant or constants to load
+     * @param   string|array    $constant   The constant or constants to load
      * @return  bool|array      TRUE if loaded, FALSE if not
      */
     function loadConstant($constant)
@@ -92,9 +92,28 @@ class PHP_Compat
 
 
     /**
+     * Load an environment
+     *
+     * @param   string          $environment   The environment to load
+     * @param   string          $setting       Turn the environment on or off
+     * @return  bool            TRUE if loaded, FALSE if not
+     */
+    function loadEnvironment($environment, $setting)
+    {
+        // Load environment
+        $file = sprintf('PHP/Compat/Environment/%s_%s.php', $environment, $setting);
+        if ((@include_once $file) !== false) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+    /**
      * Load components for a PHP version
      *
-     * @param   string      $version    PHP Version to load
+     * @param   string      $version        PHP Version to load
      * @return  array       An associative array of component names loaded
      */
     function loadVersion($version = null)
