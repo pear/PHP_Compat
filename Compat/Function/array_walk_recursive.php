@@ -68,6 +68,6 @@ function php_compat_array_walk_recursive(&$input, $funcname)
 if (!function_exists('array_walk_recursive')) {
     function array_walk_recursive(&$input, $funcname)
     {
-        return php_compat_array_walk_recursive(&$input, $funcname);
+        return php_compat_array_walk_recursive($input, $funcname);
     }
 }
