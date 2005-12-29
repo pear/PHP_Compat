@@ -14,6 +14,12 @@
             <email>aidan@php.net</email>
             <role>lead</role>
         </maintainer>
+        <maintainer>
+            <user>arpad</user>
+            <name>Arpad Ray</name>
+            <email>arpad@php.net</email>
+            <role>developer</role>
+        </maintainer>
     </maintainers>
 
     <release>
