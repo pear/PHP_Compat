@@ -57,10 +57,12 @@ function php_compat_html_entity_decode($string, $quote_style = ENT_COMPAT, $char
     $trans_tbl = array_flip($trans_tbl);
 
     // Add single quote to translation table;
-    $trans_tbl['&#039;'] = '\'';
+    if ($quote_style === ENT_QUOTES) {
+        $trans_tbl['&#039;'] = '\'';
+    }
 
     // Not translating double quotes
-    if ($quote_style & ENT_NOQUOTES) {
+    if ($quote_style === ENT_NOQUOTES) {
         // Remove double quote from translation table
         unset($trans_tbl['&quot;']);
     }
