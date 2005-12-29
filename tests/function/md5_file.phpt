@@ -7,4 +7,4 @@ require_once 'PHP/Compat/Function/md5_file.php';
 echo php_compat_md5_file(__FILE__);
 ?>
 --EXPECT--
-762a55bb01c6133a956599e6a51c49b0
+86c9d7992c16f3648612ec648848fc56
