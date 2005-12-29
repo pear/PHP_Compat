@@ -28,10 +28,10 @@
  * @version     $Revision$
  * @since       PHP 5
  * @require     PHP 4.0.0 (user_error)
- * @note        count not by returned by reference, to enable
- *              change '$count = null' to '&$count'
+ * @note        count is returned by reference (required parameter)
+ *              to disable, change '&$count' to '$count = null'
  */
-function php_compat_str_ireplace($search, $replace, $subject, $count = null)
+function php_compat_str_ireplace($search, $replace, $subject, &$count)
 {
     // Sanity check
     if (is_string($search) && is_array($replace)) {
