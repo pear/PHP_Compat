@@ -304,6 +304,26 @@
          RC bug fixes:
          * Fixed #6184 (idate)
         </notes>
+    </release>
+
+    <release>
+        <version>1.6.0</version>
+        <date>2005-12-xx</date>
+        <license>PHP License</license>
+        <state>stable</state>
+        <notes>
+         Added more components with changed parameters:
+         * array_splice
+         * microtime
+         * mkdir
+         * range
+
+         Added new Environment module
+         * register_globals
+         * magic_quotes_gpc
+         * register_argc_argv
+         * register_long_arrays
+        </notes>
         <filelist>
             <dir name="/" baseinstalldir="PHP" role="php">     
                 <file>Compat.php</file>
@@ -312,12 +332,22 @@
                     <dir name="Constant">
                         <file>DIRECTORY_SEPARATOR.php</file>
                         <file>E_STRICT.php</file>
-                        <file>PATH_SEPARATOR.php</file>
-                        <file>STD.php</file>
                         <file>FILE.php</file>
+                        <file>PATH_SEPARATOR.php</file>
                         <file>PHP_EOL.php</file>
-                        <file>UPLOAD_ERR.php</file>
+                        <file>STD.php</file>
                         <file>T.php</file>
+                        <file>UPLOAD_ERR.php</file>
+                    </dir>
+                    <dir name="Environment">
+                        <file>magic_quotes_gpc_off.php</file>
+                        <file>magic_quotes_gpc_on.php</file>
+                        <file>register_argc_argv_off.php</file>
+                        <file>register_argc_argv_on.php</file>
+                        <file>register_globals_off.php</file>
+                        <file>register_globals_on.php</file>
+                        <file>register_long_arrays_off.php</file>
+                        <file>register_long_arrays_on.php</file>
                     </dir>
                     <dir name="Function">
                         <file>array_change_key_case.php</file>
@@ -327,13 +357,14 @@
                         <file>array_diff_key.php</file>
                         <file>array_diff_uassoc.php</file>
                         <file>array_diff_ukey.php</file>
-                        <file>array_intersect_assoc.php</file> 
+                        <file>array_intersect_assoc.php</file>
                         <file>array_intersect_key.php</file>
                         <file>array_intersect_uassoc.php</file>
                         <file>array_intersect_ukey.php</file>
                         <file>array_key_exists.php</file>
                         <file>array_product.php</file>
                         <file>array_search.php</file>
+                        <file>array_slice.php</file>
                         <file>array_udiff.php</file>
                         <file>array_udiff_assoc.php</file>
                         <file>array_udiff_uassoc.php</file>
@@ -346,8 +377,8 @@
                         <file>call_user_func_array.php</file>
                         <file>clone.php</file>
                         <file>constant.php</file>
-                        <file>convert_uuencode.php</file>
                         <file>convert_uudecode.php</file>
+                        <file>convert_uuencode.php</file>
                         <file>debug_print_backtrace.php</file>
                         <file>file_get_contents.php</file>
                         <file>file_put_contents.php</file>
@@ -366,24 +397,29 @@
                         <file>inet_pton.php</file>
                         <file>ini_get_all.php</file>
                         <file>is_a.php</file>
+                        <file>is_scalar.php</file>
                         <file>md5_file.php</file>
                         <file>mhash.php</file>
+                        <file>microtime.php</file>
                         <file>mime_content_type.php</file>
+                        <file>mkdir.php</file>
                         <file>ob_clean.php</file>
                         <file>ob_flush.php</file>
                         <file>ob_get_clean.php</file>
                         <file>ob_get_flush.php</file>
-                        <file>php_strip_whitespace.php</file>
                         <file>pg_affected_rows.php</file>
                         <file>pg_escape_bytea.php</file>
                         <file>pg_unescape_bytea.php</file>
+                        <file>php_strip_whitespace.php</file>
+                        <file>property_exists.php</file>
+                        <file>range.php</file>
                         <file>restore_include_path.php</file>
                         <file>scandir.php</file>
                         <file>set_include_path.php</file>
                         <file>str_ireplace.php</file>
                         <file>str_rot13.php</file>
-                        <file>str_split.php</file>
                         <file>str_shuffle.php</file>
+                        <file>str_split.php</file>
                         <file>str_word_count.php</file>
                         <file>stripos.php</file>
                         <file>strpbrk.php</file>
@@ -405,26 +441,27 @@
                         <file>e_strict.phpt</file>
                         <file>file.phpt</file>
                         <file>path_separator.phpt</file>
-                        <file>std.phpt</file>
                         <file>php_eol.phpt</file>
-                        <file>upload_err.phpt</file>
+                        <file>std.phpt</file>
                         <file>t.phpt</file>
+                        <file>upload_err.phpt</file>
                     </dir>
                     <dir name="function">
                         <file>array_change_key_case.phpt</file>
                         <file>array_chunk.phpt</file>
                         <file>array_combine.phpt</file>
                         <file>array_diff_assoc.phpt</file>
-                        <file>array_diff_uassoc.phpt</file>
                         <file>array_diff_key.phpt</file>
+                        <file>array_diff_uassoc.phpt</file>
                         <file>array_diff_ukey.phpt</file>
-                        <file>array_intersect_assoc.phpt</file> 
+                        <file>array_intersect_assoc.phpt</file>
                         <file>array_intersect_key.phpt</file>
                         <file>array_intersect_uassoc.phpt</file>
                         <file>array_intersect_ukey.phpt</file>
                         <file>array_key_exists.phpt</file>
                         <file>array_product.phpt</file>
                         <file>array_search.phpt</file>
+                        <file>array_slice.phpt</file>
                         <file>array_udiff.phpt</file>
                         <file>array_udiff_assoc.phpt</file>
                         <file>array_udiff_uassoc.phpt</file>
@@ -437,8 +474,8 @@
                         <file>call_user_func_array.phpt</file>
                         <file>clone.phpt</file>
                         <file>constant.phpt</file>
-                        <file>convert_uuencode.phpt</file>
                         <file>convert_uudecode.phpt</file>
+                        <file>convert_uuencode.phpt</file>
                         <file>debug_print_backtrace.phpt</file>
                         <file>file_get_contents.phpt</file>
                         <file>file_put_contents.phpt</file>
@@ -460,22 +497,26 @@
                         <file>is_scalar.phpt</file>
                         <file>md5_file.phpt</file>
                         <file>mhash.phpt</file>
+                        <file>microtime.phpt</file>
                         <file>mime_content_type.phpt</file>
+                        <file>mkdir.phpt</file>
                         <file>ob_clean.phpt</file>
                         <file>ob_flush.phpt</file>
                         <file>ob_get_clean.phpt</file>
                         <file>ob_get_flush.phpt</file>
-                        <file>php_strip_whitespace.phpt</file>
                         <file>pg_affected_rows.phpt</file>
                         <file>pg_escape_bytea.phpt</file>
                         <file>pg_unescape_bytea.phpt</file>
+                        <file>php_strip_whitespace.phpt</file>
+                        <file>property_exists.phpt</file>
+                        <file>range.phpt</file>
                         <file>restore_include_path.phpt</file>
                         <file>scandir.phpt</file>
                         <file>set_include_path.phpt</file>
                         <file>str_ireplace.phpt</file>
                         <file>str_rot13.phpt</file>
-                        <file>str_split.phpt</file>
                         <file>str_shuffle.phpt</file>
+                        <file>str_split.phpt</file>
                         <file>str_word_count.phpt</file>
                         <file>stripos.phpt</file>
                         <file>strpbrk.phpt</file>

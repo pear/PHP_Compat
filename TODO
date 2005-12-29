@@ -21,20 +21,13 @@ Tests
   mime_content_type
   is_scalar
   property_exists
+  mkdir
+  microtime
+  array_slice
+  range
 
 Other
 =====
 * Extensions
   SPL
   FTP
-
-* Enviroments
-  register_globals=on/off
-  magic_quotes=on/off
-
-* Handle functions with changed signatures
-  microtime
-  str_ireplace
-  range
-  array_splice
-  mkdirr
