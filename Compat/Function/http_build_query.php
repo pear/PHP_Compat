@@ -61,7 +61,7 @@ function php_compat_http_build_query($formdata, $numeric_prefix = null)
         }
 
         if (is_scalar($val)) {
-            array_push($tmp, urlencode($key).'='.urlencode($val));
+            array_push($tmp, urlencode($key) . '=' . urlencode($val));
             continue;
         }
 
@@ -82,11 +82,11 @@ function php_compat_http_build_query_helper($array, $name)
     $tmp = array ();
     foreach ($array as $key => $value) {
         if (is_array($value)) {
-            array_push($tmp, __http_build_query($value, sprintf('%s[%s]', $name, $key)));
+            array_push($tmp, php_compat_http_build_query_helper($value, sprintf('%s[%s]', $name, $key)));
         } elseif (is_scalar($value)) {
             array_push($tmp, sprintf('%s[%s]=%s', $name, urlencode($key), urlencode($value)));
         } elseif (is_object($value)) {
-            array_push($tmp, __http_build_query(get_object_vars($value), sprintf('%s[%s]', $name, $key)));
+            array_push($tmp, php_compat_http_build_query_helper(get_object_vars($value), sprintf('%s[%s]', $name, $key)));
         }
     }
 
