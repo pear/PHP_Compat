@@ -11,7 +11,7 @@ echo php_compat_html_entity_decode($string, ENT_QUOTES), "\n";
 echo php_compat_html_entity_decode($string, ENT_NOQUOTES), "\n";
 ?>
 --EXPECT--
+I&#039;ll "walk" the <b>dog</b> now
+I&#039;ll "walk" the <b>dog</b> now
 I'll "walk" the <b>dog</b> now
-I'll "walk" the <b>dog</b> now
-I'll "walk" the <b>dog</b> now
-I'll &quot;walk&quot; the <b>dog</b> now
+I&#039;ll &quot;walk&quot; the <b>dog</b> now
