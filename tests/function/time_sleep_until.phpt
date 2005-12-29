@@ -1,5 +1,7 @@
 --TEST--
 Function -- time_sleep_until
+--SKIPIF--
+<?php if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once 'PHP/Compat/Function/time_sleep_until.php';
