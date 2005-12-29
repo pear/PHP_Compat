@@ -23,7 +23,7 @@
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/magic_qutoes
+ * @link        http://php.net/magic_quotes
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  */
@@ -31,10 +31,13 @@ if (get_magic_quotes_gpc()) {
     // Recursive stripslashes function
     function php_compat_stripslashesr($value)
     {
-        $value = is_array($value) ?
-                    array_map('php_compat_stripslashesr', $value) :
-                    stripslashes($value);
-
+        if (!is_array($value)) {
+            return stripslashes($value);
+        }
+        $result = array();
+        foreach ($value as $k => $v) {
+            $result[stripslashes($k)] = php_compat_stripslashesr($v);
+        }
         return $value;
     }
 
