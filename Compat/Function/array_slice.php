@@ -12,7 +12,8 @@
 // | obtain it through the world-wide-web, please send a note to          |
 // | license@php.net so we can mail you a copy immediately.               |
 // +----------------------------------------------------------------------+
-// | Authors: Aidan Lister <aidan@php.net>                                |
+// | Authors: Arpad Ray <arpad@php.net>                                   |
+// |          Aidan Lister <aidan@php.net>                                |
 // +----------------------------------------------------------------------+
 //
 // $Id$
@@ -24,14 +25,27 @@
  * @category    PHP
  * @package     PHP_Compat
  * @link        http://php.net/function.array_slice
+ * @author      Arpad Ray <arpad@php.net>
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
- * @since       PHP 5.0.2 (Added optional replacement parameter)
+ * @since       PHP 5.0.2 (Added optional preserve keys parameter)
  * @require     PHP 4.0.0 (user_error)
  */
 function php_compat_array_slice($array, $offset, $length = null, $preserve_keys = false)
 { 
-    // Finish me
+    if (!$preserve_keys) {
+        return array_slice($array, $offset, $length);
+    }
+    if (!is_array($array)) {
+        user_error('The first argument should be an array', E_USER_WARNING);
+        return;
+    }
+    $keys = array_slice(array_keys($array), $offset, $length);
+    $ret = array();
+    foreach ($keys as $key) {
+        $ret[$key] = $array[$key];
+    }
+    return $ret;
 }
 
 
