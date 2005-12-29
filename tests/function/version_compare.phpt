@@ -61,6 +61,7 @@ function test($v1, $v2) {
 }
 
 ?>
+--EXPECT--
 testing basic
 1 < 2
 10 > 2
