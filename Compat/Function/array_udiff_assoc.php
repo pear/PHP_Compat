@@ -85,6 +85,6 @@ function php_compat_array_udiff_assoc()
 if (!function_exists('array_udiff_assoc')) {
     function array_udiff_assoc()
     {
-        return call_usr_func_array('php_compat_array_udiff_assoc', func_get_args());      
+        return call_user_func_array('php_compat_array_udiff_assoc', func_get_args());      
     }
 }

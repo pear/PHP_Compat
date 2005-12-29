@@ -76,6 +76,6 @@ function php_compat_array_diff_assoc()
 if (!function_exists('array_diff_assoc')) {
     function array_diff_assoc()
     {
-        return call_usr_func_array('php_compat_array_diff_assoc', func_get_args());
+        return call_user_func_array('php_compat_array_diff_assoc', func_get_args());
     }
 }

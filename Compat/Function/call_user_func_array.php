@@ -75,6 +75,6 @@ function php_compat_call_user_func_array($function, $param_arr)
 if (!function_exists('call_user_func_array')) {
     function call_user_func_array($function, $param_arr)
     {
-        return php_compat_call_usr_func_array($function, $param_arr);
+        return php_compat_call_user_func_array($function, $param_arr);
     }
 }

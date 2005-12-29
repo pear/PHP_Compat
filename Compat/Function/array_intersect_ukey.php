@@ -80,6 +80,6 @@ function php_compat_array_intersect_ukey()
 if (!function_exists('array_intersect_ukey')) {
     function array_intersect_ukey()
     {
-        return call_usr_func_array('php_compat_array_intersect_ukey', func_get_args());
+        return call_user_func_array('php_compat_array_intersect_ukey', func_get_args());
     }
 }

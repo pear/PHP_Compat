@@ -82,6 +82,6 @@ function php_compat_array_uintersect()
 if (!function_exists('array_uintersect')) {
     function array_uintersect()
     {
-        return call_usr_func_array('php_compat_array_uintersect', func_get_args());      
+        return call_user_func_array('php_compat_array_uintersect', func_get_args());      
     }
 }
