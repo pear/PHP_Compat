@@ -1,5 +1,7 @@
 --TEST--
 Function -- clone
+--SKIPIF--
+<?php if (version_compare(phpversion(), '5.0') === 1) { echo 'skip'; } ?>
 --FILE--
 <?php
 require_once 'PHP/Compat/Function/clone.php';
