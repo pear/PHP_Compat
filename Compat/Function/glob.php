@@ -264,5 +264,11 @@ function php_compat_glob_charclass_helper($class, $flags)
     return '[' . strtr($class, array('#' => '\#')) . ']';
 }
 
+if (!function_exists('glob')) {
+    function glob($pattern, $flags = 0)
+    {
+        return php_compat_glob($pattern, $flags);
+    }
+}
 
 ?>
