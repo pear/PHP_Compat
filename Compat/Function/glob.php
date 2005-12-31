@@ -18,6 +18,28 @@
 // $Id$
 
 
+if (!defined('GLOB_ERR')) {
+    define('GLOB_ERR', 1);
+}
+if (!defined('GLOB_MARK')) {
+    define('GLOB_MARK', 2);
+}
+if (!defined('GLOB_NOSORT')) {
+    define('GLOB_NOSORT', 4);
+}
+if (!defined('GLOB_NOCHECK')) {
+    define('GLOB_NOCHECK', 16);
+}
+if (!defined('GLOB_NOESCAPE')) {
+    define('GLOB_NOESCAPE', 64);
+}
+if (!defined('GLOB_BRACE')) {
+    define('GLOB_BRACE', 1024);
+}
+if (!defined('GLOB_ONLYDIR')) {
+    define('GLOB_ONLYDIR', 8192);
+}
+
 /**
  * Replace glob()
  *
