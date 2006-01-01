@@ -53,7 +53,7 @@ if (!defined('GLOB_ONLYDIR')) {
  */
 function php_compat_glob($pattern, $flags = 0)
 {
-    $return_failure = ($flags & GLOB_NOCHECK) ? $pattern : false;
+    $return_failure = ($flags & GLOB_NOCHECK) ? array($pattern) : false;
     
     // build path to scan files
     $path = '.';
@@ -107,16 +107,23 @@ function php_compat_glob($pattern, $flags = 0)
         if (($flags & GLOB_ONLYDIR) && !$dir) {
             continue;
         }
-        $results[] = $dir ? $file . '/' : $file;
+        $results[] = (($flags & GLOB_MARK) && $dir) ? $file . DIRECTORY_SEPARATOR : $file;
     }
     
-    if (($flags & GLOB_NOSORT) == false) {
+    if ($flags & GLOB_NOSORT) {
+        usort($results, 'php_compat_glob_nosort_helper');
+    } else {
         sort($results);
     }
     
     // array_values() for php 4 +
+    $reindex = array();
     foreach ($results as $result) {
         $reindex[] = $result;
+    }
+
+    if (($flags & GLOB_NOCHECK) && !count($reindex)) {
+        return $return_failure;
     }
     return $reindex;
 }
@@ -147,7 +154,9 @@ function php_compat_glob_scan_helper($path, $flags, $recurse = false)
         if (!$fp) {
             return ($flags & GLOB_ERR) ? false : array($path);
         }
-        $results[$path] = 1;
+        if ($path != '.') {
+            $results[$path] = 1;
+        }
         while (($file = readdir($fp)) !== false) {
             if ($file[0] == '.' || $file == '..') {
                 continue;
@@ -284,6 +293,28 @@ function php_compat_glob_charclass_helper($class, $flags)
         $class = '\^' . strtr($class, array('^' => ''));
     }
     return '[' . strtr($class, array('#' => '\#')) . ']';
+}
+
+/**
+ * Callback sort function for GLOB_NOSORT, ironic enough?
+ */
+function php_compat_glob_nosort_helper($a, $b)
+{
+    $operands = array(array('full' => $a), array('full' => $b));
+    foreach ($operands as $k => $v) {
+        $v['pos'] = strrpos($v['full'], '.');
+        if ($v['pos'] === false) {
+            $v['pos'] = strlen($v['full']) - 1;
+        }
+        $operands[$k]['base'] = substr($v['full'], 0, $v['pos']);
+        $operands[$k]['ext'] = substr($v['full'], $v['pos'] + 1);
+    }
+    $base_cmp = strcmp($operands[0]['base'], $operands[1]['base']);
+    if ($base_cmp == 0) {
+        $ext_cmp = strcmp($operands[0]['ext'], $operands[1]['ext']);
+        return -$ext_cmp;
+    }
+    return $base_cmp;
 }
 
 if (!function_exists('glob')) {
