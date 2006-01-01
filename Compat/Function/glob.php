@@ -101,16 +101,29 @@ function php_compat_glob($pattern, $flags = 0)
     // process files
     $results = array();
     foreach ($files as $file => $dir) {
-        if (!preg_match($pattern, $file)) {
+        if (!preg_match($pattern, $file, $matches)) {
             continue;
         }
         if (($flags & GLOB_ONLYDIR) && !$dir) {
             continue;
         }
-        $results[] = (($flags & GLOB_MARK) && $dir) ? $file . DIRECTORY_SEPARATOR : $file;
+        $file = (($flags & GLOB_MARK) && $dir) ? $file . DIRECTORY_SEPARATOR : $file;
+        if ($flags & GLOB_BRACE) {
+            // find last matching subpattern
+            $rank = 0;
+            for ($i = 1, $matchc = count($matches); $i < $matchc; $i++) {
+                if (strlen($matches[$i])) {
+                    $rank = $i;
+                }
+            }
+            $file = array($file, $rank);
+        }
+        $results[] = $file;
     }
     
-    if ($flags & GLOB_NOSORT) {
+    if ($flags & GLOB_BRACE) {
+        usort($results, 'php_compat_glob_brace_sort_helper');
+    } else if ($flags & GLOB_NOSORT) {
         usort($results, 'php_compat_glob_nosort_helper');
     } else {
         sort($results);
@@ -119,7 +132,7 @@ function php_compat_glob($pattern, $flags = 0)
     // array_values() for php 4 +
     $reindex = array();
     foreach ($results as $result) {
-        $reindex[] = $result;
+        $reindex[] = ($flags & GLOB_BRACE) ? $result[0] : $result;
     }
 
     if (($flags & GLOB_NOCHECK) && !count($reindex)) {
@@ -268,7 +281,7 @@ function php_compat_glob_brace_helper($brace, $flags)
     for ($i = count($alternatives); $i--;) {
         $alternatives[$i] = php_compat_glob_convert_helper($alternatives[$i], $flags);
     }
-    return '(?:' . implode('|', $alternatives) . ')';
+    return '(?:(' . implode(')|(', $alternatives) . '))';
 }
 
 /**
@@ -296,7 +309,9 @@ function php_compat_glob_charclass_helper($class, $flags)
 }
 
 /**
- * Callback sort function for GLOB_NOSORT, ironic enough?
+ * Callback sort function for GLOB_NOSORT
+ *
+ * Sorts first by the base name, then in reverse by the extension
  */
 function php_compat_glob_nosort_helper($a, $b)
 {
@@ -315,6 +330,21 @@ function php_compat_glob_nosort_helper($a, $b)
         return -$ext_cmp;
     }
     return $base_cmp;
+}
+
+/**
+ * Callback sort function for GLOB_BRACE
+ *
+ * Each argument should be an array where the first element is the
+ * file path, and the second is its rank. The rank is the number of
+ * alternatives between this match and the beginning of the brace.
+ */
+function php_compat_glob_brace_sort_helper($a, $b)
+{
+    if ($a[1] == $b[1]) {
+        return strcmp($a[0], $b[0]);
+    }
+    return ($a[1] < $b[1]) ? -1 : 1;
 }
 
 if (!function_exists('glob')) {
