@@ -95,6 +95,7 @@ $components['function']['var_export']                 = '4.2.0';
 $components['function']['version_compare']            = '4.1.0';
 $components['function']['vprintf']                    = '4.1.0';
 $components['function']['vsprintf']                   = '4.1.0';
+$components['function']['glob']                       = '4.3.0';
 
 // Constants
 $components['constant']['DIRECTORY_SEPARATOR']        = '4.0.6';
