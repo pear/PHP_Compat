@@ -4,7 +4,19 @@ Function -- property_exists
 <?php
 require_once 'PHP/Compat/Function/property_exists.php';
 
-echo 'test';
+class Foo {
+    var $bar = 'baz';
+}
+$foo = new Foo;
+class Bar extends Foo {}
+$bar = new Bar;
+
+var_dump(property_exists($foo, 'bar'));
+var_dump(property_exists($bar, 'bar'));
+var_dump(property_exists($foo, 'baz'));
+
 ?>
 --EXPECT--
-test
+bool(true)
+bool(true)
+bool(false)
