@@ -122,7 +122,7 @@ function php_compat_glob($pattern, $flags = 0)
     }
     
     if ($flags & GLOB_BRACE) {
-        usort($results, 'php_compat_glob_brace_sort_helper');
+        usort($results, ($flags & GLOB_NOSORT) ? 'php_compat_glob_brace_nosort_helper' : 'php_compat_glob_brace_sort_helper');
     } else if ($flags & GLOB_NOSORT) {
         usort($results, 'php_compat_glob_nosort_helper');
     } else {
@@ -321,15 +321,24 @@ function php_compat_glob_nosort_helper($a, $b)
         if ($v['pos'] === false) {
             $v['pos'] = strlen($v['full']) - 1;
         }
-        $operands[$k]['base'] = substr($v['full'], 0, $v['pos']);
+        $v['slash'] = strrpos($v['full'], DIRECTORY_SEPARATOR);
+        if ($v['slash'] === false) {
+            $v['slash'] = strlen($v['full']) - 1;
+        }
+        $operands[$k]['dir'] = substr($v['full'], 0, $v['slash']);
+        $operands[$k]['base'] = substr($v['full'], $v['slash'], $v['pos'] - $v['slash']);
         $operands[$k]['ext'] = substr($v['full'], $v['pos'] + 1);
     }
-    $base_cmp = strcmp($operands[0]['base'], $operands[1]['base']);
-    if ($base_cmp == 0) {
-        $ext_cmp = strcmp($operands[0]['ext'], $operands[1]['ext']);
-        return -$ext_cmp;
+    $dir_cmp = strcmp($operands[0]['dir'], $operands[1]['dir']);
+    if ($dir_cmp == 0) {
+        $base_cmp = strcmp($operands[0]['base'], $operands[1]['base']);
+        if ($base_cmp == 0) {
+            $ext_cmp = strcmp($operands[0]['ext'], $operands[1]['ext']);
+            return -$ext_cmp;
+        }
+        return $base_cmp;
     }
-    return $base_cmp;
+    return -$dir_cmp;
 }
 
 /**
@@ -343,6 +352,24 @@ function php_compat_glob_brace_sort_helper($a, $b)
 {
     if ($a[1] == $b[1]) {
         return strcmp($a[0], $b[0]);
+    }
+    return ($a[1] < $b[1]) ? -1 : 1;
+}
+
+/**
+ * Callback sort function for (GLOB_BRACE | GLOB_NOSORT)
+ *
+ * Receives the same arguments php_compat_glob_brace_sort_helper()
+ */
+function php_compat_glob_brace_nosort_helper($a, $b)
+{
+    if ($a[1] == $b[1]) {
+        $len_a = strlen($a[0]);
+        $len_b = strlen($b[0]);
+        if ($len_a == $len_b) { 
+            return -strcmp($a[0], $b[0]);
+        }
+        return ($len_a < $len_b) ? -1 : 1;
     }
     return ($a[1] < $b[1]) ? -1 : 1;
 }
