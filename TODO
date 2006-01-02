@@ -19,12 +19,7 @@ Tests
   bcpowmod
   bcinvert
   mime_content_type
-  is_scalar
-  property_exists
   mkdir
-  microtime
-  array_slice
-  range
 
 Other
 =====
