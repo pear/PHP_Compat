@@ -182,6 +182,6 @@ function php_compat_version_compare($version1, $version2, $operator = '<')
 if (!function_exists('version_compare')) {
     function version_compare($version1, $version2, $operator = '<')
     {
-        return php_compat_version_compare($version1, $version2, $operator = '<');
+        return php_compat_version_compare($version1, $version2, $operator);
     }
 }
