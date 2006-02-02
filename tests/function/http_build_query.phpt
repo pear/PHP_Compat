@@ -4,6 +4,11 @@ Function -- http_build_query
 <?php
 require_once 'PHP/Compat/Function/http_build_query.php';
 
+// With an empty separator (doing this after giving it a value with ini_set has no effect)
+ini_set('arg_separator.output', '');
+$data = array('foo', 'bar', 'baz', 'boom', 'cow' => 'milk', 'php' =>'hypertext processor');
+echo php_compat_http_build_query($data, 'flags_'), "\n";
+
 // Ini
 ini_set('arg_separator.output', '*');
 
@@ -78,6 +83,7 @@ var_dump(php_compat_http_build_query($data, 'flags_'));
 
 ?>
 --EXPECT--
+flags_0=foo&flags_1=bar&flags_2=baz&flags_3=boom&cow=milk&php=hypertext+processor
 foo=bar*baz=boom*cow=milk*php=hypertext+processor
 foo=bar*baz=boom
 0=foo*1=bar*2=baz*3=boom*cow=milk*php=hypertext+processor

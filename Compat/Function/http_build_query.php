@@ -52,6 +52,9 @@ function php_compat_http_build_query($formdata, $numeric_prefix = null)
 
     // Argument seperator
     $separator = ini_get('arg_separator.output');
+    if (strlen($separator) == 0) {
+        $separator = '&';
+    }
 
     // Start building the query
     $tmp = array ();
@@ -95,6 +98,9 @@ function php_compat_http_build_query_helper($array, $name)
 
     // Argument seperator
     $separator = ini_get('arg_separator.output');
+    if (strlen($separator) == 0) {
+        $separator = '&';
+    }
 
     return implode($separator, $tmp);
 }
