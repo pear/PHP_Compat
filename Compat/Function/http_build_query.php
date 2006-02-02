@@ -66,10 +66,13 @@ function php_compat_http_build_query($formdata, $numeric_prefix = null)
         }
 
         // If the value is an array, recursively parse it
-        if (is_array($val)) {
+        if (is_array($val) || is_object($val)) {
             array_push($tmp, php_compat_http_build_query_helper($val, urlencode($key)));
             continue;
         }
+
+        // The value is a resource
+        return null;
     }
 
     return implode($separator, $tmp);
