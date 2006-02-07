@@ -66,6 +66,7 @@ function php_compat_array_diff_key()
 if (!function_exists('array_diff_key')) {
     function array_diff_key()
     {
-        return call_user_func_array('php_compat_array_diff_key', func_get_args());
+        $args = func_get_args();
+        return call_user_func_array('php_compat_array_diff_key', $args);
     }
 }

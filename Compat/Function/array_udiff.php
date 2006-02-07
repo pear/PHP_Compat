@@ -84,6 +84,7 @@ function php_compat_array_udiff()
 if (!function_exists('array_udiff')) {
     function array_udiff()
     {
-        return call_user_func_array('php_compat_array_udiff', func_get_args());      
+        $args = func_get_args();
+        return call_user_func_array('php_compat_array_udiff', $args);      
     }
 }

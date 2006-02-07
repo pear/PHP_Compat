@@ -69,6 +69,7 @@ function php_compat_array_intersect_assoc()
 if (!function_exists('array_intersect_assoc')) {
     function array_intersect_assoc()
     {
-        return call_user_func_array('php_compat_array_intersect_assoc', func_get_args());
+        $args = func_get_args();
+        return call_user_func_array('php_compat_array_intersect_assoc', $args);
     }
 }

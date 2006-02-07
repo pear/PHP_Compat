@@ -93,6 +93,7 @@ function php_compat_array_udiff_uassoc()
 if (!function_exists('array_udiff_uassoc')) {
     function array_udiff_uassoc()
     {
-        return call_user_func_array('php_compat_array_udiff_uassoc', func_get_args());      
+        $args = func_get_args();
+        return call_user_func_array('php_compat_array_udiff_uassoc', $args);     
     }
 }

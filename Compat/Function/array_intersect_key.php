@@ -64,6 +64,7 @@ function php_compat_array_intersect_key()
 if (!function_exists('array_intersect_key')) {
     function array_intersect_key()
     {
-        return call_user_func_array('php_compat_array_intersect_key', func_get_args());
+        $args = func_get_args();
+        return call_user_func_array('php_compat_array_intersect_key', $args);   
     }
 }

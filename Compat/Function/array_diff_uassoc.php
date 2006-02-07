@@ -83,6 +83,7 @@ function php_compat_array_diff_uassoc()
 if (!function_exists('array_diff_uassoc')) {
     function array_diff_uassoc()
     {
-        return call_user_func_array('php_compat_array_diff_uassoc', func_get_args());
+        $args = func_get_args();
+        return call_user_func_array('php_compat_array_diff_uassoc', $args);   
     }
 }

@@ -79,6 +79,7 @@ function php_compat_array_diff_ukey()
 if (!function_exists('array_diff_ukey')) {
     function array_diff_ukey()
     {
-        return call_user_func_array('php_compat_array_diff_ukey', func_get_args());      
+        $args = func_get_args();
+        return call_user_func_array('php_compat_array_diff_ukey', $args);      
     }
 }
