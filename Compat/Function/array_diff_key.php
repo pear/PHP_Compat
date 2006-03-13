@@ -48,12 +48,24 @@ function php_compat_array_diff_key()
     }
 
     $result = $args[0];
-    foreach ($args[0] as $key1 => $value1) {
-        for ($i = 1; $i !== $array_count; $i++) {
-            foreach ($args[$i] as $key2 => $value2) {
-                if ((string) $key1 === (string) $key2) {
-                    unset($result[$key2]);
-                    break 2;
+    if (function_exists('array_key_exists')) {
+        // Optimize for >= PHP 4.1.0
+        foreach ($args[0] as $key => $value) {
+            for ($i = 1; $i !== $array_count; $i++) {
+                if (array_key_exists($key,$args[$i])) {
+                    unset($result[$key]);
+                    break;
+                }
+            }
+        }
+    } else {
+        foreach ($args[0] as $key1 => $value1) {
+            for ($i = 1; $i !== $array_count; $i++) {
+                foreach ($args[$i] as $key2 => $value2) {
+                    if ((string) $key1 === (string) $key2) {
+                        unset($result[$key2]);
+                        break 2;
+                    }
                 }
             }
         }
