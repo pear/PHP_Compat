@@ -29,7 +29,7 @@
  * @since       PHP 5.1.1
  */
 if (!defined('DATE_ATOM')) {
-    define('DATE_ATOM', 'Y-m-d\TH:i:sO');
+    define('DATE_ATOM', 'Y-m-d\TH:i:sP');
 }
 
 if (!defined('DATE_COOKIE')) {
@@ -65,7 +65,7 @@ if (!defined('DATE_RSS')) {
 }
 
 if (!defined('DATE_W3C')) {
-    define('DATE_W3C', 'Y-m-d\TH:i:sO');
+    define('DATE_W3C', 'Y-m-d\TH:i:sP');
 }
 
 ?> 
