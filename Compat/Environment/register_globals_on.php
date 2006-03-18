@@ -24,42 +24,44 @@
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/magic_qutoes
+ * @link        http://php.net/register_globals
  * @author      Aidan Lister <aidan@php.net>
  * @author      Arpad Ray <arpad@php.net>
  * @version     $Revision$
  */
 if (!ini_get('register_globals')) {
     $superglobals = array(
-        'S' => &$_SERVER,
-        'E' => &$_ENV,
-        'C' => &$_COOKIE,
-        'P' => &$_POST,
-        'G' => &$_GET
+        'S' => '_SESSION',
+        'E' => '_ENV',
+        'C' => '_COOKIE',
+        'P' => '_POST',
+        'G' => '_GET'
     );
     $order = ini_get('variables_order');
     $order_length = strlen($order);
     $inputs = array();
-    
-    // add the specified superglobals in order
+
+    // determine on which arrays to operate and in what order
     for ($i = 0; $i < $order_length; $i++) {
         $key = strtoupper($order[$i]);
-        if (isset($superglobals[$key])) {
-            if ($key == 'S' && !isset($_SESSION)) {
-                continue;
-            }
-            if (($key == 'G' || $key == 'P') && strtoupper($_SERVER['REQUEST_METHOD'][0]) == $key) {
-                $inputs[] =& $_FILES;
-            }
-            $inputs[] =& $superglobals[$key];
-        }
-    }
-
-    foreach ($inputs as $input) {
-        if (isset($input['GLOBALS'])) {
+        if (!isset($superglobals[$key])
+             || ($key == 'S' && !isset($_SESSION))) {
             continue;
         }
-        extract($input);
+        if ($key == 'P' && $_SERVER['REQUEST_METHOD'] == 'POST') {
+            $inputs[] = $_FILES;
+        }
+        $inputs[] = ${$superglobals[$key]};
+    }
+
+    // extract the specified arrays
+    $superglobals[] = 'GLOBALS';
+    for ($i = 0, $c = count($inputs); $i < $c; $i++) {
+        // ensure users can't set superglobals
+        $ins = array_intersect($superglobals, array_keys($inputs[$i]));
+        if (empty($ins)) {
+            extract($inputs[$i]);
+        }
     }
 
     // Register the change
