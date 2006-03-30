@@ -23,7 +23,7 @@
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/magic_qutoes
+ * @link        http://php.net/manual/en/ini.core.php#ini.register-long-arrays
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  */

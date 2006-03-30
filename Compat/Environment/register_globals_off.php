@@ -23,7 +23,7 @@
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/magic_qutoes
+ * @link        http://php.net/register_globals
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  */

@@ -27,23 +27,28 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  */
-if (get_magic_quotes_gpc()) {
+if (get_magic_quotes_gpc() && !ini_get('magic_quotes_sybase')) {
     // Recursive stripslashes function
-    function php_compat_stripslashesr($value)
+    function php_compat_mqgpc_unescape($value, $keybug)
     {
         if (!is_array($value)) {
             return stripslashes($value);
         }
-        $result = array();
         foreach ($value as $k => $v) {
-            $result[stripslashes($k)] = php_compat_stripslashesr($v);
+            $k = $keybug ? $k : stripslashes($k);
+            $value[$k] = php_compat_mqgpc_unescape($v, $keybug);
         }
         return $value;
     }
 
-    $_POST = array_map('php_compat_stripslashesr', $_POST);
-    $_GET = array_map('php_compat_stripslashesr', $_GET);
-    $_COOKIE = array_map('php_compat_stripslashesr', $_COOKIE);
+    // between 5.0.0 and 5.1.0, array keys in the superglobals were escaped even with register_globals off
+    $keybug = (version_compare(PHP_VERSION, '5.0.0', '>=') && version_compare(PHP_VERSION, '5.1.0', '<'));
+
+    $inputs = array(&$_POST, &$_GET, &$_COOKIE);
+
+    foreach ($inputs as $k => $input) {
+        $inputs[$k] = php_compat_mqgpc_unescape($input, $keybug);
+    }
 
     // Register the change
     ini_set('magic_quotes_gpc', 'off');
