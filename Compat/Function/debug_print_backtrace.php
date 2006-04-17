@@ -36,38 +36,50 @@ function php_compat_debug_print_backtrace()
     // Get backtrace
     $backtrace = debug_backtrace();
 
-    // Unset call to php_compat_debug_print_backtrace
+    // Unset call to debug_print_backtrace
     array_shift($backtrace);
-    
-    // Unset possible call to debug_print_backtrace
-    if (isset($backtrace[0]) &&
-        $backtrace[0]['function'] === 'debug_print_backtrace') {
-        array_shift($backtrace);
+    if (empty($backtrace)) {
+        return '';
     }
-    
+
     // Iterate backtrace
     $calls = array();
     foreach ($backtrace as $i => $call) {
+        if (!isset($call['file'])) {
+            $call['file'] = '(null)';
+        }
+        if (!isset($call['line'])) {
+            $call['line'] = '0';
+        }
         $location = $call['file'] . ':' . $call['line'];
         $function = (isset($call['class'])) ?
-            $call['class'] . '.' . $call['function'] :
+            $call['class'] . (isset($call['type']) ? $call['type'] : '.') . $call['function'] :
             $call['function'];
-       
+
         $params = '';
         if (isset($call['args'])) {
-            $params = implode(', ', $call['args']);
+            $args = array();
+            foreach ($call['args'] as $arg) {
+                if (is_array($arg)) {
+                    $args[] = print_r($arg, true);
+                } elseif (is_object($arg)) {
+                    $args[] = get_class($arg);
+                } else {
+                    $args[] = $arg;
+                }
+            }
+            $params = implode(', ', $args);
         }
 
         $calls[] = sprintf('#%d  %s(%s) called at [%s]',
             $i,
             $function,
             $params,
-            $location); 
+            $location);
     }
 
-    echo implode("\n", $calls);
+    echo implode("\n", $calls), "\n";
 }
-
 
 // Define
 if (!function_exists('debug_print_backtrace')) {
