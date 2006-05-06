@@ -59,6 +59,10 @@ function php_compat_http_build_query($formdata, $numeric_prefix = null)
     // Start building the query
     $tmp = array ();
     foreach ($formdata as $key => $val) {
+        if (is_null($val)) {
+            continue;
+        }
+
         if (is_integer($key) && $numeric_prefix != null) {
             $key = $numeric_prefix . $key;
         }

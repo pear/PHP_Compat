@@ -81,6 +81,10 @@ echo php_compat_http_build_query($data, 'flags_'), "\n";
 $data = array('foo' => null, 'bar' => fopen('php://input', 'r'));
 var_dump(php_compat_http_build_query($data, 'flags_'));
 
+// With a null value
+$data = array('foo' => null, 'bar' => 1);
+echo php_compat_http_build_query($data, 'flags_');
+
 ?>
 --EXPECT--
 flags_0=foo&flags_1=bar&flags_2=baz&flags_3=boom&cow=milk&php=hypertext+processor
@@ -93,3 +97,4 @@ foo[foo]=bar*foo[baz]=boom
 [0]=hello+world*foo=bar
 [0]=hello+world0foo=bar
 NULL
+bar=1
