@@ -84,6 +84,51 @@ $replace = array('frog', 'gate', 'beer');
 $subject = array('A {animal}', 'The {object}', 'My {thing}');
 print_r(php_compat_str_ireplace($search, $replace, $subject));
 
+
+//
+// Test 6: PCRE pattern syntax in search
+//
+$search = '$Price';
+$replace = '0.99';
+$subject = 'The cost is $price';
+echo php_compat_str_ireplace($search, $replace, $subject), "\n";
+
+
+//
+// Test 7: PCRE replacement syntax in replacement
+//
+$search = 'Price';
+$replace = '$0.99';
+$subject = 'The cost is price';
+echo php_compat_str_ireplace($search, $replace, $subject), "\n";
+
+
+//
+// Test 8: escaped PCRE replacement syntax in replacement
+//
+$search = 'Price';
+$replace = '\$0.99 \$1 \$11';
+$subject = 'The cost is price';
+echo php_compat_str_ireplace($search, $replace, $subject), "\n";
+
+
+//
+// Test 9: fake escaped PCRE replacement syntax in replacement
+//
+$search = 'Price';
+$replace = '\\\\$0.99';
+$subject = 'The cost is price';
+echo php_compat_str_ireplace($search, $replace, $subject), "\n";
+
+
+//
+// Test 10: mixture of backslashes
+//
+$search = 'Price';
+$replace = '\\$0\.\\\\9\\\9';
+$subject = 'The cost is price';
+echo php_compat_str_ireplace($search, $replace, $subject), "\n";
+
 ?>
 --EXPECT--
 The dog jumped over the fence
@@ -108,3 +153,8 @@ Array
     [1] => The gate
     [2] => My beer
 )
+The cost is 0.99
+The cost is $0.99
+The cost is \$0.99 \$1 \$11
+The cost is \\$0.99
+The cost is \$0\.\\9\\9

@@ -25,6 +25,7 @@
  * @package     PHP_Compat
  * @link        http://php.net/function.str_ireplace
  * @author      Aidan Lister <aidan@php.net>
+ * @author      Arpad Ray <arpad@php.net>
  * @version     $Revision$
  * @since       PHP 5
  * @require     PHP 4.0.0 (user_error)
@@ -72,32 +73,18 @@ function php_compat_str_ireplace($search, $replace, $subject, &$count)
         $subject = array ($subject);
     }
 
-    // Loop through each subject
-    $count = 0;
-    foreach ($subject as $subject_key => $subject_value) {
-        // Loop through each search
-        foreach ($search as $search_key => $search_value) {
-            // Split the array into segments, in between each part is our search
-            $segments = explode(strtolower($search_value), strtolower($subject_value));
-
-            // The number of replacements done is the number of segments minus the first
-            $count += count($segments) - 1;
-            $pos = 0;
-
-            // Loop through each segment
-            foreach ($segments as $segment_key => $segment_value) {
-                // Replace the lowercase segments with the upper case versions
-                $segments[$segment_key] = substr($subject_value, $pos, strlen($segment_value));
-                // Increase the position relative to the initial string
-                $pos += strlen($segment_value) + strlen($search_value);
-            }
-
-            // Put our original string back together
-            $subject_value = implode($replace[$search_key], $segments);
-        }
-
-        $result[$subject_key] = $subject_value;
+    // Prepare the search array
+    foreach ($search as $search_key => $search_value) {
+        $search[$search_key] = '/' . preg_quote($search_value, '/') . '/i';
     }
+    
+    // Prepare the replace array (escape backreferences)
+    foreach ($replace as $k => $v) {   
+        $replace[$k] = str_replace(array(chr(92), '$'), array(chr(92) . chr(92), '\$'), $v);
+    }
+
+    // do the replacement
+    $result = preg_replace($search, $replace, $subject, -1, $count);
 
     // Check if subject was initially a string and return it as a string
     if ($was_array === true) {
