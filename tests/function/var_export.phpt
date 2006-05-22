@@ -45,6 +45,9 @@ echo "\n\n";
 $var = new stdClass;
 $var->foo = 'foo';
 $var->bar = 'bar';
+$inner = new stdClass;
+$inner->bar = 'foo';
+$var->baz = $inner;
 $var = array(array($var));
 php_compat_var_export($var);
 
@@ -112,9 +115,13 @@ array (
   0 => 
   array (
     0 => 
-    class stdClass {
-      var $foo = 'foo';
-      var $bar = 'bar';
-    },
+    stdClass::__set_state(array(
+       'foo' => 'foo',
+       'bar' => 'bar',
+       'baz' => 
+      stdClass::__set_state(array(
+         'bar' => 'foo',
+      )),
+    )),
   ),
 )
