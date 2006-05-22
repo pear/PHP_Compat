@@ -29,7 +29,7 @@
  * @since       PHP 4.2.0
  * @require     PHP 4.0.0 (user_error)
  */
-function php_compat_var_export($var, $return = false, $level = 0)
+function php_compat_var_export($var, $return = false, $level = 0, $inObject = false)
 {
     // Init
     $indent      = '  ';
@@ -47,18 +47,27 @@ function php_compat_var_export($var, $return = false, $level = 0)
         $previndent .= $indent;
     }
 
+    $varType = gettype($var);
+
+    // Handle object indentation oddity
+    if ($inObject && $varType != 'object') {
+        $previndent = substr($previndent, 0, -1);
+    }
+
+
     // Handle each type
-    switch (gettype($var)) {
+    switch ($varType) {
         // Array
         case 'array':
-            $out = 'array (' . $newline;
+            if ($inObject) {
+                $out .= $newline . $previndent;
+            }
+            $out .= 'array (' . $newline;
             foreach ($var as $key => $value) {
                 // Key
                 if (is_string($key)) {
                     // Make key safe
-                    for ($i = 0, $c = count($find); $i < $c; $i++) {
-                        $key = str_replace($find[$i], $replace[$i], $key);
-                    }
+                    $key = str_replace($find, $replace, $key);
                     $key = $stringdelim . $key . $stringdelim;
                 }
                 
@@ -107,19 +116,14 @@ function php_compat_var_export($var, $return = false, $level = 0)
         // Objects
         case 'object':
             // Start the object export
-            $out = $newline . $previndent . 'class ' . get_class($var) . ' {' . $newline;
-
+            $out = $newline . $previndent;
+            $out .= get_class($var) . '::__set_state(array(' . $newline;
             // Export the object vars
-            foreach (get_object_vars($var) as $key => $val) {
-                $out .= $previndent . '  var $' . $key . ' = ';
-                if (is_array($val)) {
-                    $export = php_compat_var_export($val, true, $level);
-                    $out .= $newline . $previndent . $indent .  $export  . ';' . $newline;
-                } else {
-                    $out .= php_compat_var_export($val, true, $level) . ';' . $newline;
-                }
+            foreach(get_object_vars($var) as $key => $value) {
+                $out .= $previndent . $indent . ' ' . $stringdelim . $key . $stringdelim . $doublearrow;
+                $out .= php_compat_var_export($value, true, $level, true) . $lineend;
             }
-            $out .= $previndent . '}';
+            $out .= $previndent . '))';
             break;
     }
 
@@ -134,8 +138,8 @@ function php_compat_var_export($var, $return = false, $level = 0)
 
 // Define
 if (!function_exists('var_export')) {
-    function var_export($var, $return = false, $level = 0)
+    function var_export($var, $return = false)
     {
-        return php_compat_var_export($var, $return, $level);
+        return php_compat_var_export($var, $return);
     }
 }
