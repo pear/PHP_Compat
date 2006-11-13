@@ -38,8 +38,8 @@ function php_compat_strpbrk($haystack, $char_list)
     }
 
     if (!is_scalar($char_list)) {
-        user_error('strpbrk() expects parameter 2 to be scalar, ' .
-            gettype($needle) . ' given', E_USER_WARNING);
+        user_error('strpbrk() expects parameter 2 to be string, ' .
+            gettype($char_list) . ' given', E_USER_WARNING);
         return false;
     }
 
