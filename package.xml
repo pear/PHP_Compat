@@ -314,10 +314,13 @@
 
     <release>
         <version>1.6.0</version>
-        <date>2005-12-xx</date>
+        <date>2006-12-xx</date>
         <license>PHP License</license>
         <state>stable</state>
         <notes>
+         Added more components:
+         * array_fill
+
          Added more components with changed parameters:
          * array_splice
          * microtime
@@ -329,6 +332,11 @@
          * magic_quotes_gpc
          * register_argc_argv
          * register_long_arrays
+
+         Changed the way PHP_Compat stores functions.
+         * Function declaration is prefixed with php_compat_
+         * Dummy declaration calls php_compat_ function
+         This allows for redefinition of functions with changed parameters.
         </notes>
         <filelist>
             <dir name="/" baseinstalldir="PHP" role="php">     
@@ -363,6 +371,7 @@
                         <file>array_diff_key.php</file>
                         <file>array_diff_uassoc.php</file>
                         <file>array_diff_ukey.php</file>
+                        <file>array_fill.php</file>
                         <file>array_intersect_assoc.php</file>
                         <file>array_intersect_key.php</file>
                         <file>array_intersect_uassoc.php</file>
@@ -460,6 +469,7 @@
                         <file>array_diff_key.phpt</file>
                         <file>array_diff_uassoc.phpt</file>
                         <file>array_diff_ukey.phpt</file>
+                        <file>array_fill.phpt</file>
                         <file>array_intersect_assoc.phpt</file>
                         <file>array_intersect_key.phpt</file>
                         <file>array_intersect_uassoc.phpt</file>
