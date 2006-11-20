@@ -48,9 +48,9 @@ function php_compat_array_fill($start_index, $num, $value)
 
 // Define
 if (!function_exists('array_fill')) {
-    function array_chunk($start_index, $num, $value)
+    function array_fill($start_index, $num, $value)
     {
-        return php_compat_array_chunk($start_index, $num, $value);
+        return php_compat_array_fill($start_index, $num, $value);
     }
 }
 
