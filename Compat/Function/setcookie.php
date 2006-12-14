@@ -12,43 +12,36 @@
 // | obtain it through the world-wide-web, please send a note to          |
 // | license@php.net so we can mail you a copy immediately.               |
 // +----------------------------------------------------------------------+
-// | Authors: Aidan Lister <aidan@php.net>                                |
+// | Authors: Stefan Neufeind <neufeind@php.net>                          |
+// |          Aidan Lister <aidan@php.net>                                |
 // +----------------------------------------------------------------------+
 //
-// $Id$
+// $Id $
 
 
 /**
- * Replace str_shuffle()
+ * Replace setcookie()
  *
  * @category    PHP
  * @package     PHP_Compat
- * @link        http://php.net/function.str_shuffle
- * @author      Aidan Lister <aidan@php.net>
+ * @link        http://php.net/function.setcookie
+ * @author      Stefan Neufeind <neufeind@php.net>
  * @version     $Revision$
- * @since       PHP 4.3.0
- * @require     PHP 4.0.0 (user_error)
+ * @since       PHP 5.2 (Added optional httponly parameter)
+ * @require     PHP 3 (setcookie)
  */
-function php_compat_str_shuffle($str)
-{
-    $result = (string) $str;
-    
-    for ($i = strlen($str) - 1; $i >= 0; $i--) {
-        // Swap random character from [0..$i] to position [$i].
-        $j = mt_rand(0, $i);
-        $tmp = $str[$i];
-        $str[$i] = $str[$j];
-        $str[$j] = $tmp;
-    }
-    
-    return $result;
+function php_compat_setcookie($name, $value, $expire, $path, $domain, $secure, $httponly)
+{    
+    // Following the idea on Matt Mecham's blog
+    // http://blog.mattmecham.com/archives/2006/09/http_only_cookies_without_php.html
+    $domain === ($httponly === true) ? $domain . '; HttpOnly' : $domain;
+    setcookie($name, $value, $expire, $path, $domain, $secure);
 }
 
-
 // Define
-if (!function_exists('str_shuffle')) {
-    function str_shuffle($str)
+if (!function_exists('setcookie')) {
+    function setcookie($name, $value, $expire, $path, $domain, $secure, $httponly)
     {
-        return php_compat_str_shuffle($str);
+        return php_compat_setcookie($name, $value, $expire, $path, $domain, $secure, $httponly)
     }
 }

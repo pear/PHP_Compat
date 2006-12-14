@@ -326,6 +326,8 @@
          * microtime
          * mkdir
          * range
+         * setcookie
+         * setrawcookie
 
          Added new Environment module
          * register_globals
@@ -431,6 +433,8 @@
                         <file>restore_include_path.php</file>
                         <file>scandir.php</file>
                         <file>set_include_path.php</file>
+                        <file>setcookie.php</file>
+                        <file>setrawcookie.php</file>
                         <file>str_ireplace.php</file>
                         <file>str_rot13.php</file>
                         <file>str_shuffle.php</file>
@@ -529,6 +533,8 @@
                         <file>restore_include_path.phpt</file>
                         <file>scandir.phpt</file>
                         <file>set_include_path.phpt</file>
+                        <file>setcookie.phpt</file>
+                        <file>setrawcookie.phpt</file>
                         <file>str_ireplace.phpt</file>
                         <file>str_rot13.phpt</file>
                         <file>str_shuffle.phpt</file>
