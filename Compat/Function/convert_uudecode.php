@@ -48,7 +48,7 @@ function php_compat_convert_uudecode($string)
     $decoded = '';
     foreach (explode("\n", $string) as $line) {
 
-        $c = count($bytes = unpack('c*', substr(trim($line), 1)));
+        $c = count($bytes = unpack('c*', substr(trim($line,"\r\n\t"), 1)));
 
         while ($c % 4) {
             $bytes[++$c] = 0;
