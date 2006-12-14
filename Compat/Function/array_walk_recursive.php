@@ -37,7 +37,7 @@ function php_compat_array_walk_recursive(&$input, $funcname)
         if (is_array($funcname)) {
             $funcname = $funcname[0] . '::' . $funcname[1];
         }
-        user_error('array_walk_recursive() Not a valid callback ' . $user_func,
+        user_error('array_walk_recursive() Not a valid callback ' . $funcname,
             E_USER_WARNING);
         return;
     }

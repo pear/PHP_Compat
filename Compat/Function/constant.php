@@ -36,7 +36,8 @@ function php_compat_constant($constant)
         user_error($error, E_USER_WARNING);
         return false;
     }
-
+    
+    $value = null;
     eval("\$value=$constant;");
 
     return $value;    

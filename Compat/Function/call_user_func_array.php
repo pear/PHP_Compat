@@ -53,6 +53,7 @@ function php_compat_call_user_func_array($function, $param_arr)
     }
 
     // Determine method of calling function
+    $retval = null;
     if (is_array($function)) {
         $object =& $function[0];
         $method = $function[1];
