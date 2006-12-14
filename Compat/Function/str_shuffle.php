@@ -31,17 +31,18 @@
  */
 function php_compat_str_shuffle($str)
 {
-    $result = (string) $str;
+    // Cast
+    $str = (string) $str;
     
-    for ($i = strlen($str) - 1; $i >= 0; $i--) {
-        // Swap random character from [0..$i] to position [$i].
+    // Swap random character from [0..$i] to position [$i].
+    for ($i = strlen($str) - 1; $i >= 0; $i--) {  
         $j = mt_rand(0, $i);
         $tmp = $str[$i];
         $str[$i] = $str[$j];
         $str[$j] = $tmp;
     }
     
-    return $result;
+    return $str;
 }
 
 
