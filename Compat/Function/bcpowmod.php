@@ -29,7 +29,7 @@
  * @since       PHP 5.0.0
  * @require     PHP 4.0.0 (user_error)
  */
-function php_compat_bcpowmod($x, $y, $modulus, $scale)
+function php_compat_bcpowmod($x, $y, $modulus, $scale = 0)
 {
     // Sanity check
     if (!is_scalar($x)) {
@@ -73,7 +73,7 @@ function php_compat_bcpowmod($x, $y, $modulus, $scale)
 
 // Define
 if (!function_exists('bcpowmod')) {
-    function bcpowmod($x, $y, $modulus, $scale)
+    function bcpowmod($x, $y, $modulus, $scale = 0)
     {
         return php_compat_bcpowmod($x, $y, $modulus, $scale);
     }
