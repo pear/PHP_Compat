@@ -314,9 +314,9 @@
 
     <release>
         <version>1.6.0</version>
-        <date>2006-12-xx</date>
+        <date>2007-01-xx</date>
         <license>PHP License</license>
-        <state>stable</state>
+        <state>beta</state>
         <notes>
          Added more components:
          * array_fill
@@ -339,6 +339,10 @@
          * Function declaration is prefixed with php_compat_
          * Dummy declaration calls php_compat_ function
          This allows for redefinition of functions with changed parameters.
+
+         Added support for packages which modify the function tables at runtime
+         * PHP_Compat::loadFunction now tries to rename the old function on load
+         This further supports redefinition of functions with changed parameters.
         </notes>
         <filelist>
             <dir name="/" baseinstalldir="PHP" role="php">     
