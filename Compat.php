@@ -41,7 +41,7 @@ class PHP_Compat
      */
     function loadFunction($function)
     {
-        // Recursiveness
+        // Multiple
         if (is_array($function)) {
             $res = array();
             foreach ($function as $singlefunc) {
@@ -51,7 +51,20 @@ class PHP_Compat
             return $res;
         }
 
-        // Load function
+        // Check for packages which can modify the function table at runtime
+        $symbolfuncs = array('rename_function', 'runkit_rename_function');
+        foreach ($symbolfuncs as $symbolfunc) {
+            $renamedfunction = 'php_compat_renamed' . $function;
+            if (function_exists($symbolfunc) &&
+                function_exists($function) &&
+                !function_exists($renamedfunction)) {
+                    
+                // Rename the core function
+                rename_function($function, $renamedfunction);
+                break;
+        }
+
+        // Single
         if (!function_exists($function)) {
             $file = sprintf('PHP/Compat/Function/%s.php', $function);
             if ((@include_once $file) !== false) {
@@ -71,7 +84,7 @@ class PHP_Compat
      */
     function loadConstant($constant)
     {
-        // Recursiveness
+        // Multiple
         if (is_array($constant)) {
             $res = array();
             foreach ($constant as $singleconst) {
@@ -81,7 +94,7 @@ class PHP_Compat
             return $res;
         }
 
-        // Load constant
+        // Single
         $file = sprintf('PHP/Compat/Constant/%s.php', $constant);
         if ((@include_once $file) !== false) {
             return true;
@@ -148,5 +161,3 @@ class PHP_Compat
         return $res;
     }
 }
-
-?>
