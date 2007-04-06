@@ -36,6 +36,24 @@ class testclass4
     }
 }
 
+class testclass5 {
+    var $child;
+    var $foo;
+    function __clone() {
+        $this->child = php_compat_clone($this->child);
+        $this->child->parent = null;
+        $this->child->parent = &$this;
+    }
+}
+
+class testclass5child extends testclass5 {
+    var $parent;
+    function testclass5child()
+    {
+        $this->child = new stdClass;   
+    }
+}
+
 // Test 1: Initial value
 $aa = new testclass;
 echo $aa->foo, "\n"; // foo
@@ -59,6 +77,27 @@ $aclone = php_compat_clone($a);
 $aclone->b->bar = 'goodbye';
 echo $a->foo->bar, "\n";
 
+// Test 5: Bug #7519 - clone does not return reference
+$a = new testclass5;
+$a->foo = 'original parent';
+$a->child = new testclass5child;
+$a->child->parent = &$a;
+$a->child->foo = 'original child';
+
+$b = php_compat_clone($a);
+$b->foo = 'new parent';
+$b->child->foo = 'new child';
+
+echo $b->child->parent->foo, "\n"; // new parent
+echo $b->foo, "\n"; // new parent
+echo $a->child->parent->foo, "\n"; // original parent
+echo $a->foo, "\n"; // original parent
+
+echo $b->child->foo, "\n"; // new child
+echo $b->child->parent->child->foo, "\n"; // new child
+echo $a->child->foo, "\n"; // original child
+echo $a->child->parent->child->foo, "\n"; // original child
+
 ?>
 --EXPECT--
 foo
@@ -66,3 +105,11 @@ foo
 foo
 bar
 hello
+new parent
+new parent
+original parent
+original parent
+new child
+new child
+original child
+original child
