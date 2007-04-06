@@ -48,4 +48,15 @@ if (!defined('UPLOAD_ERR_NO_FILE')) {
     define('UPLOAD_ERR_NO_FILE', 4);
 }
 
+if (!defined('UPLOAD_ERR_NO_TMP_DIR')) {
+    define('UPLOAD_ERR_NO_TMP_DIR', 6);
+}
+
+if (!defined('UPLOAD_ERR_CANT_WRITE')) {
+    define('UPLOAD_ERR_CANT_WRITE', 7);
+}
+
+if (!defined('UPLOAD_ERR_EXTENSION')) {
+    define('UPLOAD_ERR_EXTENSION', 8);
+}
 ?>
