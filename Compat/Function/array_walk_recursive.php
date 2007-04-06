@@ -51,15 +51,16 @@ function php_compat_array_walk_recursive(&$input, $funcname)
     $args = func_get_args();
 
     foreach ($input as $key => $item) {
+        $callArgs = $args;
         if (is_array($item)) {
-            array_walk_recursive($item, $funcname, $args);
-            $input[$key] = $item;
+            $thisCall = 'php_compat_array_walk_recursive';
+            $callArgs[1] = $funcname;
         } else {
-            $args[0] = &$item;
-            $args[1] = &$key;
-            call_user_func_array($funcname, $args);
-            $input[$key] = $item;
+            $thisCall = $funcname;
+            $callArgs[1] = $key;
         }
+        $callArgs[0] = &$input[$key];
+        call_user_func_array($thisCall, $callArgs);
     }    
 }
 
