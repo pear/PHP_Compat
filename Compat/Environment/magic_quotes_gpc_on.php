@@ -19,7 +19,7 @@
 
 
 /**
- * Emulate enviroment magic_quotes_gpc=on
+ * Emulate environment magic_quotes_gpc=on
  *
  * @category    PHP
  * @package     PHP_Compat
@@ -27,28 +27,42 @@
  * @author      Arpad Ray <arpad@php.net>
  * @version     $Revision$
  */
-if (!get_magic_quotes_gpc() && !ini_get('magic_quotes_sybase')) {
-    // Recursive addslashes function
-    function php_compat_mqgpc_escape($value, $keybug)
-    {
-        if (!is_array($value)) {
-            return addslashes($value);
+
+// wrap everything in a function to keep global scope clean
+function php_compat_magic_quotes_gpc_on()
+{
+    #require_once 'PHP/Compat/Environment/_magic_quotes_inputs.php';
+    require_once 'c:/web/pear/PHP_Compat/Compat/Environment/_magic_quotes_inputs.php';
+
+    $mqOn = get_magic_quotes_gpc();
+    if ($phpLt522 || !$mqOn && !ini_get('magic_quotes_sybase')) {
+        $inputCount = count($inputs);
+        while (list($k, $v) = each($inputs)) {
+            foreach ($v as $var => $value) {
+                $isArray = is_array($value);
+                $order1 = $k < $inputCount;
+                if ($phpLt50 
+                     ? ($order1 || (!$isArray && $phpLt434))
+                     : $order1 && $isArray) {
+                    $tvar = addslashes($var);
+                    if ($var != $tvar) {
+                        $tvalue = $inputs[$k][$var];
+                        $inputs[$k][$tvar] = $tvalue;
+                        unset($inputs[$k][$var]);
+                        $var = $tvar;
+                    }
+                }
+                if ($isArray) {
+                    $inputs[] = &$inputs[$k][$var];
+                } else {
+                    $inputs[$k][$var] = $mqOn ? $value : addslashes($value);
+                }
+            }
         }
-        foreach ($value as $k => $v) {
-            $k = $keybug ? $k : addslashes($k);
-            $value[$k] = php_compat_mqgpc_escape($v, $keybug);
-        }
-        return $value;
-    }
-
-    // between 5.0.0 and 5.1.0, array keys in the superglobals were escaped even with register_globals off
-    $keybug = (version_compare(PHP_VERSION, '5.0.0', '>=') && version_compare(PHP_VERSION, '5.1.0', '<'));
-
-    $inputs = array(&$_POST, &$_GET, &$_COOKIE);
-    foreach ($inputs as $k => $input) {
-        $inputs[$k] = php_compat_mqgpc_escape($input, $keybug);
-    }
-
-    // Register the change
-    ini_set('magic_quotes_gpc', 'on');
+    
+        // Register the change
+        ini_set('magic_quotes_gpc', 'on');
+    }       
 }
+php_compat_magic_quotes_gpc_on();
+
