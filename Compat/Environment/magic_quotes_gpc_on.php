@@ -31,9 +31,8 @@
 // wrap everything in a function to keep global scope clean
 function php_compat_magic_quotes_gpc_on()
 {
-    #require_once 'PHP/Compat/Environment/_magic_quotes_inputs.php';
-    require_once 'c:/web/pear/PHP_Compat/Compat/Environment/_magic_quotes_inputs.php';
-
+    require_once 'PHP/Compat/Environment/_magic_quotes_inputs.php';
+    
     $mqOn = get_magic_quotes_gpc();
     if ($phpLt522 || !$mqOn && !ini_get('magic_quotes_sybase')) {
         $inputCount = count($inputs);
