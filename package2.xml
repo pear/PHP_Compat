@@ -88,214 +88,214 @@ http://pear.php.net/dtd/package-2.0.xsd">
  * Implement Feature #10177: add most recent UPLOAD ERR constants [arpad]
  </notes>
  <contents>
- <dir name="/" baseinstalldir="PHP" role="php">     
- <file>Compat.php</file>
+ <dir name="/" baseinstalldir="PHP">     
+ <file role="php" name="Compat.php" />
  <dir name="Compat">
- <file>Components.php</file>
+ <file role="php" name="Components.php" />
  <dir name="Constant">
- <file>DIRECTORY_SEPARATOR.php</file>
- <file>E_STRICT.php</file>
- <file>FILE.php</file>
- <file>PATH_SEPARATOR.php</file>
- <file>PHP_EOL.php</file>
- <file>STD.php</file>
- <file>T.php</file>
- <file>UPLOAD_ERR.php</file>
+ <file role="php" name="DIRECTORY_SEPARATOR.php" />
+ <file role="php" name="E_STRICT.php" />
+ <file role="php" name="FILE.php" />
+ <file role="php" name="PATH_SEPARATOR.php" />
+ <file role="php" name="PHP_EOL.php" />
+ <file role="php" name="STD.php" />
+ <file role="php" name="T.php" />
+ <file role="php" name="UPLOAD_ERR.php" />
  </dir>
  <dir name="Environment">
- <file>magic_quotes_gpc_off.php</file>
- <file>magic_quotes_gpc_on.php</file>
- <file>register_argc_argv_off.php</file>
- <file>register_argc_argv_on.php</file>
- <file>register_globals_off.php</file>
- <file>register_globals_on.php</file>
- <file>register_long_arrays_off.php</file>
- <file>register_long_arrays_on.php</file>
+ <file role="php" name="magic_quotes_gpc_off.php" />
+ <file role="php" name="magic_quotes_gpc_on.php" />
+ <file role="php" name="register_argc_argv_off.php" />
+ <file role="php" name="register_argc_argv_on.php" />
+ <file role="php" name="register_globals_off.php" />
+ <file role="php" name="register_globals_on.php" />
+ <file role="php" name="register_long_arrays_off.php" />
+ <file role="php" name="register_long_arrays_on.php" />
  </dir>
  <dir name="Function">
- <file>array_change_key_case.php</file>
- <file>array_chunk.php</file>
- <file>array_combine.php</file>
- <file>array_diff_assoc.php</file>
- <file>array_diff_key.php</file>
- <file>array_diff_uassoc.php</file>
- <file>array_diff_ukey.php</file>
- <file>array_fill.php</file>
- <file>array_intersect_assoc.php</file>
- <file>array_intersect_key.php</file>
- <file>array_intersect_uassoc.php</file>
- <file>array_intersect_ukey.php</file>
- <file>array_key_exists.php</file>
- <file>array_product.php</file>
- <file>array_search.php</file>
- <file>array_slice.php</file>
- <file>array_udiff.php</file>
- <file>array_udiff_assoc.php</file>
- <file>array_udiff_uassoc.php</file>
- <file>array_uintersect.php</file>
- <file>array_uintersect_assoc.php</file>
- <file>array_uintersect_uassoc.php</file>
- <file>array_walk_recursive.php</file>
- <file>bcinvert.php</file>
- <file>bcpowmod.php</file>
- <file>call_user_func_array.php</file>
- <file>clone.php</file>
- <file>constant.php</file>
- <file>convert_uudecode.php</file>
- <file>convert_uuencode.php</file>
- <file>debug_print_backtrace.php</file>
- <file>file_get_contents.php</file>
- <file>file_put_contents.php</file>
- <file>floatval.php</file>
- <file>fprintf.php</file>
- <file>fputcsv.php</file>
- <file>get_headers.php</file>
- <file>get_include_path.php</file>
- <file>html_entity_decode.php</file>
- <file>htmlspecialchars_decode.php</file>
- <file>http_build_query.php</file>
- <file>ibase_timefmt.php</file>
- <file>idate.php</file>
- <file>image_type_to_mime_type.php</file>
- <file>inet_ntop.php</file>
- <file>inet_pton.php</file>
- <file>ini_get_all.php</file>
- <file>is_a.php</file>
- <file>is_scalar.php</file>
- <file>md5_file.php</file>
- <file>mhash.php</file>
- <file>microtime.php</file>
- <file>mime_content_type.php</file>
- <file>mkdir.php</file>
- <file>ob_clean.php</file>
- <file>ob_flush.php</file>
- <file>ob_get_clean.php</file>
- <file>ob_get_flush.php</file>
- <file>pg_affected_rows.php</file>
- <file>pg_escape_bytea.php</file>
- <file>pg_unescape_bytea.php</file>
- <file>php_strip_whitespace.php</file>
- <file>property_exists.php</file>
- <file>range.php</file>
- <file>restore_include_path.php</file>
- <file>scandir.php</file>
- <file>set_include_path.php</file>
- <file>setcookie.php</file>
- <file>setrawcookie.php</file>
- <file>str_ireplace.php</file>
- <file>str_rot13.php</file>
- <file>str_shuffle.php</file>
- <file>str_split.php</file>
- <file>str_word_count.php</file>
- <file>stripos.php</file>
- <file>strpbrk.php</file>
- <file>strripos.php</file>
- <file>substr_compare.php</file>
- <file>time_sleep_until.php</file>
- <file>var_export.php</file>
- <file>version_compare.php</file>
- <file>vprintf.php</file>
- <file>vsprintf.php</file>
+ <file role="php" name="array_change_key_case.php" />
+ <file role="php" name="array_chunk.php" />
+ <file role="php" name="array_combine.php" />
+ <file role="php" name="array_diff_assoc.php" />
+ <file role="php" name="array_diff_key.php" />
+ <file role="php" name="array_diff_uassoc.php" />
+ <file role="php" name="array_diff_ukey.php" />
+ <file role="php" name="array_fill.php" />
+ <file role="php" name="array_intersect_assoc.php" />
+ <file role="php" name="array_intersect_key.php" />
+ <file role="php" name="array_intersect_uassoc.php" />
+ <file role="php" name="array_intersect_ukey.php" />
+ <file role="php" name="array_key_exists.php" />
+ <file role="php" name="array_product.php" />
+ <file role="php" name="array_search.php" />
+ <file role="php" name="array_slice.php" />
+ <file role="php" name="array_udiff.php" />
+ <file role="php" name="array_udiff_assoc.php" />
+ <file role="php" name="array_udiff_uassoc.php" />
+ <file role="php" name="array_uintersect.php" />
+ <file role="php" name="array_uintersect_assoc.php" />
+ <file role="php" name="array_uintersect_uassoc.php" />
+ <file role="php" name="array_walk_recursive.php" />
+ <file role="php" name="bcinvert.php" />
+ <file role="php" name="bcpowmod.php" />
+ <file role="php" name="call_user_func_array.php" />
+ <file role="php" name="clone.php" />
+ <file role="php" name="constant.php" />
+ <file role="php" name="convert_uudecode.php" />
+ <file role="php" name="convert_uuencode.php" />
+ <file role="php" name="debug_print_backtrace.php" />
+ <file role="php" name="file_get_contents.php" />
+ <file role="php" name="file_put_contents.php" />
+ <file role="php" name="floatval.php" />
+ <file role="php" name="fprintf.php" />
+ <file role="php" name="fputcsv.php" />
+ <file role="php" name="get_headers.php" />
+ <file role="php" name="get_include_path.php" />
+ <file role="php" name="html_entity_decode.php" />
+ <file role="php" name="htmlspecialchars_decode.php" />
+ <file role="php" name="http_build_query.php" />
+ <file role="php" name="ibase_timefmt.php" />
+ <file role="php" name="idate.php" />
+ <file role="php" name="image_type_to_mime_type.php" />
+ <file role="php" name="inet_ntop.php" />
+ <file role="php" name="inet_pton.php" />
+ <file role="php" name="ini_get_all.php" />
+ <file role="php" name="is_a.php" />
+ <file role="php" name="is_scalar.php" />
+ <file role="php" name="md5_file.php" />
+ <file role="php" name="mhash.php" />
+ <file role="php" name="microtime.php" />
+ <file role="php" name="mime_content_type.php" />
+ <file role="php" name="mkdir.php" />
+ <file role="php" name="ob_clean.php" />
+ <file role="php" name="ob_flush.php" />
+ <file role="php" name="ob_get_clean.php" />
+ <file role="php" name="ob_get_flush.php" />
+ <file role="php" name="pg_affected_rows.php" />
+ <file role="php" name="pg_escape_bytea.php" />
+ <file role="php" name="pg_unescape_bytea.php" />
+ <file role="php" name="php_strip_whitespace.php" />
+ <file role="php" name="property_exists.php" />
+ <file role="php" name="range.php" />
+ <file role="php" name="restore_include_path.php" />
+ <file role="php" name="scandir.php" />
+ <file role="php" name="set_include_path.php" />
+ <file role="php" name="setcookie.php" />
+ <file role="php" name="setrawcookie.php" />
+ <file role="php" name="str_ireplace.php" />
+ <file role="php" name="str_rot13.php" />
+ <file role="php" name="str_shuffle.php" />
+ <file role="php" name="str_split.php" />
+ <file role="php" name="str_word_count.php" />
+ <file role="php" name="stripos.php" />
+ <file role="php" name="strpbrk.php" />
+ <file role="php" name="strripos.php" />
+ <file role="php" name="substr_compare.php" />
+ <file role="php" name="time_sleep_until.php" />
+ <file role="php" name="var_export.php" />
+ <file role="php" name="version_compare.php" />
+ <file role="php" name="vprintf.php" />
+ <file role="php" name="vsprintf.php" />
  </dir>
  </dir>
- <dir name="tests" role="test">
- <file>loadconstant.phpt</file>
- <file>loadfunction.phpt</file>
- <file>loadversion.phpt</file>
+ <dir name="tests">
+ <file role="test" name="loadconstant.phpt" />
+ <file role="test" name="loadfunction.phpt" />
+ <file role="test" name="loadversion.phpt" />
  <dir name="constant">
- <file>directory_separator.phpt</file>
- <file>e_strict.phpt</file>
- <file>file.phpt</file>
- <file>path_separator.phpt</file>
- <file>php_eol.phpt</file>
- <file>std.phpt</file>
- <file>t.phpt</file>
- <file>upload_err.phpt</file>
+ <file role="test" name="directory_separator.phpt" />
+ <file role="test" name="e_strict.phpt" />
+ <file role="test" name="file.phpt" />
+ <file role="test" name="path_separator.phpt" />
+ <file role="test" name="php_eol.phpt" />
+ <file role="test" name="std.phpt" />
+ <file role="test" name="t.phpt" />
+ <file role="test" name="upload_err.phpt" />
  </dir>
  <dir name="function">
- <file>array_change_key_case.phpt</file>
- <file>array_chunk.phpt</file>
- <file>array_combine.phpt</file>
- <file>array_diff_assoc.phpt</file>
- <file>array_diff_key.phpt</file>
- <file>array_diff_uassoc.phpt</file>
- <file>array_diff_ukey.phpt</file>
- <file>array_fill.phpt</file>
- <file>array_intersect_assoc.phpt</file>
- <file>array_intersect_key.phpt</file>
- <file>array_intersect_uassoc.phpt</file>
- <file>array_intersect_ukey.phpt</file>
- <file>array_key_exists.phpt</file>
- <file>array_product.phpt</file>
- <file>array_search.phpt</file>
- <file>array_slice.phpt</file>
- <file>array_udiff.phpt</file>
- <file>array_udiff_assoc.phpt</file>
- <file>array_udiff_uassoc.phpt</file>
- <file>array_uintersect.phpt</file>
- <file>array_uintersect_assoc.phpt</file>
- <file>array_uintersect_uassoc.phpt</file>
- <file>array_walk_recursive.phpt</file>
- <file>bcinvert.phpt</file>
- <file>bcpowmod.phpt</file>
- <file>call_user_func_array.phpt</file>
- <file>clone.phpt</file>
- <file>constant.phpt</file>
- <file>convert_uudecode.phpt</file>
- <file>convert_uuencode.phpt</file>
- <file>debug_print_backtrace.phpt</file>
- <file>file_get_contents.phpt</file>
- <file>file_put_contents.phpt</file>
- <file>floatval.phpt</file>
- <file>fprintf.phpt</file>
- <file>fputcsv.phpt</file>
- <file>get_headers.phpt</file>
- <file>get_include_path.phpt</file>
- <file>html_entity_decode.phpt</file>
- <file>htmlspecialchars_decode.phpt</file>
- <file>http_build_query.phpt</file>
- <file>ibase_timefmt.phpt</file>
- <file>idate.phpt</file>
- <file>image_type_to_mime_type.phpt</file>
- <file>inet_ntop.phpt</file>
- <file>inet_pton.phpt</file>
- <file>ini_get_all.phpt</file>
- <file>is_a.phpt</file>
- <file>is_scalar.phpt</file>
- <file>md5_file.phpt</file>
- <file>mhash.phpt</file>
- <file>microtime.phpt</file>
- <file>mime_content_type.phpt</file>
- <file>mkdir.phpt</file>
- <file>ob_clean.phpt</file>
- <file>ob_flush.phpt</file>
- <file>ob_get_clean.phpt</file>
- <file>ob_get_flush.phpt</file>
- <file>pg_affected_rows.phpt</file>
- <file>pg_escape_bytea.phpt</file>
- <file>pg_unescape_bytea.phpt</file>
- <file>php_strip_whitespace.phpt</file>
- <file>property_exists.phpt</file>
- <file>range.phpt</file>
- <file>restore_include_path.phpt</file>
- <file>scandir.phpt</file>
- <file>set_include_path.phpt</file>
- <file>setcookie.phpt</file>
- <file>setrawcookie.phpt</file>
- <file>str_ireplace.phpt</file>
- <file>str_rot13.phpt</file>
- <file>str_shuffle.phpt</file>
- <file>str_split.phpt</file>
- <file>str_word_count.phpt</file>
- <file>stripos.phpt</file>
- <file>strpbrk.phpt</file>
- <file>strripos.phpt</file>
- <file>substr_compare.phpt</file>
- <file>time_sleep_until.phpt</file>
- <file>var_export.phpt</file>
- <file>version_compare.phpt</file>
- <file>vprintf.phpt</file>
- <file>vsprintf.phpt</file>
+ <file role="test" name="array_change_key_case.phpt" />
+ <file role="test" name="array_chunk.phpt" />
+ <file role="test" name="array_combine.phpt" />
+ <file role="test" name="array_diff_assoc.phpt" />
+ <file role="test" name="array_diff_key.phpt" />
+ <file role="test" name="array_diff_uassoc.phpt" />
+ <file role="test" name="array_diff_ukey.phpt" />
+ <file role="test" name="array_fill.phpt" />
+ <file role="test" name="array_intersect_assoc.phpt" />
+ <file role="test" name="array_intersect_key.phpt" />
+ <file role="test" name="array_intersect_uassoc.phpt" />
+ <file role="test" name="array_intersect_ukey.phpt" />
+ <file role="test" name="array_key_exists.phpt" />
+ <file role="test" name="array_product.phpt" />
+ <file role="test" name="array_search.phpt" />
+ <file role="test" name="array_slice.phpt" />
+ <file role="test" name="array_udiff.phpt" />
+ <file role="test" name="array_udiff_assoc.phpt" />
+ <file role="test" name="array_udiff_uassoc.phpt" />
+ <file role="test" name="array_uintersect.phpt" />
+ <file role="test" name="array_uintersect_assoc.phpt" />
+ <file role="test" name="array_uintersect_uassoc.phpt" />
+ <file role="test" name="array_walk_recursive.phpt" />
+ <file role="test" name="bcinvert.phpt" />
+ <file role="test" name="bcpowmod.phpt" />
+ <file role="test" name="call_user_func_array.phpt" />
+ <file role="test" name="clone.phpt" />
+ <file role="test" name="constant.phpt" />
+ <file role="test" name="convert_uudecode.phpt" />
+ <file role="test" name="convert_uuencode.phpt" />
+ <file role="test" name="debug_print_backtrace.phpt" />
+ <file role="test" name="file_get_contents.phpt" />
+ <file role="test" name="file_put_contents.phpt" />
+ <file role="test" name="floatval.phpt" />
+ <file role="test" name="fprintf.phpt" />
+ <file role="test" name="fputcsv.phpt" />
+ <file role="test" name="get_headers.phpt" />
+ <file role="test" name="get_include_path.phpt" />
+ <file role="test" name="html_entity_decode.phpt" />
+ <file role="test" name="htmlspecialchars_decode.phpt" />
+ <file role="test" name="http_build_query.phpt" />
+ <file role="test" name="ibase_timefmt.phpt" />
+ <file role="test" name="idate.phpt" />
+ <file role="test" name="image_type_to_mime_type.phpt" />
+ <file role="test" name="inet_ntop.phpt" />
+ <file role="test" name="inet_pton.phpt" />
+ <file role="test" name="ini_get_all.phpt" />
+ <file role="test" name="is_a.phpt" />
+ <file role="test" name="is_scalar.phpt" />
+ <file role="test" name="md5_file.phpt" />
+ <file role="test" name="mhash.phpt" />
+ <file role="test" name="microtime.phpt" />
+ <file role="test" name="mime_content_type.phpt" />
+ <file role="test" name="mkdir.phpt" />
+ <file role="test" name="ob_clean.phpt" />
+ <file role="test" name="ob_flush.phpt" />
+ <file role="test" name="ob_get_clean.phpt" />
+ <file role="test" name="ob_get_flush.phpt" />
+ <file role="test" name="pg_affected_rows.phpt" />
+ <file role="test" name="pg_escape_bytea.phpt" />
+ <file role="test" name="pg_unescape_bytea.phpt" />
+ <file role="test" name="php_strip_whitespace.phpt" />
+ <file role="test" name="property_exists.phpt" />
+ <file role="test" name="range.phpt" />
+ <file role="test" name="restore_include_path.phpt" />
+ <file role="test" name="scandir.phpt" />
+ <file role="test" name="set_include_path.phpt" />
+ <file role="test" name="setcookie.phpt" />
+ <file role="test" name="setrawcookie.phpt" />
+ <file role="test" name="str_ireplace.phpt" />
+ <file role="test" name="str_rot13.phpt" />
+ <file role="test" name="str_shuffle.phpt" />
+ <file role="test" name="str_split.phpt" />
+ <file role="test" name="str_word_count.phpt" />
+ <file role="test" name="stripos.phpt" />
+ <file role="test" name="strpbrk.phpt" />
+ <file role="test" name="strripos.phpt" />
+ <file role="test" name="substr_compare.phpt" />
+ <file role="test" name="time_sleep_until.phpt" />
+ <file role="test" name="var_export.phpt" />
+ <file role="test" name="version_compare.phpt" />
+ <file role="test" name="vprintf.phpt" />
+ <file role="test" name="vsprintf.phpt" />
  </dir>
  </dir>
  </dir>
