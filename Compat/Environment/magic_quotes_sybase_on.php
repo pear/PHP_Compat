@@ -5,6 +5,8 @@
 /**
  * Emulate enviroment magic_quotes_sybase=on
  *
+ * See _magic_quotes_inputs.php for more details.
+ *
  * @category    PHP
  * @package     PHP_Compat
  * @license     LGPL - http://www.gnu.org/licenses/lgpl.html
@@ -13,43 +15,51 @@
  * @author      Arpad Ray <arpad@php.net>
  * @version     $Revision$
  */
-if (!ini_get('magic_quotes_sybase')) {
-    // Recursive stripslashes function
-    function php_compat_sybase_mqgpc_unescape($value, $keybug)
-    {
-        if (!is_array($value)) {
-            return stripslashes($value);
-        }
-        foreach ($value as $k => $v) {
-            $k = $keybug ? $k : stripslashes($k);
-            $value[$k] = php_compat_sybase_mqgpc_unescape($v, $keybug);
-        }
-        return $value;
-    }
-    // Recursively replace ' with ''
-    function php_compat_sybase_escape($value)
-    {
-        if (!is_array($value)) {
-            return str_replace('\'', '\'\'', $value);
-        }
-        foreach ($value as $k => $v) {
-            $k = str_replace('\'', '\'\'', $k);
-            $value[$k] = php_compat_sybase_escape($v);
-        }
-    }    
+function php_compat_magic_quotes_sybase_on()
+{
+    $stripping = false;
+    require 'PHP/Compat/Environment/_magic_quotes_inputs.php';
 
-    // between 5.0.0 and 5.1.0, array keys in the superglobals were escaped even with magic_quotes_gpc off
-    $keybug = (version_compare(PHP_VERSION, '5.0.0', '>=') && version_compare(PHP_VERSION, '5.1.0', '<'));
+    $compatMagicOn = !empty($GLOBALS['__PHP_Compat_ini']['magic_quotes_gpc']);
+    $magicOn = get_magic_quotes_gpc() || $compatMagicOn;
+    $allWorks = $allWorks || $compatMagicOn;
+    $compatSybaseOn = !empty($GLOBALS['__PHP_Compat_ini']['magic_quotes_sybase']);
+    $sybaseOn = ini_get('magic_quotes_sybase') || $compatSybaseOn;
 
-    $inputs = array(&$_POST, &$_GET, &$_COOKIE);
-    
-    if (ini_get('magic_quotes_gpc')) {
-        foreach ($inputs as $k => $input) {
-            $inputs[$k] = php_compat_sybase_mqgpc_unescape($input, $keybug);
+    if ($compatMagicOn || !$allWorks && $magicOn) {
+	if ($magicOn) {
+	    require 'PHP/Compat/Environment/magic_quotes_gpc_off.php';
+	}
+        $inputCount = count($inputs);
+        while (list($k, $v) = each($inputs)) {
+            foreach ($v as $var => $value) {
+                $isArray = is_array($value);
+                $order1 = $k < $inputCount;
+                $escapeKeys = $magicOn
+                    ? ($isArray ? $order1 : $phpLt434 || $order1 && $phpLt50)
+                    : $phpLt50 || !$phpLt51 || $isArray;
+                if ($escapeKeys || $compatMagicOn) {
+                    $tvar = str_replace('\'', '\'\'', $var);
+                    if ($var != $tvar) {
+                        $tvalue = $inputs[$k][$var];
+                        $inputs[$k][$tvar] = $tvalue;
+                        unset($inputs[$k][$var]);
+                        $var = $tvar;
+                    }
+                }
+                if ($isArray) {
+                    $inputs[] = &$inputs[$k][$var];
+                } else {
+                    $inputs[$k][$var] = $sybaseOn ? $value : str_replace('\'', '\'\'', $value);
+                }
+            }
         }
     }
-    $inputs = array_map('php_compat_sybase_escape', $inputs);
-    
-    // Register the change
-    ini_set('magic_quotes_sybase', 'on');
 }
+
+php_compat_magic_quotes_sybase_on();
+   
+// Register the change
+ini_set('magic_quotes_sybase', 1);
+$GLOBALS['__PHP_Compat_ini']['magic_quotes_sybase'] = true;
+
