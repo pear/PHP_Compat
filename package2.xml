@@ -45,7 +45,6 @@ http://pear.php.net/dtd/package-2.0.xsd">
  Added new Environment module
  * register_globals
  * magic_quotes_gpc
- * magic_quotes_sybase
  * register_argc_argv
  * register_long_arrays
 
