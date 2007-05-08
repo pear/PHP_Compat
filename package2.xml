@@ -19,8 +19,8 @@ http://pear.php.net/dtd/package-2.0.xsd">
   <email>arpad@php.net</email>
   <active>yes</active>
  </lead>
- <date>2007-04-15</date>
- <time>09:11:39</time>
+ <date>2007-05-09</date>
+ <time>12:11:39</time>
  <version>
   <release>1.6.0a1</release>
   <api>1.5.0</api>
@@ -93,6 +93,7 @@ http://pear.php.net/dtd/package-2.0.xsd">
  <dir name="Compat">
  <file role="php" name="Components.php" />
  <dir name="Constant">
+ <file role="php" name="DATE.php" />
  <file role="php" name="DIRECTORY_SEPARATOR.php" />
  <file role="php" name="E_STRICT.php" />
  <file role="php" name="FILE.php" />
@@ -105,6 +106,9 @@ http://pear.php.net/dtd/package-2.0.xsd">
  <dir name="Environment">
  <file role="php" name="magic_quotes_gpc_off.php" />
  <file role="php" name="magic_quotes_gpc_on.php" />
+ <file role="php" name="_magic_quotes_inputs.php" />
+ <file role="php" name="magic_quotes_sybase_off.php" />
+ <file role="php" name="magic_quotes_sybase_on.php" />
  <file role="php" name="register_argc_argv_off.php" />
  <file role="php" name="register_argc_argv_on.php" />
  <file role="php" name="register_globals_off.php" />
@@ -113,6 +117,7 @@ http://pear.php.net/dtd/package-2.0.xsd">
  <file role="php" name="register_long_arrays_on.php" />
  </dir>
  <dir name="Function">
+ <file role="php" name="acosh.php" />
  <file role="php" name="array_change_key_case.php" />
  <file role="php" name="array_chunk.php" />
  <file role="php" name="array_combine.php" />
@@ -136,6 +141,8 @@ http://pear.php.net/dtd/package-2.0.xsd">
  <file role="php" name="array_uintersect_assoc.php" />
  <file role="php" name="array_uintersect_uassoc.php" />
  <file role="php" name="array_walk_recursive.php" />
+ <file role="php" name="asinh.php" />
+ <file role="php" name="atanh.php" />
  <file role="php" name="bcinvert.php" />
  <file role="php" name="bcpowmod.php" />
  <file role="php" name="call_user_func_array.php" />
@@ -143,6 +150,7 @@ http://pear.php.net/dtd/package-2.0.xsd">
  <file role="php" name="constant.php" />
  <file role="php" name="convert_uudecode.php" />
  <file role="php" name="convert_uuencode.php" />
+ <file role="php" name="cosh.php" />
  <file role="php" name="debug_print_backtrace.php" />
  <file role="php" name="file_get_contents.php" />
  <file role="php" name="file_put_contents.php" />
@@ -151,6 +159,7 @@ http://pear.php.net/dtd/package-2.0.xsd">
  <file role="php" name="fputcsv.php" />
  <file role="php" name="get_headers.php" />
  <file role="php" name="get_include_path.php" />
+ <file role="php" name="glob.php" />
  <file role="php" name="html_entity_decode.php" />
  <file role="php" name="htmlspecialchars_decode.php" />
  <file role="php" name="http_build_query.php" />
@@ -161,6 +170,7 @@ http://pear.php.net/dtd/package-2.0.xsd">
  <file role="php" name="inet_pton.php" />
  <file role="php" name="ini_get_all.php" />
  <file role="php" name="is_a.php" />
+ <file role="php" name="is_callable.php" />
  <file role="php" name="is_scalar.php" />
  <file role="php" name="md5_file.php" />
  <file role="php" name="mhash.php" />
@@ -179,18 +189,20 @@ http://pear.php.net/dtd/package-2.0.xsd">
  <file role="php" name="range.php" />
  <file role="php" name="restore_include_path.php" />
  <file role="php" name="scandir.php" />
- <file role="php" name="set_include_path.php" />
  <file role="php" name="setcookie.php" />
+ <file role="php" name="set_include_path.php" />
  <file role="php" name="setrawcookie.php" />
+ <file role="php" name="sinh.php" />
+ <file role="php" name="strripos.php" />
  <file role="php" name="str_ireplace.php" />
+ <file role="php" name="strpbrk.php" />
+ <file role="php" name="stripos.php" />
  <file role="php" name="str_rot13.php" />
  <file role="php" name="str_shuffle.php" />
  <file role="php" name="str_split.php" />
  <file role="php" name="str_word_count.php" />
- <file role="php" name="stripos.php" />
- <file role="php" name="strpbrk.php" />
- <file role="php" name="strripos.php" />
  <file role="php" name="substr_compare.php" />
+ <file role="php" name="tanh.php" />
  <file role="php" name="time_sleep_until.php" />
  <file role="php" name="var_export.php" />
  <file role="php" name="version_compare.php" />
