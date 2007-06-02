@@ -14,41 +14,77 @@
  * @author      Arpad Ray <arpad@php.net>
  * @version     $Revision$
  */
-if (!ini_get('register_globals')) {
-    $superglobals = array(
-        'S' => '_SESSION',
-        'E' => '_ENV',
-        'C' => '_COOKIE',
-        'P' => '_POST',
-        'G' => '_GET'
-    );
+function php_compat_register_globals_on()
+{
+    $superglobals = array();
+    $phpLt410 = PHP_VERSION < 4.1;
+    $posting = $_SERVER['REQUEST_METHOD'] == 'POST';
+
+    // determine on which arrays to operate and in what order
+    if ($phpLt410 || ini_get('register_long_arrays')) {
+        global $HTTP_SERVER_VARS, $HTTP_ENV_VARS, $HTTP_COOKIE_VARS,
+            $HTTP_SESSION_VARS, $HTTP_POST_VARS, $HTTP_POST_FILES, $HTTP_GET_VARS;
+        $superglobals['S'][] = 'HTTP_SERVER_VARS';
+        $superglobals['E'][] = 'HTTP_ENV_VARS';
+        $superglobals['C'][] = 'HTTP_COOKIE_VARS';
+        $superglobals['C'][] = 'HTTP_SESSION_VARS';
+        $superglobals['G'][] = 'HTTP_GET_VARS';
+        if ($posting) {
+            $superglobals['P'][] = 'HTTP_POST_VARS';
+            $superglobals['P'][] = 'HTTP_POST_FILES';
+        }
+    }
+    if (!$phpLt410) {
+        $superglobals['S'][] = '_SERVER';
+        $superglobals['E'][] = '_ENV';
+        $superglobals['C'][] = '_COOKIE';
+        $superglobals['C'][] = '_SESSION';
+        $superglobals['G'][] = '_GET';
+        if ($posting) {
+            $superglobals['P'][] = '_POST';
+            $superglobals['P'][] = '_FILES';
+        }   
+    }
     $order = ini_get('variables_order');
     $order_length = strlen($order);
     $inputs = array();
 
-    // determine on which arrays to operate and in what order
     for ($i = 0; $i < $order_length; $i++) {
         $key = strtoupper($order[$i]);
-        if (!isset($superglobals[$key])
-             || ($key == 'S' && !isset($_SESSION))) {
+        if (!isset($superglobals[$key])) {
             continue;
         }
-        if ($key == 'P' && $_SERVER['REQUEST_METHOD'] == 'POST') {
-            $inputs[] = $_FILES;
+        foreach ($superglobals[$key] as $var) {
+            if (isset(${$var})) {
+                $inputs[] = ${$var};
+            }
         }
-        $inputs[] = ${$superglobals[$key]};
     }
 
-    // extract the specified arrays
-    $superglobals[] = 'GLOBALS';
-    for ($i = 0, $c = count($inputs); $i < $c; $i++) {
-        // ensure users can't set superglobals
-        $ins = array_intersect($superglobals, array_keys($inputs[$i]));
-        if (empty($ins)) {
-            extract($inputs[$i]);
+    // build lookup array of predefined vars
+    $allGlobals = array(
+        'GLOBALS' => 1, 'HTTP_RAW_POST_DATA' => 1,
+        'php_errormsg' => 1, 'http_response_header' => 1
+    );
+    foreach ($superglobals as $index => $vars) {
+        foreach ($vars as $var) {
+            $allGlobals[$var] = 1;
+        }
+    }
+
+    // extract the specified arrays, reverse order since we're not overwriting
+    for ($i = count($inputs); $i--;) {
+        foreach ($inputs[$i] as $var => $value) {
+            // ensure users can't set predefined vars or existing globals
+            if (!isset($allGlobals[$var]) && !isset($GLOBALS[$var])) {
+                $GLOBALS[$var] = $value;
+            }
         }
     }
 
     // Register the change
     ini_set('register_globals', 'on');
+}
+if (!ini_get('register_globals')) {
+    php_compat_register_globals_on();
 }
