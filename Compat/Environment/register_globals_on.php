@@ -55,8 +55,8 @@ function php_compat_register_globals_on()
             continue;
         }
         foreach ($superglobals[$key] as $var) {
-            if (isset(${$var})) {
-                $inputs[] = ${$var};
+            if (isset($GLOBALS[$var])) {
+                $inputs[] = $GLOBALS[$var];
             }
         }
     }
