@@ -44,10 +44,11 @@ class PHP_Compat
             if (function_exists($symbolfunc) &&
                 function_exists($function) &&
                 !function_exists($renamedfunction)) {
-                    
+
                 // Rename the core function
                 rename_function($function, $renamedfunction);
                 break;
+            }
         }
 
         // Single
@@ -137,7 +138,7 @@ class PHP_Compat
                         1 === version_compare($compversion, $phpversion)) ||    // C > PHP
                        (0 === version_compare($compversion, $version) ||        // C = S
                         1 === version_compare($compversion, $phpversion))) {    // C > PHP
-                    
+
                     $res[$type][$component] =
                         call_user_func(array('PHP_Compat', $methods[$type]), $component);
                 }

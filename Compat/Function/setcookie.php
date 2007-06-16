@@ -16,7 +16,7 @@
  * @require     PHP 3 (setcookie)
  */
 function php_compat_setcookie($name, $value, $expire, $path, $domain, $secure, $httponly)
-{    
+{
     // Following the idea on Matt Mecham's blog
     // http://blog.mattmecham.com/archives/2006/09/http_only_cookies_without_php.html
     $domain === ($httponly === true) ? $domain . '; HttpOnly' : $domain;
@@ -27,6 +27,6 @@ function php_compat_setcookie($name, $value, $expire, $path, $domain, $secure, $
 if (!function_exists('setcookie')) {
     function setcookie($name, $value, $expire, $path, $domain, $secure, $httponly)
     {
-        return php_compat_setcookie($name, $value, $expire, $path, $domain, $secure, $httponly)
+        return php_compat_setcookie($name, $value, $expire, $path, $domain, $secure, $httponly);
     }
 }
