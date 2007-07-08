@@ -15,10 +15,8 @@
  * @version     $Revision$
  * @since       PHP 5
  * @require     PHP 4.0.0 (user_error)
- * @note        count is returned by reference (required parameter)
- *              to disable, change '&$count' to '$count = null'
  */
-function php_compat_str_ireplace($search, $replace, $subject, &$count)
+function php_compat_str_ireplace($search, $replace, $subject)
 {
     // Sanity check
     if (is_string($search) && is_array($replace)) {
@@ -27,35 +25,18 @@ function php_compat_str_ireplace($search, $replace, $subject, &$count)
     }
 
     // If search isn't an array, make it one
-    if (!is_array($search)) {
-        $search = array ($search);
-    }
-    $search = array_values($search);
-
-    // If replace isn't an array, make it one, and pad it to the length of search
-    if (!is_array($replace)) {
-        $replace_string = $replace;
-
-        $replace = array ();
-        for ($i = 0, $c = count($search); $i < $c; $i++) {
-            $replace[$i] = $replace_string;
-        }
-    }
-    $replace = array_values($replace);
-
-    // Check the replace array is padded to the correct length
-    $length_replace = count($replace);
+    $search = (array) $search;
     $length_search = count($search);
-    if ($length_replace < $length_search) {
-        for ($i = $length_replace; $i < $length_search; $i++) {
-            $replace[$i] = '';
-        }
-    }
+
+    // build the replace array
+    $replace = is_array($replace)
+	? array_pad($replace, $length_search, '')
+	: array_pad(array(), $length_search, $replace);
 
     // If subject is not an array, make it one
-    $was_array = false;
-    if (!is_array($subject)) {
-        $was_array = true;
+    $was_string = false;
+    if (is_string($subject)) {
+        $was_string = true;
         $subject = array ($subject);
     }
 
@@ -65,27 +46,17 @@ function php_compat_str_ireplace($search, $replace, $subject, &$count)
     }
     
     // Prepare the replace array (escape backreferences)
-    foreach ($replace as $k => $v) {   
-        $replace[$k] = str_replace(array(chr(92), '$'), array(chr(92) . chr(92), '\$'), $v);
-    }
+    $replace = str_replace(array('\\', '$'), array('\\\\', '\$'), $replace);
 
-    // do the replacement
-    $result = preg_replace($search, $replace, $subject, -1, $count);
-
-    // Check if subject was initially a string and return it as a string
-    if ($was_array === true) {
-        return $result[0];
-    }
-
-    // Otherwise, just return the array
-    return $result;
+    $result = preg_replace($search, $replace, $subject);
+    return $was_string ? $result[0] : $result;
 }
 
 
 // Define
 if (!function_exists('str_ireplace')) {
-    function str_ireplace($search, $replace, $subject, $count = null)
+    function str_ireplace($search, $replace, $subjectl)
     {
-        return php_compat_str_ireplace($search, $replace, $subject, $count);
+        return php_compat_str_ireplace($search, $replace, $subject);
     }
 }
