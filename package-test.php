@@ -1,10 +1,30 @@
 <?php
+/**
+ * Ensure all components are correctly included.
+ *
+ * This checks the filesystem, and compares it to the components.php file, and the package2.xml
+ */
+
+// Helper function
+function phpt2php($filename)
+{
+    return substr($filename, 0, -1);
+}
+
 // Get array of functions on filesystem
 $filesystem = scandir('Compat/Function/');
 unset($filesystem[0]); // .
 unset($filesystem[1]); // ..
 unset($filesystem[2]); // CVS
 sort($filesystem);
+
+// Get array of tests on filesystem
+$tests = scandir('tests/function/');
+unset($tests[0]);
+unset($tests[1]);
+unset($tests[2]);
+$tests = array_map('phpt2php', $tests);
+sort($tests);
 
 // Get a list of files from the package2.xml
 $xml = simplexml_load_file('package2.xml');
@@ -41,6 +61,13 @@ if (!empty($res)) {
 $res = array_diff($filexml, $filesystem);
 if (!empty($res)) {
     echo "Exists in XML but not in Filesytem:\n";
+    print_r($res);
+    $error = true;
+}
+
+$res = array_diff($filesystem, $tests);
+if (!empty($res)) {
+    echo "Tests not found for the following iles:\n";
     print_r($res);
     $error = true;
 }
