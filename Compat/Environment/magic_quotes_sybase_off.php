@@ -15,7 +15,7 @@
  * @author      Arpad Ray <arpad@php.net>
  * @version     $Revision$
  */
-function php_compat_magic_quotes_sybase_on()
+function php_compat_magic_quotes_sybase_off()
 {
     $stripping = true;
     require 'PHP/Compat/Environment/_magic_quotes_inputs.php';
