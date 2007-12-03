@@ -5,6 +5,10 @@
 /**
  * Replace str_ireplace()
  *
+ * This function does not support the $count argument because
+ * it cannot be optional in PHP 4 and the performance cost is
+ * too great when a count is not necessary.
+ *
  * @category    PHP
  * @package     PHP_Compat
  * @license     LGPL - http://www.gnu.org/licenses/lgpl.html
