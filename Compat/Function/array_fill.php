@@ -1,4 +1,4 @@
-| <?php
+<?php
 // $Id$
 
 
@@ -24,7 +24,14 @@ function php_compat_array_fill($start_index, $num, $value)
 
     $temp = array();
 
-    $end_index = $start_index + $num;
+    if ($start_index < 0) {
+        $temp[$start_index] = $value;
+        $start_index = 0;
+        $end_index = $num - 1;
+    } else {
+        $end_index = $start_index + $num;
+    }
+
     for ($i = (int) $start_index; $i < $end_index; $i++) {
         $temp[$i] = $value;
     }
@@ -40,4 +47,3 @@ if (!function_exists('array_fill')) {
     }
 }
 
-?>
