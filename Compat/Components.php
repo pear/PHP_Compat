@@ -52,6 +52,7 @@ $components['function']['fprintf']                    = '5.0.0';
 $components['function']['fputcsv']                    = '5.0.0';
 $components['function']['get_headers']                = '5.0.0';
 $components['function']['get_include_path']           = '4.3.0';
+$components['function']['getopt']                     = '4.3.0';
 $components['function']['glob']                       = '4.3.0';
 $components['function']['html_entity_decode']         = '4.3.0';
 $components['function']['htmlspecialchars_decode']    = '5.1.0';
