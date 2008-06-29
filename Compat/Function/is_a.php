@@ -21,7 +21,7 @@ function php_compat_is_a($object, $class)
         return false;
     }
 
-    if (get_class($object) == strtolower($class)) {
+    if (strtolower(get_class($object)) == strtolower($class)) {
         return true;
     } else {
         return is_subclass_of($object, $class);
