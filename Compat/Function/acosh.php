@@ -16,7 +16,7 @@
  */
 function php_compat_acosh($n)
 {
-    return ln($n + sqrt($n + 1) * sqrt($n - 1));
+    return log($n + sqrt($n + 1) * sqrt($n - 1));
 }
 
 if (!function_exists('acosh')) {

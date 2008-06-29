@@ -16,7 +16,7 @@
  */
 function php_compat_asinh($n)
 {
-    return ln($n + sqrt(1 + pow($n, 2)));
+    return log($n + sqrt(1 + pow($n, 2)));
 }
 
 if (!function_exists('asinh')) {

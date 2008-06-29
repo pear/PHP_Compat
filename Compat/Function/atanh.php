@@ -16,7 +16,7 @@
  */
 function php_compat_atanh($n)
 {
-    return 0.5 * (ln(1 + $n) - ln(1 - $n));
+    return 0.5 * (log(1 + $n) - log(1 - $n));
 }
 
 if (!function_exists('atanh')) {
