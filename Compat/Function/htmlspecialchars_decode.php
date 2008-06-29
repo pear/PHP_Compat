@@ -30,18 +30,14 @@ function php_compat_htmlspecialchars_decode($string, $quote_style = null)
         return;
     }
 
-    // Init
-    $from   = array('&amp;', '&lt;', '&gt;');
-    $to     = array('&', '<', '>');
-    
     // The function does not behave as documented
     // This matches the actual behaviour of the function
     if ($quote_style & ENT_COMPAT || $quote_style & ENT_QUOTES) {
-        $from[] = '&quot;';
-        $to[]   = '"';
-        
-        $from[] = '&#039;';
-        $to[]   = "'";
+        $from = array('&quot;', '&#039;', '&lt;', '&gt;', '&amp;');
+        $to   = array('"', "'", '<', '>', '&');
+    } else {
+        $from = array('&lt;', '&gt;', '&amp;');
+        $to   = array('<', '>', '&');
     }
 
     return str_replace($from, $to, $string);
