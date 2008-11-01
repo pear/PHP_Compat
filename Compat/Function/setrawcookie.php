@@ -29,6 +29,6 @@ function php_compat_setrawcookie($name, $value, $expire, $path, $domain, $secure
 if (!function_exists('setrawcookie')) {
     function setrawcookie($name, $value, $expire, $path, $domain, $secure, $httponly)
     {
-        return php_compat_setrawcookie($name, $value, $expire, $path, $domain, $secure, $httponly)
+        return php_compat_setrawcookie($name, $value, $expire, $path, $domain, $secure, $httponly);
     }
 }
