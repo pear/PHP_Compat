@@ -26,10 +26,12 @@ function php_compat_magic_quotes_sybase_on()
     $compatSybaseOn = !empty($GLOBALS['__PHP_Compat_ini']['magic_quotes_sybase']);
     $sybaseOn = ini_get('magic_quotes_sybase') || $compatSybaseOn;
 
-    if ($compatMagicOn || !$allWorks && $magicOn) {
-	if ($magicOn) {
-	    require 'PHP/Compat/Environment/magic_quotes_gpc_off.php';
-	}
+    if (!$sybaseOn || !$allWorks && $magicOn) {
+    
+        if ($magicOn) {
+            require 'PHP/Compat/Environment/magic_quotes_gpc_off.php';
+        }
+        
         $inputCount = count($inputs);
         while (list($k, $v) = each($inputs)) {
             foreach ($v as $var => $value) {

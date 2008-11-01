@@ -56,7 +56,7 @@ function php_compat_magic_quotes_sybase_off()
     }
 }
 
-php_compat_magic_quotes_sybase_on();
+php_compat_magic_quotes_sybase_off();
    
 // Register the change
 ini_set('magic_quotes_sybase', 0);

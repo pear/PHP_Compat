@@ -13,12 +13,14 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  */
-unset($HTTP_GET_VARS);
-unset($HTTP_POST_VARS);
-unset($HTTP_COOKIE_VARS);
-unset($HTTP_SERVER_VARS);
-unset($HTTP_ENV_VARS);
-unset($HTTP_FILES_VARS);
+unset(
+    $GLOBALS['HTTP_GET_VARS'],
+    $GLOBALS['HTTP_POST_VARS'],
+    $GLOBALS['HTTP_COOKIE_VARS'],
+    $GLOBALS['HTTP_SERVER_VARS'],
+    $GLOBALS['HTTP_ENV_VARS'],
+    $GLOBALS['HTTP_FILES_VARS']
+);
 
 // Register the change
 ini_set('register_long_arrays', 'off');

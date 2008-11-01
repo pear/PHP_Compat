@@ -13,12 +13,12 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  */
-$HTTP_GET_VARS    &= $_GET;
-$HTTP_POST_VARS   &= $_POST;
-$HTTP_COOKIE_VARS &= $_COOKIE;
-$HTTP_SERVER_VARS &= $_SERVER;
-$HTTP_ENV_VARS    &= $_ENV;
-$HTTP_FILES_VARS  &= $_FILES;
+$GLOBALS['HTTP_GET_VARS']    = &$_GET;
+$GLOBALS['HTTP_POST_VARS']   = &$_POST;
+$GLOBALS['HTTP_COOKIE_VARS'] = &$_COOKIE;
+$GLOBALS['HTTP_SERVER_VARS'] = &$_SERVER;
+$GLOBALS['HTTP_ENV_VARS']    = &$_ENV;
+$GLOBALS['HTTP_FILES_VARS']  = &$_FILES;
 
 // Register the change
 ini_set('register_long_arrays', 'on');

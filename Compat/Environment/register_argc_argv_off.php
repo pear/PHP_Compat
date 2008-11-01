@@ -13,10 +13,9 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  */
-if (isset($GLOBALS['argc'], $GLOBALS['argv'])) {
-    unset($GLOBALS['argc']);
-    unset($GLOBALS['argv']);
-
+if (isset($_GLOBALS['argc']) || isset($_SERVER['argc'])) {
+    unset($GLOBALS['argc'], $GLOBALS['argv'], $_SERVER['argc'], $_SERVER['argv']);
+    
     // Register the change
     ini_set('register_argc_argv', 'off');
 }

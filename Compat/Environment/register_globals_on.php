@@ -18,7 +18,6 @@ function php_compat_register_globals_on()
 {
     $superglobals = array();
     $phpLt410 = PHP_VERSION < 4.1;
-    $posting = $_SERVER['REQUEST_METHOD'] == 'POST';
 
     // determine on which arrays to operate and in what order
     if ($phpLt410 || ini_get('register_long_arrays')) {
@@ -29,10 +28,8 @@ function php_compat_register_globals_on()
         $superglobals['C'][] = 'HTTP_COOKIE_VARS';
         $superglobals['C'][] = 'HTTP_SESSION_VARS';
         $superglobals['G'][] = 'HTTP_GET_VARS';
-        if ($posting) {
-            $superglobals['P'][] = 'HTTP_POST_VARS';
-            $superglobals['P'][] = 'HTTP_POST_FILES';
-        }
+        $superglobals['P'][] = 'HTTP_POST_VARS';
+        $superglobals['P'][] = 'HTTP_POST_FILES';
     }
     if (!$phpLt410) {
         $superglobals['S'][] = '_SERVER';
@@ -40,10 +37,8 @@ function php_compat_register_globals_on()
         $superglobals['C'][] = '_COOKIE';
         $superglobals['C'][] = '_SESSION';
         $superglobals['G'][] = '_GET';
-        if ($posting) {
-            $superglobals['P'][] = '_POST';
-            $superglobals['P'][] = '_FILES';
-        }   
+        $superglobals['P'][] = '_POST';
+        $superglobals['P'][] = '_FILES';
     }
     $order = ini_get('variables_order');
     $order_length = strlen($order);
@@ -55,9 +50,10 @@ function php_compat_register_globals_on()
             continue;
         }
         foreach ($superglobals[$key] as $var) {
-            if (isset($GLOBALS[$var])) {
-                $inputs[] = $GLOBALS[$var];
-            }
+                if (isset($GLOBALS[$var])) {
+                    $inputs[] = $GLOBALS[$var];
+                }
+        
         }
     }
 
