@@ -1,5 +1,5 @@
 --TEST--
-Function -- pg_affected_rows
+[INCOMPLETE] Function -- pg_affected_rows
 --FILE--
 <?php
 require_once 'PHP/Compat/Function/pg_affected_rows.php';

@@ -1,5 +1,5 @@
 --TEST--
-Function -- setcookie
+[INCOMPLETE] Function -- setcookie
 --FILE--
 <?php
 require_once 'PHP/Compat/Function/setcookie.php';

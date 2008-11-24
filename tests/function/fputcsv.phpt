@@ -1,5 +1,5 @@
 --TEST--
-Function -- fputcsv
+[INCOMPLETE] Function -- fputcsv
 --FILE--
 <?php
 require_once 'PHP/Compat/Function/fputcsv.php';

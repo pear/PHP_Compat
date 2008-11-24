@@ -1,5 +1,5 @@
 --TEST--
-Function -- bcinvert
+[INCOMPLETE] Function -- bcinvert
 --FILE--
 <?php
 require_once 'PHP/Compat/Function/bcinvert.php';

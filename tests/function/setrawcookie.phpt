@@ -1,5 +1,5 @@
 --TEST--
-Function -- setrawcookie
+[INCOMPLETE] Function -- setrawcookie
 --FILE--
 <?php
 require_once 'PHP/Compat/Function/setrawcookie.php';
