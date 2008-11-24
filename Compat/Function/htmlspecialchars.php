@@ -55,7 +55,7 @@ function php_compat_htmlspecialchars($string, $quote_style = null, $charset = nu
 	}
 	
 	if ($quote_style & ENT_QUOTES) {
-		$tf["'"] => '&#039;';
+		$tf["'"] = '&#039;';
 	}
 	
     return str_replace(array_keys($tf), array_values($tf), $string);
