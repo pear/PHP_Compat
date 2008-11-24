@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 /**
  * Replace T_DOC_COMMENT in PHP 4
  */

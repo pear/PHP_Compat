@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 /**
  * Replace upload error constants
  *
@@ -45,4 +42,3 @@ if (!defined('UPLOAD_ERR_CANT_WRITE')) {
 if (!defined('UPLOAD_ERR_EXTENSION')) {
     define('UPLOAD_ERR_EXTENSION', 8);
 }
-?>

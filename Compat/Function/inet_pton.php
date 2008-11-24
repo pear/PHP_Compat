@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 /**
  * Replace inet_pton()
  *

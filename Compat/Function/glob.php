@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 if (!defined('GLOB_ERR')) {
     define('GLOB_ERR', 1);
 }

@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 /**
  * Replace debug_print_backtrace()
  *

@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 /**
  * Replace filesystem constants
  *
@@ -33,5 +30,3 @@ if (!defined('FILE_APPEND')) {
 if (!defined('FILE_NO_DEFAULT_CONTEXT')) {
     define('FILE_NO_DEFAULT_CONTEXT', 16);
 }
-
-?>

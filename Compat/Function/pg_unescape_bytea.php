@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 /**
  * Replace pg_unescape_bytea()
  *

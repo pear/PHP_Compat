@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 /**
  * Replace substr_compare()
  *

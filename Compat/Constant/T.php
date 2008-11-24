@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 /**
  * Replace tokenizer constants
  *
@@ -15,12 +12,11 @@
  * @since       PHP 5
  */
 if (!defined('T_ML_COMMENT')) {
-   define('T_ML_COMMENT', T_COMMENT);
+    define('T_ML_COMMENT', T_COMMENT);
 }
 if (!defined('T_DOC_COMMENT')) {
-    define('T_DOC_COMMENT', T_ML_COMMENT);
+	define('T_DOC_COMMENT', T_ML_COMMENT);
 }
-
 if (!defined('T_OLD_FUNCTION')) {
     define('T_OLD_FUNCTION', -1);
 }
@@ -54,5 +50,3 @@ if (!defined('T_TRY')) {
 if (!defined('T_CLONE')) {
     define('T_CLONE', -1);
 }
-
-?>

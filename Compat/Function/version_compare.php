@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 /**
  * Replace version_compare()
  *

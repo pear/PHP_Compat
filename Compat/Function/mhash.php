@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 if (!defined('MHASH_CRC32')) {
     define('MHASH_CRC32', 0);
 }

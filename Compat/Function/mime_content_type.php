@@ -1,24 +1,21 @@
 <?php
-// $Id$
-
-
 /**
-* Replace mime_content_type()
-*
-* You will need the `file` command installed and present in your $PATH. If
-* `file` is not available, the type 'application/octet-stream' is returned
-* for all files.
-*
-* @category   PHP
-* @package    PHP_Compat
-* @license    LGPL - http://www.gnu.org/licenses/lgpl.html
+ * Replace mime_content_type()
+ *
+ * You will need the `file` command installed and present in your $PATH. If
+ * `file` is not available, the type 'application/octet-stream' is returned
+ * for all files.
+ *
+ * @category   PHP
+ * @package    PHP_Compat
+ * @license    LGPL - http://www.gnu.org/licenses/lgpl.html
  * @copyright   2004-2007 Aidan Lister <aidan@php.net>, Arpad Ray <arpad@php.net>
-* @link       http://php.net/function.mime_content_type
-* @version    $Revision$
-* @author     Ian Eure <ieure@php.net>
-* @since      PHP 4.3.0
-* @require    PHP 4.0.3 (escapeshellarg)
-*/
+ * @link       http://php.net/function.mime_content_type
+ * @version    $Revision$
+ * @author     Ian Eure <ieure@php.net>
+ * @since      PHP 4.3.0
+ * @require    PHP 4.0.3 (escapeshellarg)
+ */
 function php_compat_mime_content_type($filename)
 {
     // Sanity check

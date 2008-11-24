@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Replace function is_callable()
  *

@@ -1,6 +1,4 @@
 <?php
-// $Id$
-
 /**
  * Replace cosh()
  *

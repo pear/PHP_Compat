@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 /**
  * Replace get_include_path()
  *

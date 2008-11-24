@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 /**
  * Replace commandline constants
  *
@@ -25,5 +22,3 @@ if (!defined('STDOUT')) {
 if (!defined('STDERR')) {
     define('STDERR', fopen('php://stderr', 'w'));
 }
-
-?>

@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 /**
  * Replace time_sleep_until()
  *

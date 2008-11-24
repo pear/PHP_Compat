@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 if (!defined('CASE_LOWER')) {
     define('CASE_LOWER', 0);
 }

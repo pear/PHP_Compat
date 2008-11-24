@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 /**
  * Replace ini_get_all()
  *

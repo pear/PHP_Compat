@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Common include for magic quotes files
  *

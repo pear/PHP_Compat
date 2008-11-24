@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 /**
  * Replace array_intersect_uassoc()
  *

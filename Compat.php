@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 /**
  * Provides missing functionality in the form of constants and functions
  *   for older versions of PHP

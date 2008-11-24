@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 if (!defined('ENT_NOQUOTES')) {
     define('ENT_NOQUOTES', 0);
 }

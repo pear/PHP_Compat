@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 /**
  * Emulate enviroment register_long_arrays=off
  *

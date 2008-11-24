@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 /**
  * Emulate enviroment magic_quotes_sybase=on
  *

@@ -1,6 +1,4 @@
 <?php
-// $Id$
-
 /**
  * Emulate environment magic_quotes_gpc=on
  *

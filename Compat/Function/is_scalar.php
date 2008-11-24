@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 /**
  * Replace is_scalar()
  *

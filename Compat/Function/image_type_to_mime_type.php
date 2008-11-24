@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 if (!defined('IMAGETYPE_GIF')) {
     define('IMAGETYPE_GIF', 1);
 }

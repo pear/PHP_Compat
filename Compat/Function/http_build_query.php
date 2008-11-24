@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 /**
  * Replace function http_build_query()
  *

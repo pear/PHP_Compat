@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 /**
  * Replace constant E_STRICT
  *
@@ -17,5 +14,3 @@
 if (!defined('E_STRICT')) {
     define('E_STRICT', 2048);
 }
-
-?>

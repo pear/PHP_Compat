@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 /**
  * Replace php_ini_loaded_file()
  *

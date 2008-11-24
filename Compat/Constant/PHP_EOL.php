@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 /**
  * Replace PHP_EOL constant
  *
@@ -31,5 +28,3 @@ if (!defined('PHP_EOL')) {
             define('PHP_EOL', "\n");
     }
 }
-
-?>

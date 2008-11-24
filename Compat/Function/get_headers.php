@@ -1,6 +1,4 @@
 <?php
-// $Id$
-
 define('PHP_COMPAT_GET_HEADERS_MAX_REDIRECTS', 5);
 
 /**

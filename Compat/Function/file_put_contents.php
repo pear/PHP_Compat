@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 if (!defined('FILE_USE_INCLUDE_PATH')) {
     define('FILE_USE_INCLUDE_PATH', 1);
 }

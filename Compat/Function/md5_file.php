@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 /**
  * Replace md5_file()
  *

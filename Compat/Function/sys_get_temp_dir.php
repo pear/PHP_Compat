@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 /**
  * Replace sys_get_temp_dir()
  *

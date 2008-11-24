@@ -1,6 +1,4 @@
 <?php
-// $Id$
-
 define('PHP_COMPAT_GETOPT_NO_VALUE', 0);
 define('PHP_COMPAT_GETOPT_VALUE_REQUIRED', 1);
 define('PHP_COMPAT_GETOPT_VALUE_OPTIONAL', 2);

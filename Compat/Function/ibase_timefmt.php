@@ -1,7 +1,4 @@
 <?php
-// $Id$
-
-
 /**
  * Replace function ibase_timefmt()
  *
