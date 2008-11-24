@@ -16,7 +16,7 @@
   <email>arpad@php.net</email>
   <active>yes</active>
  </lead>
- <date>2008-11-23</date>
+ <date>2008-11-24</date>
  <time>21:58:58</time>
  <version>
   <release>1.6.0a2</release>
@@ -64,7 +64,6 @@
      <file baseinstalldir="PHP" name="magic_quotes_sybase_off.php" role="php" />
      <file baseinstalldir="PHP" name="magic_quotes_sybase_on.php" role="php" />
      <file baseinstalldir="PHP" name="register_argc_argv_off.php" role="php" />
-     <file baseinstalldir="PHP" name="register_argc_argv_on.php" role="php" />
      <file baseinstalldir="PHP" name="register_globals_off.php" role="php" />
      <file baseinstalldir="PHP" name="register_globals_on.php" role="php" />
      <file baseinstalldir="PHP" name="register_long_arrays_off.php" role="php" />
@@ -112,11 +111,11 @@
      <file baseinstalldir="PHP" name="floatval.php" role="php" />
      <file baseinstalldir="PHP" name="fprintf.php" role="php" />
      <file baseinstalldir="PHP" name="fputcsv.php" role="php" />
-	 <file baseinstalldir="PHP" name="getopt.php" role="php" />
+     <file baseinstalldir="PHP" name="getopt.php" role="php" />
      <file baseinstalldir="PHP" name="get_headers.php" role="php" />
      <file baseinstalldir="PHP" name="get_include_path.php" role="php" />
      <file baseinstalldir="PHP" name="glob.php" role="php" />
-	 <file baseinstalldir="PHP" name="htmlspecialchars.php" role="php" />
+     <file baseinstalldir="PHP" name="htmlspecialchars.php" role="php" />
      <file baseinstalldir="PHP" name="htmlspecialchars_decode.php" role="php" />
      <file baseinstalldir="PHP" name="html_entity_decode.php" role="php" />
      <file baseinstalldir="PHP" name="http_build_query.php" role="php" />
@@ -141,7 +140,7 @@
      <file baseinstalldir="PHP" name="pg_affected_rows.php" role="php" />
      <file baseinstalldir="PHP" name="pg_escape_bytea.php" role="php" />
      <file baseinstalldir="PHP" name="pg_unescape_bytea.php" role="php" />
-	 <file baseinstalldir="PHP" name="php_ini_loaded_file.php" role="php" />
+     <file baseinstalldir="PHP" name="php_ini_loaded_file.php" role="php" />
      <file baseinstalldir="PHP" name="php_strip_whitespace.php" role="php" />
      <file baseinstalldir="PHP" name="property_exists.php" role="php" />
      <file baseinstalldir="PHP" name="range.php" role="php" />
@@ -160,7 +159,7 @@
      <file baseinstalldir="PHP" name="str_split.php" role="php" />
      <file baseinstalldir="PHP" name="str_word_count.php" role="php" />
      <file baseinstalldir="PHP" name="substr_compare.php" role="php" />
-	 <file baseinstalldir="PHP" name="sys_get_temp_dir.php" role="php" />
+     <file baseinstalldir="PHP" name="sys_get_temp_dir.php" role="php" />
      <file baseinstalldir="PHP" name="tanh.php" role="php" />
      <file baseinstalldir="PHP" name="time_sleep_until.php" role="php" />
      <file baseinstalldir="PHP" name="var_export.php" role="php" />
@@ -183,7 +182,7 @@
     </dir> <!-- /tests/constant -->
     <dir name="function">
      <file baseinstalldir="PHP" name="acosh.phpt" role="test" />
-	 <file baseinstalldir="PHP" name="array_change_key_case.phpt" role="test" />
+     <file baseinstalldir="PHP" name="array_change_key_case.phpt" role="test" />
      <file baseinstalldir="PHP" name="array_chunk.phpt" role="test" />
      <file baseinstalldir="PHP" name="array_combine.phpt" role="test" />
      <file baseinstalldir="PHP" name="array_diff_assoc.phpt" role="test" />
@@ -206,8 +205,8 @@
      <file baseinstalldir="PHP" name="array_uintersect_assoc.phpt" role="test" />
      <file baseinstalldir="PHP" name="array_uintersect_uassoc.phpt" role="test" />
      <file baseinstalldir="PHP" name="array_walk_recursive.phpt" role="test" />
-	 <file baseinstalldir="PHP" name="asinh.phpt" role="test" />
-	 <file baseinstalldir="PHP" name="atanh.phpt" role="test" />
+     <file baseinstalldir="PHP" name="asinh.phpt" role="test" />
+     <file baseinstalldir="PHP" name="atanh.phpt" role="test" />
      <file baseinstalldir="PHP" name="bcinvert.phpt" role="test" />
      <file baseinstalldir="PHP" name="bcpowmod.phpt" role="test" />
      <file baseinstalldir="PHP" name="call_user_func_array.phpt" role="test" />
@@ -215,18 +214,18 @@
      <file baseinstalldir="PHP" name="constant.phpt" role="test" />
      <file baseinstalldir="PHP" name="convert_uudecode.phpt" role="test" />
      <file baseinstalldir="PHP" name="convert_uuencode.phpt" role="test" />
-	 <file baseinstalldir="PHP" name="cosh.phpt" role="test" />
+     <file baseinstalldir="PHP" name="cosh.phpt" role="test" />
      <file baseinstalldir="PHP" name="debug_print_backtrace.phpt" role="test" />
      <file baseinstalldir="PHP" name="file_get_contents.phpt" role="test" />
      <file baseinstalldir="PHP" name="file_put_contents.phpt" role="test" />
      <file baseinstalldir="PHP" name="floatval.phpt" role="test" />
      <file baseinstalldir="PHP" name="fprintf.phpt" role="test" />
      <file baseinstalldir="PHP" name="fputcsv.phpt" role="test" />
-	 <file baseinstalldir="PHP" name="getopt.phpt" role="test" />
+     <file baseinstalldir="PHP" name="getopt.phpt" role="test" />
      <file baseinstalldir="PHP" name="get_headers.phpt" role="test" />
      <file baseinstalldir="PHP" name="get_include_path.phpt" role="test" />
-	 <file baseinstalldir="PHP" name="glob.phpt" role="test" />
-	 <file baseinstalldir="PHP" name="htmlspecialchars.phpt" role="test" />
+     <file baseinstalldir="PHP" name="glob.phpt" role="test" />
+     <file baseinstalldir="PHP" name="htmlspecialchars.phpt" role="test" />
      <file baseinstalldir="PHP" name="htmlspecialchars_decode.phpt" role="test" />
      <file baseinstalldir="PHP" name="html_entity_decode.phpt" role="test" />
      <file baseinstalldir="PHP" name="http_build_query.phpt" role="test" />
@@ -237,7 +236,7 @@
      <file baseinstalldir="PHP" name="inet_pton.phpt" role="test" />
      <file baseinstalldir="PHP" name="ini_get_all.phpt" role="test" />
      <file baseinstalldir="PHP" name="is_a.phpt" role="test" />
-	 <file baseinstalldir="PHP" name="is_callable.phpt" role="test" />
+     <file baseinstalldir="PHP" name="is_callable.phpt" role="test" />
      <file baseinstalldir="PHP" name="is_scalar.phpt" role="test" />
      <file baseinstalldir="PHP" name="md5_file.phpt" role="test" />
      <file baseinstalldir="PHP" name="mhash.phpt" role="test" />
@@ -251,8 +250,8 @@
      <file baseinstalldir="PHP" name="pg_affected_rows.phpt" role="test" />
      <file baseinstalldir="PHP" name="pg_escape_bytea.phpt" role="test" />
      <file baseinstalldir="PHP" name="pg_unescape_bytea.phpt" role="test" />
-	 <file baseinstalldir="PHP" name="php_ini_loaded_file.phpt" role="test" />
-	 <file baseinstalldir="PHP" name="php_strip_whitespace.phpt" role="test" />
+     <file baseinstalldir="PHP" name="php_ini_loaded_file.phpt" role="test" />
+     <file baseinstalldir="PHP" name="php_strip_whitespace.phpt" role="test" />
      <file baseinstalldir="PHP" name="property_exists.phpt" role="test" />
      <file baseinstalldir="PHP" name="range.phpt" role="test" />
      <file baseinstalldir="PHP" name="restore_include_path.phpt" role="test" />
@@ -260,7 +259,7 @@
      <file baseinstalldir="PHP" name="setcookie.phpt" role="test" />
      <file baseinstalldir="PHP" name="setrawcookie.phpt" role="test" />
      <file baseinstalldir="PHP" name="set_include_path.phpt" role="test" />
-	 <file baseinstalldir="PHP" name="sinh.phpt" role="test" />
+     <file baseinstalldir="PHP" name="sinh.phpt" role="test" />
      <file baseinstalldir="PHP" name="stripos.phpt" role="test" />
      <file baseinstalldir="PHP" name="strpbrk.phpt" role="test" />
      <file baseinstalldir="PHP" name="strripos.phpt" role="test" />
@@ -270,8 +269,8 @@
      <file baseinstalldir="PHP" name="str_split.phpt" role="test" />
      <file baseinstalldir="PHP" name="str_word_count.phpt" role="test" />
      <file baseinstalldir="PHP" name="substr_compare.phpt" role="test" />
-	 <file baseinstalldir="PHP" name="sys_get_temp_dir.phpt" role="test" />
-	 <file baseinstalldir="PHP" name="tanh.phpt" role="test" />
+     <file baseinstalldir="PHP" name="sys_get_temp_dir.phpt" role="test" />
+     <file baseinstalldir="PHP" name="tanh.phpt" role="test" />
      <file baseinstalldir="PHP" name="time_sleep_until.phpt" role="test" />
      <file baseinstalldir="PHP" name="var_export.phpt" role="test" />
      <file baseinstalldir="PHP" name="version_compare.phpt" role="test" />
