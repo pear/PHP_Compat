@@ -46,6 +46,12 @@ function php_compat_ini_get_all($extension = null)
         user_error('ini_get_all() Unable to find php.ini', E_USER_WARNING);
         return false;
     }
+	
+	// Check the file is readable
+    if (!is_readable($inifile)) {
+        user_error('ini_get_all() Unable to open php.ini', E_USER_WARNING);
+        return false;
+    }
 
     // Parse the ini
     if ($extension !== null) {
