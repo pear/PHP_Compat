@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.5.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
-http://pear.php.net/dtd/tasks-1.0.xsd
-http://pear.php.net/dtd/package-2.0
-http://pear.php.net/dtd/package-2.0.xsd">
+<package packagerversion="1.7.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
  <name>PHP_Compat</name>
  <channel>pear.php.net</channel>
  <summary>Provides components to achieve PHP version independance</summary>
@@ -19,10 +16,10 @@ http://pear.php.net/dtd/package-2.0.xsd">
   <email>arpad@php.net</email>
   <active>yes</active>
  </lead>
- <date>2007-05-09</date>
- <time>12:11:39</time>
+ <date>2008-11-23</date>
+ <time>21:58:58</time>
  <version>
-  <release>1.6.0a1</release>
+  <release>1.6.0a2</release>
   <api>1.5.0</api>
  </version>
  <stability>
@@ -31,286 +28,262 @@ http://pear.php.net/dtd/package-2.0.xsd">
  </stability>
  <license uri="http://www.php.net/license">PHP License</license>
  <notes>
- Added more components:
- * array_fill
-
- Added more components with changed parameters:
- * array_splice
- * microtime
- * mkdir
- * range
- * setcookie
- * setrawcookie
- 
- Added new Environment module
- * register_globals
- * magic_quotes_gpc
- * register_argc_argv
- * register_long_arrays
-
- Changed the way PHP_Compat stores functions.
- * Function declaration is prefixed with php_compat_
- * Dummy declaration calls php_compat_ function
-   This allows for redefinition of functions with changed parameters.
-
- Added support for packages which modify the function tables at runtime
- * PHP_Compat::loadFunction now tries to rename the old function on load
-   This further supports redefinition of functions with changed parameters.
-
- * Fix Bug #1956: stripos - not returning false [aidan]
- * Fix Bug #3190: [PATCH] md5_file() depends on possibly nonexistent file_get_contents() [aidan]
- * Fix Bug #3572: Use of addslashes() adds too much backslashes [aidan]
- * Fix Bug #3586: bug in str_word_count.php code [aidan]
- * Fix Bug #4605: debug_print_backtrace - Object to string conversion [aidan]
- * Fix Bug #4851: var_export severely broken! (new implementation attached) [aidan]
- * Fix Bug #6293: array_intersect_key produces incorrect results with more than 2
-   arguments [arpad]
- * Fix Bug #6560: missing &apos;Function/property_exists.php&apos; when installed with $ pear
-   install PHP_C [aidan]
- * Fix Bug #6687: array_intersect_key() fails due to func_get_args() [arpad]
- * Fix Bug #6758: notice errors with debug_print_backtrace and call_user_func_array
-   usage [arpad]
- * Fix Bug #6922: Space after php close markup in Function/mime_content_type.php [arpad]
- * Fix Bug #7520: cyclic reference cloning causes timeout [aidan]
- * Fix Bug #8338: convert_uudecode removes spaces from line ends, causing corruption [aidan]
- * Fix Bug #8864: magic quotes gpc emulation missing server vars [arpad]
- * Fix Bug #9042: Various uninitialized variables [aidan]
- * Fix Bug #9043: Various issues in str_shuffle [aidan]
- * Fix Bug #9687: array_*_key function(s) slow [aidan]
- * Fix Bug #9983: Function [array_udiff_uassoc()] is incorrectly implemented [arpad]
- * Implement Feature #4372: addition of glob() function for php &lt; 4.3.0 [arpad]
- * Implement Feature #7139: PHP 5.1.1 Datetime Constants [arpad]
- * Implement Feature #7403: str_ireplace too slow [arpad]
- * Implement Feature #7414: making var_export() generating correct PHP code with nested objects [arpad]
- * Implement Feature #8208: is_callable missing in php 4.0.4, 4.0.5 [arpad]
- * Implement Feature #9187: Adding httponly to setcookie/setrawcookie (new in php 5.2) [aidan]
- * Implement Feature #9659: The userdata parameter isn&apos;t correctly send to the recursive call [arpad]
- * Implement Feature #10177: add most recent UPLOAD ERR constants [arpad]
+ * Fix Bug #11206: clone() bug [aidan]
+ * Fix Bug #11631: Missing &apos;}&apos; in loadFunction() [aidan]
+ * Fix Bug #12158: wrong function name [arpad]
+ * Fix Bug #12301: Compat calls php 5 function [arpad]
+ * Fix Bug #13018: Curly bracket missing [aidan]
+ * Fix Bug #13165: array_fill() not matching output from V5.3.0-dev. [arpad]
+ * Fix Bug #14138: htmlspecialchars_decode() converts irreversibly [arpad]
+ * Fix Bug #14824: Invalid sections formats in test file(s) (unit tests) [arpad]
+ * Fix Bug #14891: Parse error: syntax error, unexpected &apos;}&apos; in
+   /home/clockwerx/pear/PHP_Compat/Co [arpad]
+ * Fix Bug #15119: Patch and tests for getopt() [aidan]
+ * Implement Feature #11205: register globals SERVER not SESSION [arpad]
+ * Implement Feature #12227: sys_get_temp_dir missing [aidan]
+ * Implement Feature #13400: php_ini_loaded_file() [aidan]
+ * Implement Feature #14687: htmlspecialchars missing 4th parameter [aidan]
  </notes>
  <contents>
- <dir name="/" baseinstalldir="PHP">     
- <file role="php" name="Compat.php" />
- <dir name="Compat">
- <file role="php" name="Components.php" />
- <dir name="Constant">
- <file role="php" name="DATE.php" />
- <file role="php" name="DIRECTORY_SEPARATOR.php" />
- <file role="php" name="E_STRICT.php" />
- <file role="php" name="FILE.php" />
- <file role="php" name="PATH_SEPARATOR.php" />
- <file role="php" name="PHP_EOL.php" />
- <file role="php" name="STD.php" />
- <file role="php" name="T.php" />
- <file role="php" name="UPLOAD_ERR.php" />
- </dir>
- <dir name="Environment">
- <file role="php" name="magic_quotes_gpc_off.php" />
- <file role="php" name="magic_quotes_gpc_on.php" />
- <file role="php" name="_magic_quotes_inputs.php" />
- <file role="php" name="magic_quotes_sybase_off.php" />
- <file role="php" name="magic_quotes_sybase_on.php" />
- <file role="php" name="register_argc_argv_off.php" />
- <file role="php" name="register_argc_argv_on.php" />
- <file role="php" name="register_globals_off.php" />
- <file role="php" name="register_globals_on.php" />
- <file role="php" name="register_long_arrays_off.php" />
- <file role="php" name="register_long_arrays_on.php" />
- </dir>
- <dir name="Function">
- <file role="php" name="acosh.php" />
- <file role="php" name="array_change_key_case.php" />
- <file role="php" name="array_chunk.php" />
- <file role="php" name="array_combine.php" />
- <file role="php" name="array_diff_assoc.php" />
- <file role="php" name="array_diff_key.php" />
- <file role="php" name="array_diff_uassoc.php" />
- <file role="php" name="array_diff_ukey.php" />
- <file role="php" name="array_fill.php" />
- <file role="php" name="array_intersect_assoc.php" />
- <file role="php" name="array_intersect_key.php" />
- <file role="php" name="array_intersect_uassoc.php" />
- <file role="php" name="array_intersect_ukey.php" />
- <file role="php" name="array_key_exists.php" />
- <file role="php" name="array_product.php" />
- <file role="php" name="array_search.php" />
- <file role="php" name="array_slice.php" />
- <file role="php" name="array_udiff.php" />
- <file role="php" name="array_udiff_assoc.php" />
- <file role="php" name="array_udiff_uassoc.php" />
- <file role="php" name="array_uintersect.php" />
- <file role="php" name="array_uintersect_assoc.php" />
- <file role="php" name="array_uintersect_uassoc.php" />
- <file role="php" name="array_walk_recursive.php" />
- <file role="php" name="asinh.php" />
- <file role="php" name="atanh.php" />
- <file role="php" name="bcinvert.php" />
- <file role="php" name="bcpowmod.php" />
- <file role="php" name="call_user_func_array.php" />
- <file role="php" name="clone.php" />
- <file role="php" name="constant.php" />
- <file role="php" name="convert_uudecode.php" />
- <file role="php" name="convert_uuencode.php" />
- <file role="php" name="cosh.php" />
- <file role="php" name="debug_print_backtrace.php" />
- <file role="php" name="file_get_contents.php" />
- <file role="php" name="file_put_contents.php" />
- <file role="php" name="floatval.php" />
- <file role="php" name="fprintf.php" />
- <file role="php" name="fputcsv.php" />
- <file role="php" name="get_headers.php" />
- <file role="php" name="get_include_path.php" />
- <file role="php" name="glob.php" />
- <file role="php" name="html_entity_decode.php" />
- <file role="php" name="htmlspecialchars_decode.php" />
- <file role="php" name="http_build_query.php" />
- <file role="php" name="ibase_timefmt.php" />
- <file role="php" name="idate.php" />
- <file role="php" name="image_type_to_mime_type.php" />
- <file role="php" name="inet_ntop.php" />
- <file role="php" name="inet_pton.php" />
- <file role="php" name="ini_get_all.php" />
- <file role="php" name="is_a.php" />
- <file role="php" name="is_callable.php" />
- <file role="php" name="is_scalar.php" />
- <file role="php" name="md5_file.php" />
- <file role="php" name="mhash.php" />
- <file role="php" name="microtime.php" />
- <file role="php" name="mime_content_type.php" />
- <file role="php" name="mkdir.php" />
- <file role="php" name="ob_clean.php" />
- <file role="php" name="ob_flush.php" />
- <file role="php" name="ob_get_clean.php" />
- <file role="php" name="ob_get_flush.php" />
- <file role="php" name="pg_affected_rows.php" />
- <file role="php" name="pg_escape_bytea.php" />
- <file role="php" name="pg_unescape_bytea.php" />
- <file role="php" name="php_strip_whitespace.php" />
- <file role="php" name="property_exists.php" />
- <file role="php" name="range.php" />
- <file role="php" name="restore_include_path.php" />
- <file role="php" name="scandir.php" />
- <file role="php" name="setcookie.php" />
- <file role="php" name="set_include_path.php" />
- <file role="php" name="setrawcookie.php" />
- <file role="php" name="sinh.php" />
- <file role="php" name="strripos.php" />
- <file role="php" name="str_ireplace.php" />
- <file role="php" name="strpbrk.php" />
- <file role="php" name="stripos.php" />
- <file role="php" name="str_rot13.php" />
- <file role="php" name="str_shuffle.php" />
- <file role="php" name="str_split.php" />
- <file role="php" name="str_word_count.php" />
- <file role="php" name="substr_compare.php" />
- <file role="php" name="tanh.php" />
- <file role="php" name="time_sleep_until.php" />
- <file role="php" name="var_export.php" />
- <file role="php" name="version_compare.php" />
- <file role="php" name="vprintf.php" />
- <file role="php" name="vsprintf.php" />
- </dir>
- </dir>
- <dir name="tests">
- <file role="test" name="loadconstant.phpt" />
- <file role="test" name="loadfunction.phpt" />
- <file role="test" name="loadversion.phpt" />
- <dir name="constant">
- <file role="test" name="directory_separator.phpt" />
- <file role="test" name="e_strict.phpt" />
- <file role="test" name="file.phpt" />
- <file role="test" name="path_separator.phpt" />
- <file role="test" name="php_eol.phpt" />
- <file role="test" name="std.phpt" />
- <file role="test" name="t.phpt" />
- <file role="test" name="upload_err.phpt" />
- </dir>
- <dir name="function">
- <file role="test" name="array_change_key_case.phpt" />
- <file role="test" name="array_chunk.phpt" />
- <file role="test" name="array_combine.phpt" />
- <file role="test" name="array_diff_assoc.phpt" />
- <file role="test" name="array_diff_key.phpt" />
- <file role="test" name="array_diff_uassoc.phpt" />
- <file role="test" name="array_diff_ukey.phpt" />
- <file role="test" name="array_fill.phpt" />
- <file role="test" name="array_intersect_assoc.phpt" />
- <file role="test" name="array_intersect_key.phpt" />
- <file role="test" name="array_intersect_uassoc.phpt" />
- <file role="test" name="array_intersect_ukey.phpt" />
- <file role="test" name="array_key_exists.phpt" />
- <file role="test" name="array_product.phpt" />
- <file role="test" name="array_search.phpt" />
- <file role="test" name="array_slice.phpt" />
- <file role="test" name="array_udiff.phpt" />
- <file role="test" name="array_udiff_assoc.phpt" />
- <file role="test" name="array_udiff_uassoc.phpt" />
- <file role="test" name="array_uintersect.phpt" />
- <file role="test" name="array_uintersect_assoc.phpt" />
- <file role="test" name="array_uintersect_uassoc.phpt" />
- <file role="test" name="array_walk_recursive.phpt" />
- <file role="test" name="bcinvert.phpt" />
- <file role="test" name="bcpowmod.phpt" />
- <file role="test" name="call_user_func_array.phpt" />
- <file role="test" name="clone.phpt" />
- <file role="test" name="constant.phpt" />
- <file role="test" name="convert_uudecode.phpt" />
- <file role="test" name="convert_uuencode.phpt" />
- <file role="test" name="debug_print_backtrace.phpt" />
- <file role="test" name="file_get_contents.phpt" />
- <file role="test" name="file_put_contents.phpt" />
- <file role="test" name="floatval.phpt" />
- <file role="test" name="fprintf.phpt" />
- <file role="test" name="fputcsv.phpt" />
- <file role="test" name="get_headers.phpt" />
- <file role="test" name="get_include_path.phpt" />
- <file role="test" name="html_entity_decode.phpt" />
- <file role="test" name="htmlspecialchars_decode.phpt" />
- <file role="test" name="http_build_query.phpt" />
- <file role="test" name="ibase_timefmt.phpt" />
- <file role="test" name="idate.phpt" />
- <file role="test" name="image_type_to_mime_type.phpt" />
- <file role="test" name="inet_ntop.phpt" />
- <file role="test" name="inet_pton.phpt" />
- <file role="test" name="ini_get_all.phpt" />
- <file role="test" name="is_a.phpt" />
- <file role="test" name="is_scalar.phpt" />
- <file role="test" name="md5_file.phpt" />
- <file role="test" name="mhash.phpt" />
- <file role="test" name="microtime.phpt" />
- <file role="test" name="mime_content_type.phpt" />
- <file role="test" name="mkdir.phpt" />
- <file role="test" name="ob_clean.phpt" />
- <file role="test" name="ob_flush.phpt" />
- <file role="test" name="ob_get_clean.phpt" />
- <file role="test" name="ob_get_flush.phpt" />
- <file role="test" name="pg_affected_rows.phpt" />
- <file role="test" name="pg_escape_bytea.phpt" />
- <file role="test" name="pg_unescape_bytea.phpt" />
- <file role="test" name="php_strip_whitespace.phpt" />
- <file role="test" name="property_exists.phpt" />
- <file role="test" name="range.phpt" />
- <file role="test" name="restore_include_path.phpt" />
- <file role="test" name="scandir.phpt" />
- <file role="test" name="set_include_path.phpt" />
- <file role="test" name="setcookie.phpt" />
- <file role="test" name="setrawcookie.phpt" />
- <file role="test" name="str_ireplace.phpt" />
- <file role="test" name="str_rot13.phpt" />
- <file role="test" name="str_shuffle.phpt" />
- <file role="test" name="str_split.phpt" />
- <file role="test" name="str_word_count.phpt" />
- <file role="test" name="stripos.phpt" />
- <file role="test" name="strpbrk.phpt" />
- <file role="test" name="strripos.phpt" />
- <file role="test" name="substr_compare.phpt" />
- <file role="test" name="time_sleep_until.phpt" />
- <file role="test" name="var_export.phpt" />
- <file role="test" name="version_compare.phpt" />
- <file role="test" name="vprintf.phpt" />
- <file role="test" name="vsprintf.phpt" />
- </dir>
- </dir>
- </dir>
+  <dir baseinstalldir="PHP" name="/">
+   <dir name="Compat">
+    <dir name="Constant">
+     <file baseinstalldir="PHP" name="DATE.php" role="php" />
+     <file baseinstalldir="PHP" name="DIRECTORY_SEPARATOR.php" role="php" />
+     <file baseinstalldir="PHP" name="E_STRICT.php" role="php" />
+     <file baseinstalldir="PHP" name="FILE.php" role="php" />
+     <file baseinstalldir="PHP" name="PATH_SEPARATOR.php" role="php" />
+     <file baseinstalldir="PHP" name="PHP_EOL.php" role="php" />
+     <file baseinstalldir="PHP" name="STD.php" role="php" />
+     <file baseinstalldir="PHP" name="T.php" role="php" />
+     <file baseinstalldir="PHP" name="UPLOAD_ERR.php" role="php" />
+    </dir> <!-- /Compat/Constant -->
+    <dir name="Environment">
+     <file baseinstalldir="PHP" name="magic_quotes_gpc_off.php" role="php" />
+     <file baseinstalldir="PHP" name="magic_quotes_gpc_on.php" role="php" />
+     <file baseinstalldir="PHP" name="magic_quotes_sybase_off.php" role="php" />
+     <file baseinstalldir="PHP" name="magic_quotes_sybase_on.php" role="php" />
+     <file baseinstalldir="PHP" name="register_argc_argv_off.php" role="php" />
+     <file baseinstalldir="PHP" name="register_argc_argv_on.php" role="php" />
+     <file baseinstalldir="PHP" name="register_globals_off.php" role="php" />
+     <file baseinstalldir="PHP" name="register_globals_on.php" role="php" />
+     <file baseinstalldir="PHP" name="register_long_arrays_off.php" role="php" />
+     <file baseinstalldir="PHP" name="register_long_arrays_on.php" role="php" />
+     <file baseinstalldir="PHP" name="_magic_quotes_inputs.php" role="php" />
+    </dir> <!-- /Compat/Environment -->
+    <dir name="Function">
+     <file baseinstalldir="PHP" name="acosh.php" role="php" />
+     <file baseinstalldir="PHP" name="array_change_key_case.php" role="php" />
+     <file baseinstalldir="PHP" name="array_chunk.php" role="php" />
+     <file baseinstalldir="PHP" name="array_combine.php" role="php" />
+     <file baseinstalldir="PHP" name="array_diff_assoc.php" role="php" />
+     <file baseinstalldir="PHP" name="array_diff_key.php" role="php" />
+     <file baseinstalldir="PHP" name="array_diff_uassoc.php" role="php" />
+     <file baseinstalldir="PHP" name="array_diff_ukey.php" role="php" />
+     <file baseinstalldir="PHP" name="array_fill.php" role="php" />
+     <file baseinstalldir="PHP" name="array_intersect_assoc.php" role="php" />
+     <file baseinstalldir="PHP" name="array_intersect_key.php" role="php" />
+     <file baseinstalldir="PHP" name="array_intersect_uassoc.php" role="php" />
+     <file baseinstalldir="PHP" name="array_intersect_ukey.php" role="php" />
+     <file baseinstalldir="PHP" name="array_key_exists.php" role="php" />
+     <file baseinstalldir="PHP" name="array_product.php" role="php" />
+     <file baseinstalldir="PHP" name="array_search.php" role="php" />
+     <file baseinstalldir="PHP" name="array_slice.php" role="php" />
+     <file baseinstalldir="PHP" name="array_udiff.php" role="php" />
+     <file baseinstalldir="PHP" name="array_udiff_assoc.php" role="php" />
+     <file baseinstalldir="PHP" name="array_udiff_uassoc.php" role="php" />
+     <file baseinstalldir="PHP" name="array_uintersect.php" role="php" />
+     <file baseinstalldir="PHP" name="array_uintersect_assoc.php" role="php" />
+     <file baseinstalldir="PHP" name="array_uintersect_uassoc.php" role="php" />
+     <file baseinstalldir="PHP" name="array_walk_recursive.php" role="php" />
+     <file baseinstalldir="PHP" name="asinh.php" role="php" />
+     <file baseinstalldir="PHP" name="atanh.php" role="php" />
+     <file baseinstalldir="PHP" name="bcinvert.php" role="php" />
+     <file baseinstalldir="PHP" name="bcpowmod.php" role="php" />
+     <file baseinstalldir="PHP" name="call_user_func_array.php" role="php" />
+     <file baseinstalldir="PHP" name="clone.php" role="php" />
+     <file baseinstalldir="PHP" name="constant.php" role="php" />
+     <file baseinstalldir="PHP" name="convert_uudecode.php" role="php" />
+     <file baseinstalldir="PHP" name="convert_uuencode.php" role="php" />
+     <file baseinstalldir="PHP" name="cosh.php" role="php" />
+     <file baseinstalldir="PHP" name="debug_print_backtrace.php" role="php" />
+     <file baseinstalldir="PHP" name="file_get_contents.php" role="php" />
+     <file baseinstalldir="PHP" name="file_put_contents.php" role="php" />
+     <file baseinstalldir="PHP" name="floatval.php" role="php" />
+     <file baseinstalldir="PHP" name="fprintf.php" role="php" />
+     <file baseinstalldir="PHP" name="fputcsv.php" role="php" />
+	 <file baseinstalldir="PHP" name="getopt.php" role="php" />
+     <file baseinstalldir="PHP" name="get_headers.php" role="php" />
+     <file baseinstalldir="PHP" name="get_include_path.php" role="php" />
+     <file baseinstalldir="PHP" name="glob.php" role="php" />
+	 <file baseinstalldir="PHP" name="htmlspecialchars.php" role="php" />
+     <file baseinstalldir="PHP" name="htmlspecialchars_decode.php" role="php" />
+     <file baseinstalldir="PHP" name="html_entity_decode.php" role="php" />
+     <file baseinstalldir="PHP" name="http_build_query.php" role="php" />
+     <file baseinstalldir="PHP" name="ibase_timefmt.php" role="php" />
+     <file baseinstalldir="PHP" name="idate.php" role="php" />
+     <file baseinstalldir="PHP" name="image_type_to_mime_type.php" role="php" />
+     <file baseinstalldir="PHP" name="inet_ntop.php" role="php" />
+     <file baseinstalldir="PHP" name="inet_pton.php" role="php" />
+     <file baseinstalldir="PHP" name="ini_get_all.php" role="php" />
+     <file baseinstalldir="PHP" name="is_a.php" role="php" />
+     <file baseinstalldir="PHP" name="is_callable.php" role="php" />
+     <file baseinstalldir="PHP" name="is_scalar.php" role="php" />
+     <file baseinstalldir="PHP" name="md5_file.php" role="php" />
+     <file baseinstalldir="PHP" name="mhash.php" role="php" />
+     <file baseinstalldir="PHP" name="microtime.php" role="php" />
+     <file baseinstalldir="PHP" name="mime_content_type.php" role="php" />
+     <file baseinstalldir="PHP" name="mkdir.php" role="php" />
+     <file baseinstalldir="PHP" name="ob_clean.php" role="php" />
+     <file baseinstalldir="PHP" name="ob_flush.php" role="php" />
+     <file baseinstalldir="PHP" name="ob_get_clean.php" role="php" />
+     <file baseinstalldir="PHP" name="ob_get_flush.php" role="php" />
+     <file baseinstalldir="PHP" name="pg_affected_rows.php" role="php" />
+     <file baseinstalldir="PHP" name="pg_escape_bytea.php" role="php" />
+     <file baseinstalldir="PHP" name="pg_unescape_bytea.php" role="php" />
+	 <file baseinstalldir="PHP" name="php_ini_loaded_file.php" role="php" />
+     <file baseinstalldir="PHP" name="php_strip_whitespace.php" role="php" />
+     <file baseinstalldir="PHP" name="property_exists.php" role="php" />
+     <file baseinstalldir="PHP" name="range.php" role="php" />
+     <file baseinstalldir="PHP" name="restore_include_path.php" role="php" />
+     <file baseinstalldir="PHP" name="scandir.php" role="php" />
+     <file baseinstalldir="PHP" name="setcookie.php" role="php" />
+     <file baseinstalldir="PHP" name="setrawcookie.php" role="php" />
+     <file baseinstalldir="PHP" name="set_include_path.php" role="php" />
+     <file baseinstalldir="PHP" name="sinh.php" role="php" />
+     <file baseinstalldir="PHP" name="stripos.php" role="php" />
+     <file baseinstalldir="PHP" name="strpbrk.php" role="php" />
+     <file baseinstalldir="PHP" name="strripos.php" role="php" />
+     <file baseinstalldir="PHP" name="str_ireplace.php" role="php" />
+     <file baseinstalldir="PHP" name="str_rot13.php" role="php" />
+     <file baseinstalldir="PHP" name="str_shuffle.php" role="php" />
+     <file baseinstalldir="PHP" name="str_split.php" role="php" />
+     <file baseinstalldir="PHP" name="str_word_count.php" role="php" />
+     <file baseinstalldir="PHP" name="substr_compare.php" role="php" />
+	 <file baseinstalldir="PHP" name="sys_get_temp_dir.php" role="php" />
+     <file baseinstalldir="PHP" name="tanh.php" role="php" />
+     <file baseinstalldir="PHP" name="time_sleep_until.php" role="php" />
+     <file baseinstalldir="PHP" name="var_export.php" role="php" />
+     <file baseinstalldir="PHP" name="version_compare.php" role="php" />
+     <file baseinstalldir="PHP" name="vprintf.php" role="php" />
+     <file baseinstalldir="PHP" name="vsprintf.php" role="php" />
+    </dir> <!-- /Compat/Function -->
+    <file baseinstalldir="PHP" name="Components.php" role="php" />
+   </dir> <!-- /Compat -->
+   <dir name="tests">
+    <dir name="constant">
+     <file baseinstalldir="PHP" name="directory_separator.phpt" role="test" />
+     <file baseinstalldir="PHP" name="e_strict.phpt" role="test" />
+     <file baseinstalldir="PHP" name="file.phpt" role="test" />
+     <file baseinstalldir="PHP" name="path_separator.phpt" role="test" />
+     <file baseinstalldir="PHP" name="php_eol.phpt" role="test" />
+     <file baseinstalldir="PHP" name="std.phpt" role="test" />
+     <file baseinstalldir="PHP" name="t.phpt" role="test" />
+     <file baseinstalldir="PHP" name="upload_err.phpt" role="test" />
+    </dir> <!-- /tests/constant -->
+    <dir name="function">
+     <file baseinstalldir="PHP" name="acosh.phpt" role="test" />
+	 <file baseinstalldir="PHP" name="array_change_key_case.phpt" role="test" />
+     <file baseinstalldir="PHP" name="array_chunk.phpt" role="test" />
+     <file baseinstalldir="PHP" name="array_combine.phpt" role="test" />
+     <file baseinstalldir="PHP" name="array_diff_assoc.phpt" role="test" />
+     <file baseinstalldir="PHP" name="array_diff_key.phpt" role="test" />
+     <file baseinstalldir="PHP" name="array_diff_uassoc.phpt" role="test" />
+     <file baseinstalldir="PHP" name="array_diff_ukey.phpt" role="test" />
+     <file baseinstalldir="PHP" name="array_fill.phpt" role="test" />
+     <file baseinstalldir="PHP" name="array_intersect_assoc.phpt" role="test" />
+     <file baseinstalldir="PHP" name="array_intersect_key.phpt" role="test" />
+     <file baseinstalldir="PHP" name="array_intersect_uassoc.phpt" role="test" />
+     <file baseinstalldir="PHP" name="array_intersect_ukey.phpt" role="test" />
+     <file baseinstalldir="PHP" name="array_key_exists.phpt" role="test" />
+     <file baseinstalldir="PHP" name="array_product.phpt" role="test" />
+     <file baseinstalldir="PHP" name="array_search.phpt" role="test" />
+     <file baseinstalldir="PHP" name="array_slice.phpt" role="test" />
+     <file baseinstalldir="PHP" name="array_udiff.phpt" role="test" />
+     <file baseinstalldir="PHP" name="array_udiff_assoc.phpt" role="test" />
+     <file baseinstalldir="PHP" name="array_udiff_uassoc.phpt" role="test" />
+     <file baseinstalldir="PHP" name="array_uintersect.phpt" role="test" />
+     <file baseinstalldir="PHP" name="array_uintersect_assoc.phpt" role="test" />
+     <file baseinstalldir="PHP" name="array_uintersect_uassoc.phpt" role="test" />
+     <file baseinstalldir="PHP" name="array_walk_recursive.phpt" role="test" />
+	 <file baseinstalldir="PHP" name="asinh.phpt" role="test" />
+	 <file baseinstalldir="PHP" name="atanh.phpt" role="test" />
+     <file baseinstalldir="PHP" name="bcinvert.phpt" role="test" />
+     <file baseinstalldir="PHP" name="bcpowmod.phpt" role="test" />
+     <file baseinstalldir="PHP" name="call_user_func_array.phpt" role="test" />
+     <file baseinstalldir="PHP" name="clone.phpt" role="test" />
+     <file baseinstalldir="PHP" name="constant.phpt" role="test" />
+     <file baseinstalldir="PHP" name="convert_uudecode.phpt" role="test" />
+     <file baseinstalldir="PHP" name="convert_uuencode.phpt" role="test" />
+	 <file baseinstalldir="PHP" name="cosh.phpt" role="test" />
+     <file baseinstalldir="PHP" name="debug_print_backtrace.phpt" role="test" />
+     <file baseinstalldir="PHP" name="file_get_contents.phpt" role="test" />
+     <file baseinstalldir="PHP" name="file_put_contents.phpt" role="test" />
+     <file baseinstalldir="PHP" name="floatval.phpt" role="test" />
+     <file baseinstalldir="PHP" name="fprintf.phpt" role="test" />
+     <file baseinstalldir="PHP" name="fputcsv.phpt" role="test" />
+	 <file baseinstalldir="PHP" name="getopt.phpt" role="test" />
+     <file baseinstalldir="PHP" name="get_headers.phpt" role="test" />
+     <file baseinstalldir="PHP" name="get_include_path.phpt" role="test" />
+	 <file baseinstalldir="PHP" name="glob.phpt" role="test" />
+	 <file baseinstalldir="PHP" name="htmlspecialchars.phpt" role="test" />
+     <file baseinstalldir="PHP" name="htmlspecialchars_decode.phpt" role="test" />
+     <file baseinstalldir="PHP" name="html_entity_decode.phpt" role="test" />
+     <file baseinstalldir="PHP" name="http_build_query.phpt" role="test" />
+     <file baseinstalldir="PHP" name="ibase_timefmt.phpt" role="test" />
+     <file baseinstalldir="PHP" name="idate.phpt" role="test" />
+     <file baseinstalldir="PHP" name="image_type_to_mime_type.phpt" role="test" />
+     <file baseinstalldir="PHP" name="inet_ntop.phpt" role="test" />
+     <file baseinstalldir="PHP" name="inet_pton.phpt" role="test" />
+     <file baseinstalldir="PHP" name="ini_get_all.phpt" role="test" />
+     <file baseinstalldir="PHP" name="is_a.phpt" role="test" />
+	 <file baseinstalldir="PHP" name="is_callable.phpt" role="test" />
+     <file baseinstalldir="PHP" name="is_scalar.phpt" role="test" />
+     <file baseinstalldir="PHP" name="md5_file.phpt" role="test" />
+     <file baseinstalldir="PHP" name="mhash.phpt" role="test" />
+     <file baseinstalldir="PHP" name="microtime.phpt" role="test" />
+     <file baseinstalldir="PHP" name="mime_content_type.phpt" role="test" />
+     <file baseinstalldir="PHP" name="mkdir.phpt" role="test" />
+     <file baseinstalldir="PHP" name="ob_clean.phpt" role="test" />
+     <file baseinstalldir="PHP" name="ob_flush.phpt" role="test" />
+     <file baseinstalldir="PHP" name="ob_get_clean.phpt" role="test" />
+     <file baseinstalldir="PHP" name="ob_get_flush.phpt" role="test" />
+     <file baseinstalldir="PHP" name="pg_affected_rows.phpt" role="test" />
+     <file baseinstalldir="PHP" name="pg_escape_bytea.phpt" role="test" />
+     <file baseinstalldir="PHP" name="pg_unescape_bytea.phpt" role="test" />
+	 <file baseinstalldir="PHP" name="php_ini_loaded_file.phpt" role="test" />
+	 <file baseinstalldir="PHP" name="php_strip_whitespace.phpt" role="test" />
+     <file baseinstalldir="PHP" name="property_exists.phpt" role="test" />
+     <file baseinstalldir="PHP" name="range.phpt" role="test" />
+     <file baseinstalldir="PHP" name="restore_include_path.phpt" role="test" />
+     <file baseinstalldir="PHP" name="scandir.phpt" role="test" />
+     <file baseinstalldir="PHP" name="setcookie.phpt" role="test" />
+     <file baseinstalldir="PHP" name="setrawcookie.phpt" role="test" />
+     <file baseinstalldir="PHP" name="set_include_path.phpt" role="test" />
+	 <file baseinstalldir="PHP" name="sinh.phpt" role="test" />
+     <file baseinstalldir="PHP" name="stripos.phpt" role="test" />
+     <file baseinstalldir="PHP" name="strpbrk.phpt" role="test" />
+     <file baseinstalldir="PHP" name="strripos.phpt" role="test" />
+     <file baseinstalldir="PHP" name="str_ireplace.phpt" role="test" />
+     <file baseinstalldir="PHP" name="str_rot13.phpt" role="test" />
+     <file baseinstalldir="PHP" name="str_shuffle.phpt" role="test" />
+     <file baseinstalldir="PHP" name="str_split.phpt" role="test" />
+     <file baseinstalldir="PHP" name="str_word_count.phpt" role="test" />
+     <file baseinstalldir="PHP" name="substr_compare.phpt" role="test" />
+	 <file baseinstalldir="PHP" name="sys_get_temp_dir.phpt" role="test" />
+	 <file baseinstalldir="PHP" name="tanh.phpt" role="test" />
+     <file baseinstalldir="PHP" name="time_sleep_until.phpt" role="test" />
+     <file baseinstalldir="PHP" name="var_export.phpt" role="test" />
+     <file baseinstalldir="PHP" name="version_compare.phpt" role="test" />
+     <file baseinstalldir="PHP" name="vprintf.phpt" role="test" />
+     <file baseinstalldir="PHP" name="vsprintf.phpt" role="test" />
+    </dir> <!-- /tests/function -->
+    <file baseinstalldir="PHP" name="loadconstant.phpt" role="test" />
+    <file baseinstalldir="PHP" name="loadfunction.phpt" role="test" />
+    <file baseinstalldir="PHP" name="loadversion.phpt" role="test" />
+   </dir> <!-- /tests -->
+   <file baseinstalldir="PHP" name="Compat.php" role="php" />
+  </dir> <!-- / -->
  </contents>
  <dependencies>
   <required>
@@ -323,8 +296,71 @@ http://pear.php.net/dtd/package-2.0.xsd">
   </required>
  </dependencies>
  <phprelease />
-
  <changelog>
+  <release>
+   <version>
+    <release>1.6.0a1</release>
+    <api>1.5.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>stable</api>
+   </stability>
+   <date>2007-05-08</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>Added more components:
+* array_fill
+* Hyperbolic and inverse hyperbolic math functions
+* glob
+* is_callable
+Added more components with changed parameters:
+* array_splice
+* microtime
+* mkdir
+* range
+* setcookie
+* setrawcookie
+
+Added new Environment module
+* register_globals
+* magic_quotes_gpc
+* magic_quotes_sybase
+* register_argc_argv
+* register_long_arrays
+Changed the way PHP_Compat stores functions.
+* Function declaration is prefixed with php_compat_
+* Dummy declaration calls php_compat_ function
+  This allows for redefinition of functions with changed parameters.
+Added support for packages which modify the function tables at runtime
+* PHP_Compat::loadFunction now tries to rename the old function on load
+  This further supports redefinition of functions with changed parameters.
+* Fix Bug #1956: stripos - not returning false [aidan]
+* Fix Bug #3190: [PATCH] md5_file() depends on possibly nonexistent file_get_contents() [aidan]
+* Fix Bug #3572: Use of addslashes() adds too much backslashes [aidan]
+* Fix Bug #3586: bug in str_word_count.php code [aidan]
+* Fix Bug #4605: debug_print_backtrace - Object to string conversion [aidan]
+* Fix Bug #4851: var_export severely broken! (new implementation attached) [aidan]
+* Fix Bug #6293: array_intersect_key produces incorrect results with more than 2 arguments [arpad]
+* Fix Bug #6560: missing &apos;Function/property_exists.php&apos; when installed with pear [aidan]
+* Fix Bug #6687: array_intersect_key() fails due to func_get_args() [arpad]
+* Fix Bug #6758: notice errors with debug_print_backtrace and call_user_func_array usage [arpad]
+* Fix Bug #6922: Space after php close markup in Function/mime_content_type.php [arpad]
+* Fix Bug #7520: cyclic reference cloning causes timeout [aidan]
+* Fix Bug #8338: convert_uudecode removes spaces from line ends, causing corruption [aidan]
+* Fix Bug #8864: magic quotes gpc emulation missing server vars [arpad]
+* Fix Bug #9042: Various uninitialized variables [aidan]
+* Fix Bug #9043: Various issues in str_shuffle [aidan]
+* Fix Bug #9687: array_*_key function(s) slow [aidan]
+* Fix Bug #9983: Function [array_udiff_uassoc()] is incorrectly implemented [arpad]
+* Implement Feature #4372: addition of glob() function for php &lt; 4.3.0 [arpad]
+* Implement Feature #7139: PHP 5.1.1 Datetime Constants [arpad]
+* Implement Feature #7403: str_ireplace too slow [arpad]
+* Implement Feature #7414: making var_export() generating correct PHP code with nested objects [arpad]
+* Implement Feature #8208: is_callable missing in php 4.0.4, 4.0.5 [arpad]
+* Implement Feature #9187: Adding httponly to setcookie/setrawcookie (new in php 5.2) [aidan]
+* Implement Feature #9659: The userdata parameter isn&apos;t correctly send to the recursive call [arpad]
+* Implement Feature #10177: add most recent UPLOAD ERR constants [arpad]</notes>
+  </release>
   <release>
    <version>
     <release>1.5.0</release>
@@ -357,17 +393,14 @@ Bug fixes:
 * Fixed #5469 (md5_file)
 * Fixed #6082 (file_put_contents)
 RC bug fixes:
-* Fixed #6184 (idate)
-   </notes>
+* Fixed #6184 (idate)</notes>
   </release>
-
   <release>
-  <version>1.5.0RC1</version>
-  <date>2005-12-06</date>
-  <license>PHP License</license>
-  <state>beta</state>
-  <notes>
-Added more components:
+   <version>1.5.0RC1</version>
+   <date>2005-12-06</date>
+   <license>PHP License</license>
+   <state>beta</state>
+   <notes>Added more components:
 * is_scalar
 * property_exists
 * inet_pton
@@ -387,34 +420,28 @@ Bug fixes:
 * Fixed #5078 (str_shuffle)
 * Fixed #5691 (fputcsv)
 * Fixed #5469 (md5_file)
-* Fixed #6082 (file_put_contents)
-  </notes>
+* Fixed #6082 (file_put_contents)</notes>
   </release>
-  
   <release>
-  <version>1.4.1</version>
-  <date>2004-19-05</date>
-  <license>PHP License</license>
-  <state>stable</state>
-  <notes>
-Added more components:
+   <version>1.4.1</version>
+   <date>2004-19-05</date>
+   <license>PHP License</license>
+   <state>stable</state>
+   <notes>Added more components:
 * fputcsv
 * htmlspecialchars_decode
 
 Bug fixes:
 * Fixed declaration of debug_print_backtrace
 * Fixed number of bugs in strripos
-* Fixed bugs with large offsets in str_split
-  </notes>
+* Fixed bugs with large offsets in str_split</notes>
   </release>
-  
   <release>
-  <version>1.4.0</version>
-  <date>2004-10-05</date>
-  <license>PHP License</license>
-  <state>stable</state>
-  <notes>
-Added more components:
+   <version>1.4.0</version>
+   <date>2004-10-05</date>
+   <license>PHP License</license>
+   <state>stable</state>
+   <notes>Added more components:
 * DIRECTORY_SEPARATOR
 * pg_affected_rows
 * pg_unescape_bytea
@@ -426,27 +453,21 @@ Added more components:
 
 Bug fixes:
 * Improved loadVersion method
-* Fixed bug in clone
-  </notes>
+* Fixed bug in clone</notes>
   </release>
-  
   <release>
-  <version>1.3.1</version>
-  <date>2004-11-23</date>
-  <license>PHP License</license>
-  <state>stable</state>
-  <notes>
-  Fixed problems with loadVersion
-  </notes>
+   <version>1.3.1</version>
+   <date>2004-11-23</date>
+   <license>PHP License</license>
+   <state>stable</state>
+   <notes>Fixed problems with loadVersion</notes>
   </release>
-  
   <release>
-  <version>1.3.0</version>
-  <date>2004-11-22</date>
-  <license>PHP License</license>
-  <state>stable</state>
-  <notes>
-Added more components:
+   <version>1.3.0</version>
+   <date>2004-11-22</date>
+   <license>PHP License</license>
+   <state>stable</state>
+   <notes>Added more components:
 * array_diff_key 
 * array_diff_ukey
 * array_diff_uassoc
@@ -464,17 +485,14 @@ Added more components:
 
 Added loadVersion():
 * Allows automatic loading of all components
-  or, loading all components until a given version of PHP is reached.
-  </notes>
+  or, loading all components until a given version of PHP is reached.</notes>
   </release>
-  
   <release>
-  <version>1.2.0</version>
-  <date>2004-09-12</date>
-  <license>PHP License</license>
-  <state>stable</state>
-  <notes>
-Added more components:
+   <version>1.2.0</version>
+   <date>2004-09-12</date>
+   <license>PHP License</license>
+   <state>stable</state>
+   <notes>Added more components:
 * str_word_count
 * str_rot13
 * convert_uuencode
@@ -490,17 +508,14 @@ Added more components:
 * get_include_path
 * set_include_path
 * restore_include_path
-* php_strip_whitespace
-  </notes>
+* php_strip_whitespace</notes>
   </release>
-  
   <release>
-  <version>1.1.0</version>
-  <date>2004-06-26</date>
-  <license>PHP License</license>
-  <state>stable</state>
-  <notes>
-Added more components:
+   <version>1.1.0</version>
+   <date>2004-06-26</date>
+   <license>PHP License</license>
+   <state>stable</state>
+   <notes>Added more components:
 * html_entity_decode
 * version_compare
 * image_type_to_mime_type
@@ -511,17 +526,14 @@ Added more components:
 * ob_clean
 * ob_flush
 * ob_get_clean
-* ob_get_flush
-  </notes>
+* ob_get_flush</notes>
   </release>
-  
   <release>
-  <version>1.0.0</version>
-  <date>2004-06-02</date>
-  <license>PHP License</license>
-  <state>stable</state>
-  <notes>
-Added more components:
+   <version>1.0.0</version>
+   <date>2004-06-02</date>
+   <license>PHP License</license>
+   <state>stable</state>
+   <notes>Added more components:
 * array_change_key_case
 * array_chunk
 * array_diff_assoc
@@ -530,17 +542,14 @@ Added more components:
 * var_export
 
 Bug fixes:
-* Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour).
-  </notes>
+* Fixed behaviour of stripos/strripos - searches for whole needle (PHP5 behaviour).</notes>
   </release>
-  
   <release>
-  <version>1.0.0RC2</version>
-  <date>2004-05-30</date>
-  <license>PHP License</license>
-  <state>beta</state>
-  <notes>
-Added more components:
+   <version>1.0.0RC2</version>
+   <date>2004-05-30</date>
+   <license>PHP License</license>
+   <state>beta</state>
+   <notes>Added more components:
 * fprintf
 * stripos
 * strripos
@@ -550,16 +559,14 @@ Added more components:
 
 Other changes:
 * Removed the seperate files for STDIN/STDOUT/STDERR
-* Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND
-  </notes>
+* Removed the seperate files for FILE_USE_INCLUDE_PATH/FILE_APPEND</notes>
   </release>
-  
   <release>
-  <version>1.0.0RC1</version>
-  <date>2004-05-28</date>
-  <license>PHP License</license>
-  <state>beta</state>
-  <notes>
+   <version>1.0.0RC1</version>
+   <date>2004-05-28</date>
+   <license>PHP License</license>
+   <state>beta</state>
+   <notes>
 Added more components:
 * http_build_query
 * array_udiff
@@ -572,17 +579,14 @@ Bug fixes:
 * str_split
 
 Other changes:
-* Added complete unit testing!
-  </notes>
+* Added complete unit testing!</notes>
   </release>
-  
   <release>
-  <version>0.2</version>
-  <date>2004-05-27</date>
-  <license>PHP License</license>
-  <state>beta</state>
-  <notes>
-Still in beta until any last bugs are found and removed.
+   <version>0.2</version>
+   <date>2004-05-27</date>
+   <license>PHP License</license>
+   <state>beta</state>
+   <notes>Still in beta until any last bugs are found and removed.
 
 Added more components:
 * str_split
@@ -596,17 +600,14 @@ Bug fixes:
 * array_combine
 
 Other changes:
-* Added replica PHP error messages.
-  </notes>
-  </release>
-  
+* Added replica PHP error messages.</notes>
+  </release>  
   <release>
-  <version>0.1</version>
-  <date>2004-05-19</date>
-  <license>PHP License</license>
-  <state>beta</state>
-  <notes>
-This package is in beta while any bugs are ironed out.
+   <version>0.1</version>
+   <date>2004-05-19</date>
+   <license>PHP License</license>
+   <state>beta</state>
+   <notes>This package is in beta while any bugs are ironed out.
 
 Components:
 * E_STRICT
@@ -614,9 +615,7 @@ Components:
 * file_get_contents
 * file_put_contents
 * is_a
-* scandir
-  </notes>
+* scandir</notes>
   </release>
-
  </changelog>
 </package>
