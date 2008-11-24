@@ -8,7 +8,7 @@ if (is_array(php_compat_ini_get_all())) {
     echo "true\n";
 }
 
-if (is_array(php_compat_ini_get_all('session'))) {
+if (is_array(php_compat_ini_get_all('standard'))) {
     echo "true\n";
 }
 ?>
