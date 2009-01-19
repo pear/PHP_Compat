@@ -6,7 +6,7 @@
  * @package     PHP_Compat
  * @license     LGPL - http://www.gnu.org/licenses/lgpl.html
  * @copyright   2004-2007 Aidan Lister <aidan@php.net>, Arpad Ray <arpad@php.net>
- * @link        http://php.net/reserved.constants.core
+ * @link        http://php.net/reserved.constants
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  * @since       PHP 5.0.2
