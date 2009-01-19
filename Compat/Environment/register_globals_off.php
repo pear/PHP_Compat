@@ -23,6 +23,6 @@ if (ini_get('register_globals')) {
         }
     }
 
-    // Register the change
-    ini_set('register_globals', 'off');
+    // Register the change - cannot be set at runtime
+    //ini_set('register_globals', 'off');
 }
