@@ -33,7 +33,7 @@ function php_compat_clone($object)
 
 
 // Define
-if (version_compare(phpversion(), '5.0') === -1) {
+if (version_compare(PHP_VERSION, '5.0') === -1) {
     // Needs to be wrapped in eval as clone is a keyword in PHP5
     eval('
         function clone($object)
