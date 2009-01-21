@@ -56,7 +56,7 @@ function php_compat_str_ireplace($search, $replace, $subject)
 
 // Define
 if (!function_exists('str_ireplace')) {
-    function str_ireplace($search, $replace, $subjectl)
+    function str_ireplace($search, $replace, $subject)
     {
         return php_compat_str_ireplace($search, $replace, $subject);
     }
