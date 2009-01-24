@@ -4,14 +4,16 @@ Function -- idate
 <?php
 require_once 'PHP/Compat/Function/idate.php';
 
+date_default_timezone_set("UTC");
+
 $tests = array(
     'B',    // OK
     'd',    // ...
     'h',
     'H',
     'i',
-    'I',
-    'L',
+    'I',    // "2009-01-24 11:39:24" / UTC does not have DST
+    'L',    // "2009-01-24 11:39:24" / is not a leap year
     'm',
     's',
     't',
@@ -31,15 +33,17 @@ $tests = array(
 
 function ehandler($no, $str)
 {
-    echo '(Warning) ';
+    echo $str . " ";
 }
 set_error_handler('ehandler');
+
+$time = strtotime("2009-01-24 11:39:24");
 
 foreach ($tests as $v) {
     echo 'testing: ';
     var_dump($v);
     echo "    result: ";
-    $res = idate($v);
+    $res = idate($v, $time);
     if (!$res) {
         var_dump($res);
     } else {
@@ -67,7 +71,7 @@ testing: string(1) "i"
     result: > 0
 
 testing: string(1) "I"
-    result: > 0
+    result: int(0)
 
 testing: string(1) "L"
     result: int(0)
@@ -100,16 +104,16 @@ testing: string(1) "z"
     result: > 0
 
 testing: string(1) "Z"
-    result: > 0
+    result: int(0)
 
 testing: string(3) "foo"
-    result: (Warning) bool(false)
+    result: idate(): idate format is one char bool(false)
 
 testing: string(0) ""
-    result: (Warning) bool(false)
+    result: idate(): idate format is one char bool(false)
 
 testing: string(1) "!"
-    result: int(0)
+    result: idate(): Unrecognized date format token. bool(false)
 
 testing: string(1) "\"
-    result: int(0)
+    result: idate(): Unrecognized date format token. bool(false)
