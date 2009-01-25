@@ -35,7 +35,7 @@ function debug($var, $val)
     } else {
         echo "\n$val\n";
     }
-    debug_print_backtrace();
+    php_compat_debug_print_backtrace();
     echo "***\n";
 }
 
@@ -67,16 +67,16 @@ Variable: host
 Value: 
 host
 #0  debug(host, host) called at [(null):0]
-#1  call_user_func_array(debug, Array ([0] => host,[1] => host)) called at :45]
+#1  call_user_func_array(debug, Array ( [0] => host [1] => host ) ) called at :45]
 ***
 Variable: myClass
 Value: myClass Object
 (
 )
-#0  debug(myClass, myClass Object ()) called at [(null):0]
-#1  call_user_func_array(debug, Array ([0] => myClass,[1] => myClass Object ())) called at :47]
+#0  debug(myClass, myClass Object ( ) ) called at [(null):0]
+#1  call_user_func_array(debug, Array ( [0] => myClass [1] => myClass Object ( ) ) ) called at :47]
 ***
 Variable: fp
 Value: Resource id #6#0  debug(fp, Resource id #6) called at [(null):0]
-#1  call_user_func_array(debug, Array ([0] => fp,[1] => Resource id #6)) called at :49]
+#1  call_user_func_array(debug, Array ( [0] => fp [1] => Resource id #6 ) ) called at :49]
 ***

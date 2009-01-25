@@ -17,12 +17,6 @@ function php_compat_magic_quotes_sybase_on()
     $stripping = false;
     require 'PHP/Compat/Environment/_magic_quotes_inputs.php';
 
-    $compatMagicOn = !empty($GLOBALS['__PHP_Compat_ini']['magic_quotes_gpc']);
-    $magicOn = get_magic_quotes_gpc() || $compatMagicOn;
-    $allWorks = $allWorks || $compatMagicOn;
-    $compatSybaseOn = !empty($GLOBALS['__PHP_Compat_ini']['magic_quotes_sybase']);
-    $sybaseOn = ini_get('magic_quotes_sybase') || $compatSybaseOn;
-
     if (!$sybaseOn || !$allWorks && $magicOn) {
     
         if ($magicOn) {
@@ -34,9 +28,7 @@ function php_compat_magic_quotes_sybase_on()
             foreach ($v as $var => $value) {
                 $isArray = is_array($value);
                 $order1 = $k < $inputCount;
-                $escapeKeys = $magicOn
-                    ? ($isArray ? $order1 : $phpLt434 || $order1 && $phpLt50)
-                    : $phpLt50 || !$phpLt51 || $isArray;
+                $escapeKeys = $phpLt50 || !$phpLt51 || $isArray;
                 if ($escapeKeys || $compatMagicOn) {
                     $tvar = str_replace('\'', '\'\'', $var);
                     if ($var != $tvar) {

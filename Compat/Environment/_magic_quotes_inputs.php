@@ -55,3 +55,11 @@ if ($phpLt50 || ini_get('register_long_arrays')) {
         $inputs[] = &$_ENV;
     }
 }
+
+$compatMagicOn = !empty($GLOBALS['__PHP_Compat_ini']['magic_quotes_gpc']);
+$compatMagicOff = isset($GLOBALS['__PHP_Compat_ini']['magic_quotes_gpc'])
+    && !$GLOBALS['__PHP_Compat_ini']['magic_quotes_gpc'];
+$magicOn = get_magic_quotes_gpc() || $compatMagicOn;
+$allWorks = $allWorks || $compatMagicOn;
+$compatSybaseOn = !empty($GLOBALS['__PHP_Compat_ini']['magic_quotes_sybase']);
+$sybaseOn = ini_get('magic_quotes_sybase') || $compatSybaseOn;

@@ -13,18 +13,14 @@
  */
 
 // wrap everything in a function to keep global scope clean
+
+
+
+
 function php_compat_magic_quotes_gpc_off()
 {
     $stripping = true;
     require 'PHP/Compat/Environment/_magic_quotes_inputs.php';
-
-    $compatMagicOn = !empty($GLOBALS['__PHP_Compat_ini']['magic_quotes_gpc']);
-    $compatMagicOff = isset($GLOBALS['__PHP_Compat_ini']['magic_quotes_gpc'])
-        && !$GLOBALS['__PHP_Compat_ini']['magic_quotes_gpc'];
-    $magicOn = get_magic_quotes_gpc() || $compatMagicOn;
-    $allWorks = $allWorks || $compatMagicOn;
-    $compatSybaseOn = !empty($GLOBALS['__PHP_Compat_ini']['magic_quotes_sybase']);
-    $sybaseOn = ini_get('magic_quotes_sybase') || $compatSybaseOn;
 
     if ($magicOn && !$sybaseOn || !$phpLt50 && $phpLt51) {
         $inputCount = count($inputs);
@@ -34,7 +30,7 @@ function php_compat_magic_quotes_gpc_off()
                 $isArray = is_array($value);
                 $stripKeys = $magicOn
                      ? ($isArray
-                        ? !$allWorks && !$order1
+                        ? $allWorks || !$order1
                         : ($order1 ? !$phpLt50 : !$phpLt434))
                      : !$phpLt50 && $phpLt51 && !$isArray;
                 if ($stripKeys || $compatMagicOn) {

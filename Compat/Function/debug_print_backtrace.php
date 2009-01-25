@@ -42,10 +42,10 @@ function php_compat_debug_print_backtrace()
         if (isset($call['args'])) {
             $args = array();
             foreach ($call['args'] as $arg) {
-                if (is_array($arg)) {
-                    $args[] = print_r($arg, true);
-                } elseif (is_object($arg)) {
-                    $args[] = get_class($arg);
+                if (is_array($arg) || is_object($arg)) {
+                    $desc = print_r($arg, true);
+                    $desc = preg_replace('/\s+/', ' ', $desc);
+                    $args[] = $desc;
                 } else {
                     $args[] = $arg;
                 }

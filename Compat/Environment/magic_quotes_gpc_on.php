@@ -19,13 +19,7 @@ function php_compat_magic_quotes_gpc_on()
     $stripping = false;
     require_once 'PHP/Compat/Environment/_magic_quotes_inputs.php';
 
-    $compatMagicOn = !empty($GLOBALS['__PHP_Compat_ini']['magic_quotes_gpc']);
-    $magicOn = get_magic_quotes_gpc() || $compatMagicOn;
-    $allWorks = $allWorks || $compatMagicOn;
-    $compatSybaseOn = !empty($GLOBALS['__PHP_Compat_ini']['magic_quotes_sybase']);
-    $sybaseOn = ini_get('magic_quotes_sybase') || $compatSybaseOn;
-
-    if (!$allWorks && !$sybaseOn) {
+    if (!$magicOn || !$allWorks && !$sybaseOn) {
         $inputCount = count($inputs);
         while (list($k, $v) = each($inputs)) {
             foreach ($v as $var => $value) {

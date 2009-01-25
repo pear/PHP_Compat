@@ -180,6 +180,10 @@ foreach ($tests as $flags => $patterns) {
     $ftext = array_shift($patterns);
     foreach ($patterns as $pattern) {
         $compat = php_compat_glob($pattern, $flags);
+        if ($flags & GLOB_NOSORT) {
+            natsort($compat);
+            $compat = array_values($compat);
+        }
         echo "Flags: $ftext\nPattern: '$pattern'\n";
         var_dump($compat);
         echo "\n";
@@ -393,98 +397,98 @@ Flags: GLOB_BRACE | GLOB_NOSORT
 Pattern: 'a*.{php,jpg}'
 array(9) {
   [0]=>
-  string(7) "abc.php"
-  [1]=>
-  string(8) "abcd.php"
-  [2]=>
-  string(7) "abe.jpg"
-  [3]=>
-  string(7) "abd.jpg"
-  [4]=>
-  string(7) "abc.jpg"
-  [5]=>
   string(7) "aba.jpg"
+  [1]=>
+  string(7) "abc.jpg"
+  [2]=>
+  string(7) "abc.php"
+  [3]=>
+  string(8) "abcc.jpg"
+  [4]=>
+  string(8) "abcd.jpg"
+  [5]=>
+  string(8) "abcd.php"
   [6]=>
   string(8) "abce.jpg"
   [7]=>
-  string(8) "abcd.jpg"
+  string(7) "abd.jpg"
   [8]=>
-  string(8) "abcc.jpg"
+  string(7) "abe.jpg"
 }
 
 Flags: GLOB_BRACE | GLOB_NOSORT
 Pattern: 'foo/a*.{php,jpg}'
 array(4) {
   [0]=>
-  string(11) "foo/abc.php"
-  [1]=>
-  string(12) "foo/abcd.php"
-  [2]=>
   string(11) "foo/abc.jpg"
-  [3]=>
+  [1]=>
+  string(11) "foo/abc.php"
+  [2]=>
   string(12) "foo/abcd.jpg"
+  [3]=>
+  string(12) "foo/abcd.php"
 }
 
 Flags: GLOB_BRACE | GLOB_NOSORT
 Pattern: 'foo/a*.{p{hp,ng},jpg}'
 array(6) {
   [0]=>
-  string(11) "foo/abc.php"
+  string(11) "foo/abc.jpg"
   [1]=>
-  string(12) "foo/abcd.php"
+  string(11) "foo/abc.php"
   [2]=>
   string(11) "foo/abc.png"
   [3]=>
-  string(12) "foo/abcd.png"
-  [4]=>
-  string(11) "foo/abc.jpg"
-  [5]=>
   string(12) "foo/abcd.jpg"
+  [4]=>
+  string(12) "foo/abcd.php"
+  [5]=>
+  string(12) "foo/abcd.png"
 }
 
 Flags: GLOB_NOSORT
 Pattern: '*/*'
 array(20) {
   [0]=>
-  string(11) "foo/abc.png"
-  [1]=>
-  string(11) "foo/abc.php"
-  [2]=>
-  string(11) "foo/abc.jpg"
-  [3]=>
-  string(11) "foo/abc.exe"
-  [4]=>
-  string(12) "foo/abcd.png"
-  [5]=>
-  string(12) "foo/abcd.php"
-  [6]=>
-  string(12) "foo/abcd.jpg"
-  [7]=>
-  string(12) "foo/abcd.exe"
-  [8]=>
-  string(7) "foo/baz"
-  [9]=>
-  string(7) "foo/bar"
-  [10]=>
-  string(11) "cat/abc.php"
-  [11]=>
-  string(11) "cat/abc.jpg"
-  [12]=>
-  string(12) "cat/abcd.php"
-  [13]=>
-  string(12) "cat/abcd.jpg"
-  [14]=>
-  string(7) "cat/bar"
-  [15]=>
-  string(11) "baz/abc.php"
-  [16]=>
   string(11) "baz/abc.jpg"
-  [17]=>
-  string(12) "baz/abcd.php"
-  [18]=>
+  [1]=>
+  string(11) "baz/abc.php"
+  [2]=>
   string(12) "baz/abcd.jpg"
-  [19]=>
+  [3]=>
+  string(12) "baz/abcd.php"
+  [4]=>
   string(7) "baz/bar"
+  [5]=>
+  string(11) "cat/abc.jpg"
+  [6]=>
+  string(11) "cat/abc.php"
+  [7]=>
+  string(12) "cat/abcd.jpg"
+  [8]=>
+  string(12) "cat/abcd.php"
+  [9]=>
+  string(7) "cat/bar"
+  [10]=>
+  string(11) "foo/abc.exe"
+  [11]=>
+  string(11) "foo/abc.jpg"
+  [12]=>
+  string(11) "foo/abc.php"
+  [13]=>
+  string(11) "foo/abc.png"
+  [14]=>
+  string(12) "foo/abcd.exe"
+  [15]=>
+  string(12) "foo/abcd.jpg"
+  [16]=>
+  string(12) "foo/abcd.php"
+  [17]=>
+  string(12) "foo/abcd.png"
+  [18]=>
+  string(7) "foo/bar"
+  [19]=>
+  string(7) "foo/baz"
 }
 
 Flags: GLOB_ONLYDIR
@@ -545,4 +549,3 @@ array(1) {
   [0]=>
   string(16) "foo/khsgkhgjhgla"
 }
-

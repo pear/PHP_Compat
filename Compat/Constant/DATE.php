@@ -12,7 +12,7 @@
  * @since       PHP 5.1.1
  */
 if (!defined('DATE_ATOM')) {
-    define('DATE_ATOM', 'Y-m-d\TH:i:sO');
+    define('DATE_ATOM', 'Y-m-d\TH:i:sP');
 }
 
 if (!defined('DATE_COOKIE')) {
