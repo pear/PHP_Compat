@@ -10,9 +10,11 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  */
+
 if (isset($_GLOBALS['argc']) || isset($_SERVER['argc'])) {
     unset($GLOBALS['argc'], $GLOBALS['argv'], $_SERVER['argc'], $_SERVER['argv']);
-    
+
     // Register the change
-    ini_set('register_argc_argv', 'off');
+    //ini_set('register_argc_argv', 'off'); // Cannot be set at runtime (bug 15532)
+	$GLOBALS['__PHP_Compat_ini']['register_argc_argv'] = false;
 }

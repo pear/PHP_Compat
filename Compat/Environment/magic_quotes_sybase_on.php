@@ -12,15 +12,19 @@
  * @author      Arpad Ray <arpad@php.net>
  * @version     $Revision$
  */
+
+// wrap everything in a function to keep global scope clean
 function php_compat_magic_quotes_sybase_on()
 {
     $stripping = false;
-    require 'PHP/Compat/Environment/_magic_quotes_inputs.php';
+	// Require Inputs - Assumes file is in the same directory
+    require_once '_magic_quotes_inputs.php';
 
     if (!$sybaseOn || !$allWorks && $magicOn) {
     
         if ($magicOn) {
-            require 'PHP/Compat/Environment/magic_quotes_gpc_off.php';
+			// Require Inputs - Assumes file is in the same directory
+			require_once 'magic_quotes_gpc_off.php';
         }
         
         $inputCount = count($inputs);
@@ -51,6 +55,5 @@ function php_compat_magic_quotes_sybase_on()
 php_compat_magic_quotes_sybase_on();
    
 // Register the change
-ini_set('magic_quotes_sybase', 1);
+//ini_set('magic_quotes_sybase', 1); // Cannot be set at runtime (bug 15532)
 $GLOBALS['__PHP_Compat_ini']['magic_quotes_sybase'] = true;
-

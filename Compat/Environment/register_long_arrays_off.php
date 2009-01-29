@@ -20,4 +20,5 @@ unset(
 );
 
 // Register the change
-ini_set('register_long_arrays', 'off');
+//ini_set('register_long_arrays', 'off'); // Cannot be set at runtime (bug 15532)
+$GLOBALS['__PHP_Compat_ini']['register_long_arrays'] = false;

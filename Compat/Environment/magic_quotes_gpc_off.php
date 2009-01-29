@@ -13,14 +13,11 @@
  */
 
 // wrap everything in a function to keep global scope clean
-
-
-
-
 function php_compat_magic_quotes_gpc_off()
 {
     $stripping = true;
-    require 'PHP/Compat/Environment/_magic_quotes_inputs.php';
+	// Require Inputs - Assumes file is in the same directory
+    require_once '_magic_quotes_inputs.php';
 
     if ($magicOn && !$sybaseOn || !$phpLt50 && $phpLt51) {
         $inputCount = count($inputs);
@@ -55,6 +52,5 @@ function php_compat_magic_quotes_gpc_off()
 php_compat_magic_quotes_gpc_off();
 
 // Register the change
-ini_set('magic_quotes_gpc', 0);
+//ini_set('magic_quotes_gpc', 0); // Cannot be set at runtime (bug 15532)
 $GLOBALS['__PHP_Compat_ini']['magic_quotes_gpc'] = false;
-

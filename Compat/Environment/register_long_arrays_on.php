@@ -18,4 +18,5 @@ $GLOBALS['HTTP_ENV_VARS']    = &$_ENV;
 $GLOBALS['HTTP_FILES_VARS']  = &$_FILES;
 
 // Register the change
-ini_set('register_long_arrays', 'on');
+//ini_set('register_long_arrays', 'on'); // Cannot be set at runtime (bug 15532)
+$GLOBALS['__PHP_Compat_ini']['register_long_arrays'] = true;

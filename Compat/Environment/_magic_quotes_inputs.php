@@ -47,7 +47,7 @@ if ($phpLt50 || ini_get('register_long_arrays')) {
     $inputs[] = &$GLOBALS['HTTP_SERVER_VARS'];
     $inputs[] = &$GLOBALS['HTTP_ENV_VARS'];
 
-    if (    $phpLt50	// these superglobals haven't been escaped since PHP 5.0.0
+    if ($phpLt50	// these superglobals haven't been escaped since PHP 5.0.0
 	&& !$phpLt41	// and didn't exist before PHP 4.1.0
 	&&  $stripping)	// so we only want them if we're stripping the inputs
     {        
@@ -57,8 +57,7 @@ if ($phpLt50 || ini_get('register_long_arrays')) {
 }
 
 $compatMagicOn = !empty($GLOBALS['__PHP_Compat_ini']['magic_quotes_gpc']);
-$compatMagicOff = isset($GLOBALS['__PHP_Compat_ini']['magic_quotes_gpc'])
-    && !$GLOBALS['__PHP_Compat_ini']['magic_quotes_gpc'];
+$compatMagicOff = isset($GLOBALS['__PHP_Compat_ini']['magic_quotes_gpc']) && !$GLOBALS['__PHP_Compat_ini']['magic_quotes_gpc'];
 $magicOn = get_magic_quotes_gpc() || $compatMagicOn;
 $allWorks = $allWorks || $compatMagicOn;
 $compatSybaseOn = !empty($GLOBALS['__PHP_Compat_ini']['magic_quotes_sybase']);

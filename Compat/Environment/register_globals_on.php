@@ -11,8 +11,13 @@
  * @author      Arpad Ray <arpad@php.net>
  * @version     $Revision$
  */
+
+// wrap everything in a function to keep global scope clean
 function php_compat_register_globals_on()
 {
+	//register_globals is already on? Do nothing
+	if (ini_get('register_globals')) { return; }
+
     $superglobals = array();
     $phpLt410 = PHP_VERSION < 4.1;
 
@@ -74,10 +79,10 @@ function php_compat_register_globals_on()
             }
         }
     }
+}
 
-    // Register the change
-    ini_set('register_globals', 'on');
-}
-if (!ini_get('register_globals')) {
-    php_compat_register_globals_on();
-}
+php_compat_register_globals_on();
+
+// Register the change
+//ini_set('register_globals', 'on'); // Cannot be set at runtime (bug 15532)
+$GLOBALS['__PHP_Compat_ini']['register_globals'] = true;

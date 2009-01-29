@@ -10,6 +10,7 @@
  * @author      Aidan Lister <aidan@php.net>
  * @version     $Revision$
  */
+
 if (ini_get('register_globals')) {
     $ignore = array('GLOBALS', '_GET', '_POST', '_COOKIE', '_REQUEST', '_SERVER',
                 '_ENV', '_FILES');
@@ -23,6 +24,7 @@ if (ini_get('register_globals')) {
         }
     }
 
-    // Register the change - cannot be set at runtime
-    //ini_set('register_globals', 'off');
+    // Register the change
+    //ini_set('register_globals', 'off'); // Cannot be set at runtime (bug 15532)
+	$GLOBALS['__PHP_Compat_ini']['register_globals'] = false;
 }
