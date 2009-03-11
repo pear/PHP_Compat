@@ -13,7 +13,7 @@ define('PHP_COMPAT_FILE_GET_CONTENTS_MAX_REDIRECTS', 5);
  * @author      Arpad Ray <arpad@php.net>
  * @version     $Revision$
  * @internal    resource_context is only supported for PHP 4.3.0+ (stream_context_get_options)
- * @since       PHP 5
+ * @since       PHP 4.3.0
  * @require     PHP 4.0.0 (user_error)
  */
 function php_compat_file_get_contents($filename, $incpath = false, $resource_context = null)
@@ -151,8 +151,10 @@ function php_compat_http_get_contents_helper($filename, $opts)
 
 function php_compat_ftp_get_contents_helper($filename, $opts)
 {
+	//No FTP support yet
 }
 
+// Define
 if (!function_exists('file_get_contents')) {
     function file_get_contents($filename, $incpath = false, $resource_context = null)
     {
