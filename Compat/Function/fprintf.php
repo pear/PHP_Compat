@@ -29,8 +29,9 @@ function php_compat_fprintf()
             E_USER_WARNING);
         return false;
     }
-
-    return fwrite($resource_handle, vsprintf($format, $args));
+    
+    array_unshift($args, $format);
+    return fwrite($resource_handle, call_user_func_array('sprintf', $args));
 }
 
 
@@ -38,6 +39,7 @@ function php_compat_fprintf()
 if (!function_exists('fprintf')) {
     function fprintf()
     {
-        return php_compat_fprintf();
+        $args = func_get_args();
+        return call_user_func_array('php_compat_fprintf', $args);
     }
 }
