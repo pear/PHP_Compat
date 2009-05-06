@@ -25,7 +25,8 @@ function php_compat_clone($object)
 
     // If there is a __clone method call it on the "new" class
     if (method_exists($object, '__clone')) {
-        $object->__clone();
+        $func = '__clone';
+        $object->$func();
     }
     
     return $object;    
