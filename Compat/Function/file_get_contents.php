@@ -16,7 +16,7 @@ define('PHP_COMPAT_FILE_GET_CONTENTS_MAX_REDIRECTS', 5);
  * @since       PHP 4.3.0
  * @require     PHP 4.0.0 (user_error)
  */
-function php_compat_file_get_contents($filename, $incpath = false, $resource_context = null)
+function php_compat_file_get_contents($filename, $incpath = false, $resource_context = null, $offset = -1, $maxlen = -1)
 {
     if (is_resource($resource_context) && function_exists('stream_context_get_options')) {
         $opts = stream_context_get_options($resource_context);
@@ -26,20 +26,21 @@ function php_compat_file_get_contents($filename, $incpath = false, $resource_con
     $wrapper = $colon_pos === false ? 'file' : substr($filename, 0, $colon_pos);
     $opts = (empty($opts) || empty($opts[$wrapper])) ? array() : $opts[$wrapper];
 
+    $data = false;
     switch ($wrapper) {
     case 'http':
         $max_redirects = (isset($opts[$wrapper]['max_redirects'])
             ? $opts[$proto]['max_redirects']
             : PHP_COMPAT_FILE_GET_CONTENTS_MAX_REDIRECTS);
         for ($i = 0; $i < $max_redirects; $i++) {
-            $contents = php_compat_http_get_contents_helper($filename, $opts);
+            $data = php_compat_http_get_contents_helper($filename, $opts);
             if (is_array($contents)) {
                 // redirected
                 $filename = rtrim($contents[1]);
-                $contents = '';
+                $data = '';
                 continue;
             }
-            return $contents;
+            break 2;
         }
         user_error('redirect limit exceeded', E_USER_WARNING);
         return;
@@ -50,23 +51,34 @@ function php_compat_file_get_contents($filename, $incpath = false, $resource_con
         // tbc               
     }
 
-    if (false === $fh = fopen($filename, 'rb', $incpath)) {
-        user_error('failed to open stream: No such file or directory',
-            E_USER_WARNING);
-        return false;
-    }
-
-    clearstatcache();
-    if ($fsize = @filesize($filename)) {
-        $data = fread($fh, $fsize);
-    } else {
-        $data = '';
-        while (!feof($fh)) {
-            $data .= fread($fh, 8192);
+    if (false === $data) {
+        if (false === $fh = fopen($filename, 'rb', $incpath)) {
+            user_error('failed to open stream: No such file or directory',
+                E_USER_WARNING);
+            return false;
         }
-    }
 
-    fclose($fh);
+        clearstatcache();
+        if ($fsize = @filesize($filename)) {
+            $data = fread($fh, $fsize);
+        } else {
+            $data = '';
+            while (!feof($fh)) {
+                $data .= fread($fh, 8192);
+            }
+        }
+
+        fclose($fh);
+    }
+    
+    if ($offset != -1) {
+        $data = substr($data, $offset);
+    }
+    
+    if ($maxlen != -1) {
+        $data = substr($data, 0, $maxlen);
+    }
+    
     return $data;
 }
 
@@ -87,7 +99,8 @@ function php_compat_http_get_contents_helper($filename, $opts)
     if (!isset($path['host'])) {
         return '';
     }
-    $fp = fsockopen($path['host'], 80, $errno, $errstr, 4);
+    $port = isset($path['port']) ? $path['port'] : 80;
+    $fp = fsockopen($path['host'], $port, $errno, $errstr, 4);
     if (!$fp) {
         return '';
     }
@@ -140,23 +153,22 @@ function php_compat_http_get_contents_helper($filename, $opts)
     }
     fclose($fp);    
     $content_pos = strpos($response, "\r\n\r\n");
-
+    $headers = substr($response, 0, $content_pos);
+    $content = substr($response, $content_pos + 4);
+    
+    $GLOBALS['http_response_header'] = explode("\r\n", $headers);
     
     // recurse for redirects
-    if (preg_match('/^Location: (.*)$/mi', $response, $matches)) {
+    if (preg_match('/^Location: (.*)$/mi', $headers, $matches)) {
         return $matches;
     }
-    return ($content_pos != -1 ?  substr($response, $content_pos + 4) : $response);
-}
-
-function php_compat_ftp_get_contents_helper($filename, $opts)
-{
-	//No FTP support yet
+    
+    return $content;
 }
 
 // Define
 if (!function_exists('file_get_contents')) {
-    function file_get_contents($filename, $incpath = false, $resource_context = null)
+    function file_get_contents($filename, $incpath = false, $resource_context = null, $offset = -1, $maxlen = -1)
     {
         return php_compat_file_get_contents($filename, $incpath, $resource_context);
     }
