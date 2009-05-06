@@ -117,4 +117,3 @@ $components['constant']['PHP_EOL']                    = '5.0.1';
 $components['constant']['STD']                        = '4.3.0';
 $components['constant']['T']                          = '5.0.0';
 $components['constant']['UPLOAD_ERR']                 = '4.3.0';
-?>
