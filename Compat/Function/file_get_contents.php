@@ -52,7 +52,12 @@ function php_compat_file_get_contents($filename, $incpath = false, $resource_con
     }
 
     if (false === $data) {
-        if (false === $fh = fopen($filename, 'rb', $incpath)) {
+        if (is_resource($resource_context) && version_compare(PHP_VERSION, '4.3.0', 'ge')) {
+            $fh = fopen($filename, 'rb', $incpath, $resource_context);
+        } else {
+            $fh = fopen($filename, 'rb', $incpath);
+        }
+        if (false === $fh) {
             user_error('failed to open stream: No such file or directory',
                 E_USER_WARNING);
             return false;
