@@ -13,7 +13,7 @@ define('PHP_COMPAT_GETOPT_VALUE_OPTIONAL', 2);
  * @link        http://php.net/function.getopt
  * @author      Jim Wigginton <terrafrost@php.net>
  * @version     $Revision$
- * @since       PHP 4.0.4
+ * @since       PHP 4.3.0
  */
 function php_compat_getopt($options, $longopts = NULL)
 {
