@@ -36,7 +36,6 @@ $components['function']['array_uintersect_uassoc']    = '5.0.0';
 $components['function']['array_walk_recursive']       = '5.0.0';
 $components['function']['asinh']                      = '5.0.0';
 $components['function']['atanh']                      = '5.0.0';
-$components['function']['bcinvert']                   = '5.2.0';
 $components['function']['bcpowmod']                   = '5.0.0';
 $components['function']['call_user_func_array']       = '4.0.4';
 $components['function']['clone']                      = '5.0.0';
