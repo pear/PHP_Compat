@@ -1,11 +1,11 @@
 <?php
 /**
- * Replace fprintf()
+ * Replace fputcsv()
  *
  * @category    PHP
  * @package     PHP_Compat
  * @license     LGPL - http://www.gnu.org/licenses/lgpl.html
- * @copyright   2004-2007 Aidan Lister <aidan@php.net>, Arpad Ray <arpad@php.net>
+ * @copyright   2004-2010 Aidan Lister <aidan@php.net>, Arpad Ray <arpad@php.net>
  * @link        http://php.net/function.fprintf
  * @author      Twebb <twebb@boisecenter.com>
  * @author      Aidan Lister <aidan@php.net>
