@@ -115,7 +115,7 @@ function php_compat_http_get_contents_helper($filename, $opts)
     
     $headers = array(
         'Host'      => $path['host'],
-        'Conection' => 'close'
+        'Connection' => 'close'
     );
     
     // enforce some options (proxy isn't supported) 
