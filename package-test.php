@@ -12,7 +12,7 @@ function phpt2php($filename)
 }
 
 // Get array of functions on filesystem
-$filesystem = scandir('Compat/Function/');
+$filesystem = scandir('PHP/Compat/Function/');
 unset($filesystem[array_search('.', $filesystem)]);
 unset($filesystem[array_search('..', $filesystem)]);
 unset($filesystem[array_search('CVS', $filesystem)]);
@@ -39,7 +39,7 @@ foreach ($tests_org as $testfile) {
 }
 
 // Get a list of files from the package2.xml
-$xml = simplexml_load_file('package2.xml');
+$xml = simplexml_load_file('package.xml');
 $xml->registerXPathNamespace('pear', 'http://pear.php.net/dtd/package-2.0');
 $xpath = '/pear:package/pear:contents/pear:dir[@name="/"]/pear:dir[@name="Compat"]/pear:dir[@name="Function"]/pear:file';
 $filexml = array();
@@ -57,7 +57,7 @@ foreach ($xml->xpath($xpath) as $file) {
 sort($testxml);
 
 // Get list of files from Components.php
-require 'Compat/Components.php';
+require 'PHP/Compat/Components.php';
 $filecomps = array_keys($components['function']);
 foreach ($filecomps as $k => $comp) { $filecomps[$k] = $comp . '.php'; }
 sort($filecomps);
